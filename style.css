@@ -416,29 +416,72 @@ body { -webkit-text-size-adjust: 100%; }
 .kc-settings-toggle-row { align-items: center; }
 .kc-toggle-group { display: flex; gap: 12px; }
 
-.kc-toggle-button {
-  font-family: inherit;
-  font-size: 16px;
-  padding: 6px 22px;
-  background: #d5d5d5;
-  color: #111;
-  border: 1px solid #666;
-  box-shadow:
-    inset 0 0 0 1px #fdfdfd,
-    0 2px 0 #000;
-  letter-spacing: 0.08em;
-  cursor: pointer;
+/* Make Settings toggle states MUCH more obvious */
+.kc-toggle-group {
+  display: inline-flex;
+  gap: 10px;
+  padding: 6px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.18);
 }
 
-.kc-toggle-button:hover { background: #e4e4e4; }
+.kc-toggle-button {
+  position: relative;
+  min-width: 150px;
+  border-radius: 10px;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease,
+              border-color 120ms ease, filter 120ms ease;
+}
 
+/* Inactive: slightly dim so active pops */
+.kc-toggle-group .kc-toggle-button:not(.kc-toggle-active) {
+  background: #cfcfcf;
+  border-color: #777;
+  filter: brightness(0.95);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5), 0 2px 0 #000;
+}
+
+/* Active: “selected” glow + strong border + pressed look */
 .kc-toggle-active {
-  background: #f7f7f7;
-  border-color: #ffffff;
+  background: #0b1a10;                 /* dark green-ish */
+  color: #eaffea;                      /* readable on dark */
+  border-color: #7afe6a;               /* your accent green */
   box-shadow:
-    inset 0 0 0 1px #ffffff,
-    0 2px 0 #000,
-    0 0 12px rgba(255, 255, 255, 0.4);
+    inset 0 0 0 2px rgba(122, 254, 106, 0.95),
+    0 0 14px rgba(122, 254, 106, 0.55),
+    0 2px 0 #000;
+  transform: translateY(-1px);
+}
+
+/* Add a checkmark badge on the active button */
+.kc-toggle-active::before {
+  content: "✓";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 13px;
+  background: rgba(122, 254, 106, 0.18);
+  border: 1px solid rgba(122, 254, 106, 0.9);
+  color: #7afe6a;
+}
+
+/* Make room for the checkmark so text stays centered-ish */
+.kc-toggle-active {
+  padding-left: 40px; /* overrides your existing padding-left */
+}
+
+/* Keyboard focus makes state clearer too */
+.kc-toggle-button:focus-visible {
+  outline: 3px solid rgba(255, 212, 91, 0.9); /* your yellow highlight */
+  outline-offset: 2px;
 }
 
 /* Pane switching */
@@ -2521,4 +2564,40 @@ body.kc-modal-open {
     overflow-wrap: anywhere;
     word-break: break-word;
   }
+}
+
+/* Make "deep" links darker ONLY inside the light convo bubble */
+.kc-convo-bubble a.kc-link-deep,
+.kc-convo-bubble a.kc-link-deep:visited {
+  color: #1b2a8f;              /* darker navy */
+  text-decoration: underline;  /* improves readability on light bg */
+  text-underline-offset: 2px;
+}
+
+.kc-convo-bubble a.kc-link-deep:hover,
+.kc-convo-bubble a.kc-link-deep:focus-visible {
+  color: #0f1d6e;              /* even darker on hover/focus */
+}
+
+/* Make kc-link-deep feel clickable inside convo bubbles */
+.kc-convo-bubble a.kc-link-deep {
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 0 4px;
+  margin: 0 -4px;                /* keeps padding from shifting layout */
+  transition: background-color 120ms ease, box-shadow 120ms ease, color 120ms ease, transform 120ms ease;
+}
+
+.kc-convo-bubble a.kc-link-deep:hover,
+.kc-convo-bubble a.kc-link-deep:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  background-color: rgba(0, 0, 0, 0.08); /* subtle highlight on your light bubble */
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.18);
+  transform: translateY(-1px);
+}
+
+/* Optional: remove the ugly default focus outline since we add our own */
+.kc-convo-bubble a.kc-link-deep:focus {
+  outline: none;
 }
