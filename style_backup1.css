@@ -1,0 +1,655 @@
+:root {
+  --kc-bg: #01040b;
+  --kc-bg2: #051024;
+  --kc-panel-bg: #050b17;
+  --kc-border: #1c2840;
+  --kc-accent: #7afe6a;   /* objective check green */
+  --kc-accent-soft: rgba(122, 254, 106, 0.16);
+  --kc-text: #f5f7ff;
+  --kc-muted: #ced2dd;
+  --kc-highlight: #ffd45b;
+}
+
+/* Reset / base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top, #08112a 0, #01040b 60%, #000 100%);
+  color: var(--kc-text);
+  font-family: "Inconsolata", monospace;
+  font-size: 16px;
+}
+
+/* Shell layout */
+
+.kc-shell {
+  max-width: 1180px;
+  margin: 24px auto;
+  display: grid;
+  grid-template-columns: 270px minmax(0, 1fr);
+  gap: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #202a42;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.7);
+}
+
+/* Sidebar */
+
+.kc-sidebar {
+  background: radial-gradient(circle at top left, #081736 0, #050b17 40%, #020712 100%);
+  border-right: 2px solid rgba(255, 255, 255, 0.14);
+  padding: 14px 10px;
+}
+
+.kc-sidebar-header {
+  display: flex;
+  flex-direction: column;     /* stack logo + text vertically */
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.kc-logo-circle {
+  width: 200px;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #011024;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kc-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.kc-logo-circle i {
+  font-size: 16px;
+}
+
+.kc-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  text-align: center;         /* center the title under the logo */
+}
+
+.kc-tagline {
+  font-family: "Princess Sofia", cursive;
+  font-size: 14px;
+  color: var(--kc-highlight);
+}
+
+.kc-game-title {
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.kc-subtitle-line {
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kc-muted);
+}
+
+/* Sidebar nav */
+
+.kc-nav {
+  margin-top: 6px;
+}
+
+.kc-nav-item {
+  display: block;
+  padding: 4px 10px;
+  margin: 1px 0;
+  color: var(--kc-text);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 13px;
+  background: transparent;
+  border-left: 4px solid transparent;
+}
+
+.kc-nav-item:hover {
+  background: #1c2840;
+}
+
+.kc-nav-active {
+  background: #23314b;
+  border-left-color: var(--kc-accent);
+}
+
+.kc-nav-exit {
+  margin-top: 10px;
+  color: #f36c6c;
+}
+
+/* Main area styled like the in-game badge LCD */
+
+.kc-main {
+  background-image: radial-gradient(transparent, black 120%);
+  background-color: rgba(24, 68, 148, 0.75); /* similar to .lcd.objective */
+  border-left: none;
+  border-top: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.14);
+  border-right: 2px solid rgba(255, 255, 255, 0.14);
+  color: white;
+  text-shadow: 0 0 5px rgba(200, 200, 200, 0.45);
+}
+
+.kc-main-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 6px 12px;
+  background: #151f35;
+  border-bottom: 2px solid #11192c;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 13px;
+}
+
+.kc-back {
+  color: var(--kc-muted);
+}
+
+.kc-main-header-title {
+  color: var(--kc-text);
+}
+
+/* Sections */
+
+.kc-section {
+  padding: 14px 18px;
+}
+
+.kc-section-title {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 16px;
+}
+
+.kc-section-subtitle {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 14px;
+}
+
+.kc-intro {
+  margin: 0;
+  color: var(--kc-muted);
+}
+
+.kc-highlight {
+  color: var(--kc-highlight);
+}
+
+.kc-section-bordered {
+  border-top: 2px solid #11192c;
+}
+
+/* Objectives list (badge-like) */
+
+.kc-objective-list {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.kc-objective-list li {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  line-height: 2.4rem; /* matches badge nav row height */
+  border-bottom: 1px solid #141b30;
+  position: relative;
+}
+
+.kc-objective-list li:last-child {
+  border-bottom: none;
+}
+
+.kc-obj-status {
+  width: 26px;
+  text-align: center;
+}
+
+.kc-obj-status i {
+  color: #39e858; /* tuned green similar to in-game checkmark */
+  font-size: 16px;
+}
+
+.kc-obj-link {
+  flex: 1;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+}
+
+.kc-obj-link:hover {
+  color: var(--kc-highlight);
+}
+
+/* Simulate “active row” overlay (current selection) */
+
+.kc-obj-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.14); /* like .badge-nav a.active:after */
+  pointer-events: none;
+}
+
+/* Objective detail cards */
+
+.kc-objective-detail {
+  margin-top: 16px;
+  padding: 10px 12px;
+  background: rgba(5, 11, 23, 0.9);
+  border: 1px solid var(--kc-border);
+}
+
+.kc-objective-title {
+  margin: 0 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 15px;
+}
+
+.kc-objective-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--kc-muted);
+  margin-bottom: 6px;
+}
+
+.kc-objective-detail h4 {
+  margin: 8px 0 4px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.kc-objective-detail p,
+.kc-objective-detail ol {
+  margin: 0 0 4px;
+  font-size: 14px;
+}
+
+.kc-objective-detail ol {
+  padding-left: 20px;
+}
+
+/* Code block */
+
+.kc-code {
+  display: block;
+  background: #050912;
+  border: 1px solid #182132;
+  padding: 6px 8px;
+  border-radius: 2px;
+  font-family: "SF Mono", "Consolas", "Courier New", monospace;
+  font-size: 12px;
+  color: #e5ebff;
+  overflow-x: auto;
+}
+
+/* Footer section */
+
+.kc-footer-section {
+  border-top: 2px solid #11192c;
+  text-align: center;
+  color: var(--kc-muted);
+  font-size: 14px;
+}
+
+/* Responsive */
+/* SETTINGS PAGE -------------------------------------------------- */
+
+.kc-settings {
+  max-width: 720px;
+}
+
+/* rows & labels */
+
+.kc-settings-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.kc-settings-label {
+  width: 260px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* sliders */
+
+.kc-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #050b12;
+  border: 1px solid #9a9a9a;
+  box-shadow: inset 0 0 0 1px #000;
+}
+
+/* WebKit thumb (Chrome/Safari) */
+.kc-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  border: 1px solid #444;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+/* Firefox thumb */
+.kc-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  border: 1px solid #444;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+/* track in Firefox */
+.kc-slider::-moz-range-track {
+  height: 6px;
+  background: #050b12;
+  border: 1px solid #9a9a9a;
+}
+
+/* toggle buttons */
+
+.kc-settings-toggle-row {
+  align-items: center;
+}
+
+.kc-toggle-group {
+  display: flex;
+  gap: 12px;
+}
+
+.kc-toggle-button {
+  font-family: inherit;
+  font-size: 16px;
+  padding: 6px 22px;
+  background: #d5d5d5;
+  color: #111;
+  border: 1px solid #666;
+  box-shadow:
+    inset 0 0 0 1px #fdfdfd,
+    0 2px 0 #000;
+  text-transform: none;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.kc-toggle-button:hover {
+  background: #e4e4e4;
+}
+
+.kc-toggle-active {
+  background: #f7f7f7;
+  border-color: #ffffff;
+  box-shadow:
+    inset 0 0 0 1px #ffffff,
+    0 2px 0 #000,
+    0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+/* Pane switching: only the active kc-pane is visible */
+.kc-pane {
+  display: none;
+}
+
+.kc-pane.kc-pane-active {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .kc-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .kc-sidebar {
+    border-right: none;
+    border-bottom: 2px solid #151f35;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .kc-nav {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .kc-nav-item {
+    flex: 1 0 50%;
+  }
+}
+
+/* -------------------------------------------------
+   STORY PANE – closer to in-game look
+-------------------------------------------------- */
+#story {
+  /* fill the whole right pane */
+  min-height: 100%;
+  height: 100%;
+
+  /* darker in-game style background */
+  background-color: #00020b;
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.05) 0px,
+      rgba(255,255,255,0.05) 1px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,0) 4px
+    );
+  border-top: 2px solid #11192c;
+}
+
+/* if your main pane uses flex/scrolling, this helps story stretch */
+#story.kc-pane-active {
+  display: block;
+}
+
+/* center + width like the game */
+#story .kc-story-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 12px 12px 28px;
+  text-align: center;
+}
+
+/* ACT titles */
+#story .kc-story-act-title {
+  margin: 20px 0 8px;
+  font-size: 34px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+
+  /* warmer/brighter yellow */
+  color: #f7f74a;
+  text-shadow:
+    0 0 6px rgba(255, 228, 107, 0.55),
+    0 0 14px rgba(255, 228, 107, 0.35);
+}
+
+/* body copy – brighter + slight glow */
+#story .kc-story-text {
+  margin: 0 auto 14px;
+  font-size: 22px;
+  line-height: 1.55;
+
+  color: #f7f7f7;
+  font-weight: 600;
+  text-shadow: 0 0 4px rgba(255,255,255,0.18);
+
+  max-width: 700px;
+}
+
+.kc-map-header {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 14px;
+}
+
+.kc-map-controls {
+  background: rgba(180, 180, 180, 0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  text-align: center;
+  font-size: 14px;
+  color: #e9e9e9;
+  max-width: 520px;
+  line-height: 1.35;
+}
+
+.kc-map-green {
+  color: #39e858;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(57,232,88,0.6);
+}
+
+/* viewport is the “window” you pan/zoom within */
+.kc-map-viewport {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 140px); /* fills most of right pane */
+  overflow: hidden;
+  border-top: 2px solid #11192c;
+}
+
+/* the thing we translate/scale */
+.kc-map-content {
+  position: absolute;
+  left: 0; top: 0;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+/* map image */
+.kc-map-img {
+  display: block;
+  width: auto; 
+  height: auto;
+  max-width: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* labels overlay */
+.kc-map-labels {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* labels enable pointer individually */
+}
+
+.kc-map-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 4px 8px;
+  background: rgba(0,0,0,0.65);
+  border: 1px solid rgba(57,232,88,0.9);
+  color: #39e858;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  border-radius: 4px;
+  text-shadow: 0 0 6px rgba(57,232,88,0.6);
+  pointer-events: auto; /* clickable */
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.kc-map-label:hover {
+  background: rgba(0,0,0,0.85);
+  box-shadow: 0 0 10px rgba(57,232,88,0.8);
+}
+
+.kc-video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.kc-video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.kc-divider {
+  border: none;
+  border-top: 1px solid #444;
+  margin: 3em 0;
+}
+
+.kc-link {
+  color: #5ce1e6;
+  text-decoration: underline;
+}
+
+.kc-link:hover {
+  color: #a5f3f5;
+}
+
+.postshell-avatar {
+    width: 134px;              /* big enough to look good */
+    height: 180px;             /* square → perfect circle */
+    object-fit: cover;         /* cleanly crops the top/bottom of the snowman */
+    transition: all 0.25s ease;
+}
+
+.postshell-avatar:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 18px rgba(0, 255, 0, 0.85);
+}

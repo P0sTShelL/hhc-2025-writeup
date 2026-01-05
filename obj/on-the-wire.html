@@ -1,0 +1,1326 @@
+<div class="kc-section kc--section-on-the-wire" style="margin-bottom: 0;">
+  <h1 class="kc-section-title">On the Wire</h1>
+  
+  <!-- Difficulty + Location -->
+  <div class="kc-objective-meta kc-objective-meta--stacked">
+    <div class="kc-meta-line kc-difficulty">
+      <span class="kc-meta-label">Difficulty:</span>
+      <span class="kc-difficulty-scale"
+            aria-label="Difficulty 1 out of 5 snowflakes">
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+      </span>
+    </div>
+
+    <div class="kc-meta-line kc-location">
+      <span class="kc-meta-label">Location:</span>
+      <span class="kc-meta-value">Next to city</span>
+    </div>
+  </div>
+
+  <!-- Objective line -->
+  <p class="kc-objective-summary kc-meta-line">
+    <span class="kc-meta-label">Objective:</span>
+    <span class="kc-meta-value">
+      Help Evan next to city hall hack this gnome and retrieve the temperature value reported by the I²C device at address 0x3C. The temperature data is XOR-encrypted, so you’ll need to work through each communication stage to uncover the necessary keys. Start with the unencrypted data being transmitted over the 1-wire protocol.
+    </span>
+  </p>
+
+  <!-- Conversation banner -->
+  <div class="kc-convo-header">
+    <span class="kc-convo-icon">
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Evan Booth Conversation:</span>
+  </div>
+
+  <div class="kc-objective-detail kc-objective-detail--no-panel">
+    <div class="kc-convo-bubble">
+      <div class="kc-convo-avatar">
+        <img src="evanbooth-avatar.gif"
+             alt="Evan Booth avatar">
+        <div class="kc-convo-name">Evan Booth</div>
+      </div>
+
+      <div class="kc-convo-text">
+        <p>
+          Hey, I'm Evan!
+        </p>
+        <p>
+          I like to build things.
+        </p>
+        <p>
+          All sorts of things.
+        </p>
+        <p>
+          If you aren't failing on some front, consider adjusting your difficulty settings.
+        </p>
+        <p>
+          So here's the deal - there are some seriously bizarre signals floating around this area.
+        </p>
+        <p>
+          Not your typical radio chatter or WiFi noise, but something... different.
+        </p>
+         <p>
+          I've been trying to make sense of the patterns, but it's like trying to build a robot hand out of a coffee maker - you need the right approach.
+        </p>
+        <p>
+          Think you can help me decode whatever weirdness is being transmitted out there?
+        </p>
+        <p>
+          You know what happens to electronics in extreme cold? They fail. All my builds, all my robots, all my weird coffee-maker contraptions—frozen solid. We can't let Frosty turn this place into a permanent deep freeze.
+        </p>       
+
+        <div class="kc-convo-actions">
+          <button class="kc-convo-play-btn" type="button"
+                  data-npc-audio="on-the-wire">
+            <i class="fas fa-play" aria-hidden="true"></i>
+            <span>Play Audio</span>
+          </button>
+        </div>
+      </div> <!-- /.kc-convo-text -->
+    </div>   <!-- /.kc-convo-bubble -->
+  </div>     <!-- /.kc-objective-detail -->
+
+  <!-- Hints header -->
+  <div class="kc-convo-header kc-hints-header">
+    <span class="kc-convo-icon kc-hints-icon">
+      <i class="fas fa-lightbulb" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Hints:</span>
+  </div>
+
+<!-- Hint 1 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Garbage?</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: On the Wire</div>
+    <p>
+    <p>
+  <strong>If your decoded data looks like gibberish:</strong>
+</p>
+
+<ul class="kc-hint-list">
+  <li>The data may be encrypted with an <strong>XOR cipher</strong>.</li>
+  <li>
+    XOR is a simple encryption:
+    <span style="color:#4aa3ff;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;">
+      encrypted_byte XOR key_byte = plaintext_byte
+    </span>
+  </li>
+  <li>
+    The same operation both encrypts and decrypts:
+    <span style="color:#4aa3ff;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;">
+      plaintext XOR key = encrypted, encrypted XOR key = plaintext
+    </span>
+  </li>
+</ul>
+
+<p><strong>How XOR cipher works:</strong></p>
+<pre style="margin:10px 0 0; padding:12px; border-radius:10px; background:rgba(0,0,0,.35); overflow:auto;"><code style="color:#4aa3ff;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;">function xorDecrypt(encrypted, key) {
+  let result = "";
+  for (let i = 0; i &lt; encrypted.length; i++) {
+    const encryptedChar = encrypted.charCodeAt(i);
+    const keyChar = key.charCodeAt(i % key.length);  // Key repeats
+    result += String.fromCharCode(encryptedChar ^ keyChar);
+  }
+  return result;
+}</code></pre>
+
+<p><strong>Key characteristics:</strong></p>
+<ul class="kc-hint-list">
+  <li>The key is typically short and repeats for the length of the message.</li>
+  <li>You need the correct key to decrypt (look for keys in previous stage messages).</li>
+  <li>If you see readable words mixed with garbage, you might have the wrong key or bit order.</li>
+</ul>
+
+<p><strong>Testing your decryption:</strong></p>
+<ul class="kc-hint-list">
+  <li>Encrypted data will have random-looking byte values.</li>
+  <li>Decrypted data should be readable ASCII text.</li>
+  <li>Try different keys from messages you’ve already decoded.</li>
+</ul>
+    </p>
+</div>
+
+<!-- Hint 2 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Protocols</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: On the Wire</div>
+    <p>
+    <p><strong>Key concept — Clock vs. Data signals:</strong></p>
+
+<ul style="margin:10px 0 0 18px;">
+  <li>Some protocols have separate clock and data lines (like SPI and I2C).</li>
+  <li>For clocked protocols, you need to sample the data line at specific moments defined by the clock.</li>
+  <li>The clock signal tells you when to read the data signal.</li>
+</ul>
+
+<p style="margin:12px 0 0;"><strong>For 1-Wire (no separate clock):</strong></p>
+<ul style="margin:10px 0 0 18px;">
+  <li>Information is encoded in pulse widths (how long the signal stays low or high).</li>
+  <li>Different pulse widths represent different bit values.</li>
+  <li>Look for patterns in the timing between transitions.</li>
+</ul>
+
+<p style="margin:12px 0 0;"><strong>For SPI and I2C:</strong></p>
+<ul style="margin:10px 0 0 18px;">
+  <li>Identify which line is the clock (SCL for I2C, SCK for SPI).</li>
+  <li>Data is typically valid/stable when the clock is in a specific state (high or low).</li>
+  <li>You need to detect clock edges (transitions) and sample data at those moments.</li>
+</ul>
+
+<p style="margin:12px 0 0;"><strong>Technical approach:</strong></p>
+<ol style="margin:10px 0 0 18px;">
+  <li>Sort frames by timestamp.</li>
+  <li>Detect rising edges (0→1) and falling edges (1→0) on the clock line.</li>
+  <li>Sample the data line's value at each clock edge.</li>
+</ol>
+    </p>
+</div>
+
+<!-- Hint 3 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Structure</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: On the Wire</div>
+    <p>
+    <p><strong>What you’re dealing with:</strong></p>
+<ul style="margin:10px 0 0 18px;">
+  <li>You have access to WebSocket endpoints that stream digital signal data.</li>
+  <li>Each endpoint represents a physical wire in a hardware communication system.</li>
+  <li>
+    The data comes as JSON frames with three properties:
+    <code>line</code> (wire name), <code>t</code> (timestamp), and <code>v</code> (value: 0 or 1).
+  </li>
+  <li>The server continuously broadcasts signal data in a loop — you can connect at any time.</li>
+  <li>This is a multi-stage challenge where solving one stage reveals information needed for the next.</li>
+</ul>
+
+<p style="margin:12px 0 0;"><strong>Where to start:</strong></p>
+<ul style="margin:10px 0 0 18px;">
+  <li>Connect to a WebSocket endpoint and observe the data format.</li>
+  <li>The server automatically sends data every few seconds — just wait and collect.</li>
+  <li>Look for documentation on the protocol types mentioned (1-Wire, SPI, I2C).</li>
+  <li>
+    Hardware protocols encode information in the timing and sequence of signal transitions,
+    not just the values themselves.
+  </li>
+  <li>Consider capturing the WebSocket frames to a file so you can work offline.</li>
+</ul>
+    </p>
+</div>
+
+<!-- Hint 4 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">On Rails</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: On the Wire</div>
+    <p>
+<p><strong>Stage-by-stage approach</strong></p>
+
+<ol style="margin:10px 0 0 18px; padding:0;">
+  <li>Connect to the captured wire files or endpoints for the relevant wires.</li>
+  <li>Collect all frames for the transmission (buffer until inactivity or loop boundary).</li>
+  <li>
+    Identify protocol from wire names (e.g.,
+    <code style="color:#4aa3ff;">dq</code> → 1-Wire;
+    <code style="color:#4aa3ff;">mosi/sck</code> → SPI;
+    <code style="color:#4aa3ff;">sda/scl</code> → I²C).
+  </li>
+  <li>
+    Decode the raw signal:
+    <ul style="margin:6px 0 0 18px;">
+      <li><strong>Pulse-width protocols:</strong> locate falling→rising transitions and measure low-pulse width.</li>
+      <li><strong>Clocked protocols:</strong> detect clock edges and sample the data line at the specified sampling phase.</li>
+    </ul>
+  </li>
+  <li>Assemble bits into bytes taking the correct bit order (LSB vs MSB).</li>
+  <li>Convert bytes to text (printable ASCII or hex as appropriate).</li>
+  <li>Extract information from the decoded output — it contains the XOR key or other hints for the next stage.</li>
+  <li>Repeat Stage 1 decoding to recover raw bytes (they will appear random).</li>
+  <li>Apply XOR decryption using the key obtained from the previous stage.</li>
+  <li>Inspect decrypted output for next-stage keys or target device information.</li>
+</ol>
+
+<p style="margin:12px 0 0;"><strong>I²C decoding notes</strong></p>
+<ul style="margin:8px 0 0 18px;">
+  <li>Multiple 7-bit device addresses share the same SDA/SCL lines.</li>
+  <li>START condition: SDA falls while SCL is high. STOP: SDA rises while SCL is high.</li>
+  <li>
+    First byte of a transaction = (7-bit address &lt;&lt; 1) | R/W.
+    Extract address with <code style="color:#4aa3ff;">address = first_byte &gt;&gt; 1</code>.
+  </li>
+  <li>Identify and decode every device’s transactions; decrypt only the target device’s payload.</li>
+</ul>
+
+<p style="margin:12px 0 0;"><strong>Validation &amp; cleanup tips</strong></p>
+<ul style="margin:8px 0 0 18px;">
+  <li>Print bytes in hex and as ASCII (if printable) — hex patterns reveal structure.</li>
+  <li>Check printable ASCII range (0x20–0x7E) to spot valid text quickly.</li>
+  <li>Verify endianness: swapping LSB/MSB will quickly break readable text.</li>
+  <li>For XOR keys, test short candidate keys and look for common English words.</li>
+  <li>If you connect mid-broadcast, wait for the next loop or detect a reset/loop marker before decoding.</li>
+  <li>Buffering heuristic: treat the stream complete after a short inactivity window (e.g., 500 ms) or after a full broadcast loop.</li>
+  <li>Sort frames by timestamp per wire and collapse consecutive identical levels before decoding to align with the physical waveform.</li>
+</ul>
+    </p>
+</div>
+
+<!-- Hint 5 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Bits and Bytes</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: On the Wire</div>
+  <p>
+<p><strong>Critical detail — bit ordering varies by protocol</strong></p>
+
+<p style="margin:10px 0 6px;"><strong>MSB-first (Most Significant Bit first):</strong></p>
+<ul style="margin:0 0 0 18px;">
+  <li>SPI and I2C typically send the highest bit (bit 7) first.</li>
+  <li>
+    When assembling bytes:
+    <code style="color:#4aa3ff;">byte = (byte &lt;&lt; 1) | bit_value</code>
+  </li>
+  <li>Start with an empty byte, shift left, add the new bit.</li>
+</ul>
+
+<p style="margin:12px 0 6px;"><strong>LSB-first (Least Significant Bit first):</strong></p>
+<ul style="margin:0 0 0 18px;">
+  <li>1-Wire and UART send the lowest bit (bit 0) first.</li>
+  <li>
+    When assembling bytes:
+    <code style="color:#4aa3ff;">byte |= bit_value &lt;&lt; bit_position</code>
+  </li>
+  <li>Build the byte from bit 0 to bit 7.</li>
+</ul>
+
+<p style="margin:12px 0 6px;"><strong>I2C specific considerations:</strong></p>
+<ul style="margin:0 0 0 18px;">
+  <li>Every 9th bit is an ACK (acknowledgment) bit — ignore these when decoding data.</li>
+  <li>The first byte in each transaction is the device address (7 bits) plus a R/W bit.</li>
+  <li>You may need to filter for specific device addresses.</li>
+</ul>
+
+<p style="margin:12px 0 6px;"><strong>Converting bytes to text:</strong></p>
+<pre style="margin:0; padding:12px; border-radius:10px; background:rgba(0,0,0,.35); overflow:auto;">
+<code style="color:#4aa3ff;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; white-space:pre; display:block;">String.fromCharCode(byte_value)  // Converts byte to ASCII character</code></pre>
+  </p>
+</div>
+
+<section id="obj-on-the-wire" class="kc-section--on-the-wire">
+  <div class="kc-workflow-header">
+    <span class="kc-workflow-icon">
+      <i class="fas fa-tasks" aria-hidden="true"></i>
+    </span>
+    <span class="kc-workflow-title">Working through the Challenge:</span>
+  </div>
+
+  <div class="kc-note-bubble">
+    <span class="kc-note-label">Write-up notes</span>
+
+    <div class="kc-workflow-row">
+      <div class="kc-workflow-text">
+        <p class="kc-workflow-intro">
+          Clicking the <strong>Signal Gnome</strong> brings up our interface.
+        </p>
+      </div>
+
+      <div class="kc-workflow-illustration">
+        <img src="sigterm.png" alt="sigterm term" class="kc-workflow-image">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="signal_gnome.png"
+      alt="Signal Gnome interface showing 1-Wire selected and a live DQ (Data) waveform"
+      class="kc-ptas-thumb"
+      data-full-src="signal_gnome.png"
+    >
+  </div>
+
+  <div class="kc-ptas-caption">Signal Gnome interface (1-Wire / DQ data stream)</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Using the browser’s developer tools, we opened the <strong>Network</strong> tab and filtered on
+    <strong>WS</strong> to inspect WebSocket traffic. From there, we could see the 1-Wire (<code>dq</code>)
+    signal streaming as JSON frames in real time (timestamped samples with a <code>v</code> value of
+    <code>0</code> or <code>1</code>).
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="websocket.png"
+      alt="Developer tools Network tab filtered on WS showing WebSocket frames streaming 1-Wire dq JSON data"
+      class="kc-ptas-thumb"
+      data-full-src="websocket.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="websocket.png"
+      aria-label="Enlarge WebSocket screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">WebSocket frames streaming 1-Wire <code>dq</code> samples (JSON: <code>line</code>, <code>t</code>, <code>v</code>)</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Next, I used the browser console to hook the site’s <code>updateSignal()</code> function and capture
+    the 1-Wire <code>dq</code> samples as JSON objects (<code>t</code> timestamp + <code>v</code> value).
+  </p>
+</div>
+
+<!-- Console snippet viewer (outside the bubble) -->
+<div class="kc-code-window kc-code-window--console">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&gt;_</span>
+    <span class="kc-code-title">DevTools Console (JavaScript)</span>
+
+    <button
+      class="kc-code-copy-btn kc-code-copy"
+      type="button"
+      data-copy-target="#dq-hook"
+      aria-label="Copy console snippet"
+      title="Copy"
+    >
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <!-- Use Prism: language-javascript -->
+  <pre class="kc-code-block kc-no-wheel"><code id="dq-hook" class="language-javascript">// Hook 1-Wire updates and log them
+window.dqFrames = [];
+window._origUpdateSignal = window._origUpdateSignal || window.updateSignal;
+
+window.updateSignal = function (wireName, value, timestamp) {
+  if (wireName === 'dq') {
+    dqFrames.push({ t: timestamp, v: value });
+  }
+  return window._origUpdateSignal.apply(this, arguments);
+};
+
+console.log("Hooked updateSignal for dq; now click Connect on 1-Wire.");</code></pre>
+</div>
+
+<!-- Optional: page-local Prism refresh for lazy-loaded content -->
+<script>
+  // If this page is lazy-loaded, Prism may run before this block exists.
+  // This safely re-highlights after insertion.
+  window.requestAnimationFrame(() => {
+    if (window.Prism && Prism.highlightAllUnder) {
+      Prism.highlightAllUnder(document.querySelector('.kc-code-window--console'));
+    } else if (window.Prism && Prism.highlightAll) {
+      Prism.highlightAll();
+    }
+  });
+</script>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    With the hook in place, we clicked <strong>1-Wire</strong> on the Signal Gnome and verified the connection
+    was active (the status pill turns green). Once connected, the waveform begins updating in the
+    <strong>DQ (Data)</strong> pane.
+  </p>
+
+  <p>
+    To sanity-check progress, we periodically queried <code>dqFrames.length</code>. After collecting
+    <code>&gt; 10,000</code> samples, we exported the capture to the clipboard with:
+    <code>copy(JSON.stringify(dqFrames));</code>
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="data_copy_1_wire.png"
+      alt="DevTools console showing dqFrames.length growing and copy(JSON.stringify(dqFrames)) exporting the captured 1-Wire dq frames"
+      class="kc-ptas-thumb"
+      data-full-src="data_copy_1_wire.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="data_copy_1_wire.png"
+      aria-label="Enlarge 1-Wire data capture screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">
+    Capturing <code>dq</code> frames and exporting via <code>copy(JSON.stringify(dqFrames))</code>
+  </div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    On Kali, I opened <code>nano</code>, pasted the clipboard capture, and saved it as
+    <a class="kc-link-note" href="/DQ_1_wire.json" download><code>DQ_1_wire.json</code></a>.
+    With raw frames in hand, the next step was building a decoder to reconstruct the 1-Wire bitstream
+    and recover the payload.
+  </p>
+
+  <p>
+    I wrote the following Python script to parse the JSON frames, collapse repeated levels, measure
+    LOW pulse widths, skip the RESET/PRESENCE sequence, then decode LSB-first bytes and print both
+    ASCII and hex.
+  </p>
+</div>
+
+<!-- Python script (outside the bubble) -->
+<div class="kc-code-window kc-code-window--py">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&gt;_</span>
+    <span class="kc-code-title">decode_1wire.py</span>
+
+    <!-- Copy button -->
+    <button
+      class="kc-code-copy-btn kc-code-copy"
+      type="button"
+      data-copy-target="#decode-1wire-py"
+      aria-label="Copy Python script"
+      title="Copy"
+    >
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <!-- Taller + slightly smaller text only for this block -->
+  <style>
+    .kc-code-window--py .kc-code-block--taller { max-height: 760px; }
+    .kc-code-window--py code[class*="language-"] { font-size: 0.92em; }
+  </style>
+
+  <pre class="kc-code-block kc-code-block--taller kc-no-wheel"><code id="decode-1wire-py" class="language-python">#!/usr/bin/env python3
+# Usage: python decode_1wire.py DQ_1_wire.json
+import sys, json, statistics
+
+def load_frames(path):
+    with open(path, "r", encoding="utf-8") as f:
+        frames = json.load(f)
+    out = [{"t": int(x["t"]), "v": 1 if x["v"] else 0} for x in frames if "t" in x and "v" in x]
+    out.sort(key=lambda x: x["t"])
+    return out
+
+def compress(frames):
+    if not frames: return []
+    comp = [frames[0]]
+    for f in frames[1:]:
+        if f["v"] != comp[-1]["v"]:
+            comp.append(f)
+    return comp
+
+def low_pulses(compact):
+    P = []
+    for i in range(len(compact)-1):
+        if compact[i]["v"] == 0:
+            P.append(compact[i+1]["t"] - compact[i]["t"])
+    return P
+
+def bits_to_bytes(bits):
+    out = []; b = 0; pos = 0
+    for bit in bits:
+        b |= (bit & 1) << pos   # LSB-first (1-Wire)
+        pos += 1
+        if pos == 8: out.append(b); b = 0; pos = 0
+    return out
+
+def kmeans2(vals):
+    c1, c2 = min(vals), max(vals)
+    if c1 == c2: return c1, c2
+    for _ in range(20):
+        g1, g2 = [], []
+        for v in vals:
+            (g1 if abs(v-c1) <= abs(v-c2) else g2).append(v)
+        if not g1 or not g2:
+            m = statistics.median(vals)
+            g1 = [v for v in vals if v <= m]
+            g2 = [v for v in vals if v > m] or [m]
+        n1, n2 = sum(g1)/len(g1), sum(g2)/len(g2)
+        if abs(n1-c1) < 1e-6 and abs(n2-c2) < 1e-6: break
+        c1, c2 = n1, n2
+    return (c1, c2) if c1 < c2 else (c2, c1)
+
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: python decode_1wire.py <DQ_json_file>"); return 2
+    frames = load_frames(sys.argv[1])
+    comp = compress(frames)
+    P = low_pulses(comp)
+    if not P:
+        print("No LOW pulses found."); return 1
+
+    # --- tiny but crucial fix: skip RESET + PRESENCE ---
+    #  RESET: long low (>=300); PRESENCE: next low ~100..240.
+    start = 0
+    for i, d in enumerate(P):
+        if d >= 300:
+            start = i + 1
+            if start < len(P) and 100 <= P[start] <= 240:
+                start += 1
+            break
+    P = P[start:]
+
+    # cluster to find SHORT(1) vs LONG(0)
+    med = statistics.median(P)
+    keep = [d for d in P if d <= 4*med] or P
+    s, l = kmeans2(keep)
+    thr = (s + l) / 2.0
+
+    bits = [1 if d < thr else 0 for d in P]
+    by = bits_to_bytes(bits)
+
+    ascii_s = "".join(chr(x) if 0x20 <= x <= 0x7E else "." for x in by)
+    hex_s = " ".join(f"{x:02X}" for x in by)
+
+    print("ASCII:"); print(ascii_s)
+    print("\nHEX:"); print(hex_s)
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+</div>
+
+<!-- Optional: page-local Prism refresh for lazy-loaded content -->
+<script>
+  window.requestAnimationFrame(() => {
+    const root = document.querySelector('.kc-code-window--py');
+    if (!root) return;
+    if (window.Prism && Prism.highlightAllUnder) {
+      Prism.highlightAllUnder(root);
+    } else if (window.Prism && Prism.highlightAll) {
+      Prism.highlightAll();
+    }
+  });
+</script>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    With the captured <code>DQ_1_wire.json</code> saved locally, we ran our decoder script to convert pulse timings
+    into bytes. The decoded message provided the next objective directly: recover and decrypt the SPI bus data using
+    the XOR key <code>icy</code>.
+  </p>
+</div>
+
+<!-- Kali terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/on_the_wire]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">python decode_1wire.py DQ_1_wire.json</span>
+
+<span class="term-kali-output">ASCII:</span>
+<span class="term-kali-output">.read and decrypt the SPI bus data using the XOR key: icy</span>
+
+<span class="term-kali-output">HEX:</span>
+<span class="term-kali-output">CC 72 65 61 64 20 61 6E 64 20 64 65 63 72 79 70 74 20 74 68 65 20 53 50 49 20 62 75 73 20 64 61 74 61 20 75 73 69 6E 67 20 74 68 65 20 58 4F 52 20 6B 65 79 3A 20 69 63 79</span>
+
+<span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/on_the_wire]</span>
+<span class="term-kali-prompt">└─$</span> </pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Next, we updated our DevTools hook to capture <strong>SPI</strong> traffic. This version watches both
+    <code>sck</code> (clock) and <code>mosi</code> (data) and records each transition as a JSON frame we can export
+    and decode offline.
+  </p>
+</div>
+
+<!-- Console snippet viewer (outside the bubble) -->
+<div class="kc-code-window kc-code-window--console">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&gt;_</span>
+    <span class="kc-code-title">DevTools Console (JavaScript)</span>
+
+    <button
+      class="kc-code-copy-btn kc-code-copy"
+      type="button"
+      data-copy-target="#spi-hook"
+      aria-label="Copy SPI console snippet"
+      title="Copy"
+    >
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <!-- Use Prism: language-javascript -->
+  <pre class="kc-code-block kc-no-wheel"><code id="spi-hook" class="language-javascript">window.spiFrames = [];
+window._origUpdateSignal = window._origUpdateSignal || window.updateSignal;
+
+window.updateSignal = function (wireName, value, timestamp) {
+  if (wireName === 'sck' || wireName === 'mosi') {
+    spiFrames.push({ line: wireName, t: timestamp, v: value });
+  }
+  return window._origUpdateSignal.apply(this, arguments);
+};
+
+console.log("SPI hook installed; now click Connect on the SPI tab.");</code></pre>
+</div>
+
+<!-- Optional: page-local Prism refresh for lazy-loaded content -->
+<script>
+  window.requestAnimationFrame(() => {
+    const root = document.querySelector('.kc-code-window--console');
+    if (!root) return;
+
+    if (window.Prism && Prism.highlightAllUnder) {
+      Prism.highlightAllUnder(root);
+    } else if (window.Prism && Prism.highlightAll) {
+      Prism.highlightAll();
+    }
+  });
+</script>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    With the updated SPI hook installed, I switched to the <strong>SPI</strong> tab and began collecting frames.
+    Just like the 1-Wire capture, I periodically checked progress with <code>spiFrames.length</code>. Once the capture
+    reached a healthy size (10k+ frames), I exported it to the clipboard using
+    <code>copy(JSON.stringify(spiFrames));</code> so it could be saved to disk for offline decoding.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="SPI_cap.png"
+      alt="SPI tab showing MOSI/SCK activity with DevTools console collecting spiFrames and copying JSON to clipboard"
+      class="kc-ptas-thumb"
+      data-full-src="SPI_cap.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="SPI_cap.png"
+      aria-label="Enlarge SPI capture screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Capturing SPI (<code>mosi</code> + <code>sck</code>) frames and exporting via <code>copy(JSON.stringify(spiFrames))</code></div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    I saved the clipboard export as
+    <a class="kc-link-note" href="/SPI_MOSI_SCK.json" download><code>SPI_MOSI_SCK.json</code></a>
+    and then built a Python decoder that tries to automatically “do the right thing” by brute-testing common SPI decode variables:
+  </p>
+
+  <ul class="kc-note-list">
+    <li><strong>Edge:</strong> sample MOSI on rising vs falling <code>SCK</code></li>
+    <li><strong>Bit order:</strong> MSB-first vs LSB-first</li>
+    <li><strong>Phase:</strong> shift 0–7 bits to align byte boundaries</li>
+    <li><strong>Scoring:</strong> choose the most printable / English-looking output, then XOR-decrypt it (default key: <code>icy</code>)</li>
+  </ul>
+</div>
+
+<!-- Python script (outside the bubble) -->
+<div class="kc-code-window kc-code-window--py">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&gt;_</span>
+    <span class="kc-code-title">decode_spi_xor_auto.py</span>
+
+    <!-- Copy button -->
+    <button
+      class="kc-code-copy-btn kc-code-copy"
+      type="button"
+      data-copy-target="#decode-spi-xor-auto"
+      aria-label="Copy Python script"
+      title="Copy"
+    >
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <!-- Taller + slightly smaller text only for this block -->
+  <style>
+    /* Scope only this page’s Python block */
+    .kc-code-window--py .kc-code-block--taller { max-height: 860px; }
+    .kc-code-window--py code[class*="language-"] { font-size: 0.90em; }
+  </style>
+
+  <pre class="kc-code-block kc-code-block--taller kc-no-wheel"><code id="decode-spi-xor-auto" class="language-python">#!/usr/bin/env python3
+import sys, json
+
+def load_events(path):
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    events = []
+    for x in data:
+        line = x.get("line")
+        t = x.get("t")
+        v = x.get("v")
+        if line in ("mosi", "sck") and t is not None and v in (0, 1, True, False):
+            events.append({"line": line, "t": int(t), "v": 1 if bool(v) else 0})
+    events.sort(key=lambda e: e["t"])
+    return events
+
+def sample_bits(events, sample_on="rising"):
+    """
+    sample_on: 'rising' or 'falling'
+    Returns list of bits sampled from MOSI at the chosen SCK edges.
+    """
+    last_mosi = 0
+    last_sck = 0
+    bits = []
+    for e in events:
+        if e["line"] == "mosi":
+            last_mosi = e["v"]
+        else:  # sck
+            sck = e["v"]
+            if sample_on == "rising":
+                if last_sck == 0 and sck == 1:
+                    bits.append(last_mosi)
+            else:  # falling
+                if last_sck == 1 and sck == 0:
+                    bits.append(last_mosi)
+            last_sck = sck
+    return bits
+
+def bits_to_bytes(bits, order="msb", offset=0):
+    bits = bits[offset:]
+    out = []
+    b = 0
+    cnt = 0
+    if order == "msb":
+        for bit in bits:
+            b = ((b &lt;&lt; 1) | (bit &amp; 1)) &amp; 0xFF
+            cnt += 1
+            if cnt == 8:
+                out.append(b); b = 0; cnt = 0
+    else:  # lsb
+        for bit in bits:
+            b |= (bit &amp; 1) &lt;&lt; cnt
+            cnt += 1
+            if cnt == 8:
+                out.append(b); b = 0; cnt = 0
+    return out
+
+def xor_repeat(data, key_bytes):
+    out = bytearray(len(data))
+    L = len(key_bytes) if key_bytes else 1
+    for i, b in enumerate(data):
+        out[i] = b ^ key_bytes[i % L]
+    return bytes(out)
+
+def ascii_score(bs):
+    # favor printable ASCII, spaces, and letters; penalize control chars
+    printable = sum(1 for x in bs if 0x20 &lt;= x &lt;= 0x7E)
+    spaces = bs.count(0x20)
+    letters = sum(1 for x in bs if (65 &lt;= x &lt;= 90) or (97 &lt;= x &lt;= 122))
+    # soft penalty on non-printables
+    nonprint = len(bs) - printable
+    score = (2 * printable) + (2 * spaces) + (2 * letters) - (3 * nonprint)
+    return score
+
+def best_decode(events, key="icy"):
+    best = None
+    key_bytes = key.encode("utf-8") if key else b"\x00"
+    for sample_on in ("rising", "falling"):
+        bits = sample_bits(events, sample_on=sample_on)
+        for order in ("msb", "lsb"):
+            for off in range(8):
+                raw = bits_to_bytes(bits, order=order, offset=off)
+                dec = xor_repeat(raw, key_bytes)
+                s = ascii_score(dec)
+                cand = (s, sample_on, order, off, raw, dec)
+                if best is None or cand[0] &gt; best[0]:
+                    best = cand
+    return best  # (score, sample_on, order, offset, raw, dec)
+
+def to_hex(bs):
+    return " ".join(f"{x:02X}" for x in bs)
+
+def to_ascii(bs):
+    return "".join(chr(x) if 0x20 &lt;= x &lt;= 0x7E else "." for x in bs)
+
+def main():
+    if len(sys.argv) &lt; 2 or len(sys.argv) &gt; 3:
+        print("Usage: python decode_spi_xor_auto.py &lt;SPI_json&gt; [key]")
+        return 2
+    path = sys.argv[1]
+    key = sys.argv[2] if len(sys.argv) == 3 else "icy"
+    events = load_events(path)
+    score, sample_on, order, off, raw, dec = best_decode(events, key=key)
+    print(f"# sample_on={sample_on}  bit_order={order}  phase={off}  bytes={len(raw)}  key='{key}'  score={score}")
+    print("RAW HEX:"); print(to_hex(raw))
+    print("\nRAW ASCII:"); print(to_ascii(raw))
+    print("\nXOR HEX:"); print(to_hex(dec))
+    print("\nXOR ASCII:"); print(to_ascii(dec))
+
+if __name__ == "__main__":
+    raise SystemExit(main())</code></pre>
+</div>
+
+<!-- Optional: page-local Prism refresh for lazy-loaded content -->
+<script>
+  window.requestAnimationFrame(() => {
+    const root = document.querySelector('.kc-code-window--py');
+    if (!root) return;
+    if (window.Prism && Prism.highlightAllUnder) Prism.highlightAllUnder(root);
+    else if (window.Prism && Prism.highlightAll) Prism.highlightAll();
+  });
+</script>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Using the auto-decoder against our captured SPI traffic, we immediately get a clean decode when sampling
+    MOSI on the rising edge with MSB-first ordering (phase 0). The XOR-decrypted output provides the next
+    stage instructions: use key <code>bananza</code> to decrypt the I<sup>2</sup>C bus data, and target the
+    temperature sensor at address <code>0x3C</code>.
+  </p>
+</div>
+
+<!-- Kali Shell (outside the bubble) -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/on_the_wire]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">python decode_spi_xor_auto.py SPI_MOSI_SCK.json</span>
+<span class="term-kali-output"># sample_on=rising  bit_order=msb  phase=0  bytes=100  key='icy'  score=390</span>
+<span class="term-kali-output">RAW HEX:</span>
+<span class="term-kali-output">1B 06 18 0D 43 18 07 07 59 0D 06 1A 1B 1A 09 1D 43 0D 01 06 59 20 51 3A 49 01 0C 1A 43 1D 08 17 18 49 16 0A 00 0D 1E 49 17 11 0C 43 21 26 31 59 02 06 00 53 43 1B 08 0D 18 07 19 18 47 43 0D 01 06 59 1D 06 14 19 06 0B 08 17 0C 1B 06 59 1A 06 17 1A 0C 0B 49 02 1D 0D 11 1C 1A 10 59 00 10 59 59 1B 4A 2A</span>
+
+<span class="term-kali-output">RAW ASCII:</span>
+<span class="term-kali-output">....C...Y.......C...Y Q:I...C....I.....I...C!&amp;1Y...SC.......GC...Y...........Y......I.......Y..YY.J*</span>
+
+<span class="term-kali-output">XOR HEX:</span>
+<span class="term-kali-output">72 65 61 64 20 61 6E 64 20 64 65 63 72 79 70 74 20 74 68 65 20 49 32 43 20 62 75 73 20 64 61 74 61 20 75 73 69 6E 67 20 74 68 65 20 58 4F 52 20 6B 65 79 3A 20 62 61 6E 61 6E 7A 61 2E 20 74 68 65 20 74 65 6D 70 65 72 61 74 75 72 65 20 73 65 6E 73 6F 72 20 61 64 64 72 65 73 73 20 69 73 20 30 78 33 43</span>
+
+<span class="term-kali-output">XOR ASCII:</span>
+<span class="term-kali-output">read and decrypt the I2C bus data using the XOR key: bananza. the temperature sensor address is 0x3C</span></pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Updating the hook one last time to capture the I<sup>2</sup>C traffic. This version records both
+    <code>sda</code> and <code>scl</code> frames (timestamp + value) into <code>i2cFrames</code>, which we’ll
+    later export to JSON for offline decoding.
+  </p>
+</div>
+
+<!-- Console snippet viewer (outside the bubble) -->
+<div class="kc-code-window kc-code-window--console">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&gt;_</span>
+    <span class="kc-code-title">DevTools Console (JavaScript)</span>
+
+    <button
+      class="kc-code-copy-btn kc-code-copy"
+      type="button"
+      data-copy-target="#i2c-hook"
+      aria-label="Copy console snippet"
+      title="Copy"
+    >
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <pre class="kc-code-block kc-no-wheel"><code id="i2c-hook" class="language-javascript">window.i2cFrames = [];
+window._origUpdateSignal = window._origUpdateSignal || window.updateSignal;
+
+window.updateSignal = function (wireName, value, timestamp) {
+  if (wireName === 'sda' || wireName === 'scl') {
+    i2cFrames.push({ line: wireName, t: timestamp, v: value });
+  }
+  return window._origUpdateSignal.apply(this, arguments);
+};
+
+console.log("I2C hook installed; now click Connect on the I2C tab.");</code></pre>
+</div>
+
+<!-- Optional: page-local Prism refresh for lazy-loaded content -->
+<script>
+  window.requestAnimationFrame(() => {
+    const root = document.querySelector('.kc-code-window--console');
+    if (!root) return;
+    if (window.Prism && Prism.highlightAllUnder) Prism.highlightAllUnder(root);
+    else if (window.Prism && Prism.highlightAll) Prism.highlightAll();
+  });
+</script>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Using the same capture workflow as the previous stages, but this time for I<sup>2</sup>C:
+    I used <code>i2cFrames.length</code> to verify we had enough frames collected, then ran
+    <code>copy(JSON.stringify(i2cFrames));</code> to copy the captured SDA/SCL traffic to the clipboard.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="I2C_cap.png"
+      alt="DevTools console showing I2C hook installed, i2cFrames.length increasing, and copy(JSON.stringify(i2cFrames)) used to copy captured frames"
+      class="kc-ptas-thumb"
+      data-full-src="I2C_cap.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="I2C_cap.png"
+      aria-label="Enlarge I2C capture screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">
+    Capturing I<sup>2</sup>C: checking <code>i2cFrames.length</code> and copying with
+    <code>copy(JSON.stringify(i2cFrames));</code>
+  </div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    I saved the clipboard contents to
+    <a class="kc-link-note" href="/I2C_sda_scl.json" download><code>I2C_sda_scl.json</code></a>
+    and then built the final decoder. It performs the following:
+  </p>
+
+  <ul class="kc-list">
+    <li>Parses <code>sda</code>/<code>scl</code> events and detects <strong>START/STOP</strong> (SDA edge while SCL=HIGH).</li>
+    <li>Samples SDA on each SCL rising edge, assembles 8 data bits + 1 ACK per byte (ignores ACKs).</li>
+    <li>Splits into transactions; filters by 7-bit address (default <code>0x3C</code>).</li>
+    <li>XOR-decrypts the data bytes (excluding the address byte) with a repeating key (default <code>bananza</code>).</li>
+    <li>Prints RAW/DEC HEX + ASCII and tries to extract a temperature token.</li>
+  </ul>
+</div>
+
+<!-- Python script (outside the bubble) -->
+<div class="kc-code-window kc-code-window--py">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&gt;_</span>
+    <span class="kc-code-title">decode_i2c_xor.py</span>
+
+    <!-- Copy button -->
+    <button
+      class="kc-code-copy-btn kc-code-copy"
+      type="button"
+      data-copy-target="#decode-i2c-py"
+      aria-label="Copy Python script"
+      title="Copy"
+    >
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <!-- Taller + slightly smaller text only for this block -->
+  <style>
+    .kc-code-window--py .kc-code-block--taller { max-height: 860px; }
+    .kc-code-window--py code[class*="language-"] { font-size: 0.92em; }
+  </style>
+
+  <pre class="kc-code-block kc-code-block--taller kc-no-wheel"><code id="decode-i2c-py" class="language-python">#!/usr/bin/env python3
+import sys, json, re
+
+def load_events(path):
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    ev = []
+    for x in data:
+        line = x.get("line")
+        t = x.get("t")
+        v = x.get("v")
+        if line in ("sda","scl") and t is not None and v in (0,1,True,False):
+            ev.append({"line": line, "t": int(t), "v": 1 if bool(v) else 0})
+    ev.sort(key=lambda e: e["t"])
+    return ev
+
+def decode_i2c_transactions(events):
+    sda, scl = 1, 1
+    started = False
+    cur_bits = []
+    cur_bytes = []
+    txns = []
+
+    for e in events:
+        if e["line"] == "sda":
+            prev_sda = sda
+            sda = e["v"]
+            if prev_sda == 1 and sda == 0 and scl == 1:
+                if started and cur_bytes:
+                    txns.append(cur_bytes)
+                started = True
+                cur_bits = []
+                cur_bytes = []
+            if prev_sda == 0 and sda == 1 and scl == 1:
+                if started:
+                    if len(cur_bits) >= 8:
+                        b = 0
+                        for i in range(8):
+                            b = (b &lt;&lt; 1) | (cur_bits[i] &amp; 1)
+                        cur_bytes.append(b)
+                        cur_bits = cur_bits[8:]
+                    if cur_bytes:
+                        txns.append(cur_bytes)
+                started = False
+                cur_bits = []
+                cur_bytes = []
+        else:
+            prev_scl = scl
+            scl = e["v"]
+            if prev_scl == 0 and scl == 1 and started:
+                cur_bits.append(1 if sda else 0)
+                if len(cur_bits) == 9:
+                    b = 0
+                    for i in range(8):
+                        b = (b &lt;&lt; 1) | (cur_bits[i] &amp; 1)
+                    cur_bytes.append(b)
+                    cur_bits = []
+
+    if started and cur_bytes:
+        txns.append(cur_bytes)
+    return txns
+
+def xor_repeat(data, key_bytes):
+    if not key_bytes:
+        return bytes(data)
+    out = bytearray(len(data))
+    for i, b in enumerate(data):
+        out[i] = b ^ key_bytes[i % len(key_bytes)]
+    return bytes(out)
+
+def to_hex(bs): return " ".join(f"{x:02X}" for x in bs)
+def to_ascii(bs): return "".join(chr(x) if 0x20 &lt;= x &lt;= 0x7E else "." for x in bs)
+
+def extract_temperature(text):
+    m = re.search(r'(-?\d+(?:\.\d+)?)\s*(?:C|F|deg|°[CF])?', text, flags=re.IGNORECASE)
+    return m.group(0) if m else None
+
+def main():
+    if len(sys.argv) &lt; 2 or len(sys.argv) &gt; 4:
+        print("Usage: python decode_i2c_xor.py &lt;I2C_json&gt; [key='bananza'] [addr=0x3C]")
+        return 2
+    path = sys.argv[1]
+    key = sys.argv[2] if len(sys.argv) &gt;= 3 else "bananza"
+    addr = int(sys.argv[3], 0) if len(sys.argv) == 4 else 0x3C
+
+    events = load_events(path)
+    txns = decode_i2c_transactions(events)
+
+    key_b = key.encode("utf-8")
+
+    any_hit = False
+    for ti, bytes_list in enumerate(txns):
+        if not bytes_list:
+            continue
+        first = bytes_list[0]
+        rw = first &amp; 0x1
+        seven = first &gt;&gt; 1
+        if seven != addr:
+            continue
+        any_hit = True
+        payload = bytes_list[1:]
+        dec = xor_repeat(payload, key_b)
+        print(f"--- Transaction #{ti} to addr 0x{addr:02X} ({'R' if rw else 'W'}) ---")
+        print("ADDR/RW  :", f"0x{first:02X}  (addr=0x{seven:02X}, R/W={rw})")
+        print("RAW DATA :", to_hex(payload))
+        print("RAW ASCII:", to_ascii(payload))
+        print("XOR KEY  :", key)
+        print("DEC HEX  :", to_hex(dec))
+        dec_ascii = to_ascii(dec)
+        print("DEC ASCII:", dec_ascii)
+        temp = extract_temperature(dec_ascii)
+        if temp:
+            print("→ Parsed temperature:", temp)
+        print()
+
+    if not any_hit:
+        print(f"No I2C transactions found to address 0x{addr:02X}.")
+        print("Hint: verify the 7-bit address and that the capture includes a full transaction.")
+
+if __name__ == "__main__":
+    raise SystemExit(main())</code></pre>
+</div>
+
+<!-- Optional: page-local Prism refresh for lazy-loaded content -->
+<script>
+  window.requestAnimationFrame(() => {
+    const root = document.querySelector('.kc-code-window--py');
+    if (!root) return;
+    if (window.Prism && Prism.highlightAllUnder) {
+      Prism.highlightAllUnder(root);
+    } else if (window.Prism && Prism.highlightAll) {
+      Prism.highlightAll();
+    }
+  });
+</script>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Decoding the temperature value reported by the I²C device at address <code>0x3C</code>.
+  </p>
+</div>
+
+<!-- Kali Shell (outside the bubble) -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/on_the_wire]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">python decode_i2c_xor.py I2C_sda_scl.json</span>
+<span class="term-kali-output">--- Transaction #1 to addr 0x3C (W) ---</span>
+<span class="term-kali-output">ADDR/RW  : 0x78  (addr=0x3C, R/W=0)</span>
+<span class="term-kali-output">RAW DATA : 51 53 40 59 5A</span>
+<span class="term-kali-output">RAW ASCII: QS@YZ</span>
+<span class="term-kali-output">XOR KEY  : bananza</span>
+<span class="term-kali-output">DEC HEX  : 33 32 2E 38 34</span>
+<span class="term-kali-output">DEC ASCII: 32.84</span>
+<span class="term-kali-output">→ Parsed temperature: 32.84</span>
+
+<span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/on_the_wire]</span>
+<span class="term-kali-prompt">└─$</span></pre>
+</div>
+
+<div class="kc-solution-header">
+  <span class="kc-solution-icon">
+    <i class="fas fa-check-circle" aria-hidden="true"></i>
+  </span>
+  <span class="kc-solution-title"><strong>SOLUTION: 32.84</strong></span>
+</div>
+
+<!-- Solution dialogue banner -->
+<div class="kc-convo-header kc-solution-dialog-header">
+  <span class="kc-convo-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Solution dialogue:</span>
+</div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="evanbooth-portrait.png"
+           alt="Evan Booth avatar">
+      <div class="kc-convo-name">Evan Booth</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        Nice work! You cracked that signal encoding like a pro.
+      </p>
+      <p>
+        Turns out the weirdness had a method to it after all - just like most of my builds!
+      </p>
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn kc-convo-play-btn-complete" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>       <!-- /.kc-section -->
+
+
+
+
+
+
+

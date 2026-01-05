@@ -1,0 +1,261 @@
+<div class="kc-section" style="margin-bottom: 0;">
+  <h1 class="kc-section-title">Santa's Gift-Tracking Service Port Mystery</h1>
+
+  <!-- Difficulty + Location -->
+  <div class="kc-objective-meta kc-objective-meta--stacked">
+    <div class="kc-meta-line kc-difficulty">
+      <span class="kc-meta-label">Difficulty:</span>
+      <span class="kc-difficulty-scale"
+            aria-label="Difficulty 1 out of 5 snowflakes">
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+      </span>
+    </div>
+
+    <div class="kc-meta-line kc-location">
+      <span class="kc-meta-label">Location:</span>
+      <span class="kc-meta-value">The Neighborhood (Outside the Apartment Building - Modern Scandinavian Condo)</span>
+    </div>
+  </div>
+
+  <!-- Objective line -->
+  <p class="kc-objective-summary kc-meta-line">
+    <span class="kc-meta-label">Objective:</span>
+    <span class="kc-meta-value">
+      Chat with Yori near the apartment building about Santa's mysterious gift tracker and unravel the holiday mystery.
+    </span> 
+  </p>
+
+    <!-- Conversation banner -->
+  <div class="kc-convo-header">
+    <span class="kc-convo-icon">
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Yori Kvitchko Conversation:</span>
+  </div>
+
+  <div class="kc-objective-detail kc-objective-detail--no-panel">
+    <div class="kc-convo-bubble">
+      <div class="kc-convo-avatar">
+        <img src="yori-avatar.gif"
+             alt="Yori Kvitchko avatar">
+        <div class="kc-convo-name">Yori Kvitchko</div>
+      </div>
+
+      <div class="kc-convo-text">
+        <p>
+          Hi! I'm Yori. 
+        </p>
+        <p>
+          I was Ed's lost intern back in 2015, but I was found!
+        </p>
+        <p>
+          Think you can check out this terminal for me? I need to use cURL to access the gift tracker system, but it has me stumped.
+        </p>
+        <p>
+          Please see what you can do!
+        </p>
+
+        <div class="kc-convo-actions">
+          <button class="kc-convo-play-btn" type="button"
+                  data-npc-audio="gift-tracking-port-mystery">
+            <i class="fas fa-play" aria-hidden="true"></i>
+            <span>Play Audio</span>
+          </button>
+        </div>
+      </div> <!-- /.kc-convo-text -->
+    </div>   <!-- /.kc-convo-bubble -->
+  </div>     <!-- /.kc-objective-detail -->
+
+  <!-- Hints header -->
+<div class="kc-convo-header kc-hints-header">
+  <span class="kc-convo-icon kc-hints-icon">
+    <i class="fas fa-lightbulb" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Hints:</span>
+</div>
+
+<!-- Hint 1 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Who is Netstat?</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Santa's Gift-Tracking Service Port Mystery</div>
+  <p>
+    Back in my day...we just used Netstat. I hear ss is the new kid on the block. A lot of the parameters are the same too...such as listing only the ports that are currenting LISTENING on the system.
+  </p>
+</div>
+
+<!-- Hint 2 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Web Requests without a Browser??</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Santa's Gift-Tracking Service Port Mystery</div>
+  <p>
+    Since we don't have a web browser to connect to this HTTP service...There is another common tool that you can use from the cli.
+  </p>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-workflow-header">
+<span class="kc-workflow-icon">
+    <i class="fas fa-tasks" aria-hidden="true"></i>
+</span>
+<span class="kc-workflow-title">Working through the Challenge:</span>
+</div>
+
+
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+  Click on the Cranberry Pi terminal to kick things off.
+  </p>
+</div> 
+
+<div class="kc-terminal-header">
+  <span class="kc-terminal-icon">
+    <img src="cranpi.png" alt="Cranberry Pi terminal icon">
+  </span>
+  <span class="kc-terminal-title">Cranberry Pi Terminal</span>
+</div>
+
+<div class="kc-terminal-window">
+  <pre class="kc-terminal-text">
+<span class="term-green">======= Neighborhood Santa-Tracking Service =======</span>
+
+Oh no! Mischievous gnomes have tampered with the neighborhood&apos;s Santa-tracking service,
+built by the local tinkerer to help everyone know when Santa arrives on Christmas Eve!
+
+The tracking application was originally configured to run on port <span class="term-yellow">8080</span>, but after the
+gnomes&apos; meddling, it&apos;s nowhere to be found. Without this tracker, nobody in the neighborhood
+will know when to expect Santa&apos;s arrival!
+
+The tinkerer needs your help to find out which port the <span class="term-green">santa_tracker</span> process is 
+currently using so the neighborhood tracking display can be updated before Christmas Eve!
+
+<span class="term-yellow">Your task:</span>
+1. Use the <span class="term-red">&apos;ss&apos;</span> tool to identify which port the <span class="term-green">santa_tracker</span> process is 
+   listening on
+2. Connect to that port to verify the service is running
+
+<span class="term-blue">Hint:</span> The ss command can show you all listening TCP ports and the processes 
+using them. Try: <span class="term-yellow">ss -tlnp</span>
+
+Good luck, and thank you for helping save the neighborhood&apos;s Christmas spirit!
+
+- The Neighborhood Tinkerer 🔧🎄
+<span class="term-hostline">🎄 <span class="term-user">tinkerer</span> @ <span class="term-hostname">Santa Tracker</span> ~ 🎅 $</span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Following the hint, we run <code>ss -tlnp</code> to list all listening TCP
+    ports and their associated processes.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-hostline">🎄 <span class="term-user">tinkerer</span> @ <span class="term-hostname">Santa Tracker</span> ~ 🎅 $</span> ss -tlnp
+State      Recv-Q        Send-Q         Local Address:Port         Peer Address:Port           Process                     
+LISTEN     0             5              0.0.0.0:<span class="term-yellow">12321</span>              0.0.0.0:*                                                   
+<span class="term-hostline">🎄 <span class="term-user">tinkerer</span> @ <span class="term-hostname">Santa Tracker</span> ~ 🎅 $</span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    The output shows a single service listening on port <span class="term-yellow">12321</span> on all interfaces,
+    which is our likely candidate for the <code>santa_tracker</code> service. Lets connect to that port using <code>curl</code> command. 
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-hostline">🎄 <span class="term-user">tinkerer</span> @ <span class="term-hostname">Santa Tracker</span> ~ 🎅 $</span> curl 127.0.0.1:<span class="term-yellow">12321</span>
+{
+  "status": "success",
+  "message": "🎄 Ho Ho Ho! Santa Tracker Successfully Connected! 🎄",
+  "santa_tracking_data": {
+    "timestamp": "2025-12-07 13:10:33",
+    "location": {
+      "name": "Candy Cane Court",
+      "latitude": 31.840864,
+      "longitude": -76.95914
+    },
+    "movement": {
+      "speed": "533 mph",
+      "altitude": "23356 feet",
+      "heading": "50° NE"
+    },
+    "delivery_stats": {
+      "gifts_delivered": 4255837,
+      "cookies_eaten": 17225,
+      "milk_consumed": "991 gallons",
+      "last_stop": "Whoville Heights",
+      "next_stop": "Yuletide Gardens",
+      "time_to_next_stop": "10 minutes"
+    },
+    "reindeer_status": {
+      "rudolph_nose_brightness": "99%",
+      "favorite_reindeer_joke": "What's Rudolph's favorite currency? Sleigh bells!",
+      "reindeer_snack_preference": "magical carrots"
+    },
+    "weather_conditions": {
+      "temperature": "-20°F",
+      "condition": "Candy cane precipitation"
+    },
+    "special_note": "Thanks to your help finding the correct port, the neighborhood can now track Santa's arrival! The mischievous gnomes will be caught and will be put to work wrapping presents."
+  }
+}
+<span class="term-hostline">🎄 <span class="term-user">tinkerer</span> @ <span class="term-hostname">Santa Tracker</span> ~ 🎅 $</span>
+  </pre>
+</div>
+
+<div class="kc-solution-header">
+  <span class="kc-solution-icon">
+    <i class="fas fa-check-circle" aria-hidden="true"></i>
+  </span>
+  <span class="kc-solution-title"><strong>SOLUTION: <code>curl 127.0.0.1:12321</code></strong></span>
+</div>
+
+<!-- Solution dialogue banner -->
+<div class="kc-convo-header kc-solution-dialog-header">
+  <span class="kc-convo-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Solution dialogue:</span>
+</div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="yori-portrait.png"
+           alt="Yori Kvitchko portrait">
+      <div class="kc-convo-name">Yori Kvitchko</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        Great work - thank you!
+      </p>
+      <p>
+        Geez, maybe you can be my intern now!
+      </p>
+
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn kc-convo-play-btn-complete" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>       <!-- /.kc-section -->
+

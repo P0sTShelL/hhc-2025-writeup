@@ -1,0 +1,2165 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  <meta charset="UTF-8" />
+  <title>HHC 2025 – Kringle Console Write-Up</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markup.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-highlight/prism-line-highlight.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-basic.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/keep-markup/prism-keep-markup.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-http.min.js"></script>
+  
+  <!-- Console-style fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Princess+Sofia&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="kc-shell">
+    <!-- LEFT CONSOLE MENU -->
+    <aside class="kc-sidebar">
+      <div class="kc-sidebar-header">
+        <div class="kc-logo-circle">
+          <img src="hhc-logo.png" alt="Holiday Hack Challenge Logo" class="kc-logo-img">
+        </div>
+        <div class="kc-logo-text">
+          <span class="kc-game-title">SANS Holiday Hack Challenge 2025:</span>
+          <span class="kc-subtitle-line">Revenge of the Gnome(s)</span>
+        </div>
+      </div>
+
+      <nav class="kc-nav">
+        <!-- main menu -->
+        <a href="#home" class="kc-nav-item kc-nav-active" data-pane="home">Home</a>
+        <a href="#settings" class="kc-nav-item" data-pane="settings">Settings</a>
+        <a href="#story" class="kc-nav-item" data-pane="story" data-url="pages/story.html">Story</a>
+        <a href="#map" class="kc-nav-item" data-pane="map" data-url="pages/map.html">Map</a>
+
+        <!-- objectives -->
+        <a href="#obj-orientation" class="kc-nav-item" data-pane="obj-orientation" data-url="obj/orientation.html">Holiday Hack Orientation</a>
+        <a href="#obj-its-all-about-defang" class="kc-nav-item" data-pane="obj-its-all-about-defang" data-url="obj/defang.html">Its All About Defang</a>
+        <a href="#obj-neighborhood-watch-bypass" class="kc-nav-item" data-pane="obj-neighborhood-watch-bypass" data-url="obj/neighborhood-watch-bypass.html">Neighborhood Watch Bypass</a>
+        <a href="#obj-gift-tracking-port-mystery" class="kc-nav-item" data-pane="obj-gift-tracking-port-mystery" data-url="obj/gift-tracking-port-mystery.html">Santa's Gift-Tracking...</a>
+        <a href="#obj-visual-networking-thinger" class="kc-nav-item" data-pane="obj-visual-networking-thinger" data-url="obj/visual-networking-thinger.html">Visual Networking Thinger</a>
+        <a href="#obj-visual-firewall-thinger" class="kc-nav-item" data-pane="obj-visual-firewall-thinger" data-url="obj/visual-firewall-thinger.html">Visual Firewall Thinger</a>
+        <a href="#obj-intro-to-nmap" class="kc-nav-item" data-pane="obj-intro-to-nmap" data-url="obj/intro-to-nmap.html">Intro to Nmap</a>
+        <a href="#obj-blob-storage-neighborhood" class="kc-nav-item" data-pane="obj-blob-storage-neighborhood" data-url="obj/blob-storage-neighborhood.html">Blob Storage Challenge...</a>
+        <a href="#obj-spare-key" class="kc-nav-item" data-pane="obj-spare-key" data-url="obj/spare-key.html">Spare Key</a>
+        <a href="#obj-the-open-door" class="kc-nav-item" data-pane="obj-the-open-door" data-url="obj/the-open-door.html">The Open Door</a>
+        <a href="#obj-owner" class="kc-nav-item" data-pane="obj-owner" data-url="obj/owner.html">Owner</a>
+        <a href="#obj-retro-recovery" class="kc-nav-item" data-pane="obj-retro-recovery" data-url="obj/retro-recovery.html">Retro Recovery</a>
+        <a href="#obj-mail-detective" class="kc-nav-item" data-pane="obj-mail-detective" data-url="obj/mail-detective.html">Mail Detective</a>
+        <a href="#obj-idorable-bistro" class="kc-nav-item" data-pane="obj-idorable-bistro" data-url="obj/idorable-bistro.html">IDORable Bistro</a>
+        <a href="#obj-dosis-network-down" class="kc-nav-item" data-pane="obj-dosis-network-down" data-url="obj/dosis-network-down.html">Dosis Network Down</a>
+        <a href="#obj-rogue-gnome-identity-provider" class="kc-nav-item" data-pane="obj-rogue-gnome-identity-provider" data-url="obj/rogue-gnome-identity-provider.html">Rogue Gnome Identity...</a>
+        <a href="#obj-quantgnome-leap" class="kc-nav-item" data-pane="obj-quantgnome-leap" data-url="obj/quantgnome-leap.html">Quantgnome Leap</a>
+        <a href="#obj-going-in-reverse" class="kc-nav-item" data-pane="obj-going-in-reverse" data-url="obj/going-in-reverse.html">Going in Reverse</a>
+        <a href="#obj-gnome-tea" class="kc-nav-item" data-pane="obj-gnome-tea" data-url="obj/gnome-tea.html">Gnome Tea</a>
+        <a href="#obj-hack-a-gnome" class="kc-nav-item" data-pane="obj-hack-a-gnome" data-url="obj/hack-a-gnome.html">Hack-a-Gnome</a>
+        <a href="#obj-snowcat-rce" class="kc-nav-item" data-pane="obj-snowcat-rce" data-url="obj/snowcat-rce.html">Snowcat RCE &amp; Priv Esc</a>
+        <a href="#obj-schrodingers-scope" class="kc-nav-item" data-pane="obj-schrodingers-scope" data-url="obj/schrodingers-scope.html">Schrödinger's Scope</a>
+        <a href="#obj-snowglobe-machine" class="kc-nav-item" data-pane="obj-snowglobe-machine" data-url="obj/snowglobe-machine.html">Find and Shutdown Fros...</a>
+        <a href="#obj-on-the-wire" class="kc-nav-item" data-pane="obj-on-the-wire" data-url="obj/on-the-wire.html">On the Wire</a>
+        <a href="#obj-free-ski" class="kc-nav-item" data-pane="obj-free-ski" data-url="obj/free-ski.html">Free Ski</a>
+        <a href="#obj-snowblind-ambush" class="kc-nav-item" data-pane="obj-snowblind-ambush" data-url="obj/snowblind-ambush.html">Snowblind Ambush</a>
+        <a href="#obj-victory" class="kc-nav-item" data-pane="obj-victory" data-url="obj/victory.html">Victory</a>
+
+        <!-- bottom menu -->
+        <a href="#easter-eggs" class="kc-nav-item" data-pane="easter-eggs">Easter Eggs</a>
+        <a href="#exit" class="kc-nav-item kc-nav-exit" data-pane="exit">[Exit]</a>
+      </nav>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <main class="kc-main">
+      <header class="kc-main-header">
+        <span class="kc-main-header-title">SANS HOLIDAY HACK CHALLENGE 2025: REVENGE OF THE GNOME(s)</span>
+      </header>
+
+      <!-- NEW: Right pane scroll container -->
+      <div class="kc-main-scroll" id="kcMainScroll" tabindex="0">
+
+        <!-- HOME / INTRO (contains objectives overview only) -->
+        <section id="home" class="kc-pane kc-pane-active">
+          <div class="kc-section" style="margin-bottom: 0;">
+            <h1 class="kc-section-title">Introduction</h1>
+            <p class="kc-intro" style="margin-bottom: 1em;" >
+              Welcome to the
+              <span class="kc-highlight">2025 SANS Holiday Hack Challenge: REVENGE OF THE GNOME(s)</span>
+              challenge walkthrough.</p>
+              <p class="kc-intro" style="margin-bottom: 1em;">
+              This year’s HHC brings a plethora of new topics, including grand challenges provided by Microsoft and Google: defanging IOCs,
+              using SUDO, port discovery, forensic analysis, basic networking, firewall basics, Nmap basics, CURL basics, IDOR challenge, using POCs,
+              Java deserialization, Quantum computing, reverse engineering, hacking SQLI, Linux and PrivEsc, and WebApp Pentesting.</p>
+
+            <p class="kc-intro"> This year's report is styled to resemble the in-game objective console providing a familiar in game feel while reading the write-up.
+            </p>
+          </div>
+
+          <!-- VIDEO + WELCOME SECTION (replaces Objectives Overview) -->
+          <section class="kc-section" style="margin-top: 0;">
+            <p class="kc-intro" style="margin-bottom: 0.8em;">
+              If you are new to HHC this year listen to
+              <strong>Ed Skoudis, Chief Holiday Officer</strong>,
+              in the Welcome and Game Orientation video to make the most of this cyber range.
+            </p>
+
+            <div class="kc-video-wrapper">
+              <iframe id="hhc-orientation-video"
+                      src="https://www.youtube.com/embed/mwvvwRfROm0?t=19s&enablejsapi=1"
+                      title="2025 SANS Holiday Hack Challenge Orientation – Ed Skoudis"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+            </div>
+
+            <p class="kc-intro" style="margin-top: 2em;">
+              Join us on Discord to chat with other players, share tips, and connect.<br>
+              <a href="https://discord.com/invite/Wbmx92rWW3" target="_blank" class="kc-link">
+                https://discord.com/invite/Wbmx92rWW3
+              </a>
+            </p>
+
+            <!-- Clean divider -->
+            <hr class="kc-divider" style="margin: 2em 0;">
+
+            <!-- Credits + Profile Picture -->
+            <div style="margin-top: 1em; display: flex; align-items: flex-start; gap: 1em; flex-wrap: wrap;">
+              <div style="flex: 1; min-width: 280px; color: #aaa; font-size: 0.95em;">
+                <p class="kc-intro" style="margin: 0.4em 0;">
+                  Write-up by <strong>Jason Sosnowski</strong>
+                </p>
+                <p class="kc-intro" style="margin: 0.4em 0;">
+                  In Game: <strong>PosTShell</strong>
+                </p>
+                <p class="kc-intro" style="margin: 0.4em 0;">
+                  Discord: <a href="https://discord.com/users/501172220933046302" target="_blank" class="kc-link">CyberNinja</a>
+                </p>
+                <p class="kc-intro" style="margin: 0.4em 0;">
+                  Email: <a href="mailto:Jason.sosnowski2015@gmail.com" class="kc-link">Jason.sosnowski2015@gmail.com</a>
+                </p>
+              </div>
+
+              <!-- Your PosTShell profile picture (the snowman) -->
+              <div style="flex-shrink: 0;">
+                <img src="ATATATTAATATATATATATATCGATATATATTATAGCCGATATATATATATTAATATATATATATATTAGCATATTAGCATATATATATATATCGATATATATATATGCTAATATTATA.png"
+                     alt="PosTShell profile picture"
+                     class="postshell-avatar">
+              </div>
+            </div>
+          </section>
+        </section>
+
+
+        <!-- STORY PAGE (container only) -->
+        <section id="story" class="kc-section kc-section-bordered kc-pane" data-loaded="false">
+          <div class="kc-dynamic">
+            <p class="kc-intro">Loading story...</p>
+          </div>
+        </section>
+
+        <!-- MAP PAGE (container only) -->
+        <section id="map" class="kc-section kc-section-bordered kc-pane" data-loaded="false">
+          <div class="kc-dynamic">
+            <p class="kc-intro">Placeholder: This is the MAP page. Place your map or neighborhood overview here.</p>
+          </div>
+        </section>
+
+        <!-- SETTINGS PAGE -->
+        <section id="settings" class="kc-section kc-section-bordered kc-settings kc-pane">
+          <h2 class="kc-section-title"></h2> <!---Place holder for Title-->
+
+          <div class="kc-settings-row">
+            <div class="kc-settings-label">Music Volume</div>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="10"
+              class="kc-slider"
+              id="musicVolume"
+            />
+          </div>
+
+          <div class="kc-settings-row">
+            <div class="kc-settings-label">NPC Dialog Volume</div>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="100"
+              class="kc-slider"
+              id="npcVolume"
+            />
+          </div>
+
+          <div class="kc-settings-row">
+            <div class="kc-settings-label">SFX Volume</div>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="60"
+              class="kc-slider"
+              id="sfxVolume"
+            />
+          </div>
+
+          <div class="kc-settings-row kc-settings-toggle-row">
+            <div class="kc-settings-label">Music</div>
+            <div class="kc-toggle-group" data-setting="musicEnabled">
+              <button class="kc-toggle-button kc-toggle-active" data-value="on">
+                Enabled
+              </button>
+              <button class="kc-toggle-button" data-value="off">
+                Disabled
+              </button>
+            </div>
+          </div>
+
+          <div class="kc-settings-row kc-settings-toggle-row">
+            <div class="kc-settings-label">Auto-read NPC Intro Dialog</div>
+            <div class="kc-toggle-group" data-setting="npcAutoRead">
+              <button class="kc-toggle-button kc-toggle-active" data-value="on">
+                Enabled
+              </button>
+              <button class="kc-toggle-button" data-value="off">
+                Disabled
+              </button>
+            </div>
+          </div>
+
+          <div class="kc-settings-row kc-settings-toggle-row">
+            <div class="kc-settings-label">SFX</div>
+            <div class="kc-toggle-group" data-setting="sfxEnabled" data-value="on">
+              <button class="kc-toggle-button kc-toggle-active" data-value="on">
+                Enabled
+              </button>
+              <button class="kc-toggle-button" data-value="off">
+                Disabled
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- OBJECTIVE PAGES (each its own pane) -->
+
+        <section id="obj-orientation" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Holiday Hack Orientation</h2>
+          <div class="kc-objective-meta">
+            <span>Location: Orientation Area</span>
+            <span>NPC: (fill in)</span>
+          </div>
+
+          <h4>Objective</h4>
+          <p>Paraphrase the in-game objective text here.</p>
+
+          <h4>Approach</h4>
+          <p>High-level summary of how you solved it.</p>
+
+          <h4>Steps</h4>
+          <ol>
+            <li>Step one…</li>
+            <li>Step two…</li>
+          </ol>
+
+          <h4>Key Commands</h4>
+          <pre><code class="kc-code">
+# put real commands here
+          </code></pre>
+        </section>
+
+        <!-- Placeholders for all the other objectives -->
+        <section id="obj-its-all-about-defang" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Its All About Defang</h2>
+          <p class="kc-intro">Placeholder: Write-up for "Its All About Defang" goes here.</p>
+        </section>
+
+        <section id="obj-neighborhood-watch-bypass" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Neighborhood Watch Bypass</h2>
+          <p class="kc-intro">Placeholder: Write-up for "Neighborhood Watch Bypass" goes here.</p>
+        </section>
+
+        <section id="obj-gift-tracking-port-mystery" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Santa's Gift-Tracking Port Mystery</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-visual-networking-thinger" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Visual Networking Thinger</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-visual-firewall-thinger" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Visual Firewall Thinger</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-intro-to-nmap" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Intro to Nmap</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-blob-storage-neighborhood" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Blob Storage Challenge (Neighborhood)</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-spare-key" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Spare Key</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-the-open-door" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">The Open Door</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-owner" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Owner</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-retro-recovery" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Retro Recovery</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-mail-detective" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Mail Detective</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-idorable-bistro" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">IDORable Bistro</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-dosis-network-down" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Dosis Network Down</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-rogue-gnome-identity-provider" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Rogue Gnome Identity Provider</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-quantgnome-leap" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Quantgnome Leap</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-going-in-reverse" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Going in Reverse</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-gnome-tea" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Gnome Tea</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-hack-a-gnome" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Hack-a-Gnome</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-snowcat-rce" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Snowcat RCE &amp; Priv Esc</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-schrodingers-scope" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Schrödinger's Scope</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-snowglobe-machine" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Find and Shutdown Frosty's Snowglobe Machine</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-on-the-wire" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">On the Wire</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-free-ski" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Free Ski</h2>
+          <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+        </section>
+
+        <section id="obj-snowblind-ambush" class="kc-section kc-pane">
+          <h2 class="kc-objective-title">Snowblind Ambush</h2>
+          <div class="kc-objective-meta">
+            <span>Location: Dosis Neighborhood</span>
+            <span>NPC: Torkel ("TGC")</span>
+          </div>
+
+          <h4>Objective</h4>
+          <p>Describe the goal in your own words.</p>
+
+          <h4>Approach</h4>
+          <p>Summarize recon, chatbot interactions, and how you stayed within rules.</p>
+
+          <h4>Steps</h4>
+          <ol>
+            <li>Recon / browsing / DevTools.</li>
+            <li>Testing safe prompts / payloads.</li>
+            <li>Deriving the final shutdown token.</li>
+          </ol>
+
+          <h4>Key Requests / Payloads</h4>
+          <pre><code class="kc-code">
+curl -X POST https://example/snowblind/api \
+  -H "Content-Type: application/json" \
+  -d '{"message": "example"}'
+          </code></pre>
+        </section>
+
+        <!-- VICTORY PAGE (container for lazy-loaded HTML) -->
+        <section id="obj-victory" class="kc-section kc-pane" data-loaded="false">
+          <div class="kc-dynamic">
+            <p class="kc-intro">Loading victory…</p>
+          </div>
+        </section>
+
+        <!-- EASTER EGGS PAGE -->
+        <section id="easter-eggs" class="kc-section kc-pane">
+          <h2 class="kc-section-title">Easter Eggs</h2>
+          <p class="kc-intro">
+            Placeholder: This is the Easter Eggs page. Collect fun secrets, hidden references,
+            and bonus challenges here.
+          </p>
+        </section>
+
+        <!-- EXIT PAGE -->
+        <section id="exit" class="kc-section kc-footer-section kc-pane">
+          <p>End of report. Press [Exit] in the left menu to return to reality.</p>
+        </section>
+
+      </div> <!-- /kc-main-scroll -->
+    </main>
+    <!-- NEW: floating scroll-to-top button -->
+    <button class="kc-scroll-top" id="kcScrollTop" aria-label="Scroll to top">▲ Top</button>
+  </div>
+
+
+
+<script>
+// YouTube Pause/Play when leaving or returning to Home tab – FIXED & ROBUST
+document.addEventListener("DOMContentLoaded", function () {
+  // Find ALL YouTube iframes on the Home pane (in case someone adds more later)
+  const homePane = document.getElementById("home");
+  const youtubeIframes = homePane.querySelectorAll('iframe[src*="youtube.com"]');
+
+  if (youtubeIframes.length === 0) return;
+
+  // Command sender that tries every iframe until one accepts it
+  const sendYouTubeCommand = (command) => {
+    youtubeIframes.forEach(iframe => {
+      try {
+        iframe.contentWindow.postMessage(
+          JSON.stringify({
+            event: "command",
+            func: command,   // "pauseVideo" or "playVideo"
+            args: ""
+          }),
+          "https://www.youtube.com"
+        );
+      } catch (e) { /* ignore cross-origin errors on non-YouTube frames */ }
+    });
+  };
+
+  const pauseVideo = () => sendYouTubeCommand("pauseVideo");
+  const playVideo  = () => sendYouTubeCommand("playVideo");
+
+  // Watch for ANY navigation away from home
+  document.querySelectorAll('.kc-nav-item[data-pane]').forEach(link => {
+    link.addEventListener('click', function () {
+      const targetPane = this.getAttribute('data-pane');
+      if (targetPane && targetPane !== 'home') {
+        pauseVideo();
+      } else if (targetPane === 'home') {
+        // Optional: resume when coming back to home
+        // playVideo();
+      }
+    });
+  });
+
+  // Also cover hash-based navigation / back-button / direct clicks on objective links
+  const observer = new MutationObserver(() => {
+    if (!homePane.classList.contains('kc-pane-active')) {
+      pauseVideo();
+    }
+  });
+
+  observer.observe(homePane, { attributes: true, attributeFilter: ["class"] });
+
+  // Safety net: pause if the page becomes hidden (tab switch, minimize, etc.)
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden && homePane.classList.contains('kc-pane-active')) {
+      pauseVideo();
+    }
+  });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  // -------------------------------
+  // Grab all switchable panes
+  // -------------------------------
+  var panes = document.querySelectorAll('.kc-pane');
+  const scrollArea = document.getElementById("kcMainScroll");
+  const scrollMemory = {};
+  let activePaneId = "home";
+
+  function showPane(id) {
+    // save scroll for current pane
+    if (scrollArea) {
+      scrollMemory[activePaneId] = scrollArea.scrollTop;
+    }
+
+    panes.forEach(function (pane) {
+      if (pane.id === id) {
+        pane.classList.add('kc-pane-active');
+      } else {
+        pane.classList.remove('kc-pane-active');
+      }
+    });
+
+    activePaneId = id;
+
+    if (scrollArea) scrollArea.classList.toggle("kc-story-bg", id === "story");
+
+    // restore scroll for new pane (default top)
+    if (scrollArea) {
+      scrollArea.scrollTop = scrollMemory[id] || 0;
+    }
+  }
+
+  function activateNavForPane(id) {
+    document.querySelectorAll('.kc-nav-item').forEach(function (link) {
+      if (link.getAttribute('data-pane') === id) {
+        link.classList.add('kc-nav-active');
+      } else {
+        link.classList.remove('kc-nav-active');
+      }
+    });
+  }
+
+// -------------------------------
+// Lazy Load Support
+// -------------------------------
+function loadPaneContent(paneId, url) {
+  const pane = document.getElementById(paneId);
+  if (!pane) return;
+
+  // If pane already loaded once, don't fetch again
+  if (pane.dataset.loaded === 'true') return;
+
+  // Find .kc-dynamic inside pane OR use pane itself
+  const target = pane.querySelector('.kc-dynamic') || pane;
+
+  // Temporary loading message
+  target.innerHTML = '<p class="kc-intro">Loading...</p>';
+
+  // Load external partial
+  fetch(url, { cache: "no-store" })
+    .then(r => r.text())
+    .then(html => {
+      target.innerHTML = html;
+      pane.dataset.loaded = 'true';
+
+      // ✅ NEW: Prism highlight for dynamically inserted content
+      if (window.Prism) {
+        if (typeof Prism.highlightAllUnder === "function") {
+          Prism.highlightAllUnder(target);
+        } else {
+          Prism.highlightAll();
+        }
+      }
+
+      // ✅ init map after the partial is inserted
+      if (paneId === "map" && typeof window.initMapPane === "function") {
+        window.initMapPane();
+      }
+    })
+    .catch(err => {
+      console.error('Error loading pane content:', err);
+      target.innerHTML = '<p class="kc-intro">Failed to load content.</p>';
+    });
+}
+
+  // -------------------------------
+  // SFX support (Map + Story + Objectives)
+  // -------------------------------
+  const SFX_FILES = {
+    map: [
+      "menu-map-01.mp3",
+      "menu-map-02.mp3",
+      "menu-map-03.mp3",
+      "menu-map-04.mp3"
+    ],
+    story: [
+      "page-flip-1.mp3",
+      "page-flip-3.mp3",
+      "page-flip-9.mp3",
+      "page-flip-16.mp3"
+    ],
+    objective: [
+      "walkie-talkie-chat-01.mp3",
+      "walkie-talkie-chat-02.mp3",
+      "walkie-talkie-chat-03.mp3",
+      "walkie-talkie-chat-04.mp3"
+    ]
+  };
+
+  const audioCache = {};
+
+  function getSfxEnabled() {
+    const group = document.querySelector('.kc-toggle-group[data-setting="sfxEnabled"]');
+    if (!group) return true; // default on
+    return (group.dataset.value || "on") !== "off";
+  }
+
+  function getSfxVolume() {
+    const slider = document.getElementById("sfxVolume");
+    const v = slider ? Number(slider.value) : 70;
+    return Math.max(0, Math.min(1, v / 100));
+  }
+
+  function playRandomSfx(kind) {
+    if (!getSfxEnabled()) return;
+    const files = SFX_FILES[kind];
+    if (!files || !files.length) return;
+
+    const file = files[Math.floor(Math.random() * files.length)];
+    let audio = audioCache[file];
+    if (!audio) {
+      audio = new Audio(file);
+      audioCache[file] = audio;
+    }
+
+    audio.pause();
+    audio.currentTime = 0;
+    audio.volume = getSfxVolume();
+    audio.play().catch(() => {}); // ignore autoplay errors
+  }
+
+  // -------------------------------
+  // Start on Home
+  // -------------------------------
+  showPane('home');
+
+  // -------------------------------
+  // Left Nav Handler
+  // -------------------------------
+  document.querySelectorAll('.kc-nav-item[data-pane]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var paneId = link.getAttribute('data-pane');
+      if (!paneId) return;
+
+      e.preventDefault();
+
+      // load external content if data-url is present
+      var url = link.getAttribute('data-url');
+      if (url) {
+        loadPaneContent(paneId, url);
+      }
+
+      showPane(paneId);
+      activateNavForPane(paneId);
+
+      // play tab SFX
+      if (paneId === "map") {
+        playRandomSfx("map");
+      } else if (paneId === "story") {
+        playRandomSfx("story");
+      } else if (paneId.startsWith("obj-")) {
+        playRandomSfx("objective");
+      }
+    });
+  });
+
+  // -------------------------------
+  // Objective links (from Home Page)
+  // -------------------------------
+  document.querySelectorAll('.kc-obj-link[data-pane]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var paneId = link.getAttribute('data-pane');
+      if (!paneId) return;
+      e.preventDefault();
+
+      var url = link.getAttribute('data-url');
+      if (url) {
+        loadPaneContent(paneId, url);
+      }
+
+      showPane(paneId);
+      activateNavForPane(paneId);
+    });
+  });
+
+  // -------------------------------
+  // Settings toggle buttons
+  // -------------------------------
+  document.querySelectorAll('.kc-toggle-group').forEach(function (group) {
+    group.addEventListener('click', function (e) {
+      var btn = e.target.closest('.kc-toggle-button');
+      if (!btn) return;
+
+      group.querySelectorAll('.kc-toggle-button')
+        .forEach(function (b) { b.classList.remove('kc-toggle-active'); });
+
+      btn.classList.add('kc-toggle-active');
+      group.dataset.value = btn.dataset.value;
+    });
+  });
+
+  // -------------------------------
+  // Scroll-to-top button support
+  // -------------------------------
+  const scrollTopBtn = document.getElementById("kcScrollTop");
+  if (scrollArea && scrollTopBtn) {
+    const toggleBtn = () => {
+      scrollTopBtn.classList.toggle("is-visible", scrollArea.scrollTop > 240);
+    };
+
+    scrollArea.addEventListener("scroll", toggleBtn);
+    toggleBtn();
+
+    scrollTopBtn.addEventListener("click", () => {
+      scrollArea.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+});
+</script>
+
+<script>
+window.initMapPane = function () {
+  const viewport = document.getElementById("kc-map-viewport");
+  const content  = document.getElementById("kc-map-content");
+  const img      = document.getElementById("kc-map-img");
+  const labelsEl = document.getElementById("kc-map-labels");
+
+  if (!viewport || !content || !img || !labelsEl) return;
+
+  const LOCATIONS = [
+    { label: "Ed's Office",               x: 26, y: 14, target: null },
+    { label: "City Hall",                x: 26, y: 41, target: "obj-orientation" },
+    { label: "Retro Emporium",           x: 40, y: 28, target: "obj-retro-recovery" },
+    { label: "NetWars",                  x: 58, y: 22, target: null },
+    { label: "Grand Hotel Lobby",        x: 61, y: 36, target: null },
+    { label: "Sasabune",                 x: 90, y: 24, target: null },
+    { label: "Modern Scandinavia",       x: 24, y: 68, target: null },
+    { label: "24-Seven",                 x: 43, y: 70, target: null },
+    { label: "Data Center (Deprecated)", x: 67, y: 62, target: "obj-dosis-network-down" }
+  ];
+
+  let scale = 1;
+  let minScale = 0.2;
+  const maxScale = 4;
+
+  let tx = 0, ty = 0;
+  let isPanning = false;
+  let startX = 0, startY = 0, startTx = 0, startTy = 0;
+  let baseW = 0, baseH = 0;
+  let didInitialFit = false;
+
+  function clamp(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
+
+  function updateLabelScale() {
+    labelsEl.querySelectorAll('.kc-map-label').forEach(lab => {
+      lab.style.transform = `translate(-50%, -50%) scale(${1 / scale})`;
+    });
+  }
+
+  function buildLabels() {
+    labelsEl.innerHTML = "";
+    LOCATIONS.forEach(loc => {
+      const d = document.createElement("div");
+      d.className = "kc-map-label";
+      d.textContent = loc.label;
+
+      d.dataset.xp = loc.x;
+      d.dataset.yp = loc.y;
+
+      d.addEventListener("click", () => {
+        if (!loc.target) return;
+        const navLink = document.querySelector(`.kc-nav-item[data-pane="${loc.target}"]`);
+        if (navLink) navLink.click();
+      });
+
+      labelsEl.appendChild(d);
+    });
+  }
+  buildLabels();
+
+  function positionLabels() {
+    if (!baseW || !baseH) return;
+    labelsEl.querySelectorAll('.kc-map-label').forEach(lab => {
+      const xp = parseFloat(lab.dataset.xp);
+      const yp = parseFloat(lab.dataset.yp);
+      lab.style.left = (xp / 100 * baseW) + "px";
+      lab.style.top  = (yp / 100 * baseH) + "px";
+    });
+    updateLabelScale();
+  }
+
+  function clampTranslate() {
+    const vw = viewport.clientWidth;
+    const vh = viewport.clientHeight;
+    const sw = baseW * scale;
+    const sh = baseH * scale;
+
+    if (sw <= vw) tx = (vw - sw) / 2;
+    else tx = clamp(tx, vw - sw, 0);
+
+    if (sh <= vh) ty = (vh - sh) / 2;
+    else ty = clamp(ty, vh - sh, 0);
+  }
+
+  function applyTransform() {
+    clampTranslate();
+    content.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+    updateLabelScale();
+  }
+
+  function recalcFit(forceCenter = false) {
+    if (!baseW || !baseH) return;
+    const vw = viewport.clientWidth;
+    const vh = viewport.clientHeight;
+    if (!vw || !vh) return;
+
+    const fitScale = Math.min(vw / baseW, vh / baseH);
+    minScale = fitScale * 0.5;
+
+    if (forceCenter || !didInitialFit) {
+      scale = clamp(fitScale, minScale, maxScale);
+      tx = (vw - baseW * scale) / 2;
+      ty = (vh - baseH * scale) / 2;
+      didInitialFit = true;
+    } else {
+      scale = clamp(scale, minScale, maxScale);
+    }
+
+    applyTransform();
+  }
+
+  img.addEventListener("load", () => {
+    baseW = img.naturalWidth;
+    baseH = img.naturalHeight;
+
+    content.style.width  = baseW + "px";
+    content.style.height = baseH + "px";
+
+    positionLabels();
+    recalcFit(true);
+  });
+
+  if (img.complete) img.dispatchEvent(new Event("load"));
+
+  viewport.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    const rect = viewport.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+
+    const direction = e.deltaY > 0 ? -1 : 1;
+    const factor = direction > 0 ? 1.12 : 0.88;
+
+    const newScale = clamp(scale * factor, minScale, maxScale);
+    const sf = newScale / scale;
+
+    tx = mx - sf * (mx - tx);
+    ty = my - sf * (my - ty);
+    scale = newScale;
+
+    applyTransform();
+  }, { passive: false });
+
+  viewport.addEventListener("pointerdown", (e) => {
+    isPanning = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    startTx = tx;
+    startTy = ty;
+    viewport.setPointerCapture(e.pointerId);
+  });
+
+  viewport.addEventListener("pointermove", (e) => {
+    if (!isPanning) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    tx = startTx + dx;
+    ty = startTy + dy;
+    applyTransform();
+  });
+
+  viewport.addEventListener("pointerup", () => { isPanning = false; });
+  viewport.addEventListener("pointercancel", () => { isPanning = false; });
+
+  // Refits whenever viewport size changes (pane show/hide, window resize, etc.)
+  const ro = new ResizeObserver(() => recalcFit(false));
+  ro.observe(viewport);
+  window.addEventListener("resize", () => recalcFit(false));
+
+  // Optional manual refit hook if we ever want to call it on tab click
+  window.recalcMapFit = () => recalcFit(true);
+};
+</script>
+
+<script>
+function attachScrollbarHover(el) {
+  if (!el) return;
+
+  const onMove = (e) => {
+    const rect = el.getBoundingClientRect();
+    const gutter = el.offsetWidth - el.clientWidth; // scrollbar width
+
+    if (gutter <= 0) {
+      el.classList.remove("kc-scrollbar-hot");
+      return;
+    }
+
+    const overScrollbar = e.clientX >= rect.right - gutter;
+    el.classList.toggle("kc-scrollbar-hot", overScrollbar);
+  };
+
+  el.addEventListener("pointermove", onMove);
+  el.addEventListener("pointerleave", () =>
+    el.classList.remove("kc-scrollbar-hot")
+  );
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  attachScrollbarHover(document.getElementById("kcMainScroll")); // right pane
+  attachScrollbarHover(document.querySelector(".kc-nav"));       // left pane (optional)
+});
+</script>
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // --------------------------------
+  // Audio configuration per objective pane
+  // --------------------------------
+  const OBJECTIVE_AUDIO = {
+    "obj-orientation": {
+      music: "ambiance-train.mp3",
+      npcFiles: [
+        "lynnschifanotrain_initial_0.mp3",
+        "lynnschifanotrain_initial_1.mp3",
+        "lynnschifanotrain_initial_2.mp3",
+        "lynnschifanotrain_initial_3.mp3",
+        "lynnschifanotrain_initial_4.mp3",
+        "lynnschifanotrain_Orientation_0.mp3"
+      ]
+    },
+
+    "obj-its-all-about-defang": {
+      music: "maryellen_wish_could_be_santa.mp3",
+      npcFiles: [
+        "edskoudis_initial_0.mp3",
+        "edskoudis_initial_1.mp3",
+        "edskoudis_initial_2.mp3",
+        "edskoudis_initial_3.mp3",
+        "edskoudis_initial_4.mp3",
+        "edskoudis_initial_5.mp3",
+        "edskoudis_termDefang_0.mp3",
+        "edskoudis_termDefang_1.mp3",
+        "edskoudis_termDefang_2.mp3"
+      ]
+    },
+
+    "obj-neighborhood-watch-bypass": {
+      music: "ninjula_winter_oveland.mp3",
+      npcFiles: [
+        "kyleparrish_initial_0.mp3",
+        "kyleparrish_initial_1.mp3",
+        "kyleparrish_initial_2.mp3",
+        "kyleparrish_termDosisAlarm_0.mp3",
+        "kyleparrish_termDosisAlarm_1.mp3"
+      ]
+    },
+
+    "obj-gift-tracking-port-mystery": {
+      music: "ninjula_winter_oveland.mp3",
+      npcFiles: [
+        "yorikvitchko_initial_0.mp3",
+        "yorikvitchko_initial_1.mp3",
+        "yorikvitchko_GiftTrack_0.mp3",
+        "yorikvitchko_GiftTrack_1.mp3"
+      ]
+    },
+
+    "obj-visual-networking-thinger": {
+      music: "ninjula_winter_oveland.mp3",
+      npcFiles: [
+        "jaredfolkins_termVisnetwork_0.mp3",
+        "jaredfolkins_termVisnetwork_1.mp3",
+        "jaredfolkins_termVisnetwork_2.mp3",
+        "jaredfolkins_termVisnetwork_3.mp3"
+      ]
+    },
+
+    "obj-visual-firewall-thinger": {
+      music: "ninjula_winter_oveland.mp3",
+      npcFiles: [
+        "chriselgee_initial_0.mp3",
+        "chriselgee_initial_1.mp3",
+        "chriselgee_initial_2.mp3",
+        "chriselgee_initial_3.mp3",
+        "chriselgee_termVisfirewall_0.mp3",
+        "chriselgee_termVisfirewall_1.mp3",
+        "chriselgee_termVisfirewall_2.mp3",
+        "chriselgee_termVisfirewall_3.mp3"
+      ]
+    },
+
+    "obj-intro-to-nmap": {
+      music: "ninjula_winter_oveland.mp3",
+      npcFiles: [
+        "ericpursley_initial_0.mp3",
+        "ericpursley_initial_1.mp3",
+        "ericpursley_initial_2.mp3",
+        "ericpursley_initial_3.mp3",
+        "ericpursley_initial_4.mp3",
+        "ericpursley_termNmap_0.mp3",
+        "ericpursley_termNmap_1.mp3",
+        "ericpursley_termNmap_2.mp3"
+      ]
+    },
+
+    "obj-blob-storage-neighborhood": {
+      music: "ninjula_winter_oveland.mp3",
+      npcFiles: [
+        "goosemisfit_initial_0.mp3",
+        "goosemisfit_termMSBlobstorage_0.mp3",
+        "goosemisfit_termMSBlobstorage_1.mp3",
+        "goosemisfit_termMSBlobstorage_2.mp3"
+      ]
+    },
+
+    "obj-spare-key": {
+      music: "ninjula_winter_oveland.mp3",
+      npcFiles: [
+        "goosenoir_initial_0.mp3",
+        "goosenoir_termMSSpareKey_0.mp3",
+        "goosenoir_termMSSpareKey_1.mp3",
+        "goosenoir_termMSSpareKey_2.mp3"
+      ]
+    },
+
+    "obj-the-open-door": {
+      music: "ninjula_winter_oveland.mp3",
+      npcFiles: [
+        "goosepixel_initial_0.mp3",
+        "goosepixel_termOpenDoor_0.mp3",
+        "goosepixel_termOpenDoor_1.mp3",
+        "goosepixel_termOpenDoor_2.mp3",
+        "goosepixel_termOpenDoor_3.mp3"
+      ]
+    },
+
+    "obj-owner": {
+      music: "ninjula_winter_oveland.mp3",
+      npcFiles: [
+        "goosesteampunk_initial_0.mp3",
+        "goosesteampunk_termMSOwner_0.mp3",
+        "goosesteampunk_termMSOwner_1.mp3",
+        "goosesteampunk_termMSOwner_2.mp3",
+        "goosesteampunk_termMSOwner_3.mp3"
+      ]
+    },
+
+    "obj-retro-recovery": {
+      music: "ninjula_allyourchristmas.mp3",
+      npcFiles: [
+        "markdevito_initial_0.mp3",
+        "markdevito_initial_1.mp3",
+        "markdevito_initial_2.mp3",
+        "markdevito_initial_3.mp3",
+        "markdevito_initial_4.mp3",
+        "markdevito_termRetroRecovery_0.mp3",
+        "markdevito_termRetroRecovery_1.mp3",
+        "markdevito_termRetroRecovery_2.mp3",
+        "markdevito_termRetroRecovery_3.mp3",
+        "markdevito_termRetroRecovery_4.mp3",
+        "markdevito_termRetroRecovery_5.mp3"
+      ]
+    },
+
+    "obj-mail-detective": {
+      music: "skoudis_hazy-shade-of-winter.mp3",
+      npcFiles: [
+        "mauricewilson_initial_0.mp3",
+        "mauricewilson_gcCurlyImap_0.mp3",
+        "mauricewilson_gcCurlyImap_1.mp3",
+        "mauricewilson_gcCurlyImap_2.mp3",
+        "mauricewilson_gcCurlyImap_3.mp3"
+      ]
+    },
+
+    "obj-idorable-bistro": {
+      music: "skoudis_frozen-heart.mp3",
+      npcFiles: [
+        "joshwright_initial_0.mp3",
+        "joshwright_initial_1.mp3",
+        "joshwright_initial_2.mp3",
+        "joshwright_initial_3.mp3",
+        "joshwright_gcIdor_0.mp3",
+        "joshwright_gcIdor_1.mp3",
+        "joshwright_gcIdor_2.mp3",
+        "joshwright_gcIdor_3.mp3",
+        "joshwright_receiptLost_0.mp3"
+      ]
+    },
+
+    "obj-dosis-network-down": {
+      music: "ninjula_ipanema_elevator.mp3",
+      npcFiles: [
+        "januszjasinski_initial_0.mp3",
+        "januszjasinski_initial_1.mp3",
+        "januszjasinski_initial_2.mp3",
+        "januszjasinski_termDosisNetwork_0.mp3",
+        "januszjasinski_termDosisNetwork_1.mp3",
+        "januszjasinski_termDosisNetwork_2.mp3",
+        "januszjasinski_termDosisNetwork_3.mp3"
+      ]
+    },
+
+    "obj-rogue-gnome-identity-provider": {
+      music: "ninjula_winter_oveland.mp3",
+      npcFiles: [
+        "paulbeckett_initial_0.mp3",
+        "paulbeckett_initial_1.mp3",
+        "paulbeckett_initial_2.mp3",
+        "paulbeckett_initial_3.mp3",
+        "paulbeckett_termRogueGnome_0.mp3",
+        "paulbeckett_termRogueGnome_1.mp3",
+        "paulbeckett_termRogueGnome_2.mp3",
+        "paulbeckett_termRogueGnome_3.mp3"
+      ]
+    },
+
+    "obj-quantgnome-leap": {
+      music: "ninjula_meltwithyou_happy.mp3",
+      npcFiles: [
+        "charliegoldner_initial_0.mp3",
+        "charliegoldner_initial_1.mp3",
+        "charliegoldner_initial_2.mp3",
+        "charliegoldner_initial_3.mp3",
+        "charliegoldner_termQuantgnome_0.mp3",
+        "charliegoldner_termQuantgnome_1.mp3",
+        "charliegoldner_termQuantgnome_2.mp3",
+        "charliegoldner_termQuantgnome_3.mp3"
+      ]
+    },
+
+    "obj-going-in-reverse": {
+      music: "ninjula_allyourchristmas.mp3",
+      npcFiles: [
+        "kevinmcfarland_initial_0.mp3",
+        "kevinmcfarland_initial_1.mp3",
+        "kevinmcfarland_initial_2.mp3",
+        "kevinmcfarland_initial_3.mp3",
+        "kevinmcfarland_termReverse_0.mp3",
+        "kevinmcfarland_termReverse_1.mp3",
+        "kevinmcfarland_termReverse_2.mp3",
+        "kevinmcfarland_termReverse_3.mp3"
+      ]
+    },
+
+    "obj-gnome-tea": {
+      music: "skoudis_cold-as-ice.mp3",
+      npcFiles: [
+        "thomasbouve_initial_0.mp3",
+        "thomasbouve_initial_1.mp3",
+        "thomasbouve_initial_2.mp3",
+        "thomasbouve_initial_3.mp3",
+        "thomasbouve_initial_4.mp3",
+        "thomasbouve_initial_5.mp3",
+        "thomasbouve_initial_6.mp3",
+        "thomasbouve_gcGnomeTea_0.mp3",
+        "thomasbouve_gcGnomeTea_1.mp3",
+        "thomasbouve_gcGnomeTea_2.mp3",
+        "thomasbouve_gcGnomeTea_3.mp3"
+      ]
+    },
+
+    "obj-hack-a-gnome": {
+      music: "ninjula_air-noises-whilst-toiling.mp3",
+      npcFiles: [
+        "chrisdavis_initial_0.mp3",
+        "chrisdavis_initial_1.mp3",
+        "chrisdavis_initial_2.mp3",
+        "chrisdavis_initial_3.mp3",
+        "chrisdavis_initial_4.mp3",
+        "chrisdavis_termSmartGnome_0.mp3",
+        "chrisdavis_termSmartGnome_1.mp3",
+        "chrisdavis_termSmartGnome_2.mp3",
+        "chrisdavis_termSmartGnome_3.mp3",
+        "chrisdavis_termSmartGnome_4.mp3"
+      ]
+    },
+
+    "obj-snowcat-rce": {
+      music: "netwars.mp3",
+      npcFiles: [
+        "tomhessman_initial_0.mp3",
+        "tomhessman_initial_1.mp3",
+        "tomhessman_initial_2.mp3",
+        "tomhessman_initial_3.mp3",
+        "tomhessman_termSnowcat_0.mp3",
+        "tomhessman_termSnowcat_1.mp3",
+        "tomhessman_termSnowcat_2.mp3",
+        "tomhessman_termSnowcat_3.mp3",
+        "tomhessman_termSnowcat_4.mp3"
+      ]
+    },
+
+    "obj-schrodingers-scope": {
+      music: "ninjula_allyourchristmas.mp3",
+      npcFiles: [
+        "kevinmcfarland_termScope_0.mp3",
+        "kevinmcfarland_termScope_1.mp3",
+        "kevinmcfarland_termScope_2.mp3",
+        "kevinmcfarland_termScope_3.mp3",
+        "kevinmcfarland_termScope_4.mp3",
+        "kevinmcfarland_termScope_5.mp3"
+      ]
+    },
+
+    "obj-snowglobe-machine": {
+      music: "skoudis_ttac.mp3",
+      npcFiles: [
+        "gnomeelder_wiseYouAre_0.mp3",
+        "gnomeelder_wiseYouAre_1.mp3",
+        "gnomeelder_wiseYouAre_2.mp3",
+        "gnomeelder_wiseYouAre_3.mp3",
+        "gnomeelder_wiseYouAre_4.mp3"
+      ]
+    },
+
+    "obj-on-the-wire": {
+      music: "ninjula_winter_oveland.mp3",
+      npcFiles: [
+        "evanbooth_initial_0.mp3",
+        "evanbooth_initial_1.mp3",
+        "evanbooth_initial_2.mp3",
+        "evanbooth_initial_3.mp3",
+        "evanbooth_termSignals_0.mp3",
+        "evanbooth_termSignals_1.mp3",
+        "evanbooth_termSignals_2.mp3",
+        "evanbooth_termSignals_3.mp3",
+        "evanbooth_termSignals_4.mp3"
+      ]
+    },
+
+    "obj-free-ski": {
+      music: "ninjula_allyourchristmas.mp3",
+      npcFiles: [
+        "goosespace_initial_0.mp3",
+        "goosespace_initial_1.mp3",
+        "goosespace_freeze_0.mp3",
+        "goosespace_gcFreeSki_0.mp3",
+        "goosespace_gcFreeSki_1.mp3",
+        "goosespace_gcFreeSki_2.mp3"
+      ],
+    },
+
+    "obj-snowblind-ambush": {
+      music: "ninjula_meltwithyou_happy.mp3",
+      npcFiles: [
+        "torkelopsahl_initial_0.mp3",
+        "torkelopsahl_initial_1.mp3",
+        "torkelopsahl_initial_2.mp3",
+        "torkelopsahl_initial_3.mp3",
+        "torkelopsahl_termSnowblind_0.mp3",
+        "torkelopsahl_termSnowblind_1.mp3",
+        "torkelopsahl_termSnowblind_2.mp3",
+        "torkelopsahl_termSnowblind_3.mp3",
+        "torkelopsahl_termSnowblind_4.mp3"
+      ],
+    },
+
+    "obj-victory": {
+      music: "ninjula_goa-frosty-go.mp3",
+      npcFiles: [
+        "santa_gamecomplete_0.mp3",
+        "santa_gamecomplete_1.mp3",
+        "santa_gamecomplete_2.mp3",
+        "santa_gamecomplete_3.mp3",
+        "santa_gamecomplete_4.mp3",
+        "santa_warmHug_0.mp3",
+        "frostyborg_initial_0.mp3",
+        "frostyborg_initial_1.mp3",
+        "frostyborg_initial_2.mp3",
+        "frostyborg_initial_3.mp3",
+        "frostyborg_warmHug_0.mp3",
+        "frostyborg_warmHug_1.mp3",
+        "santa_rollCredits_0.mp3"
+      ]
+    }
+
+    // Add more objectives here later as needed
+  };
+
+  // --------------------------------
+  // State
+  // --------------------------------
+  let currentObjectiveId = null;
+  let currentConfig = null;
+
+  let musicAudio = null;
+
+  let npcAudio = null;
+  let npcQueue = [];
+  let npcIsPlaying = false;
+  let npcAutoTimeout = null;
+
+  // --------------------------------
+  // Helpers
+  // --------------------------------
+  function getObjectiveConfig(paneId) {
+    return OBJECTIVE_AUDIO[paneId] || null;
+  }
+
+  function getActivePane() {
+    return document.querySelector(".kc-pane.kc-pane-active");
+  }
+
+  function isCurrentObjectiveActive() {
+    const pane = getActivePane();
+    return pane && pane.id === currentObjectiveId;
+  }
+
+  // --- Victory-only: swap Frosty avatar to melting asset after warm hug ---
+  function setFrostyMelting() {
+    if (currentObjectiveId !== "obj-victory") return;
+
+    const pane = getActivePane();
+    if (!pane) return;
+
+    const img = pane.querySelector("#frostyborg-avatar");
+    if (!img) return;
+
+    // Cache original src once
+    if (!img.dataset.originalSrc) {
+      img.dataset.originalSrc = img.getAttribute("src") || "";
+    }
+
+    const meltSrc = img.getAttribute("data-melt-src") || "frostyborg-melting.webp";
+    img.setAttribute("src", meltSrc);
+  }
+
+  function resetFrostyMelting() {
+    const img = document.getElementById("frostyborg-avatar");
+    if (!img) return;
+
+    if (img.dataset.originalSrc) {
+      img.setAttribute("src", img.dataset.originalSrc);
+    }
+  }
+
+  function getToggleState(settingName, defaultOn = true) {
+    const group = document.querySelector(
+      '.kc-toggle-group[data-setting="' + settingName + '"]'
+    );
+    if (!group) return defaultOn;
+
+    // Which button is actually marked active?
+    const activeBtn = group.querySelector(".kc-toggle-button.kc-toggle-active");
+    const raw = activeBtn ? activeBtn.dataset.value : group.dataset.value;
+
+    if (!raw) return defaultOn;
+    return raw !== "off";
+  }
+
+  function getSliderScalar(id, fallback = 1) {
+    const slider = document.getElementById(id);
+    if (!slider) return fallback;
+    const v = Number(slider.value);
+    if (Number.isNaN(v)) return fallback;
+    return Math.max(0, Math.min(1, v / 100));
+  }
+
+  function getMusicEnabled() {
+    return getToggleState("musicEnabled", true);
+  }
+  function getNpcAutoReadEnabled() {
+    return getToggleState("npcAutoRead", false);
+  }
+  function getMusicVolume() {
+    const slider = document.getElementById("musicVolume");
+    const base = slider ? Number(slider.value) : 50; // 0..100
+    const boost = (currentObjectiveId === "obj-orientation") ? 30 : 0;
+
+    const boosted = Math.max(0, Math.min(100, base + boost)); // clamp 0..100
+    return boosted / 100; // convert to 0..1
+  }
+  function getNpcVolume() {
+    return getSliderScalar("npcVolume", 0.8);
+  }
+
+  // --------------------------------
+  // Play button visual state
+  // --------------------------------
+  function getPlayButton() {
+    const pane = getActivePane();
+    if (!pane) return null;
+    return pane.querySelector(".kc-convo-play-btn");
+  }
+
+  function setPlayButtonState(isPlaying) {
+    const btn = getPlayButton();
+    if (!btn) return;
+
+    const icon = btn.querySelector("i");
+    const label = btn.querySelector("span");
+
+    if (isPlaying) {
+      btn.classList.add("is-playing");
+      if (icon) {
+        icon.classList.remove("fa-play");
+        icon.classList.add("fa-pause");
+      }
+      if (label) {
+        label.textContent = "Playing…";
+      }
+    } else {
+      btn.classList.remove("is-playing");
+      if (icon) {
+        icon.classList.remove("fa-pause");
+        icon.classList.add("fa-play");
+      }
+      if (label) {
+        label.textContent = "Play Audio";
+      }
+    }
+  }
+
+  // --------------------------------
+  // Music control
+  // --------------------------------
+  function ensureMusicAudio() {
+    if (!musicAudio) {
+      musicAudio = new Audio();
+      musicAudio.loop = true;
+    }
+    return musicAudio;
+  }
+
+  function startMusicForCurrentObjective() {
+    if (!currentConfig || !currentConfig.music) return;
+    if (!getMusicEnabled()) return;
+
+    const audio = ensureMusicAudio();
+    audio.src = currentConfig.music;
+    audio.volume = getMusicVolume();
+
+    audio.play().catch(() => {
+      // Autoplay might be blocked; ignore.
+    });
+  }
+
+  function stopMusic() {
+    if (!musicAudio) return;
+    musicAudio.pause();
+    musicAudio.currentTime = 0;
+  }
+
+  // --------------------------------
+  // NPC dialogue control
+  // --------------------------------
+  function getCurrentNpcFiles() {
+    return currentConfig && Array.isArray(currentConfig.npcFiles)
+      ? currentConfig.npcFiles
+      : [];
+  }
+
+  function stopNpcAudio() {
+    if (npcAutoTimeout) {
+      clearTimeout(npcAutoTimeout);
+      npcAutoTimeout = null;
+    }
+    if (npcAudio) {
+      npcAudio.pause();
+      npcAudio = null;
+    }
+    npcQueue = [];
+    npcIsPlaying = false;
+    setPlayButtonState(false);
+  }
+
+  function playNpcQueue(initialDelayMs) {
+    const files = getCurrentNpcFiles();
+    if (!currentConfig || !files.length) return;
+
+    // prevent spam / overlapping runs
+    if (npcIsPlaying) return;
+
+    npcIsPlaying = true;
+    npcQueue = files.slice();
+
+    const startNext = () => {
+      const nextFile = npcQueue.shift();
+      if (!nextFile) {
+        npcIsPlaying = false;
+        npcAudio = null;
+        setPlayButtonState(false);
+        return;
+      }
+
+      setPlayButtonState(true);
+
+      const a = new Audio(nextFile);
+      npcAudio = a;
+      a.volume = getNpcVolume();
+
+      a.onended = function () {
+        // If the “warm hug” line just finished, swap Frosty to the melting asset
+        if (String(nextFile).includes("frostyborg_warmHug_1.mp3")) {
+          setFrostyMelting();
+        }
+
+        npcAudio = null;
+        if (!npcQueue.length) {
+          npcIsPlaying = false;
+          setPlayButtonState(false);
+          return;
+        }
+        // 0.5 second delay between clips
+        setTimeout(startNext, 500);
+      };
+
+      a.play().catch(() => {
+        npcIsPlaying = false;
+        npcAudio = null;
+        setPlayButtonState(false);
+      });
+    };
+
+    if (initialDelayMs && initialDelayMs > 0) {
+      npcAutoTimeout = setTimeout(() => {
+        npcAutoTimeout = null;
+        // For auto-read we respect both: still on this pane, and auto-read still enabled
+        if (!isCurrentObjectiveActive() || !getNpcAutoReadEnabled()) {
+          npcIsPlaying = false;
+          setPlayButtonState(false);
+          return;
+        }
+        startNext();
+      }, initialDelayMs);
+    } else {
+      startNext();
+    }
+  }
+
+  // --------------------------------
+  // Objective pane change handling
+  // --------------------------------
+  function handleObjectivePaneChange(paneId) {
+    // Stop any previous objective audio
+    stopMusic();
+    stopNpcAudio();
+
+    // Leaving victory? Restore default avatar so it doesn't "stick"
+    if (paneId !== "obj-victory") {
+      resetFrostyMelting();
+    }
+
+    currentObjectiveId = paneId;
+    currentConfig = getObjectiveConfig(paneId);
+
+    if (!currentConfig) {
+      return; // e.g., Home, Map, etc.
+    }
+
+    // Start music for this objective if enabled
+    startMusicForCurrentObjective();
+
+    // Start NPC auto-read if enabled
+    if (getNpcAutoReadEnabled()) {
+      playNpcQueue(2000); // 2s delay
+    }
+  }
+
+  // Hook all left-nav items (we just observe pane changes)
+  document.querySelectorAll(".kc-nav-item[data-pane]").forEach(link => {
+    link.addEventListener("click", () => {
+      const paneId = link.getAttribute("data-pane");
+      if (!paneId) return;
+      handleObjectivePaneChange(paneId);
+    });
+  });
+
+  // --------------------------------
+  // Respond to sliders
+  // --------------------------------
+  const musicSlider = document.getElementById("musicVolume");
+  if (musicSlider) {
+    musicSlider.addEventListener("input", () => {
+      if (musicAudio) {
+        musicAudio.volume = getMusicVolume();
+      }
+    });
+  }
+
+  const npcSlider = document.getElementById("npcVolume");
+  if (npcSlider) {
+    npcSlider.addEventListener("input", () => {
+      if (npcAudio) {
+        npcAudio.volume = getNpcVolume();
+      }
+    });
+  }
+
+  // --------------------------------
+  // Respond to toggle buttons
+  // --------------------------------
+  const musicToggleGroup = document.querySelector(
+    '.kc-toggle-group[data-setting="musicEnabled"]'
+  );
+  if (musicToggleGroup) {
+    musicToggleGroup.addEventListener("click", () => {
+      if (!isCurrentObjectiveActive() || !currentConfig) return;
+
+      if (getMusicEnabled()) {
+        startMusicForCurrentObjective();
+      } else {
+        stopMusic();
+      }
+    });
+  }
+
+  const npcToggleGroup = document.querySelector(
+    '.kc-toggle-group[data-setting="npcAutoRead"]'
+  );
+  if (npcToggleGroup) {
+    npcToggleGroup.addEventListener("click", () => {
+      if (!isCurrentObjectiveActive() || !currentConfig) return;
+
+      if (getNpcAutoReadEnabled()) {
+        // enable auto-read from now on
+        playNpcQueue(2000);
+      } else {
+        // stop any running dialogue
+        stopNpcAudio();
+      }
+    });
+  }
+
+  // --------------------------------
+  // Play Audio button inside any objective bubble
+  // (intro / main dialogue only)
+  // --------------------------------
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".kc-convo-play-btn");
+    if (!btn) return;
+
+    // If this is the completion button, let the completion script handle it
+    if (btn.classList.contains("kc-convo-play-btn-complete")) {
+      return;
+    }
+
+    if (!isCurrentObjectiveActive() || !currentConfig) return;
+
+    e.preventDefault();
+
+    // Toggle behavior:
+    // - if already playing -> stop
+    // - otherwise -> play immediately (no initial delay)
+    if (npcIsPlaying) {
+      stopNpcAudio();
+    } else {
+      playNpcQueue(0);
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Which completion clips to play for each objective pane
+  const COMPLETION_SETS = {
+    "obj-orientation": [
+      "lynnschifanotrain_OrientationCompleted_0.mp3",
+      "lynnschifanotrain_OrientationCompleted_1.mp3",
+      "lynnschifanotrain_GiveItASpin_0.mp3"
+    ],
+    "obj-its-all-about-defang": [
+      "edskoudis_termDefangCompleted_0.mp3",
+      "edskoudis_termDefangCompleted_1.mp3"
+    ],
+    "obj-neighborhood-watch-bypass": [
+      "kyleparrish_termDosisAlarmCompleted_0.mp3",
+      "kyleparrish_termDosisAlarmCompleted_1.mp3"
+    ],
+    "obj-gift-tracking-port-mystery": [
+      "yorikvitchko_GiftTrackDone_0.mp3",
+      "yorikvitchko_GiftTrackDone_1.mp3"
+    ],
+    "obj-visual-networking-thinger": [
+      "jaredfolkins_termVisnetworkCompleted_0.mp3",
+      "jaredfolkins_termVisnetworkCompleted_1.mp3"
+    ],
+    "obj-visual-firewall-thinger": [
+      "chriselgee_termVisfirewallCompleted_0.mp3",
+      "chriselgee_termVisfirewallCompleted_1.mp3"
+    ],
+    "obj-intro-to-nmap": [
+      "ericpursley_termNmapCompleted_0.mp3",
+      "ericpursley_termNmapCompleted_1.mp3"
+    ],
+    "obj-blob-storage-neighborhood": [
+      "goosemisfit_termMSBlobstorageComplete_0.mp3"
+    ],
+    "obj-spare-key": [
+      "goosenoir_termMSSpareKeyCompleted_0.mp3"
+    ],
+    "obj-the-open-door": [
+      "goosepixel_termOpenDoorCompleted_0.mp3"
+    ],
+    "obj-owner": [
+      "goosesteampunk_termMSOwnerCompleted_0.mp3"
+    ],
+    "obj-retro-recovery": [
+      "markdevito_gcRetroRecovery_completed_0.mp3",
+      "markdevito_gcRetroRecovery_completed_1.mp3"
+    ],
+    "obj-mail-detective": [
+      "mauricewilson_gcCurlyImapCompleted_0.mp3",
+      "mauricewilson_gcCurlyImapCompleted_1.mp3"
+    ],
+    "obj-idorable-bistro": [
+      "joshwright_gcIdorCompleted_0.mp3",
+      "joshwright_gcIdorCompleted_1.mp3"
+    ],
+    "obj-dosis-network-down": [
+      "januszjasinski_termDosisNetworkCompleted_0.mp3",
+      "januszjasinski_termDosisNetworkCompleted_1.mp3"
+    ],
+    "obj-rogue-gnome-identity-provider": [
+      "paulbeckett_termRogueGnomeCompleted_0.mp3",
+      "paulbeckett_termRogueGnomeCompleted_1.mp3"
+    ],
+    "obj-quantgnome-leap": [
+      "charliegoldner_termQuantgnomeCompleted_0.mp3",
+      "charliegoldner_termQuantgnomeCompleted_1.mp3"
+    ],
+    "obj-going-in-reverse": [
+      "kevinmcfarland_termReverseCompleted_0.mp3"
+    ],
+    "obj-gnome-tea": [
+      "thomasbouve_gcGnomeTeaCompleted_0.mp3",
+      "thomasbouve_gcGnomeTeaCompleted_1.mp3",
+      "thomasbouve_gcGnomeTeaCompleted_2.mp3"
+    ],
+    "obj-hack-a-gnome": [
+      "chrisdavis_termSmartGnomeCompleted_0.mp3",
+      "chrisdavis_termSmartGnomeCompleted_1.mp3"
+    ],
+    "obj-snowcat-rce": [
+      "tomhessman_termSnowcatCompleted_0.mp3",
+      "tomhessman_termSnowcatCompleted_1.mp3"
+    ],
+    "obj-schrodingers-scope": [
+      "kevinmcfarland_termScopeCompleted_0.mp3",
+      "kevinmcfarland_termScopeCompleted_1.mp3"
+    ],
+    "obj-on-the-wire": [
+      "evanbooth_termSignalsCompleted_0.mp3",
+      "evanbooth_termSignalsCompleted_1.mp3"
+    ],
+    "obj-free-ski": [
+      "goosespace_gcFreeSkiComplete_0.mp3"
+    ],
+    "obj-snowblind-ambush": [
+      "torkelopsahl_victory_0.mp3"
+    ]
+
+  };
+
+  let currentCompletionPaneId = null;
+  let completionAudio = null;
+  let completionQueue = [];
+  let completionIsPlaying = false;
+
+  function getNpcVolumeForCompletion() {
+    const slider = document.getElementById("npcVolume");
+    const v = slider ? Number(slider.value) : 70;
+    const scalar = Number.isNaN(v) ? 0.7 : Math.max(0, Math.min(1, v / 100));
+    return scalar;
+  }
+
+  function setCompletionButtonState(paneId, isPlaying) {
+    const pane = document.getElementById(paneId);
+    if (!pane) return;
+    const btn = pane.querySelector(".kc-convo-play-btn-complete");
+    if (!btn) return;
+
+    const icon = btn.querySelector("i");
+    const label = btn.querySelector("span");
+
+    if (isPlaying) {
+      btn.classList.add("is-playing");
+      if (icon) {
+        icon.classList.remove("fa-play");
+        icon.classList.add("fa-pause");
+      }
+      if (label) {
+        label.textContent = "Playing…";
+      }
+    } else {
+      btn.classList.remove("is-playing");
+      if (icon) {
+        icon.classList.remove("fa-pause");
+        icon.classList.add("fa-play");
+      }
+      if (label) {
+        label.textContent = "Play Audio";
+      }
+    }
+  }
+
+  function stopCompletionAudio() {
+    if (completionAudio) {
+      completionAudio.pause();
+      completionAudio = null;
+    }
+    if (currentCompletionPaneId) {
+      setCompletionButtonState(currentCompletionPaneId, false);
+    }
+    completionQueue = [];
+    completionIsPlaying = false;
+    currentCompletionPaneId = null;
+  }
+
+  function startCompletionQueue(paneId) {
+    const files = COMPLETION_SETS[paneId];
+    if (!files || !files.length) return;
+
+    const pane = document.getElementById(paneId);
+    if (!pane || !pane.classList.contains("kc-pane-active")) return;
+
+    // Toggle: if this pane is already playing, stop it
+    if (completionIsPlaying && currentCompletionPaneId === paneId) {
+      stopCompletionAudio();
+      return;
+    }
+
+    // Stop anything from another pane
+    stopCompletionAudio();
+
+    currentCompletionPaneId = paneId;
+    completionIsPlaying = true;
+    completionQueue = files.slice();
+    setCompletionButtonState(paneId, true);
+
+    const playNext = () => {
+      const next = completionQueue.shift();
+      if (!next) {
+        stopCompletionAudio();
+        return;
+      }
+
+      const a = new Audio(next);
+      completionAudio = a;
+      a.volume = getNpcVolumeForCompletion();
+
+      a.onended = function () {
+        completionAudio = null;
+        if (!completionQueue.length) {
+          stopCompletionAudio();
+          return;
+        }
+        // 0.5s gap between clips
+        setTimeout(playNext, 500);
+      };
+
+      a.play().catch(() => {
+        stopCompletionAudio();
+      });
+    };
+
+    playNext();
+  }
+
+  // Handle clicks on ANY completion Play button
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".kc-convo-play-btn-complete");
+    if (!btn) return;
+    e.preventDefault();
+
+    const pane = btn.closest(".kc-pane");
+    if (!pane) return;
+
+    startCompletionQueue(pane.id);
+  });
+
+  // Stop completion audio when navigating away from a pane
+  document.querySelectorAll(".kc-nav-item[data-pane]").forEach(link => {
+    link.addEventListener("click", () => {
+      if (currentCompletionPaneId) {
+        stopCompletionAudio();
+      }
+    });
+  });
+
+  // Also stop if we jump via an objective link on Home
+  document.querySelectorAll(".kc-obj-link[data-pane]").forEach(link => {
+    link.addEventListener("click", () => {
+      if (currentCompletionPaneId) {
+        stopCompletionAudio();
+      }
+    });
+  });
+
+  // Keep completion audio volume in sync with NPC slider
+  const npcSlider = document.getElementById("npcVolume");
+  if (npcSlider) {
+    npcSlider.addEventListener("input", () => {
+      if (completionAudio) {
+        completionAudio.volume = getNpcVolumeForCompletion();
+      }
+    });
+  }
+});
+</script>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("kc-image-modal");
+  const modalImg = document.getElementById("kc-image-modal-img");
+  const closeBtn = modal ? modal.querySelector(".kc-image-modal-close") : null;
+
+  if (!modal || !modalImg) return;
+
+  function openModal(src, alt) {
+    if (!src) return;
+    modalImg.src = src;
+    modalImg.alt = alt || "";
+    modal.classList.add("is-open");
+    document.body.classList.add("kc-modal-open");
+  }
+
+  function closeModal() {
+    modal.classList.remove("is-open");
+    document.body.classList.remove("kc-modal-open");
+    modalImg.src = "";
+    modalImg.alt = "";
+  }
+
+  // Single delegated click handler for buttons + modal
+  document.addEventListener("click", function (e) {
+    // 1) Handle the ENLARGE button
+    const enlargeBtn = e.target.closest(".kc-ptas-enlarge-btn");
+    if (enlargeBtn) {
+      e.preventDefault();
+
+      // Prefer data-enlarge-target, then data-full-src, then img src
+      const parent = enlargeBtn.parentElement;
+      const img = parent ? parent.querySelector("img") : null;
+
+      const targetSrc =
+        enlargeBtn.getAttribute("data-enlarge-target") ||
+        (img && img.getAttribute("data-full-src")) ||
+        (img && img.getAttribute("src"));
+
+      const alt = img ? img.alt : "";
+
+      openModal(targetSrc, alt);
+      return;
+    }
+
+    // 2) If modal is open, handle close clicks
+    if (!modal.classList.contains("is-open")) {
+      return;
+    }
+
+    // Close when clicking the X button
+    if (e.target.closest(".kc-image-modal-close")) {
+      e.preventDefault();
+      closeModal();
+      return;
+    }
+
+    // Close when clicking the dark backdrop (but not the image itself)
+    if (e.target === modal) {
+      closeModal();
+      return;
+    }
+  });
+
+  // ESC key closes modal
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modal.classList.contains("is-open")) {
+      closeModal();
+    }
+  });
+});
+</script>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".kc-code-copy-btn");
+    if (!btn) return;
+
+    e.preventDefault();
+
+    const targetSelector = btn.getAttribute("data-copy-target");
+    const codeEl = targetSelector ? document.querySelector(targetSelector) : null;
+    const text = codeEl ? codeEl.textContent.trim() : "";
+
+    if (!text) return;
+
+    function showCopied() {
+      const label = btn.querySelector("span");
+      const icon = btn.querySelector("i");
+      const originalText = label ? label.textContent : "Copy";
+
+      if (icon) {
+        icon.classList.remove("fa-copy");
+        icon.classList.add("fa-check");
+      }
+      if (label) {
+        label.textContent = "Copied!";
+      }
+
+      setTimeout(function () {
+        if (icon) {
+          icon.classList.remove("fa-check");
+          icon.classList.add("fa-copy");
+        }
+        if (label) {
+          label.textContent = originalText;
+        }
+      }, 1200);
+    }
+
+    function fallbackCopy() {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.top = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+      } catch (err) {
+        // ignore
+      }
+      document.body.removeChild(ta);
+      showCopied();
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text)
+        .then(showCopied)
+        .catch(fallbackCopy);
+    } else {
+      fallbackCopy();
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const mainScroll = document.getElementById("kcMainScroll") || document.scrollingElement;
+
+  document.addEventListener("wheel", function (e) {
+    const pre = e.target.closest("pre.kc-no-wheel");
+    if (!pre) return;
+    if (!mainScroll) return;
+
+    // stop the <pre> from scrolling on wheel
+    e.preventDefault();
+
+    // scroll the main pane instead
+    mainScroll.scrollTop += e.deltaY;
+  }, { passive: false });
+});
+</script>
+
+<div id="kc-image-modal" class="kc-image-modal" aria-hidden="true">
+  <div class="kc-image-modal-content">
+    <button class="kc-image-modal-close" type="button" aria-label="Close image">
+      <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+    <img id="kc-image-modal-img" src="" alt="">
+  </div>
+</div>
+
+</body>
+</html>

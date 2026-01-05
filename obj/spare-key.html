@@ -1,0 +1,431 @@
+<div class="kc-section" style="margin-bottom: 0;">
+  <h1 class="kc-section-title">Spare Key</h1>
+
+  <!-- Difficulty + Location -->
+  <div class="kc-objective-meta kc-objective-meta--stacked">
+    <div class="kc-meta-line kc-difficulty">
+      <span class="kc-meta-label">Difficulty:</span>
+      <span class="kc-difficulty-scale"
+            aria-label="Difficulty 1 out of 5 snowflakes">
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+      </span>
+    </div>
+
+    <div class="kc-meta-line kc-location">
+      <span class="kc-meta-label">Location:</span>
+      <span class="kc-meta-value">The Neighborhood (Near the Pond)</span>
+    </div>
+  </div>
+
+  <!-- Objective line -->
+  <p class="kc-objective-summary kc-meta-line">
+    <span class="kc-meta-label">Objective:</span>
+    <span class="kc-meta-value">
+      Help Goose Barry near the pond identify which identity has been granted excessive Owner permissions at the subscription level, violating the principle of least privilege.
+    </span>
+  </p>
+
+  <!-- Conversation banner -->
+  <div class="kc-convo-header">
+    <span class="kc-convo-icon">
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Grace Conversation:</span>
+  </div>
+
+  <div class="kc-objective-detail kc-objective-detail--no-panel">
+    <div class="kc-convo-bubble">
+      <div class="kc-convo-avatar">
+        <img src="goose-noir.png"
+             alt="Barry avatar">
+        <div class="kc-convo-name">Barry</div>
+      </div>
+
+      <div class="kc-convo-text">
+        <p>
+          You want me to say what exactly? Do I really look like someone who says MOOO?
+        </p>
+        <p>
+          The Neighborhood HOA hosts a static website on Azure Storage.
+        </p>
+        <p>
+          An admin accidentally uploaded an infrastructure config file that contains a long-lived SAS token.
+        </p>
+        <p>
+          Use Azure CLI to find the leak and report exactly where it lives.
+        </p>
+
+        <div class="kc-convo-actions">
+          <button class="kc-convo-play-btn" type="button"
+                  data-npc-audio="spare-key">
+            <i class="fas fa-play" aria-hidden="true"></i>
+            <span>Play Audio</span>
+          </button>
+        </div>
+      </div> <!-- /.kc-convo-text -->
+    </div>   <!-- /.kc-convo-bubble -->
+  </div>     <!-- /.kc-objective-detail -->
+
+  <!-- Hints header -->
+  <div class="kc-convo-header kc-hints-header">
+    <span class="kc-convo-icon kc-hints-icon">
+      <i class="fas fa-lightbulb" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Hints:</span>
+  </div>
+
+<!-- Hint 1 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Spare Key</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Spare Key</div>
+  <p>
+    This terminal has built-in hints!
+  </p>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-workflow-header">
+<span class="kc-workflow-icon">
+    <i class="fas fa-tasks" aria-hidden="true"></i>
+</span>
+<span class="kc-workflow-title">Working through the Challenge:</span>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+  Click on the Cranberry Pi terminal, we are greeted with the following.
+  </p>
+</div> 
+
+<div class="kc-terminal-header">
+  <span class="kc-terminal-icon">
+    <img src="cranpi.png" alt="Cranberry Pi terminal icon">
+  </span>
+  <span class="kc-terminal-title">Cranberry Pi Terminal</span>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Let's start by listing all resource groups</span>
+<span class="term-yellow"><span class="term-symbol">$</span> <span class="term-green">az group list -o table</span></span>
+<span class="term-yellow">This will show all resource groups in a readable table format.</span>
+
+<span class="term-symbol">
+───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@8ac08d181982</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+  Listing the resource groups <code>az group list -o table</code> we see the following.
+  </p>
+</div> 
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Now let's find storage accounts in the neighborhood resource group 📦</span>
+<span class="term-yellow"><span class="term-symbol">$</span> <span class="term-green">az storage account list --resource-group rg-the-neighborhood -o table</span></span>
+<span class="term-yellow">This shows what storage accounts exist and their types.</span>
+
+<span class="term-symbol">
+───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@8ac08d181982</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span> az group list -o table
+Name                 Location    ProvisioningState
+-------------------  ----------  -------------------
+rg-the-neighborhood  eastus      Succeeded
+rg-hoa-maintenance   eastus      Succeeded
+rg-hoa-clubhouse     eastus      Succeeded
+rg-hoa-security      eastus      Succeeded
+rg-hoa-landscaping   eastus      Succeeded
+<span class="term-hostline"><span class="term-user-nmap">neighbor@8ac08d181982</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Next, we follow the hint and enumerate storage accounts in the neighborhood
+    resource group using:
+    <code>az storage account list --resource-group rg-the-neighborhood -o table</code>.
+    This shows us each account’s name, kind, and resource group so we can later
+    target the one hosting the web content.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Someone mentioned there was a website in here.</span>
+<span class="term-yellow">maybe a static website?</span>
+<span class="term-yellow">try: <span class="term-symbol">$</span> <span class="term-green">az storage blob service-properties show --account-name &lt;insert_account_name&gt; --auth-mode login</span></span>
+
+<span class="term-symbol">
+───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@e069ec62e9f3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span> az storage account list --resource-group rg-the-neighborhood -o table
+Name             Kind         Location    ResourceGroup        ProvisioningState
+---------------  -----------  ----------  -------------------  -------------------
+neighborhoodhoa  StorageV2    eastus      rg-the-neighborhood  Succeeded
+hoamaintenance   StorageV2    eastus      rg-hoa-maintenance   Succeeded
+hoaclubhouse     StorageV2    eastus      rg-hoa-clubhouse     Succeeded
+hoasecurity      BlobStorage  eastus      rg-hoa-security      Succeeded
+hoalandscaping   StorageV2    eastus      rg-hoa-landscaping   Succeeded
+<span class="term-hostline"><span class="term-user-nmap">neighbor@e069ec62e9f3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    The previous hint suggests using
+    <code>az storage blob service-properties show --account-name &lt;insert_account_name&gt; --auth-mode login</code>
+    to investigate which storage account is hosting a static website. Since Barry
+    mentioned that the Neighborhood HOA site is hosted in Azure Storage, we target
+    the <code>neighborhoodhoa</code> account with:
+    <code>az storage blob service-properties show --account-name neighborhoodhoa --auth-mode login</code>.
+    The result confirms that static website hosting is enabled, with
+    <code>index.html</code> as the index document and <code>404.html</code> as the error page.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Let's see what 📦 containers exist in the storage account</span>
+<span class="term-yellow">💡 Hint: You will need to use <span class="term-green">az storage container list</span></span>
+<span class="term-yellow">We want to list the container and its public access levels.</span>
+
+<span class="term-symbol">
+───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@e069ec62e9f3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span> az storage blob service-properties show --account-name neighborhoodhoa --auth-mode login
+{
+  "enabled": true,
+  "errorDocument404Path": "404.html",
+  "indexDocument": "index.html"
+}
+<span class="term-hostline"><span class="term-user-nmap">neighbor@e069ec62e9f3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    The hint tells us to use <code>az storage container list</code>, so we run:
+    <code>az storage container list --account-name neighborhoodhoa --auth-mode login --query "[].{name:name, publicAccess:properties.publicAccess}" -o table</code>.
+    The result shows two containers:
+    <code>$web</code> (the static website container) with <code>publicAccess = None</code> and
+    <code>public</code> with <code>publicAccess = Blob</code>. Our next step is to examine the
+    static website container’s contents and look for files that shouldn’t be publicly accessible.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Examine what files are in the static website container</span>
+<span class="term-yellow">💡 hint: <span class="term-green">when using --container-name you might need '&lt;name&gt;'</span></span>
+<span class="term-yellow">Look 👀 for any files that shouldn't be publicly accessible!</span>
+
+<span class="term-symbol">
+───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@e069ec62e9f3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span> az storage container list \
+&gt;   --account-name neighborhoodhoa \
+&gt;   --auth-mode login \
+&gt;   --query "[].{name:name, publicAccess:properties.publicAccess}" \
+&gt;   -o table
+Name    Public
+------  --------
+$web    None
+public  Blob
+<span class="term-hostline"><span class="term-user-nmap">neighbor@e069ec62e9f3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    The hint suggests that when using <code>--container-name</code> we might need to wrap
+    the name in quotes. To inspect the static website container, I ran:
+    <code>az storage blob list --account-name neighborhoodhoa --container-name '$web' --auth-mode login -o table</code>.
+    The output shows two normal HTML pages (<code>index.html</code> and <code>about.html</code>) and one
+    suspicious file, <code>iac/terraform.tfvars</code>, which looks like an IaC configuration file that
+    probably shouldn’t be publicly exposed.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Take a look at the files here, what stands out?</span>
+<span class="term-yellow">Try examining a suspect file 🕵️:</span>
+<span class="term-yellow">💡 hint: <span class="term-green">--file /dev/stdout | less</span> will print to your terminal 💻.</span>
+
+<span class="term-symbol">
+───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@e069ec62e9f3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span> az storage blob list \
+&gt;   --account-name neighborhoodhoa \
+&gt;   --container-name '$web' \
+&gt;   --auth-mode login \
+&gt;   -o table
+Name                  ContentLength    ContentType
+--------------------  ---------------  -------------
+index.html            512              text/html
+about.html            384              text/html
+iac/terraform.tfvars  1024             text/plain
+<span class="term-hostline"><span class="term-user-nmap">neighbor@e069ec62e9f3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    To inspect the suspicious <code>iac/terraform.tfvars</code> file in the
+    <code>$web</code> container, I ran:
+    <code>az storage blob download --account-name neighborhoodhoa --container-name '$web' --name iac/terraform.tfvars --auth-mode login --file /dev/stdout | less</code>.
+    The contents reveal a long-lived <code>migration_sas_token</code> that doesn’t expire until
+    <strong>2100-01-01</strong>, along with several other production secrets. This confirms that
+    a sensitive configuration file was accidentally uploaded to the static website container,
+    making those credentials publicly accessible.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">You found the leak! A migration_sas_token within <span class="term-green">/iac/terraform.tfvars</span> exposed a long-lived SAS token (expires 2100-01-01) 🔑</span>
+<span class="term-yellow">⚠️   Accidentally uploading config files to <span class="term-green">$web</span> can leak secrets. 🔐</span>
+
+<span class="term-yellow">Challenge Complete! To finish, type: <span class="term-green">finish</span></span>
+
+<span class="term-symbol">
+───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@e069ec62e9f3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span> az storage blob download \
+&gt;   --account-name neighborhoodhoa \
+&gt;   --container-name '$web' \
+&gt;   --name iac/terraform.tfvars \
+&gt;   --auth-mode login \
+&gt;   --file /dev/stdout | less
+# Terraform Variables for HOA Website Deployment
+# Application: Neighborhood HOA Service Request Portal  
+# Environment: Production
+# Last Updated: 2025-09-20
+# DO NOT COMMIT TO PUBLIC REPOS
+
+# === Application Configuration ===
+app_name = "hoa-service-portal"
+app_version = "2.1.4"
+environment = "production"
+
+# === Database Configuration ===
+database_server = "sql-neighborhoodhoa.database.windows.net"
+database_name = "hoa_requests"
+database_username = "hoa_app_user"
+# Using Key Vault reference for security
+database_password_vault_ref = "@Microsoft.KeyVault(SecretUri=https://kv-neighborhoodhoa-prod.vault.azure.net/secrets/db-password/)"
+
+# === Storage Configuration for File Uploads ===
+storage_account = "neighborhoodhoa"
+uploads_container = "resident-uploads"
+documents_container = "hoa-documents"
+
+# TEMPORARY: Direct storage access for migration script
+# WARNING: Remove after data migration to new storage account
+# This SAS token provides full access - HIGHLY SENSITIVE!
+migration_sas_token = "sv=2023-11-03&ss=b&srt=co&sp=rlacwdx&se=2100-01-01T00:00:00Z&spr=https&sig=1djO1Q%2Bv0wIh7mYi3n%2F7r1d%2F9u9H%2F5%2BQxw8o2i9QMQc%3D"
+
+# === Email Service Configuration ===
+# Using Key Vault for sensitive email credentials
+sendgrid_api_key_vault_ref = "@Microsoft.KeyVault(SecretUri=https://kv-neighborhoodhoa-prod.vault.azure.net/secrets/sendgrid-key/)"
+from_email = "noreply@theneighborhood.com" 
+admin_email = "admin@theneighborhood.com"
+
+# === Application Settings ===
+session_timeout_minutes = 60
+max_file_upload_mb = 10
+allowed_file_types = ["pdf", "jpg", "jpeg", "png", "doc", "docx"]
+
+# === Feature Flags ===
+enable_online_payments = true
+enable_maintenance_requests = true
+enable_document_portal = false
+enable_resident_directory = true
+
+# === API Keys (Key Vault References) ===
+maps_api_key_vault_ref = "@Microsoft.KeyVault(SecretUri=https://kv-neighborhoodhoa-prod.vault.azure.net/secrets/maps-api-key/)"
+weather_api_key_vault_ref = "@Microsoft.KeyVault(SecretUri=https://kv-neighborhoodhoa-prod.vault.azure.net/secrets/weather-api-key/)"
+
+# === Notification Settings (Key Vault References) ===
+sms_service_vault_ref = "@Microsoft.KeyVault(SecretUri=https://kv-neighborhoodhoa-prod.vault.azure.net/secrets/sms-credentials/)"
+notification_webhook_vault_ref = "@Microsoft.KeyVault(SecretUri=https://kv-neighborhoodhoa-prod.vault.azure.net/secrets/slack-webhook/)"
+
+# === Deployment Configuration ===
+deploy_static_files_to_cdn = true
+cdn_profile = "hoa-cdn-prod"
+cache_duration_hours = 24
+
+# Backup schedule
+backup_frequency = "daily"
+backup_retention_days = 30
+{
+  "downloaded": true,
+  "file": "/dev/stdout"
+}
+(END)
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    After reviewing the leaked credentials in <code>iac/terraform.tfvars</code>,
+    we can exit the paged view by pressing <strong>q</strong> to quit
+    <code>less</code>. The terminal then instructs us to finish the challenge by
+    typing <code>finish</code>. Once we run <code>finish</code>, the Blob Storage
+    challenge is officially completed.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-green">🎉 Challenge complete! 🎉</span>
+
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@e069ec62e9f3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span> finish
+Completing challenge...
+neighbor@e069ec62e9f3:~$
+  </pre>
+</div>
+
+<!-- Solution dialogue banner -->
+<div class="kc-convo-header kc-solution-dialog-header">
+  <span class="kc-convo-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Solution dialogue:</span>
+</div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="goose-noir.png"
+           alt="Barry avatar">
+      <div class="kc-convo-name">Barry</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        There it is. A SAS token with read-write-delete permissions, publicly accessible. At least someone around here knows how to do a proper security audit.
+      </p>
+
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn kc-convo-play-btn-complete" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>       <!-- /.kc-section -->

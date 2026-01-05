@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sasabune - Your Receipt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="lantern-effect">SASABUNE</h1>
+            <p class="tagline">Serving the Dosis Neighborhood Since 2015</p>
+            <div class="nav">
+                <a href="/">Home</a>
+            </div>
+        </div>
+        
+        <div class="check-container festive-border">
+            <div class="holly-decoration left"></div>
+            <div class="holly-decoration right"></div>
+            
+            <h2>Your Receipt Details</h2>
+            
+            <div id="check-details">
+                <p>Loading receipt details...</p>
+                <div class="loading-spinner">
+                    <div class="spinner-candy-cane"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="holiday-footer">
+        <p>© 2025 Sasabune | Proud Member of the Dosis Neighborhood Community</p>
+    </div>
+
+    <script>
+        // Initial receipt ID
+        let receiptId = '103';
+        
+        // Function to fetch and display receipt details
+        function fetchReceiptDetails(id) {
+            // Add a small delay for dramatic effect
+            setTimeout(function() {
+                fetch(`/api/receipt?id=${id}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Receipt not found');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const receiptDiv = document.getElementById('check-details');
+                        
+                        let receiptHtml = `
+                            <div class="receipt">
+                                <div class="receipt-header">
+                                    <div class="holiday-logo"></div>
+                                    <h3>Sasabune</h3>
+                                    <p>Serving the Dosis Neighborhood Since 2015</p>
+                                    <p>Receipt #${data.id} | Table ${data.table} | ${data.date}</p>
+                                    <p>Customer: ${data.customer}</p>
+                                </div>
+                                
+                                <div class="receipt-items">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Item</th>
+                                                <th>Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                        `;
+                        
+                        data.items.forEach(item => {
+                            receiptHtml += `
+                                <tr>
+                                    <td>${item.name}</td>
+                                    <td>$${item.price.toFixed(2)}</td>
+                                </tr>
+                            `;
+                        });
+                        
+                        receiptHtml += `
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td><strong>Total</strong></td>
+                                                <td><strong>$${data.total.toFixed(2)}</strong></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                
+                                <div class="receipt-footer">
+                                    <p>Status: ${data.paid ? '<span class="paid-status">Paid</span>' : '<span class="unpaid-status">Unpaid</span>'}</p>
+                        `;
+                        
+                        // Display special request if present
+                        if (data.special_request) {
+                            receiptHtml += `<p class="special-request">Special Request: "${data.special_request}"</p>`;
+                        }
+                        
+                        // Display note if present
+                        if (data.note) {
+                            receiptHtml += `<p class="note">Note: ${data.note}</p>`;
+                        }
+                        
+                        // Display secret note if present
+                        if (data.secret_note) {
+                            receiptHtml += `
+                                <div class="secret-note-container">
+                                    <p class="secret-note blink">${data.secret_note}</p>
+                                    <div class="confetti"></div>
+                                </div>`;
+                        }
+                        
+                        receiptHtml += `
+                                </div>
+                            </div>
+                        `;
+                        
+                        receiptDiv.innerHTML = receiptHtml;
+                        
+                        // If we found the flag, celebrate!
+                        if (data.secret_note && data.secret_note.includes("FLAG:")) {
+                            celebrateFlag();
+                        }
+                    })
+                    .catch(error => {
+                        document.getElementById('check-details').innerHTML = `
+                            <div class="error">
+                                <div class="error-icon">❌</div>
+                                Error: ${error.message}
+                            </div>
+                        `;
+                    });
+            }, 800); // Delay for dramatic effect
+        }
+        
+        // Function to lookup a specific receipt
+        function lookupReceipt() {
+            const newReceiptId = document.getElementById('receipt-id').value;
+            document.getElementById('check-details').innerHTML = `
+                <p>Looking up receipt #${newReceiptId}...</p>
+                <div class="loading-spinner">
+                    <div class="spinner-candy-cane"></div>
+                </div>
+            `;
+            fetchReceiptDetails(newReceiptId);
+        }
+        
+        // Function to celebrate finding the flag
+        function celebrateFlag() {
+            // Play a celebratory sound
+            const audio = new Audio('/static/sounds/success.mp3');
+            audio.volume = 0.5;
+            audio.play();
+            
+            // Add confetti effect
+            const confetti = document.querySelector('.confetti');
+            for (let i = 0; i < 50; i++) {
+                const confettiPiece = document.createElement('div');
+                confettiPiece.classList.add('confetti-piece');
+                confettiPiece.style.left = Math.random() * 100 + '%';
+                confettiPiece.style.animationDelay = Math.random() * 5 + 's';
+                confettiPiece.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.appendChild(confettiPiece);
+            }
+        }
+        
+        // Fetch initial receipt details
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchReceiptDetails(receiptId);
+        });
+    </script>
+</body>
+</html>

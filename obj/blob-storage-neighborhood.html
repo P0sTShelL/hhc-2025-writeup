@@ -1,0 +1,645 @@
+<div class="kc-section" style="margin-bottom: 0;">
+  <h1 class="kc-section-title">Blob Storage Challenge in the Neighborhood</h1>
+
+  <!-- Difficulty + Location -->
+  <div class="kc-objective-meta kc-objective-meta--stacked">
+    <div class="kc-meta-line kc-difficulty">
+      <span class="kc-meta-label">Difficulty:</span>
+      <span class="kc-difficulty-scale"
+            aria-label="Difficulty 1 out of 5 snowflakes">
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+      </span>
+    </div>
+
+    <div class="kc-meta-line kc-location">
+      <span class="kc-meta-label">Location:</span>
+      <span class="kc-meta-value">The Neighborhood (Near the Pond)</span>
+    </div>
+  </div>
+
+  <!-- Objective line -->
+  <p class="kc-objective-summary kc-meta-line">
+    <span class="kc-meta-label">Objective:</span>
+    <span class="kc-meta-value">
+      Help the Goose Grace near the pond find which Azure Storage account has been misconfigured to allow public blob access by analyzing the export file.
+    </span>
+  </p>
+
+  <!-- Conversation banner -->
+  <div class="kc-convo-header">
+    <span class="kc-convo-icon">
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Grace Conversation:</span>
+  </div>
+
+  <div class="kc-objective-detail kc-objective-detail--no-panel">
+    <div class="kc-convo-bubble">
+      <div class="kc-convo-avatar">
+        <img src="goose-misfit.png"
+             alt="Grace avatar">
+        <div class="kc-convo-name">Grace</div>
+      </div>
+
+      <div class="kc-convo-text">
+        <p>
+          HONK!!! HONK!!!!
+        </p>
+        <p>
+          The Neighborhood HOA uses Azure storage accounts for various IT operations.
+        </p>
+        <p>
+          You've been asked to audit their storage security configuration to ensure no sensitive data is publicly accessible.
+        </p>
+        <p>
+          Recent security reports suggest some storage accounts might have public blob access enabled, creating potential data exposure risks.
+        </p>
+
+        <div class="kc-convo-actions">
+          <button class="kc-convo-play-btn" type="button"
+                  data-npc-audio="blob-storage-neighborhood">
+            <i class="fas fa-play" aria-hidden="true"></i>
+            <span>Play Audio</span>
+          </button>
+        </div>
+      </div> <!-- /.kc-convo-text -->
+    </div>   <!-- /.kc-convo-bubble -->
+  </div>     <!-- /.kc-objective-detail -->
+
+  <!-- Hints header -->
+  <div class="kc-convo-header kc-hints-header">
+    <span class="kc-convo-icon kc-hints-icon">
+      <i class="fas fa-lightbulb" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Hints:</span>
+  </div>
+
+<!-- Hint 1 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Blob Storage Challenge in the Neighborhood</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Blob Storage Challenge in the Neighborhood</div>
+  <p>
+    This terminal has built-in hints!
+  </p>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-workflow-header">
+<span class="kc-workflow-icon">
+    <i class="fas fa-tasks" aria-hidden="true"></i>
+</span>
+<span class="kc-workflow-title">Working through the Challenge:</span>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+  Click on the Cranberry Pi terminal, we are greeted with the following.
+  </p>
+</div> 
+
+<div class="kc-terminal-header">
+  <span class="kc-terminal-icon">
+    <img src="cranpi.png" alt="Cranberry Pi terminal icon">
+  </span>
+  <span class="kc-terminal-title">Cranberry Pi Terminal</span>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">🎄 Welcome! 🎄</span>
+<span class="term-yellow">In a moment, you will be connected to an Azure CLI session in the "neighborhood" tenant.</span>
+<span class="term-yellow">Your mission: 🔍 Investigate and find <span class="term-green">WHERE</span> a security vulnerability exists.</span>
+<span class="term-yellow">Good luck! I'm sure you will do great. Connecting you now...</span>
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@3840f24d1960</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+  After a short wait, we are connected to an Azure CLI session.
+  </p>
+</div> 
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">
+You may not know this but the Azure cli help messages are very easy to access. First, try typing:
+<span class="term-green"><span class="term-symbol">$</span> az help | less</span>
+</span>
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@ec15d4358ed2</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Following the built-in hint, I ran <code>az help</code> to explore the
+    available Azure CLI commands.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Next, you've already been configured with credentials. 🔑</span>
+<span class="term-yellow">  <span class="term-symbol">$</span> <span class="term-green">az account show | less</span></span>
+<span class="term-yellow">  - Pipe the output to | less so you can scroll.</span>
+<span class="term-yellow">  - Press 'q' to exit less.</span>
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+    managedservices             : Manage the registration assignments and definitions in Azure.
+    maps                        : Manage Azure Maps.
+    mariadb                     : Manage Azure Database for MariaDB servers.
+    monitor                     : Manage the Azure Monitor Service.
+    mysql                       : Manage Azure Database for MySQL servers.
+    netappfiles       [Preview] : Manage Azure NetApp Files (ANF) Resources.
+    network                     : Manage Azure Network resources.
+    openshift                   : Manage Azure Red Hat OpenShift Services.
+    policy                      : Manage resource policies.
+    postgres                    : Manage Azure Database for PostgreSQL servers.
+    ppg                         : Manage Proximity Placement Groups.
+    provider                    : Manage resource providers.
+    redis                       : Manage dedicated Redis caches for your Azure applications.
+    relay                       : Manage Azure Relay Service namespaces, WCF relays, hybrid
+                                  connections, and rules.
+    reservations      [Preview] : Manage Azure Reservations.
+    resource                    : Manage Azure resources.
+    role                        : Manage user roles for access control with Azure Active Directory
+                                  and service principals.
+    search            [Preview] : Manage Azure Search services, admin keys and query keys.
+    security          [Preview] : Manage your security posture with Azure Security Center.
+    servicebus                  : Manage Azure Service Bus namespaces, queues, topics,
+                                  subscriptions, rules and geo-disaster recovery configuration
+                                  alias.
+    sf                [Preview] : Manage and administer Azure Service Fabric clusters.
+    sig                         : Manage shared image gallery.
+    signalr                     : Manage Azure SignalR Service.
+    snapshot                    : Manage point-in-time copies of managed disks, native blobs, or
+                                  other snapshots.
+    sql                         : Manage Azure SQL Databases and Data Warehouses.
+    storage                     : Manage Azure Cloud Storage resources.
+    tag                         : Manage resource tags.
+    vm                          : Manage Linux or Windows virtual machines.
+    vmss                        : Manage groupings of virtual machines in an Azure Virtual Machine
+                                  Scale Set (VMSS).
+    webapp                      : Manage web apps.
+
+Commands:
+    configure                   : Manage Azure CLI configuration. This command is interactive.
+    feedback                    : Send feedback to the Azure CLI Team!
+    find                        : I'm an AI robot, my advice is based on our Azure documentation as
+                                  well as the usage patterns of Azure CLI and Azure ARM users. Using
+                                  me improves Azure products and documentation.
+    interactive       [Preview] : Start interactive mode. Installs the Interactive
+                                  extension if not installed already.
+    login                       : Log in to Azure.
+    logout                      : Log out to remove access to Azure subscriptions.
+    rest                        : Invoke a custom request.
+    version           [Preview] : Show the versions of Azure CLI modules and extensions in
+                                  JSON format by default or format configured by --output.
+
+<span class="term-yellow">Please let us know how we are doing: </span><a
+  href="https://aka.ms/clihats"
+  class="kc-link-terminal"
+  target="_blank"
+  rel="noopener noreferrer"
+>https://aka.ms/clihats</a>
+<span class="term-hostline"><span class="term-user-nmap">neighbor@ec15d4358ed2</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Next command up <code>az account show | less</code> 
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">
+Now that you've run a few commands, Let's take a look at some Azure storage accounts.
+Try: </span><span class="term-green">az storage account list | less</span>
+<span class="term-yellow">For more information:</span>
+<span class="term-green">https://learn.microsoft.com/en-us/cli/azure/storage/account?view=azure-cli-latest</span>
+
+<span class="term-symbol">
+───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+{
+  "environmentName": "AzureCloud",
+  "id": "2b0942f3-9bca-484b-a508-abdae2db5e64",
+  "isDefault": true,
+  "name": "theneighborhood-sub",
+  "state": "Enabled",
+  "tenantId": "90a38eda-4006-4dd5-924c-6ca55cacc14d",
+  "user": {
+    "name": "theneighborhood@theneighborhood.invalid",
+    "type": "user"
+  }
+}
+(END)</pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    To exit less press the "q" key. The challenge asks us to try out the command <code>az storage account list | less</code>, lets do that next.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">hmm... one of these looks suspicious 🚨, i think there may be a misconfiguration here somewhere.</span>
+<span class="term-yellow">Try showing the account that has a common misconfiguration: </span><span class="term-green">az storage account show --name xxxxxxxxxx | less</span>
+
+<span class="term-symbol">
+───────────────────────────────────────────────────────────────────────────────────────────</span>
+[
+  {
+    "id": "/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/theneighborhood-rg1/providers/Microsoft.Storage/storageAccounts/neighborhood1",
+    "kind": "StorageV2",
+    "location": "eastus",
+    "name": "neighborhood1",
+    "properties": {
+      "accessTier": "Hot",
+      "allowBlobPublicAccess": false,
+      "encryption": {
+        "keySource": "Microsoft.Storage",
+        "services": {
+          "blob": {
+            "enabled": true
+          }
+        }
+      },
+      "minimumTlsVersion": "TLS1_2"
+    },
+    "resourceGroup": "theneighborhood-rg1",
+    "sku": {
+      "name": "Standard_LRS"
+    },
+    "tags": {
+      "env": "dev"
+    }
+  },
+  {
+    "id": "/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/theneighborhood-rg1/providers/Microsoft.Storage/storageAccounts/neighborhood2",
+    "kind": "StorageV2",
+    "location": "eastus2",
+    "name": "neighborhood2",
+    "properties": {
+      "accessTier": "Cool",
+      "allowBlobPublicAccess": true,
+      "encryption": {
+        "keySource": "Microsoft.Storage",
+        "services": {
+          "blob": {
+            "enabled": false
+          }
+        }
+      },
+      "minimumTlsVersion": "TLS1_0"
+    },
+    "resourceGroup": "theneighborhood-rg1",
+    "sku": {
+      "name": "Standard_GRS"
+    },
+    "tags": {
+      "owner": "Admin"
+    }
+  },
+
+  {
+    "id": "/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/theneighborhood-rg1/providers/Microsoft.Storage/storageAccounts/neighborhood5",
+    "kind": "StorageV2",
+    "location": "eastus",
+    "name": "neighborhood5",
+    "properties": {
+      "accessTier": "Cool",
+      "allowBlobPublicAccess": false,
+      "isHnsEnabled": true,
+      "minimumTlsVersion": "TLS1_2"
+    },
+    "resourceGroup": "theneighborhood-rg1",
+    "sku": {
+      "name": "Standard_LRS"
+    },
+    "tags": {
+      "project": "Homes"
+    }
+  },
+  {
+    "id": "/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/theneighborhood-rg2/providers/Microsoft.Storage/storageAccounts/neighborhood6",
+    "kind": "StorageV2",
+    "location": "centralus",
+    "name": "neighborhood6",
+    "properties": {
+      "accessTier": "Hot",
+      "allowBlobPublicAccess": false,
+      "minimumTlsVersion": "TLS1_2",
+      "tags": {
+        "replicate": "true"
+      }
+    },
+    "resourceGroup": "theneighborhood-rg2",
+    "sku": {
+      "name": "Standard_ZRS"
+    },
+    "tags": {}
+  }
+]
+(END)</pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Scanning through the <code>az storage account list</code> output, one
+    account immediately stands out: <code>neighborhood2</code>. It’s the only
+    storage account with <code>allowBlobPublicAccess</code> set to
+    <code>true</code>, blob encryption disabled, and an older
+    <code>TLS1_0</code> minimum TLS version.
+  </p>
+  <p>
+    That combination is a classic blob-storage misconfiguration and a strong
+    hint that <code>neighborhood2</code> is the vulnerable account we’re
+    supposed to investigate. Following the prompt, the next step is to drill
+    into its details with:
+    <code>az storage account show --name neighborhood2 | less</code>.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Now we need to list containers in neighborhood2.</span>
+<span class="term-green">After running the command what's interesting in the list?</span>
+<span class="term-yellow">For more information:</span>
+<span class="term-green">https://learn.microsoft.com/en-us/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-list</span>
+
+<span class="term-symbol">
+───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+{
+  "id": "/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/theneighborhood-rg1/providers/Microsoft.Storage/storageAccounts/neighborhood2",
+  "name": "neighborhood2",
+  "location": "eastus2",
+  "kind": "StorageV2",
+  "sku": {
+    "name": "Standard_GRS"
+  },
+  "properties": {
+    "accessTier": "Cool",
+    "allowBlobPublicAccess": true,
+    "minimumTlsVersion": "TLS1_0",
+    "encryption": {
+      "services": {
+        "blob": {
+          "enabled": false
+        }
+      },
+      "keySource": "Microsoft.Storage"
+    }
+  },
+  "resourceGroup": "theneighborhood-rg1",
+  "tags": {
+    "owner": "Admin"
+  }
+}
+(END)</pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    The next hint pushes us to list containers in the suspicious account
+    <code>neighborhood2</code>. When we run
+    <code>az storage container list --account-name neighborhood2</code> and
+    inspect the results, the “interesting” part of the list is that at least
+    one container is configured for <strong>public access</strong>
+    (its <code>publicAccess</code> setting allows anonymous reads of blobs or
+    the entire container).
+  </p>
+  <p>
+    To list containers in neighborhood2 we use the container list command:
+    <code>az storage container list --account-name neighborhood2 --auth-mode login --query "[].{name:name, publicAccess:properties.publicAccess}" -o table</code>.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Let's take a look at the blob list in the public container for neighborhood2.</span>
+<span class="term-yellow">For more information:</span>
+<span class="term-green">https://learn.microsoft.com/en-us/cli/azure/storage/blob?view=azure-cli-latest#az-storage-blob-list</span>
+
+<span class="term-symbol">
+───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@38dc9f9ca81d</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span> az storage container list --account-name neighborhood2 --auth-mode login --query "[].{name:name, publicAccess:properties.publicAccess}" -o table
+[
+  {
+    "name": "public",
+    "properties": {
+      "lastModified": "2024-01-15T09:00:00Z",
+      "publicAccess": "Blob"
+    }
+  },
+  {
+    "name": "private",
+    "properties": {
+      "lastModified": "2024-02-05T11:12:00Z",
+      "publicAccess": null
+    }
+  }
+]
+<span class="term-hostline"><span class="term-user-nmap">neighbor@38dc9f9ca81d</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Next were asked to take a look at the blob list in the public container, for that we will use the blob list command:
+    <code>az storage blob list   --account-name neighborhood2   --container-name public   --auth-mode login   --output table</code>.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Try downloading and viewing the blob file named </span><span class="term-green">admin_credentials.txt</span><span class="term-yellow"> from the public container.</span>
+💡 hint:<span class="term-green"> --file /dev/stdout</span> <span class="term-yellow">should print in the terminal. Dont forget to use </span><span class="term-green">| less!</span>
+
+<span class="term-symbol">
+───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@38dc9f9ca81d</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span> az storage blob list --account-name neighborhood2 --container-name public --auth-mode login --output table
+[
+  {
+    "name": "refrigerator_inventory.pdf",
+    "properties": {
+      "contentLength": 45678,
+      "contentType": "application/pdf",
+      "metadata": {
+        "created_by": "NeighborhoodWatch",
+        "document_type": "inventory",
+        "last_updated": "2024-12-15"
+      }
+    }
+  },
+  {
+    "name": "admin_credentials.txt",
+    "properties": {
+      "contentLength": 1024,
+      "contentType": "text/plain",
+      "metadata": {
+        "note": "admins only"
+      }
+    }
+  },
+  {
+    "name": "network_config.json",
+    "properties": {
+      "contentLength": 2048,
+      "contentType": "application/json",
+      "metadata": {
+        "encrypted": "false",
+        "environment": "prod"
+      }
+    }
+  }
+]
+<span class="term-hostline"><span class="term-user-nmap">neighbor@38dc9f9ca81d</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    With the interesting blob identified as
+    <code>admin_credentials.txt</code>, the next step is to download and view
+    its contents directly from the terminal. The challenge hint suggests using
+    the <code>--file /dev/stdout</code> trick so the blob is printed instead of
+    written to disk.
+  </p>
+  <p>
+    To do that, we run:
+    <code>az storage blob download   --account-name neighborhood2   --container-name public   --name admin_credentials.txt   --auth-mode login   --file /dev/stdout | less</code>.
+    This streams the blob contents to standard output and pipes it into
+    <code>less</code>, letting us safely scroll through the exposed credentials.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">🎊 Great, you found the misconfiguration allowing public access to sensitive information!</span>
+<span class="term-yellow">✅ Challenge Complete! To finish, type: </span><span class="term-green">finish</span>
+
+<span class="term-symbol">
+───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+
+# You have discovered an Azure Storage account with "allowBlobPublicAccess": true.
+# This misconfiguration allows ANYONE on the internet to view and download files
+# from the blob container without authentication.
+
+# Public blob access is highly insecure when sensitive data (like admin credentials)
+# is stored in these containers. Always disable public access unless absolutely required.
+
+Azure Portal Credentials
+User: azureadmin
+Pass: AzUR3!P@ssw0rd#2025
+
+Windows Server Credentials
+User: administrator
+Pass: W1nD0ws$Srv!@42
+
+SQL Server Credentials
+User: sa
+Pass: SqL!P@55#2025$
+
+Active Directory Domain Admin
+User: corp\administrator
+Pass: D0m@in#Adm!n$765
+
+Exchange Admin Credentials
+User: exchangeadmin
+Pass: Exch@ng3!M@il#432
+
+VMware vSphere Credentials
+User: vsphereadmin
+Pass: VMW@r3#Clu$ter!99
+
+Network Switch Credentials
+User: netadmin
+Pass: N3t!Sw!tch$C0nfig#
+
+Firewall Admin Credentials
+User: fwadmin
+Pass: F1r3W@ll#S3cur3!77
+
+Backup Server Credentials
+User: backupadmin
+Pass: B@ckUp!Srv#2025$
+
+Monitoring System Admin
+User: monitoradmin
+Pass: M0n!t0r#Sys$P@ss!
+
+SharePoint Admin Credentials
+User: spadmin
+Pass: Sh@r3P0!nt#Adm!n2025
+
+Git Server Admin
+User: gitadmin
+Pass: G1t#Srv!Rep0$C0de
+(END)</pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+  To complete the challnge exit less and type <code>finish</code> in the terminal.
+  </p>
+</div> 
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-green">🎉 Blob Storage Challenge completed! 🎉</span>
+
+<span class="term-symbol">
+───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@38dc9f9ca81d</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span> finish
+Completing challenge...
+<span class="term-hostline"><span class="term-user-nmap">neighbor@38dc9f9ca81d</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span></pre>
+</div>
+
+<!-- Solution dialogue banner -->
+<div class="kc-convo-header kc-solution-dialog-header">
+  <span class="kc-convo-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Solution dialogue:</span>
+</div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="goose-misfit.png"
+           alt="Grace avatar">
+      <div class="kc-convo-name">Grace</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        HONK HONK HONK! 'No sensitive data publicly accessible' they claimed. Meanwhile, literally everything was public! Good save, security expert!
+      </p>
+
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn kc-convo-play-btn-complete" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+</div>       <!-- /.kc-section -->

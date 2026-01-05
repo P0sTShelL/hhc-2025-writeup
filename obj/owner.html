@@ -1,0 +1,535 @@
+<div class="kc-section" style="margin-bottom: 0;">
+  <h1 class="kc-section-title">Owner</h1>
+
+  <!-- Difficulty + Location -->
+  <div class="kc-objective-meta kc-objective-meta--stacked">
+    <div class="kc-meta-line kc-difficulty">
+      <span class="kc-meta-label">Difficulty:</span>
+      <span class="kc-difficulty-scale"
+            aria-label="Difficulty 1 out of 5 snowflakes">
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+      </span>
+    </div>
+
+    <div class="kc-meta-line kc-location">
+      <span class="kc-meta-label">Location:</span>
+      <span class="kc-meta-value">Near the park</span>
+    </div>
+  </div>
+
+  <!-- Objective line -->
+  <p class="kc-objective-summary kc-meta-line">
+    <span class="kc-meta-label">Objective:</span>
+    <span class="kc-meta-value">
+      Help Goose James near the park discover the accidentally leaked SAS token in a public JavaScript file and determine what Azure Storage resource it exposes and what permissions it grants.
+    </span>
+  </p>
+
+  <!-- Conversation banner -->
+  <div class="kc-convo-header">
+    <span class="kc-convo-icon">
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">James Conversation:</span>
+  </div>
+
+  <div class="kc-objective-detail kc-objective-detail--no-panel">
+    <div class="kc-convo-bubble">
+      <div class="kc-convo-avatar">
+        <img src="goose-steampunk.png"
+             alt="James avatar">
+        <div class="kc-convo-name">James</div>
+      </div>
+
+      <div class="kc-convo-text">
+        <p>
+          CLUCK CLU... I think I might be losing my mind. All the elves are gone and I'm still hearing voices.
+        </p>
+        <p>
+          The Neighborhood HOA uses Azure for their IT infrastructure.
+        </p>
+        <p>
+          The Neighborhood network admins use RBAC fo access control.
+        </p>
+        <p>
+          Your task is to audit their RBAC configuration to ensure they're following security best practices.
+        </p>
+        <p>
+          They claim all elevated access uses PIM, but you need to verify there are no permanently assigned Owner roles.
+        </p>
+
+        <div class="kc-convo-actions">
+          <button class="kc-convo-play-btn" type="button"
+                  data-npc-audio="owner">
+            <i class="fas fa-play" aria-hidden="true"></i>
+            <span>Play Audio</span>
+          </button>
+        </div>
+      </div> <!-- /.kc-convo-text -->
+    </div>   <!-- /.kc-convo-bubble -->
+  </div>     <!-- /.kc-objective-detail -->
+
+  <!-- Hints header -->
+  <div class="kc-convo-header kc-hints-header">
+    <span class="kc-convo-icon kc-hints-icon">
+      <i class="fas fa-lightbulb" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Hints:</span>
+  </div>
+
+<!-- Hint 1 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Owner</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Owner</div>
+  <p>
+    This terminal has built-in hints!
+  </p>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-workflow-header">
+<span class="kc-workflow-icon">
+    <i class="fas fa-tasks" aria-hidden="true"></i>
+</span>
+<span class="kc-workflow-title">Working through the Challenge:</span>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+  Click on the Cranberry Pi terminal, we are greeted with the following.
+  </p>
+</div> 
+
+<div class="kc-terminal-header">
+  <span class="kc-terminal-icon">
+    <img src="cranpi.png" alt="Cranberry Pi terminal icon">
+  </span>
+  <span class="kc-terminal-title">Cranberry Pi Terminal</span>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">🎄 Welcome to the Owner Challenge! 🎄</span>
+<span class="term-yellow">You're connected to a read-only Azure CLI session in "The Neighborhood" tenant.</span>
+<span class="term-yellow">Your mission: Investigate the permissions and identify WHO has access they shouldn't.</span>
+<span class="term-yellow">Connecting you now... ❄️</span>
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@5868de7329c4</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span>
+  </pre>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Let's learn some more Azure CLI, the --query parameter with JMESPath syntax!</span>
+<span class="term-green"><span class="term-symbol">$</span> az account list --query "[].name"</span>
+<span class="term-yellow">Here, <span class="term-green">[]</span> loops through each item, <span class="term-green">.name</span> grabs the name field.</span>
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@5868de7329c4</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    The hint suggests using JMESPath with the <code>--query</code> parameter to
+    pull out just the subscription names. To follow it, we simply run:
+    <code>az account list --query "[].name"</code>. This returns a clean list of
+    subscription names in JSON, which we’ll build on with more advanced filters next.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">You can do some more advanced queries using conditional filtering with custom output.</span>
+<span class="term-green"><span class="term-symbol">$</span> az account list --query "[?state=='Enabled'].{Name:name, ID:id}"</span>
+<span class="term-yellow">Cool! <span class="term-green">😎  [?condition]</span> filters what you want, <span class="term-green">{custom:fields}</span> makes clean output ✨</span>
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@7a59e15f9524</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span> az account list --query "[].name"</span>
+[
+  "theneighborhood-sub",
+  "theneighborhood-sub-2",
+  "theneighborhood-sub-3",
+  "theneighborhood-sub-4"
+]
+<span class="term-hostline"><span class="term-user-nmap">neighbor@7a59e15f9524</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Next, we follow the hint and run
+    <code>az account list --query "[?state=='Enabled'].{Name:name, ID:id}"</code>.
+    This uses JMESPath to filter only enabled subscriptions and return a clean
+    list of their names and IDs. From this output, we’ll take the first
+    subscription (<code>theneighborhood-sub</code>) and use its ID in the next
+    step to investigate who has <strong>Owner</strong> rights on that subscription.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Let's take a look at the Owner's of the first listed subscription 🔍. Pass in the first subscription id.</span>
+<span class="term-yellow">Try: <span class="term-green">az role assignment list --scope "/subscriptions/{ID of first Subscription}" --query [?roleDefinition=='Owner']</span></span>
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@7a59e15f9524</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span> az account list --query "[?state=='Enabled'].{Name:name, ID:id}"</span>
+[
+  {
+    "ID": "2b0942f3-9bca-484b-a508-abdae2db5e64",
+    "Name": "theneighborhood-sub"
+  },
+  {
+    "ID": "4d9dbf2a-90b4-4d40-a97f-dc51f3c3d46e",
+    "Name": "theneighborhood-sub-2"
+  },
+  {
+    "ID": "065cc24a-077e-40b9-b666-2f4dd9f3a617",
+    "Name": "theneighborhood-sub-3"
+  },
+  {
+    "ID": "681c0111-ca84-47b2-808d-d8be2325b380",
+    "Name": "theneighborhood-sub-4"
+  }
+]
+<span class="term-hostline"><span class="term-user-nmap">neighbor@7a59e15f9524</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    The next step is to see <em>who</em> is assigned the
+    <strong>Owner</strong> role on the first subscription
+    (<code>theneighborhood-sub</code>, ID
+    <code>2b0942f3-9bca-484b-a508-abdae2db5e64</code>). The challenge expects
+    us to use the exact query it provides, so we run:
+  </p>
+  <p>
+    <code>az role assignment list --scope "/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64" --query [?roleDefinition=='Owner']</code>
+  </p>
+  <p>
+    This filters role assignments at that subscription scope down to only those
+    where <code>roleDefinition</code> is <code>Owner</code>, revealing all
+    principals with full control over the neighborhood’s Azure resources.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Ok 🤔 — there is a group present for the Owners permission; however, we've been assured this is a 🔐 <span class="term-green">PIM</span> enabled group.
+Currently, no <span class="term-green">PIM</span> activations are present. 🚨
+Let's run the previous command against the other subscriptions to see what we come up with.</span>
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@7a59e15f9524</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span> az role assignment list --scope "/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64" --query [?roleDefinition=='Owner']</span>
+[
+  {
+    "condition": "null",
+    "conditionVersion": "null",
+    "createdBy": "85b095fa-a9b4-4bdc-a3af-c9f95ebb8dd6",
+    "createdOn": "2025-09-10T15:45:12.439266+00:00",
+    "delegatedManagedIdentityResourceId": "null",
+    "description": "null",
+    "id": "/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/providers/Microsoft.Authorization/roleAssignments/b1c69caa-a4d6-449a-a090-efacb23b55f3",
+    "name": "b1c69caa-a4d6-449a-a090-efacb23b55f3",
+    "principalId": "2b5c7aed-2728-4e63-b657-98f759cc0936",
+    "principalName": "PIM-Owners",
+    "principalType": "Group",
+    "roleDefinitionId": "/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+    "roleDefinitionName": "Owner",
+    "scope": "/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64",
+    "type": "Microsoft.Authorization/roleAssignments",
+    "updatedBy": "85b095fa-a9b4-4bdc-a3af-c9f95ebb8dd6",
+    "updatedOn": "2025-09-10T15:45:12.439266+00:00"
+  }
+]
+<span class="term-hostline"><span class="term-user-nmap">neighbor@7a59e15f9524</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Next, I re-used the same <code>az role assignment list</code> query, but
+    pointed it at the <strong>second</strong> subscription ID
+    (<code>theneighborhood-sub-2</code>), using:
+    <code>az role assignment list --scope "/subscriptions/4d9dbf2a-90b4-4d40-a97f-dc51f3c3d46e" --query [?roleDefinition=='Owner']</code>.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Ok 🤔 — there is a group present for the Owners permission; however, we've been assured this is a 🔐 <span class="term-green">PIM</span> enabled group.
+Currently, no <span class="term-green">PIM</span> activations are present. 🚨
+Let's run the previous command against the other subscriptions to see what we come up with.</span>
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@0be5094b5f18</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span> az role assignment list --scope "/subscriptions/4d9dbf2a-90b4-4d40-a97f-dc51f3c3d46e" --query [?roleDefinition=='Owner']</span>
+[
+  {
+    "condition": "null",
+    "conditionVersion": "null",
+    "createdBy": "85b095fa-a9b4-4bdc-a3af-c9f95ebb8dd6",
+    "createdOn": "2025-09-10T15:45:12.439266+00:00",
+    "delegatedManagedIdentityResourceId": "null",
+    "description": "null",
+    "id": "/subscriptions/4d9dbf2a-90b4-4d40-a97f-dc51f3c3d46e/providers/Microsoft.Authorization/roleAssignments/b1c69caa-a4d6-449a-a090-efacb23b55f3",
+    "name": "b1c69caa-a4d6-449a-a090-efacb23b55f3",
+    "principalId": "2b5c7aed-2728-4e63-b657-98f759cc0936",
+    "principalName": "PIM-Owners",
+    "principalType": "Group",
+    "roleDefinitionId": "/subscriptions/4d9dbf2a-90b4-4d40-a97f-dc51f3c3d46e/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+    "roleDefinitionName": "Owner",
+    "scope": "/subscriptions/4d9dbf2a-90b4-4d40-a97f-dc51f3c3d46e",
+    "type": "Microsoft.Authorization/roleAssignments",
+    "updatedBy": "85b095fa-a9b4-4bdc-a3af-c9f95ebb8dd6",
+    "updatedOn": "2025-09-10T15:45:12.439266+00:00"
+  }
+]
+<span class="term-hostline"><span class="term-user-nmap">neighbor@0be5094b5f18</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Just like the first subscription, the only Owner assignment is the
+    <code>PIM-Owners</code> group, which we’re told is a properly managed
+    PIM-enabled group with no active elevation at the moment. That means
+    nothing suspicious here either, lets check the next subsciption.
+  </p>
+  <p><code>az role assignment list --scope "/subscriptions/065cc24a-077e-40b9-b666-2f4dd9f3a617" --query [?roleDefinition=='Owner']</code></div>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Looks like you are on to something here! 🕵️  We were assured that only the 🔐 <span class="term-green">PIM</span> group was present for each subscription.
+🔎 Let's figure out the membership of that group.
+Hint: use the <span class="term-green">az ad member list</span> command. Pass the <span class="term-green">group id</span> instead of the name.
+Remember: <span class="term-green">| less</span> lets you scroll through long output</span>
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@f059bac40b2b</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span> az role assignment list --scope "/subscriptions/065cc24a-077e-40b9-b666-2f4dd9f3a617" --query [?roleDefinition=='Owner']</span>
+[
+  {
+    "condition": "null",
+    "conditionVersion": "null",
+    "createdBy": "85b095fa-a9b4-4bdc-a3af-c9f95ebb8dd6",
+    "createdOn": "2025-09-10T15:45:12.439266+00:00",
+    "delegatedManagedIdentityResourceId": "null",
+    "description": "null",
+    "id": "/subscriptions/065cc24a-077e-40b9-b666-2f4dd9f3a617/providers/Microsoft.Authorization/roleAssignments/b1c69caa-a4d6-449a-a090-efacb23b55f3",
+    "name": "b1c69caa-a4d6-449a-a090-efacb23b55f3",
+    "principalId": "2b5c7aed-2728-4e63-b657-98f759cc0936",
+    "principalName": "PIM-Owners",
+    "principalType": "Group",
+    "roleDefinitionId": "/subscriptions/065cc24a-077e-40b9-b666-2f4dd9f3a617/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+    "roleDefinitionName": "Owner",
+    "scope": "/subscriptions/065cc24a-077e-40b9-b666-2f4dd9f3a617",
+    "type": "Microsoft.Authorization/roleAssignments",
+    "updatedBy": "85b095fa-a9b4-4bdc-a3af-c9f95ebb8dd6",
+    "updatedOn": "2025-09-10T15:45:12.439266+00:00"
+  },
+  {
+    "condition": "null",
+    "conditionVersion": "null",
+    "createdBy": "85b095fa-a9b4-4bdc-a3af-c9f95ebb8dd6",
+    "createdOn": "2025-09-10T16:58:16.317381+00:00",
+    "delegatedManagedIdentityResourceId": "null",
+    "description": "null",
+    "id": "/subscriptions/065cc24a-077e-40b9-b666-2f4dd9f3a617/providers/Microsoft.Authorization/roleAssignments/6b452f58-6872-4064-ae9b-78742e8d987e",
+    "name": "6b452f58-6872-4064-ae9b-78742e8d987e",
+    "principalId": "6b982f2f-78a0-44a8-b915-79240b2b4796",
+    "principalName": "IT Admins",
+    "principalType": "Group",
+    "roleDefinitionId": "/subscriptions/065cc24a-077e-40b9-b666-2f4dd9f3a617/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+    "roleDefinitionName": "Owner",
+    "scope": "/subscriptions/065cc24a-077e-40b9-b666-2f4dd9f3a617",
+    "type": "Microsoft.Authorization/roleAssignments",
+    "updatedBy": "85b095fa-a9b4-4bdc-a3af-c9f95ebb8dd6",
+    "updatedOn": "2025-09-10T16:58:16.317381+00:00"
+  }
+]
+<span class="term-hostline"><span class="term-user-nmap">neighbor@f059bac40b2b</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    The latest <code>az role assignment list</code> output shows that, in addition to the
+    expected <code>PIM-Owners</code> group, there is a second group with <strong>Owner</strong>
+    rights: <code>IT Admins</code>, whose <code>principalId</code> is
+    <code>6b982f2f-78a0-44a8-b915-79240b2b4796</code>.
+  </p>
+  <p>
+    The hint suggests using <code>az ad member list</code> with the group ID to see who is
+    actually in that group. So next, I ran:
+  </p>
+  <p>
+    <code>az ad member list --group 6b982f2f-78a0-44a8-b915-79240b2b4796</code>
+  </p>
+  <p>
+    This lets us scroll through the group membership and look for any unexpected users with
+    full subscription <strong>Owner</strong> privileges.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Well 😤, that's annoying. Looks like we have a nested group!
+Let's run the command one more time against this group.</span>
+
+<span class="term-symbol">────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="term-hostline"><span class="term-user-nmap">neighbor@f059bac40b2b</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span> az ad member list --group 6b982f2f-78a0-44a8-b915-79240b2b4796</span>
+[
+  {
+    "@odata.type": "#microsoft.graph.group",
+    "classification": null,
+    "createdDateTime": "2025-09-10T16:54:24Z",
+    "creationOptions": [],
+    "deletedDateTime": null,
+    "description": null,
+    "displayName": "Subscription Admins",
+    "expirationDateTime": null,
+    "groupTypes": [],
+    "id": "631ebd3f-39f9-4492-a780-aef2aec8c94e",
+    "isAssignableToRole": null,
+    "mail": null,
+    "mailEnabled": false,
+    "mailNickname": "15a80d1d-5",
+    "membershipRule": null,
+    "membershipRuleProcessingState": null,
+    "onPremisesDomainName": null,
+    "onPremisesLastSyncDateTime": null,
+    "onPremisesNetBiosName": null,
+    "onPremisesProvisioningErrors": [],
+    "onPremisesSamAccountName": null,
+    "onPremisesSecurityIdentifier": null,
+    "onPremisesSyncEnabled": null,
+    "preferredDataLocation": null,
+    "preferredLanguage": null,
+    "proxyAddresses": [],
+    "renewedDateTime": "2025-09-10T16:54:24Z",
+    "resourceBehaviorOptions": [],
+    "resourceProvisioningOptions": [],
+    "securityEnabled": true,
+    "securityIdentifier": "S-1-12-1-1662958911-1150433785-4071522471-1321846958",
+    "serviceProvisioningErrors": [],
+    "theme": null,
+    "uniqueName": null,
+    "visibility": null
+  }
+]
+<span class="term-hostline"><span class="term-user-nmap">neighbor@f059bac40b2b</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    The <code>IT Admins</code> group turned out to contain another nested group,
+    <code>Subscription Admins</code> (ID <code>631ebd3f-39f9-4492-a780-aef2aec8c94e</code>).
+    The hint tells us to “run the command one more time against this group,” so next we’ll
+    enumerate the members of <code>Subscription Admins</code> with:
+  </p>
+  <p>
+    <code>az ad member list --group 631ebd3f-39f9-4492-a780-aef2aec8c94e</code>
+  </p>
+  <p>
+    This should finally reveal the individual accounts who effectively have Owner rights
+    through this nested group chain.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">elevated access instead of permanent assignments. Permanent <span class="term-green">Owner</span> roles create <span class="term-green">persistent</span> attack paths and violate least-privilege principles.</span>
+
+<span class="term-yellow">Challenge Complete! To finish, type: <span class="term-green">finish</span></span>
+
+<span class="term-symbol">────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="term-hostline"><span class="term-user-nmap">neighbor@f059bac40b2b</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span> az ad member list --group 631ebd3f-39f9-4492-a780-aef2aec8c94e</span>
+[
+  {
+    "@odata.type": "#microsoft.graph.user",
+    "businessPhones": [
+      "+1-555-0199"
+    ],
+    "displayName": "Firewall Frank",
+    "givenName": "Frank",
+    "id": "b8613dd2-5e33-4d77-91fb-b4f2338c19c9",
+    "jobTitle": "HOA IT Administrator",
+    "mail": "frank.firewall@theneighborhood.invalid",
+    "mobilePhone": "+1-555-0198",
+    "officeLocation": "HOA Community Center - IT Office",
+    "preferredLanguage": "en-US",
+    "surname": "Firewall",
+    "userPrincipalName": "frank.firewall@theneighborhood.onmicrosoft.com"
+  }
+]
+<span class="term-hostline"><span class="term-user-nmap">neighbor@f059bac40b2b</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    At this point, we’ve fully traced the unexpected <strong>Owner</strong> access:
+    starting from the subscription’s role assignments, through the
+    <code>IT Admins</code> group, into the nested <code>Subscription Admins</code>
+    group, and finally down to the individual user
+    <strong>Firewall Frank</strong>. This permanent Owner assignment violates
+    least-privilege principles and represents the misconfiguration the
+    challenge wanted us to uncover.
+  </p>
+  <p>
+    With the misconfigured ownership path identified the
+    terminal tells us the challenge is complete. To wrap things up and log
+    the completion, we simply type <code>finish</code> in the prompt.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-green">🎉 Owner Challenge complete! 🎉</span>
+
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="term-hostline">
+<span class="term-user-nmap">neighbor@f059bac40b2b</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span> finish
+</span>
+Completing challenge...
+<span class="term-hostline">
+<span class="term-user-nmap">neighbor@f059bac40b2b</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span>
+</span>
+  </pre>
+</div>
+
+<!-- Solution dialogue banner -->
+<div class="kc-convo-header kc-solution-dialog-header">
+  <span class="kc-convo-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Solution dialogue:</span>
+</div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="goose-steampunk.png"
+           alt="James avatar">
+      <div class="kc-convo-name">James</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        You found the permanent assignments! CLUCK! See, I'm not crazy - the security really WAS misconfigured. Now maybe I can finally get some peace and quiet...
+      </p>
+
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn kc-convo-play-btn-complete" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>       <!-- /.kc-section -->

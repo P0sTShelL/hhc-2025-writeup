@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HHC 2025 – Kringle Console Write-Up</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Console-style fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Princess+Sofia&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="kc-shell">
+    <!-- LEFT CONSOLE MENU -->
+    <aside class="kc-sidebar">
+      <div class="kc-sidebar-header">
+        <div class="kc-logo-circle">
+          <img src="hhc-logo.png" alt="Holiday Hack Challenge Logo" class="kc-logo-img">
+        </div>
+        <div class="kc-logo-text">
+          <span class="kc-game-title">SANS Holiday Hack Challenge 2025:</span>
+          <span class="kc-subtitle-line">Revenge of the Gnome(s)</span>
+        </div>
+      </div>
+
+      <nav class="kc-nav">
+        <!-- main menu -->
+        <a href="#home" class="kc-nav-item kc-nav-active" data-pane="home">Home</a>
+        <a href="#settings" class="kc-nav-item" data-pane="settings">Settings</a>
+        <a href="#story" class="kc-nav-item" data-pane="story" data-url="pages/story.html">Story</a>
+        <a href="#map" class="kc-nav-item" data-pane="map" data-url="pages/map.html">Map</a>
+
+        <!-- objectives -->
+        <a href="#obj-orientation" class="kc-nav-item" data-pane="obj-orientation">Holiday Hack Orientation</a>
+        <a href="#obj-its-all-about-defang" class="kc-nav-item" data-pane="obj-its-all-about-defang">Its All About Defang</a>
+        <a href="#obj-neighborhood-watch-bypass" class="kc-nav-item" data-pane="obj-neighborhood-watch-bypass">Neighborhood Watch Bypass</a>
+        <a href="#obj-gift-tracking-port-mystery" class="kc-nav-item" data-pane="obj-gift-tracking-port-mystery">Santa's Gift-Tracking...</a>
+        <a href="#obj-visual-networking-thinger" class="kc-nav-item" data-pane="obj-visual-networking-thinger">Visual Networking Thinger</a>
+        <a href="#obj-visual-firewall-thinger" class="kc-nav-item" data-pane="obj-visual-firewall-thinger">Visual Firewall Thinger</a>
+        <a href="#obj-intro-to-nmap" class="kc-nav-item" data-pane="obj-intro-to-nmap">Intro to Nmap</a>
+        <a href="#obj-blob-storage-neighborhood" class="kc-nav-item" data-pane="obj-blob-storage-neighborhood">Blob Storage Challenge...</a>
+        <a href="#obj-spare-key" class="kc-nav-item" data-pane="obj-spare-key">Spare Key</a>
+        <a href="#obj-the-open-door" class="kc-nav-item" data-pane="obj-the-open-door">The Open Door</a>
+        <a href="#obj-owner" class="kc-nav-item" data-pane="obj-owner">Owner</a>
+        <a href="#obj-retro-recovery" class="kc-nav-item" data-pane="obj-retro-recovery">Retro Recovery</a>
+        <a href="#obj-mail-detective" class="kc-nav-item" data-pane="obj-mail-detective">Mail Detective</a>
+
+        <a href="#obj-idorable-bistro" class="kc-nav-item" data-pane="obj-idorable-bistro">IDORable Bistro</a>
+        <a href="#obj-dosis-network-down" class="kc-nav-item" data-pane="obj-dosis-network-down">Dosis Network Down</a>
+        <a href="#obj-rogue-gnome-identity-provider" class="kc-nav-item" data-pane="obj-rogue-gnome-identity-provider">Rogue Gnome Identity...</a>
+        <a href="#obj-quantgnome-leap" class="kc-nav-item" data-pane="obj-quantgnome-leap">Quantgnome Leap</a>
+        <a href="#obj-going-in-reverse" class="kc-nav-item" data-pane="obj-going-in-reverse">Going in Reverse</a>
+        <a href="#obj-gnome-tea" class="kc-nav-item" data-pane="obj-gnome-tea">Gnome Tea</a>
+        <a href="#obj-hack-a-gnome" class="kc-nav-item" data-pane="obj-hack-a-gnome">Hack-a-Gnome</a>
+        <a href="#obj-snowcat-rce" class="kc-nav-item" data-pane="obj-snowcat-rce">Snowcat RCE &amp; Priv Esc</a>
+        <a href="#obj-schrodingers-scope" class="kc-nav-item" data-pane="obj-schrodingers-scope">Schrödinger's Scope</a>
+        <a href="#obj-snowglobe-machine" class="kc-nav-item" data-pane="obj-snowglobe-machine">Find and Shutdown Frost...</a>
+        <a href="#obj-on-the-wire" class="kc-nav-item" data-pane="obj-on-the-wire">On the Wire</a>
+        <a href="#obj-free-ski" class="kc-nav-item" data-pane="obj-free-ski">Free Ski</a>
+        <a href="#obj-snowblind-ambush" class="kc-nav-item" data-pane="obj-snowblind-ambush">Snowblind Ambush</a>
+
+        <!-- bottom menu -->
+        <a href="#easter-eggs" class="kc-nav-item" data-pane="easter-eggs">Easter Eggs</a>
+        <a href="#exit" class="kc-nav-item kc-nav-exit" data-pane="exit">[Exit]</a>
+      </nav>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <main class="kc-main">
+      <header class="kc-main-header">
+        <span class="kc-main-header-title">SANS HOLIDAY HACK CHALLENGE 2025: REVENGE OF THE GNOME(s)</span>
+      </header>
+
+      <!-- HOME / INTRO (contains objectives overview only) -->
+      <section id="home" class="kc-pane kc-pane-active">
+        <div class="kc-section" style="margin-bottom: 0;">
+          <h1 class="kc-section-title">Introduction</h1>
+          <p class="kc-intro" style="margin-bottom: 1em;" >
+            Welcome to the
+            <span class="kc-highlight">2025 SANS Holiday Hack Challenge: REVENGE OF THE GNOME(s)</span>
+            challenge walkthrough.</p>
+            <p class="kc-intro" style="margin-bottom: 1em;">
+            This year’s HHC brings a plethora of new topics, including grand challenges provided by Microsoft and Google: defanging IOCs,
+            using SUDO, port discovery, forensic analysis, basic networking, firewall basics, Nmap basics, CURL basics, IDOR challenge, using POCs,
+            Java deserialization, Quantum computing, reverse engineering, hacking SQLI, Linux and PrivEsc, and WebApp Pentesting.</p>
+            
+          <p class="kc-intro"> This year's report is styled to resemble the in-game objective console providing a familiar in game feel while reading the write-up.
+          </p>
+        </div>
+
+        <!-- VIDEO + WELCOME SECTION (replaces Objectives Overview) -->
+        <section class="kc-section" style="margin-top: 0;">
+          <p class="kc-intro" style="margin-bottom: 0.8em;">
+            If you are new to HHC this year listen to 
+            <strong>Ed Skoudis, Chief Holiday Officer</strong>, 
+            in the Welcome and Game Orientation video to make the most of this cyber range.
+          </p>
+
+          <div class="kc-video-wrapper">
+
+          <iframe id="hhc-orientation-video"
+                  src="https://www.youtube.com/embed/mwvvwRfROm0?t=19s&enablejsapi=1"
+                  title="2025 SANS Holiday Hack Challenge Orientation – Ed Skoudis"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+          </div>
+
+          <p class="kc-intro" style="margin-top: 2em;">
+            Join us on Discord to chat with other players, share tips, and connect.<br>
+            <a href="https://discord.com/invite/Wbmx92rWW3" target="_blank" class="kc-link">
+              https://discord.com/invite/Wbmx92rWW3
+            </a>
+          </p>
+
+          <!-- Clean divider -->
+          <hr class="kc-divider" style="margin: 2em 0;">
+
+          <!-- Credits + Profile Picture -->
+          <div style="margin-top: 1em; display: flex; align-items: flex-start; gap: 1em; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 280px; color: #aaa; font-size: 0.95em;">
+              <p class="kc-intro" style="margin: 0.4em 0;">
+                Write-up by <strong>Jason Sosnowski</strong>
+              </p>
+              <p class="kc-intro" style="margin: 0.4em 0;">
+                In Game: <strong>PosTShell</strong>
+              </p>
+              <p class="kc-intro" style="margin: 0.4em 0;">
+                Discord: <a href="https://discord.com/users/501172220933046302" target="_blank" class="kc-link">CyberNinja</a>
+              </p>
+              <p class="kc-intro" style="margin: 0.4em 0;">
+                Email: <a href="mailto:Jason.sosnowski2015@gmail.com" class="kc-link">Jason.sosnowski2015@gmail.com</a>
+              </p>
+            </div>
+
+            <!-- Your PosTShell profile picture (the snowman) -->
+            <div style="flex-shrink: 0;">
+              <img src="ATATATTAATATATATATATATCGATATATATTATAGCCGATATATATATATTAATATATATATATATTAGCATATTAGCATATATATATATATCGATATATATATATGCTAATATTATA.png"
+                  alt="PosTShell profile picture"
+                  class="postshell-avatar">
+            </div>
+
+          </div>
+        </section>
+      </section>
+
+
+      <!-- STORY PAGE (container only) -->
+      <section id="story" class="kc-section kc-section-bordered kc-pane" data-loaded="false">
+        <div class="kc-dynamic">
+          <p class="kc-intro">Loading story...</p>
+        </div>
+      </section>
+
+      <!-- MAP PAGE (container only) -->
+      <section id="map" class="kc-section kc-section-bordered kc-pane" data-loaded="false">
+        <div class="kc-dynamic">
+        <p class="kc-intro">Placeholder: This is the MAP page. Place your map or neighborhood overview here.</p>
+        </div>
+      </section>
+
+      <!-- SETTINGS PAGE -->
+      <section id="settings" class="kc-section kc-section-bordered kc-settings kc-pane">
+        <h2 class="kc-section-title"></h2> <!---Place holder for Title-->
+
+        <div class="kc-settings-row">
+          <div class="kc-settings-label">Music Volume</div>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            class="kc-slider"
+            id="musicVolume"
+          />
+        </div>
+
+        <div class="kc-settings-row">
+          <div class="kc-settings-label">NPC Dialog Volume</div>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="80"
+            class="kc-slider"
+            id="npcVolume"
+          />
+        </div>
+
+        <div class="kc-settings-row">
+          <div class="kc-settings-label">SFX Volume</div>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="70"
+            class="kc-slider"
+            id="sfxVolume"
+          />
+        </div>
+
+        <div class="kc-settings-row kc-settings-toggle-row">
+          <div class="kc-settings-label">Music</div>
+          <div class="kc-toggle-group" data-setting="musicEnabled">
+            <button class="kc-toggle-button kc-toggle-active" data-value="on">
+              Enabled
+            </button>
+            <button class="kc-toggle-button" data-value="off">
+              Disabled
+            </button>
+          </div>
+        </div>
+
+        <div class="kc-settings-row kc-settings-toggle-row">
+          <div class="kc-settings-label">Auto-read NPC Dialog</div>
+          <div class="kc-toggle-group" data-setting="npcAutoRead">
+            <button class="kc-toggle-button kc-toggle-active" data-value="on">
+              Enabled
+            </button>
+            <button class="kc-toggle-button" data-value="off">
+              Disabled
+            </button>
+          </div>
+        </div>
+
+        <div class="kc-settings-row kc-settings-toggle-row">
+          <div class="kc-settings-label">SFX</div>
+          <div class="kc-toggle-group" data-setting="sfxEnabled" data-value="on">
+            <button class="kc-toggle-button kc-toggle-active" data-value="on">
+              Enabled
+            </button>
+            <button class="kc-toggle-button" data-value="off">
+              Disabled
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- OBJECTIVE PAGES (each its own pane) -->
+
+      <section id="obj-orientation" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Holiday Hack Orientation</h2>
+        <div class="kc-objective-meta">
+          <span>Location: Orientation Area</span>
+          <span>NPC: (fill in)</span>
+        </div>
+
+        <h4>Objective</h4>
+        <p>Paraphrase the in-game objective text here.</p>
+
+        <h4>Approach</h4>
+        <p>High-level summary of how you solved it.</p>
+
+        <h4>Steps</h4>
+        <ol>
+          <li>Step one…</li>
+          <li>Step two…</li>
+        </ol>
+
+        <h4>Key Commands</h4>
+        <pre><code class="kc-code">
+# put real commands here
+        </code></pre>
+      </section>
+
+      <!-- Placeholders for all the other objectives -->
+      <section id="obj-its-all-about-defang" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Its All About Defang</h2>
+        <p class="kc-intro">Placeholder: Write-up for "Its All About Defang" goes here.</p>
+      </section>
+
+      <section id="obj-neighborhood-watch-bypass" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Neighborhood Watch Bypass</h2>
+        <p class="kc-intro">Placeholder: Write-up for "Neighborhood Watch Bypass" goes here.</p>
+      </section>
+
+      <section id="obj-gift-tracking-port-mystery" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Santa's Gift-Tracking Port Mystery</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-visual-networking-thinger" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Visual Networking Thinger</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-visual-firewall-thinger" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Visual Firewall Thinger</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-intro-to-nmap" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Intro to Nmap</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-blob-storage-neighborhood" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Blob Storage Challenge (Neighborhood)</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-spare-key" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Spare Key</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-the-open-door" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">The Open Door</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-owner" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Owner</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-retro-recovery" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Retro Recovery</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-mail-detective" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Mail Detective</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-idorable-bistro" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">IDORable Bistro</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-dosis-network-down" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Dosis Network Down</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-rogue-gnome-identity-provider" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Rogue Gnome Identity Provider</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-quantgnome-leap" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Quantgnome Leap</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-going-in-reverse" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Going in Reverse</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-gnome-tea" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Gnome Tea</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-hack-a-gnome" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Hack-a-Gnome</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-snowcat-rce" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Snowcat RCE &amp; Priv Esc</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-schrodingers-scope" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Schrödinger's Scope</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-snowglobe-machine" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Find and Shutdown Frosty's Snowglobe Machine</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-on-the-wire" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">On the Wire</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-free-ski" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Free Ski</h2>
+        <p class="kc-intro">Placeholder: Write-up for this objective goes here.</p>
+      </section>
+
+      <section id="obj-snowblind-ambush" class="kc-section kc-pane">
+        <h2 class="kc-objective-title">Snowblind Ambush</h2>
+        <div class="kc-objective-meta">
+          <span>Location: Dosis Neighborhood</span>
+          <span>NPC: Torkel ("TGC")</span>
+        </div>
+
+        <h4>Objective</h4>
+        <p>Describe the goal in your own words.</p>
+
+        <h4>Approach</h4>
+        <p>Summarize recon, chatbot interactions, and how you stayed within rules.</p>
+
+        <h4>Steps</h4>
+        <ol>
+          <li>Recon / browsing / DevTools.</li>
+          <li>Testing safe prompts / payloads.</li>
+          <li>Deriving the final shutdown token.</li>
+        </ol>
+
+        <h4>Key Requests / Payloads</h4>
+        <pre><code class="kc-code">
+curl -X POST https://example/snowblind/api \
+  -H "Content-Type: application/json" \
+  -d '{"message": "example"}'
+        </code></pre>
+      </section>
+
+      <!-- EASTER EGGS PAGE -->
+      <section id="easter-eggs" class="kc-section kc-pane">
+        <h2 class="kc-section-title">Easter Eggs</h2>
+        <p class="kc-intro">
+          Placeholder: This is the Easter Eggs page. Collect fun secrets, hidden references,
+          and bonus challenges here.
+        </p>
+      </section>
+
+      <!-- EXIT PAGE -->
+      <section id="exit" class="kc-section kc-footer-section kc-pane">
+        <p>End of report. Press [Exit] in the left menu to return to reality.</p>
+      </section>
+    </main>
+  </div>
+
+<script>
+// YouTube Pause/Play when leaving or returning to Home tab – FIXED & ROBUST
+document.addEventListener("DOMContentLoaded", function () {
+  // Find ALL YouTube iframes on the Home pane (in case someone adds more later)
+  const homePane = document.getElementById("home");
+  const youtubeIframes = homePane.querySelectorAll('iframe[src*="youtube.com"]');
+
+  if (youtubeIframes.length === 0) return;
+
+  // Command sender that tries every iframe until one accepts it
+  const sendYouTubeCommand = (command) => {
+    youtubeIframes.forEach(iframe => {
+      try {
+        iframe.contentWindow.postMessage(
+          JSON.stringify({
+            event: "command",
+            func: command,   // "pauseVideo" or "playVideo"
+            args: ""
+          }),
+          "https://www.youtube.com"
+        );
+      } catch (e) { /* ignore cross-origin errors on non-YouTube frames */ }
+    });
+  };
+
+  const pauseVideo = () => sendYouTubeCommand("pauseVideo");
+  const playVideo  = () => sendYouTubeCommand("playVideo");
+
+  // Watch for ANY navigation away from home
+  document.querySelectorAll('.kc-nav-item[data-pane]').forEach(link => {
+    link.addEventListener('click', function () {
+      const targetPane = this.getAttribute('data-pane');
+      if (targetPane && targetPane !== 'home') {
+        pauseVideo();
+      } else if (targetPane === 'home') {
+        // Optional: resume when coming back to home
+        // playVideo();
+      }
+    });
+  });
+
+  // Also cover hash-based navigation / back-button / direct clicks on objective links
+  const observer = new MutationObserver(() => {
+    if (!homePane.classList.contains('kc-pane-active')) {
+      pauseVideo();
+    }
+  });
+
+  observer.observe(homePane, { attributes: true, attributeFilter: ["class"] });
+
+  // Safety net: pause if the page becomes hidden (tab switch, minimize, etc.)
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden && homePane.classList.contains('kc-pane-active')) {
+      pauseVideo();
+    }
+  });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  // -------------------------------
+  // Grab all switchable panes
+  // -------------------------------
+  var panes = document.querySelectorAll('.kc-pane');
+
+  function showPane(id) {
+    panes.forEach(function (pane) {
+      if (pane.id === id) {
+        pane.classList.add('kc-pane-active');
+      } else {
+        pane.classList.remove('kc-pane-active');
+      }
+    });
+  }
+
+  function activateNavForPane(id) {
+    document.querySelectorAll('.kc-nav-item').forEach(function (link) {
+      if (link.getAttribute('data-pane') === id) {
+        link.classList.add('kc-nav-active');
+      } else {
+        link.classList.remove('kc-nav-active');
+      }
+    });
+  }
+
+  // -------------------------------
+  // Lazy Load Support
+  // -------------------------------
+  function loadPaneContent(paneId, url) {
+    const pane = document.getElementById(paneId);
+    if (!pane) return;
+
+    // If pane already loaded once, don't fetch again
+    if (pane.dataset.loaded === 'true') return;
+
+    // Find .kc-dynamic inside pane OR use pane itself
+    const target = pane.querySelector('.kc-dynamic') || pane;
+
+    // Temporary loading message
+    target.innerHTML = '<p class="kc-intro">Loading...</p>';
+
+    // Load external partial
+    fetch(url, { cache: "no-store" })
+      .then(r => r.text())
+      .then(html => {
+        target.innerHTML = html;
+        pane.dataset.loaded = 'true';
+
+        // ✅ NEW: init map after the partial is inserted
+        if (paneId === "map" && typeof window.initMapPane === "function") {
+          window.initMapPane();
+        }
+      })
+      .catch(err => {
+        console.error('Error loading pane content:', err);
+        target.innerHTML = '<p class="kc-intro">Failed to load content.</p>';
+      });
+  }
+
+  // -------------------------------
+  // SFX support (Map + Story)
+  // -------------------------------
+  const SFX_FILES = {
+    map: [
+      "menu-map-01.mp3",
+      "menu-map-02.mp3",
+      "menu-map-03.mp3",
+      "menu-map-04.mp3"
+    ],
+    story: [
+      "page-flip-1.mp3",
+      "page-flip-3.mp3",
+      "page-flip-9.mp3",
+      "page-flip-16.mp3"
+    ],
+    objective: [
+      "walkie-talkie-chat-01.mp3",
+      "walkie-talkie-chat-02.mp3",
+      "walkie-talkie-chat-03.mp3",
+      "walkie-talkie-chat-04.mp3"
+    ]
+  };
+
+  const audioCache = {};
+
+  function getSfxEnabled() {
+    const group = document.querySelector('.kc-toggle-group[data-setting="sfxEnabled"]');
+    if (!group) return true; // default on
+    return (group.dataset.value || "on") !== "off";
+  }
+
+  function getSfxVolume() {
+    const slider = document.getElementById("sfxVolume");
+    const v = slider ? Number(slider.value) : 70;
+    return Math.max(0, Math.min(1, v / 100));
+  }
+
+  function playRandomSfx(kind) {
+    if (!getSfxEnabled()) return;
+    const files = SFX_FILES[kind];
+    if (!files || !files.length) return;
+
+    const file = files[Math.floor(Math.random() * files.length)];
+    let audio = audioCache[file];
+    if (!audio) {
+      audio = new Audio(file);
+      audioCache[file] = audio;
+    }
+
+    audio.pause();
+    audio.currentTime = 0;
+    audio.volume = getSfxVolume();
+    audio.play().catch(() => {}); // ignore autoplay errors
+  }
+
+  // -------------------------------
+  // Start on Home
+  // -------------------------------
+  showPane('home');
+
+  // -------------------------------
+  // Left Nav Handler
+  // -------------------------------
+  document.querySelectorAll('.kc-nav-item[data-pane]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var paneId = link.getAttribute('data-pane');
+      if (!paneId) return;
+
+      e.preventDefault();
+
+      // NEW: load external content if data-url is present
+      var url = link.getAttribute('data-url');
+      if (url) {
+        loadPaneContent(paneId, url);
+      }
+
+      showPane(paneId);
+      activateNavForPane(paneId);
+
+      // ✅ play tab SFX
+      if (paneId === "map") {
+        playRandomSfx("map");
+      } else if (paneId === "story") {
+        playRandomSfx("story");
+      } else if (paneId.startsWith("obj-")) {
+        playRandomSfx("objective");
+      }
+    });
+  });
+
+  // -------------------------------
+  // Objective links (from Home Page)
+  // -------------------------------
+  document.querySelectorAll('.kc-obj-link[data-pane]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var paneId = link.getAttribute('data-pane');
+      if (!paneId) return;
+      e.preventDefault();
+
+      // If objectives also gain lazy content later:
+      var url = link.getAttribute('data-url');
+      if (url) {
+        loadPaneContent(paneId, url);
+      }
+
+      showPane(paneId);
+      activateNavForPane(paneId);
+    });
+  });
+
+  // -------------------------------
+  // Settings toggle buttons
+  // -------------------------------
+  document.querySelectorAll('.kc-toggle-group').forEach(function (group) {
+    group.addEventListener('click', function (e) {
+      var btn = e.target.closest('.kc-toggle-button');
+      if (!btn) return;
+
+      group.querySelectorAll('.kc-toggle-button')
+        .forEach(function (b) { b.classList.remove('kc-toggle-active'); });
+
+      btn.classList.add('kc-toggle-active');
+      group.dataset.value = btn.dataset.value;
+    });
+  });
+
+});
+</script>
+
+<script>
+window.initMapPane = function () {
+  const viewport = document.getElementById("kc-map-viewport");
+  const content  = document.getElementById("kc-map-content");
+  const img      = document.getElementById("kc-map-img");
+  const labelsEl = document.getElementById("kc-map-labels");
+
+  if (!viewport || !content || !img || !labelsEl) return;
+
+  const LOCATIONS = [
+    { label: "Ed's Office",               x: 26, y: 14, target: null },
+    { label: "City Hall",                x: 26, y: 41, target: "obj-orientation" },
+    { label: "Retro Emporium",           x: 40, y: 28, target: "obj-retro-recovery" },
+    { label: "NetWars",                  x: 58, y: 22, target: null },
+    { label: "Grand Hotel Lobby",        x: 61, y: 36, target: null },
+    { label: "Sasabune",                 x: 90, y: 24, target: null },
+    { label: "Modern Scandinavia",       x: 24, y: 68, target: null },
+    { label: "24-Seven",                 x: 39, y: 66, target: null },
+    { label: "Data Center (Deprecated)", x: 67, y: 62, target: "obj-dosis-network-down" }
+  ];
+
+  let scale = 1;
+  let minScale = 0.2;   // refined after fitScale known
+  const maxScale = 4;
+
+  let tx = 0, ty = 0;
+  let isPanning = false;
+  let startX = 0, startY = 0, startTx = 0, startTy = 0;
+  let baseW = 0, baseH = 0;
+
+  function clamp(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
+
+  function updateLabelScale() {
+    // keep labels readable as you zoom
+    labelsEl.querySelectorAll('.kc-map-label').forEach(lab => {
+      lab.style.transform = `translate(-50%, -50%) scale(${1 / scale})`;
+    });
+  }
+
+  function buildLabels() {
+    labelsEl.innerHTML = "";
+    LOCATIONS.forEach(loc => {
+      const d = document.createElement("div");
+      d.className = "kc-map-label";
+      d.textContent = loc.label;
+      d.style.left = loc.x + "%";
+      d.style.top  = loc.y + "%";
+
+      d.addEventListener("click", () => {
+        if (!loc.target) return;
+        const navLink = document.querySelector(`.kc-nav-item[data-pane="${loc.target}"]`);
+        if (navLink) navLink.click();
+      });
+
+      labelsEl.appendChild(d);
+    });
+
+    updateLabelScale();
+  }
+  buildLabels();
+
+  function clampTranslate() {
+    const vw = viewport.clientWidth;
+    const vh = viewport.clientHeight;
+    const sw = baseW * scale;
+    const sh = baseH * scale;
+
+    if (sw <= vw) tx = (vw - sw) / 2;
+    else tx = clamp(tx, vw - sw, 0);
+
+    if (sh <= vh) ty = (vh - sh) / 2;
+    else ty = clamp(ty, vh - sh, 0);
+  }
+
+  function applyTransform() {
+    clampTranslate();
+    content.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+    updateLabelScale();
+  }
+
+  img.addEventListener("load", () => {
+    baseW = img.naturalWidth;
+    baseH = img.naturalHeight;
+
+    content.style.width  = baseW + "px";
+    content.style.height = baseH + "px";
+
+    const vw = viewport.clientWidth;
+    const vh = viewport.clientHeight;
+    const fitScale = Math.min(vw / baseW, vh / baseH);
+
+    // allow zooming out to half of "fit"
+    minScale = fitScale * 0.5;
+
+    const defaultZoom = 1;
+    scale = clamp(fitScale * defaultZoom, minScale, maxScale);
+
+    tx = (vw - baseW * scale) / 2;
+    ty = (vh - baseH * scale) / 2;
+
+    applyTransform();
+  });
+
+  if (img.complete) img.dispatchEvent(new Event("load"));
+
+  viewport.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    const rect = viewport.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+
+    const direction = e.deltaY > 0 ? -1 : 1;
+    const factor = direction > 0 ? 1.12 : 0.88;
+
+    const newScale = clamp(scale * factor, minScale, maxScale);
+    const sf = newScale / scale;
+
+    tx = mx - sf * (mx - tx);
+    ty = my - sf * (my - ty);
+    scale = newScale;
+
+    applyTransform();
+  }, { passive: false });
+
+  viewport.addEventListener("pointerdown", (e) => {
+    isPanning = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    startTx = tx;
+    startTy = ty;
+    viewport.setPointerCapture(e.pointerId);
+  });
+
+  viewport.addEventListener("pointermove", (e) => {
+    if (!isPanning) return;
+    tx = startTx + (e.clientX - startX);
+    ty = startTy + (e.clientY - startY);
+    applyTransform();
+  });
+
+  viewport.addEventListener("pointerup", () => { isPanning = false; });
+  viewport.addEventListener("pointercancel", () => { isPanning = false; });
+};
+</script>
+
+</body>
+</html>

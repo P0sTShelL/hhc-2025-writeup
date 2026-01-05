@@ -1,0 +1,478 @@
+<div class="kc-section" style="margin-bottom: 0;">
+  <h1 class="kc-section-title">Its all about Defang</h1>
+
+  <!-- Difficulty + Location -->
+  <div class="kc-objective-meta kc-objective-meta--stacked">
+    <div class="kc-meta-line kc-difficulty">
+      <span class="kc-meta-label">Difficulty:</span>
+      <span class="kc-difficulty-scale"
+            aria-label="Difficulty 1 out of 5 snowflakes">
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+      </span>
+    </div>
+
+    <div class="kc-meta-line kc-location">
+      <span class="kc-meta-label">Location:</span>
+      <span class="kc-meta-value">Ed's Office</span>
+    </div>
+  </div>
+
+  <!-- Objective line -->
+  <p class="kc-objective-summary kc-meta-line">
+    <span class="kc-meta-label">Objective:</span>
+    <span class="kc-meta-value">
+      Find Ed Skoudis upstairs in City Hall and help him troubleshoot a clever phishing tool in his cozy office.
+    </span>
+  </p>
+
+  <!-- Conversation banner -->
+  <div class="kc-convo-header">
+    <span class="kc-convo-icon">
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Ed Skoudis Conversation:</span>
+  </div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="edskoudis-avatar.gif"
+           alt="Ed Skoudis avatar">
+      <div class="kc-convo-name">Ed Skoudis</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        I'm the Founder of Counter Hack Innovations, the team that brings you the SANS Holiday Hack Challenge for the last 22 years.
+      </p>
+      <p>
+        I'm also the President of the SANS Technology Institute College, which has over 2,300 students studying for their Bachelor's Degrees, Master's Degrees, and various certificates.
+      </p>
+      <p>
+        I was the original author of the SANS SEC504 (Incident Handling and Hacker Attacks) and SANS SEC560 (Enterprise Penetration Testing) courses.
+      </p>
+      <p>
+        I love Capture the Flag games and puzzles.
+      </p>
+      <p>
+        I've got a steampunk office filled with secret rooms, and I collect antique crypto systems and communication technologies.
+      </p>
+      <p>
+        I've got an original Enigma machine (A726, from the early war years), a leaf of the Gutenberg Bible (1 John 2:3 to 4:16) from 1455, and a Kryha Liliput from the 1920s.
+      </p>
+      <p>
+        The team has been working on this new SOC tool that helps triage phishing emails...and there are some...issues.
+        We have had some pretty sketchy emails coming through and we need to make sure we block ALL of the indicators of compromise. Can you help me? No pressure...
+      </p>
+
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div> <!-- /.kc-convo-text -->
+  </div>   <!-- /.kc-convo-bubble -->
+</div>     <!-- /.kc-objective-detail -->
+
+<!-- Hints header goes *after* the bubble -->
+<div class="kc-convo-header kc-hints-header">
+  <span class="kc-convo-icon kc-hints-icon">
+    <i class="fas fa-lightbulb" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Hints:</span>
+</div>
+
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Extract IOCs</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <p>
+    Remember, the new Phishing Threat Analysis Station (PTAS) is still under construction.
+    Even though the regex patterns are provided, they haven't been fine tuned.
+    Some of the matches may need to be manually removed.
+  </p>
+</div>
+
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Defang All The Thingz</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <p>
+    The PTAS does a pretty good job at defanging, however, the feature we are still working
+    on is one that defangs ALL scenarios. For now, you will need to write a custom
+    <span class="kc-hint-sed">sed</span> command combining all defang options.
+  </p>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-workflow-header">
+  <span class="kc-workflow-icon">
+    <i class="fas fa-tasks" aria-hidden="true"></i>
+  </span>
+  <span class="kc-workflow-title">Working through the Challenge:</span>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+  Let&apos;s get into defanging these sketchy emails. Clicking on the terminal gives us access
+  to the Phishing Threat Analysis Station (PTAS). Here we can analyze and defang phishing
+  emails by identifying Indicators of Compromise (IOCs) such as domains, IP addresses,
+  URLs, and email addresses.
+  </p>
+</div>
+
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Defang_start2.png"
+      alt="Dosis Neighborhood SOC – Phishing Threat Analysis Station (PTAS) interface"
+      class="kc-ptas-thumb"
+      data-full-src="Defang_start2.png"
+    >
+    <button class="kc-ptas-enlarge-btn" type="button" data-enlarge-target="Defang_start2.png">
+      <i class="fas fa-expand-arrows-alt" aria-hidden="true"></i>
+      <span>Enlarge</span>
+    </button>
+  </div>
+  <div class="kc-ptas-caption">
+    Phishing Threat Analysis Station (PTAS) interface when you first open the terminal.
+  </div>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+  Before we tackle step one Extract IOC's let's take a look at the reference page.
+  </p>
+</div>
+
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Defang_reference.png"
+      alt="PTAS Reference tab showing regex patterns and sed commands for defanging"
+      class="kc-ptas-thumb"
+      data-full-src="Defang_reference.png"
+    >
+    <button class="kc-ptas-enlarge-btn" type="button"
+            data-enlarge-target="Defang_reference.png">
+      <i class="fas fa-expand-arrows-alt" aria-hidden="true"></i>
+      <span>Enlarge</span>
+    </button>
+  </div>
+  <div class="kc-ptas-caption">
+    PTAS Reference tab with common IOC regex patterns and sed commands for defanging.
+  </div>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">WRITE-UP NOTES</span>
+
+  <p class="kc-reference-links-intro">
+    Useful links from the reference page:
+  </p>
+
+  <ul class="kc-reference-links">
+    <li>
+      <a href="https://regex101.com/" target="_blank" rel="noopener noreferrer">
+        Regex101: Build &amp; Test Regex
+      </a>
+    </li>
+    <li>
+      <a href="https://regexr.com/" target="_blank" rel="noopener noreferrer">
+        RegExr: Learn, Build &amp; Test
+      </a>
+    </li>
+    <li>
+      <a href="https://www.regular-expressions.info/quickstart.html"
+         target="_blank" rel="noopener noreferrer">
+        Regex Quick Start Guide
+      </a>
+    </li>
+    <li>
+      <a href="https://gchq.github.io/CyberChef/#recipe=Defang_IP_Addresses()Defang_URL(true,true,true,'Valid%20domains%20and%20full%20URLs')&input=MS4xLjEuMQpodHRwczovL2djaHEuZ2l0aHViLmlvCmdjaHEuZ2l0aHViLmlv"
+         target="_blank" rel="noopener noreferrer">
+        CyberChef: Defang IOCs
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="kc-step-section">
+  <div class="kc-step-label">EXTRACT IOCS (STEP 1)</div>
+
+  <p class="kc-step-objective-text">
+    <span class="kc-step-objective">🚨 Step Objective: Extract IOCs 🚨</span>
+  </p>
+
+  <p>
+    This phishing email may be connected to the mysterious Gnome activities reported throughout
+    our neighborhood! Extracting IOCs (Indicators of Compromise) is essential to protect the
+    Counter Hack Crew and identify the threat actors behind this campaign. Your mission:
+  </p>
+
+  <ul class="kc-step-mission">
+    <li>Extract all suspicious domains, IPs, URLs, and email addresses.</li>
+    <li>Use the tabs below to extract each IOC type from the email. Be sure not to include legitimate assets!</li>
+  </ul>
+
+  <p class="kc-step-warning">
+    ⏰ Time is critical – the attackers might be planning something bigger
+  </p>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Review the suspicious email, identify IOCs, and create regex patterns to extract them. 
+  </p>
+</div>
+
+  <div class="kc-solution-header">
+    <span class="kc-solution-icon">
+      <i class="fas fa-check-circle" aria-hidden="true"></i>
+    </span>
+    <span class="kc-solution-title"><strong>SOLUTION TO EXTRACT IOCS (STEP 1)</strong></span>
+  </div>
+
+  <h3 class="kc-step-subtitle">DOMAINS</h3>
+  <p class="kc-step-small-label">Regex pattern to extract attacker domains:</p>
+
+  <div class="kc-code-block">
+    <pre><code id="kc-domains-regex">\b(?![A-Za-z0-9.-]*dosisneighborhood\.corp\b)(?=[A-Za-z0-9.-]*[A-Za-z][A-Za-z0-9.-]*\.)(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])\.)+(?!exe\b)[A-Za-z]{2,63}\b</code></pre>
+    <button class="kc-code-copy-btn"
+            type="button"
+            data-copy-target="#kc-domains-regex">
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+
+  <h3 class="kc-step-subtitle">IP ADDRESSES</h3>
+  <p class="kc-step-small-label">Regex pattern to extract malicious IP addresses:</p>
+
+  <div class="kc-code-block">
+    <pre><code id="kc-ip-regex">\b(?!10\.)(?:(?:25[0-5]|2[0-4]\d|1?\d{1,2})\.){3}(?:25[0-5]|2[0-4]\d|1?\d{1,2})\b</code></pre>
+    <button class="kc-code-copy-btn"
+            type="button"
+            data-copy-target="#kc-ip-regex">
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <h3 class="kc-step-subtitle">URLS</h3>
+  <p class="kc-step-small-label">Regex pattern to extract malicious URLs:</p>
+
+  <div class="kc-code-block">
+    <pre><code id="kc-url-regex">\bhttps?:\/\/(?:[A-Za-z0-9-]+\.)+[A-Za-z]{2,63}(?:\/[^\s&lt;&gt;'\"()]+)?</code></pre>
+    <button class="kc-code-copy-btn"
+            type="button"
+            data-copy-target="#kc-url-regex">
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <h3 class="kc-step-subtitle">EMAIL ADDRESSES</h3>
+  <p class="kc-step-small-label">Regex pattern to extract malicious email addresses:</p>
+
+  <div class="kc-code-block">
+    <pre><code id="kc-email-regex">\b[A-Za-z0-9._%+-]+@(?![A-Za-z0-9.-]+\.corp\b)[A-Za-z0-9.-]+\.[A-Za-z]{2,63}\b</code></pre>
+    <button class="kc-code-copy-btn"
+            type="button"
+            data-copy-target="#kc-email-regex">
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <div class="kc-note-bubble">
+    <span class="kc-note-label">Write-up notes</span>
+    <p>
+    As we submit each regex in its respective tab, we can see the Email Viewer updating with the extracted IOCs. 
+    </p>
+  </div>
+
+
+  <div class="kc-ptas-screenshot">
+    <div class="kc-ptas-image-wrapper">
+      <img
+        src="Email_viewer.png"
+        alt="Email Viewer panel showing extracted IOCs highlighted in the phishing email"
+        class="kc-ptas-thumb"
+        data-full-src="Email_viewer.png"
+      >
+      <button class="kc-ptas-enlarge-btn" type="button"
+              data-enlarge-target="Email_viewer.png">
+        <i class="fas fa-expand-arrows-alt" aria-hidden="true"></i>
+        <span>Enlarge</span>
+      </button>
+    </div>
+    <div class="kc-ptas-caption">
+      Email Viewer updating to highlight extracted domains, IPs, URLs, and email addresses.
+    </div>
+  </div>
+</div>
+
+<div class="kc-step-section">
+  <div class="kc-step-label">DEFANG &amp; REPORT (STEP 2)</div>
+
+  <p class="kc-step-objective-text">
+    <span class="kc-step-objective">🚨 Step Objective: Defang IOCs 🚨</span>
+  </p>
+
+  <p>
+    Defanging IOCs (Indicators of Compromise) is crucial to ensure that malicious content cannot be
+    accidentally activated. This phishing campaign may be connected to the recent Gnome activities!
+    Your mission:
+  </p>
+
+  <ul class="kc-step-mission">
+    <li>Replace dots/periods with <code>[.]</code></li>
+    <li>Replace <code>@</code> in email addresses with <code>[@]</code></li>
+    <li>Replace <code>http</code> with <code>hxxp</code> in URLs</li>
+    <li>Replace <code>://</code> with <code>[://]</code> in URLs</li>
+    <li>Submit the defanged IOCs to the Counter Hack Security Team</li>
+  </ul>
+
+  <p class="kc-step-warning">
+    ⏰ Act fast – we don&apos;t know who is behind this phishing campaign!
+  </p>
+
+  <div class="kc-note-bubble">
+    <span class="kc-note-label">Write-up notes</span>
+    <p>
+      Now let&apos;s create a sed command to defang all the selected IOCs in one go.
+    </p>
+  </div>
+
+  <div class="kc-solution-header">
+    <span class="kc-solution-icon">
+      <i class="fas fa-check-circle" aria-hidden="true"></i>
+    </span>
+    <span class="kc-solution-title"><strong>SOLUTION TO DEFANG &amp; REPORT (STEP 2)</strong></span>
+  </div>
+
+  <h3 class="kc-step-subtitle">Custom SED Command(s)</h3>
+  <p class="kc-step-small-label">
+    Use this combined <span class="kc-hint-sed">sed</span> command to defang all IOCs in one pass:
+  </p>
+
+  <div class="kc-code-block">
+    <pre><code id="kc-defang-sed">s/http/hxxp/g; s/:\/\//[://]/g; s/\./[.]/g; s/@/[@]/g</code></pre>
+    <button class="kc-code-copy-btn"
+            type="button"
+            data-copy-target="#kc-defang-sed">
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+  After running our custom sed command, the PTAS shows the following defanged IOCs:
+  </p>
+</div>
+
+<div class="kc-defanged-panel">
+  <div class="kc-defanged-group kc-defanged-group--domains">
+    <div class="kc-defanged-heading">Domains (3)</div>
+    <ul>
+      <li>icicleinnovations[.]mail</li>
+      <li>mail[.]icicleinnovations[.]mail</li>
+      <li>core[.]icicleinnovations[.]mail</li>
+    </ul>
+  </div>
+
+  <div class="kc-defanged-group kc-defanged-group--ips">
+    <div class="kc-defanged-heading">IP Addresses (2)</div>
+    <ul>
+      <li>172[.]16[.]254[.]1</li>
+      <li>192[.]168[.]1[.]1</li>
+    </ul>
+  </div>
+
+  <div class="kc-defanged-group kc-defanged-group--urls">
+    <div class="kc-defanged-heading">URLs (2)</div>
+    <ul>
+      <li>hxxps[://]icicleinnovations[.]mail/renovation-planner[.]exe</li>
+      <li>hxxps[://]icicleinnovations[.]mail/upload_photos</li>
+    </ul>
+  </div>
+
+  <div class="kc-defanged-group kc-defanged-group--emails">
+    <div class="kc-defanged-heading">Email Addresses (2)</div>
+    <ul>
+      <li>sales[@]icicleinnovations[.]mail</li>
+      <li>info[@]icicleinnovations[.]mail</li>
+    </ul>
+  </div>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+  Now it&apos;s time to send our extracted, defanged IOCs to the Counter Hack Security Team.
+  </p>
+</div>
+
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Defang_win2.png"
+      alt="PTAS success screen showing the defanged report submitted to the Counter Hack Security Team"
+      class="kc-ptas-thumb"
+      data-full-src="Defang_win2.png"
+    >
+    <button class="kc-ptas-enlarge-btn" type="button"
+            data-enlarge-target="Defang_win2.png">
+      <i class="fas fa-expand-arrows-alt" aria-hidden="true"></i>
+      <span>Enlarge</span>
+    </button>
+  </div>
+  <div class="kc-ptas-caption">
+    Final PTAS confirmation after successfully defanging and submitting all IOCs.
+  </div>
+</div>
+
+<!-- Solution dialogue banner -->
+<div class="kc-convo-header kc-solution-dialog-header">
+  <span class="kc-convo-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Solution dialogue:</span>
+</div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="edskoudis-avatar.gif"
+           alt="Ed Skoudis avatar">
+      <div class="kc-convo-name">Ed Skoudis</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        Well you just made that look like a piece of cake! Though I prefer cookies...I know where
+        to find the best in town!
+      </p>
+      <p>
+        Thanks again! See ya &apos;round!
+      </p>
+
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn kc-convo-play-btn-complete" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

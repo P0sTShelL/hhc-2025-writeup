@@ -1,0 +1,405 @@
+<div class="kc-section" style="margin-bottom: 0;">
+  <h1 class="kc-section-title">Visual Networking Thinger</h1>
+
+  <!-- Difficulty + Location -->
+  <div class="kc-objective-meta kc-objective-meta--stacked">
+    <div class="kc-meta-line kc-difficulty">
+      <span class="kc-meta-label">Difficulty:</span>
+      <span class="kc-difficulty-scale"
+            aria-label="Difficulty 1 out of 5 snowflakes">
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+      </span>
+    </div>
+
+    <div class="kc-meta-line kc-location">
+      <span class="kc-meta-label">Location:</span>
+      <span class="kc-meta-value">The Neighborhood (Frozen Pond by the Hockey Rink)</span>
+    </div>
+  </div>
+
+  <!-- Objective line -->
+  <p class="kc-objective-summary kc-meta-line">
+    <span class="kc-meta-label">Objective:</span>
+    <span class="kc-meta-value">
+      Skate over to Jared at the frozen pond for some network magic and learn the ropes by the hockey rink.
+    </span> 
+  </p>
+
+    <!-- Conversation banner -->
+  <div class="kc-convo-header">
+    <span class="kc-convo-icon">
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Jared Folkins Conversation:</span>
+  </div>
+
+  <div class="kc-objective-detail kc-objective-detail--no-panel">
+    <div class="kc-convo-bubble">
+      <div class="kc-convo-avatar">
+        <img src="jaredfolkins-avatar.gif"
+             alt="Jared Folkins avatar">
+        <div class="kc-convo-name">Jared Folkins</div>
+      </div>
+
+      <div class="kc-convo-text">
+        <p>
+          Santa's got the right idea about giving, and I'm excited to give you a fantastic way to learn networking fundamentals!
+        </p>
+        <p>
+          This interactive visualization I've created shows you exactly how packets travel, how protocols work, and why networks behave the way they do.
+        </p>
+        <p>
+          It's way better than staring at boring textbooks - you can actually see what's happening!
+        </p>
+        <p>
+          Want to dive into some hands-on network exploration?
+        </p>
+
+        <div class="kc-convo-actions">
+          <button class="kc-convo-play-btn" type="button"
+                  data-npc-audio="visual-networking-thinger">
+            <i class="fas fa-play" aria-hidden="true"></i>
+            <span>Play Audio</span>
+          </button>
+        </div>
+      </div> <!-- /.kc-convo-text -->
+    </div>   <!-- /.kc-convo-bubble -->
+  </div>     <!-- /.kc-objective-detail -->
+
+<!-- Hints header -->
+<div class="kc-convo-header kc-hints-header">
+  <span class="kc-convo-icon kc-hints-icon">
+    <i class="fas fa-lightbulb" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Hints:</span>
+</div>
+
+<!-- Hint 1 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Visual Networking Thinger</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Visual Networking Thinger</div>
+  <p>
+    This terminal has built-in hints!
+  </p>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-workflow-header">
+<span class="kc-workflow-icon">
+    <i class="fas fa-tasks" aria-hidden="true"></i>
+</span>
+<span class="kc-workflow-title">Working through the Challenge:</span>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+  Click on the Cranberry Pi terminal, we are presented with an interactive networking visualization tool. The challenges are pretty straightforward; we just need to configure and submit to solve each
+  challenge.
+  </p>
+</div> 
+
+  <!-- Challenge 1: DNS Lookup -->
+  <h2 class="kc-challenge-title">Challenge 1: DNS Lookup</h2>
+
+  <div class="kc-note-bubble">
+    <span class="kc-note-label">Write-up notes</span>
+    <p>
+      For Challenge 1, we use DNS to find the IP address of
+      <code>visual-networking.holidayhackchallenge.com</code>. Set the port to
+      <code>53</code>, the domain name to
+      <code>visual-networking.holidayhackchallenge.com</code>, and the request
+      type to <code>A</code>, then submit the DNS request to see the IPv4
+      address returned.
+    </p>
+  </div>
+
+<!-- Challenge 1 image + enlarge, using the PTAS classes -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Challenge1_DNS.png"
+      alt="Challenge 1 – DNS Lookup solution for visual-networking.holidayhackchallenge.com"
+      class="kc-ptas-thumb"
+    />
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      aria-label="Enlarge Challenge 1 DNS screenshot"
+    >
+      <i class="fas fa-expand-arrows-alt" aria-hidden="true"></i>
+      <span>Enlarge</span>
+    </button>
+  </div>
+
+  <p class="kc-ptas-caption">
+    Challenge 1 – DNS Lookup solution showing a successful A record resolution
+    for <code>visual-networking.holidayhackchallenge.com</code>.
+  </p>
+</div>
+
+<h2 class="kc-challenge-title">Challenge 2: TCP 3-Way Handshake</h2>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    In this step, we build a classic TCP 3-way handshake between the client and
+    the server so they can establish a reliable connection.
+  </p>
+  <p>
+    First, configure the <strong>client → server</strong> packet with the
+    <code>SYN</code> flag set. Next, configure the
+    <strong>server → client</strong> response with
+    <code>SYN</code> and <code>ACK</code> set. Finally, the third
+    <strong>client → server</strong> packet with the <code>ACK</code> flag.
+  </p>
+  <p>
+    Once the packets are in the <code>SYN → SYN/ACK → ACK</code> order challenge 3 will unlock.
+  </p>
+</div>
+
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Challenge2.png"
+      alt="Challenge 2 – TCP 3-Way Handshake solution"
+      class="kc-ptas-thumb"
+    />
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      aria-label="Enlarge Challenge 2 TCP 3-Way Handshake screenshot"
+    >
+      <i class="fas fa-expand-arrows-alt" aria-hidden="true"></i>
+      <span>Enlarge</span>
+    </button>
+  </div>
+
+  <p class="kc-ptas-caption">
+    Challenge 2 – TCP 3-Way Handshake solution showing the SYN → SYN/ACK → ACK
+    exchange between client and server.
+  </p>
+</div>
+
+<h2 class="kc-challenge-title">Challenge 3: HTTP GET Request</h2>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    For this step, we use our newly established TCP connection to send a
+    simple HTTP GET request and retrieve the web page.
+  </p>
+  <p>
+    On the <strong>Client</strong> side, configure the request as follows:
+  </p>
+  <ul>
+    <li><strong>HTTP Verb:</strong> <code>GET</code></li>
+    <li><strong>HTTP Version:</strong> <code>HTTP/1.0</code></li>
+    <li><strong>Host:</strong> <code>visual-networking.holidayhackchallenge.com</code></li>
+    <li><strong>User-Agent:</strong> leave blank (not required for this step)</li>
+  </ul>
+  <p>
+    After clicking <strong>Send HTTP Request</strong>, the server responds
+    with an HTTP <code>302 Found</code> redirect to the HTTPS version of the
+    site. When you see the success message and the green
+    “✔ HTTP Challenge Complete!” text, Challenge 3 is solved.
+  </p>
+</div>
+
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Challenge3.png"
+      alt="Challenge 3 – HTTP GET Request solution"
+      class="kc-ptas-thumb"
+    />
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      aria-label="Enlarge Challenge 3 HTTP GET Request screenshot"
+    >
+      <i class="fas fa-expand-arrows-alt" aria-hidden="true"></i>
+      <span>Enlarge</span>
+    </button>
+  </div>
+
+  <p class="kc-ptas-caption">
+    Challenge 3 – HTTP GET Request solution showing a valid GET / HTTP/1.0
+    request to visual-networking.holidayhackchallenge.com and the 302 redirect
+    response.
+  </p>
+</div>
+
+<h2 class="kc-challenge-title">Challenge 4: TLS Handshake</h2>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Now that we’ve sent a basic HTTP request, the next step is to secure the
+    connection with <strong>TLS</strong>. In this challenge, we drag and drop
+    the TLS messages into the correct order to build a proper handshake
+    between the client and the secure web server.
+  </p>
+  <p>
+    We’re connecting to
+    <code>https://visual-networking.holidayhackchallenge.com</code>. The
+    correct sequence of TLS messages is:
+  </p>
+  <ol>
+    <li><strong>Client Hello →</strong> the client proposes supported ciphers and parameters</li>
+    <li><strong>← Server Hello</strong> the server selects the cipher suite</li>
+    <li><strong>← Certificate</strong> the server sends its SSL/TLS certificate</li>
+    <li><strong>Client Key Exchange →</strong> the client sends key material used to derive the shared secret</li>
+    <li><strong>← Server Change Cipher Spec</strong> the server indicates that subsequent messages are encrypted</li>
+    <li><strong>← Finished</strong> the server confirms the handshake is complete</li>
+  </ol>
+  <p>
+    Once the messages are in this order, the interface shows
+    <strong>“✔ TLS Handshake Complete!”</strong>, meaning our HTTP traffic can
+    now travel inside an encrypted TLS tunnel.
+  </p>
+</div>
+
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Challenge4.png"
+      alt="Challenge 4 – TLS Handshake solution layout"
+      class="kc-ptas-thumb"
+    />
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      aria-label="Enlarge Challenge 4 TLS Handshake screenshot"
+    >
+      <i class="fas fa-expand-arrows-alt" aria-hidden="true"></i>
+      <span>Enlarge</span>
+    </button>
+  </div>
+
+  <p class="kc-ptas-caption">
+    Challenge 4 – TLS Handshake solution showing the correct sequence of TLS
+    messages and a completed secure connection.
+  </p>
+</div>
+
+<h2 class="kc-challenge-title">Challenge 5: HTTPS GET Request</h2>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    With the TLS tunnel established in <strong>Challenge 4</strong>, we can now send an
+    HTTPS request over the secure connection. For this step, we keep things very
+    similar to the earlier HTTP challenge, but make sure we’re talking to the
+    <strong>HTTPS</strong> service instead.
+  </p>
+  <p>
+    In the <em>Client</em> panel, set:
+  </p>
+  <ul>
+    <li><strong>HTTP Verb:</strong> <code>GET</code></li>
+    <li><strong>HTTP Version:</strong> <code>HTTP/1.0</code></li>
+    <li><strong>Host:</strong> <code>visual-networking.holidayhackchallenge.com</code></li>
+    <li><strong>User-Agent:</strong> leave blank (the challenge doesn’t require a value)</li>
+  </ul>
+  <p>
+    Then click <strong>Send HTTPS Request</strong>. A valid 200-style response is returned
+    on the right, and the status box at the bottom reports that the
+    <strong>HTTPS Challenge</strong> is complete. At this point we’ve walked the full path:
+    DNS → TCP → HTTP → TLS → HTTPS.
+  </p>
+</div>
+
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Challenge5.png"
+      alt="Challenge 5 – HTTPS GET Request solution for visual-networking.holidayhackchallenge.com."
+      class="kc-ptas-thumb"
+    />
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      aria-label="Enlarge Challenge 5 HTTPS GET Request screenshot"
+    >
+      <i class="fas fa-expand-arrows-alt" aria-hidden="true"></i>
+      <span>Enlarge</span>
+    </button>
+  </div>
+
+  <p class="kc-ptas-caption">
+    Challenge 5 – HTTPS GET Request solution showing a successful secure HTTPS
+    request to <code>visual-networking.holidayhackchallenge.com</code> over TLS.
+  </p>
+</div>
+
+<h2 class="kc-challenge-title">Victory!</h2>
+
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Victory.png"
+      alt="Victory banner shown after completing all Visual Networking Thinger challenges."
+      class="kc-ptas-thumb"
+    />
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      aria-label="Enlarge Victory banner screenshot"
+    >
+      <i class="fas fa-expand-arrows-alt" aria-hidden="true"></i>
+      <span>Enlarge</span>
+    </button>
+  </div>
+
+  <p class="kc-ptas-caption">
+    Victory screen displayed after completing all Visual Networking Thinger challenges.
+  </p>
+</div>
+
+<!-- Solution dialogue banner -->
+<div class="kc-convo-header kc-solution-dialog-header">
+  <span class="kc-convo-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Solution dialogue:</span>
+</div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="jaredfolkins-portrait.png"
+           alt="Jared Folkins avatar">
+      <div class="kc-convo-name">Jared Folkins</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        Wonderful! You've mastered those networking basics beautifully.
+      </p>
+      <p>
+        Now you can see how all the pieces of the network puzzle fit together - it's truly better to give knowledge than to keep it to yourself!
+      </p>
+
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn kc-convo-play-btn-complete" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>       <!-- /.kc-section -->
+

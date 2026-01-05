@@ -1,0 +1,397 @@
+<div class="kc-section" style="margin-bottom: 0;">
+  <h1 class="kc-section-title">Intro to Nmap</h1>
+
+  <!-- Difficulty + Location -->
+  <div class="kc-objective-meta kc-objective-meta--stacked">
+    <div class="kc-meta-line kc-difficulty">
+      <span class="kc-meta-label">Difficulty:</span>
+      <span class="kc-difficulty-scale"
+            aria-label="Difficulty 1 out of 5 snowflakes">
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+      </span>
+    </div>
+
+    <div class="kc-meta-line kc-location">
+      <span class="kc-meta-label">Location:</span>
+      <span class="kc-meta-value">The Grand Hotel (Parking Lot)</span>
+    </div>
+  </div>
+
+  <!-- Objective line -->
+  <p class="kc-objective-summary kc-meta-line">
+    <span class="kc-meta-label">Objective:</span>
+    <span class="kc-meta-value">
+      Meet Eric in the hotel parking lot for Nmap know-how and scanning secrets. Help him connect to the wardriving rig on his motorcycle!
+    </span>
+  </p>
+
+  <!-- Conversation banner -->
+  <div class="kc-convo-header">
+    <span class="kc-convo-icon">
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Eric Pursley Conversation:</span>
+  </div>
+
+  <div class="kc-objective-detail kc-objective-detail--no-panel">
+    <div class="kc-convo-bubble">
+      <div class="kc-convo-avatar">
+        <img src="ericpursley-avatar.gif"
+             alt="Eric Pursley avatar">
+        <div class="kc-convo-name">Eric Pursley</div>
+      </div>
+
+      <div class="kc-convo-text">
+        <p>
+          Hey, I'm Eric. As you can see, I'm an avid motorcyclist. And I love traveling the world with my wife.
+        </p>
+        <p>
+          I enjoy being creative and making things. For example, a cybersecurity tool called
+          <a
+            href="https://github.com/sl3yE/Zero-E"
+            class="kc-link-deep"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Zero-E
+          </a>
+          that I'm quite proud of, and the Baldur's Gate 3 mod called
+          <a
+            href="https://www.nexusmods.com/baldursgate3/mods/7755?tab=description"
+            class="kc-link-deep"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Manaflare
+          </a>.
+          I'm even in the BG3 credits!
+        </p>
+        <p>
+          I also make tools, ranges, and HHC worlds for Counter Hack. Yup, including the one you're in right now.
+        </p>
+        <p>
+          But most of the time, I'm helping organizations in the real world be more secure. I do a bunch of different kinds of pentesting, but speciailize in network and physical.
+        </p>
+        <p>
+          Some advice: stay laser-focused on your goals and don't let the distractions life throws at you lead you astray. That's how I ended up at Counter Hack!
+        </p>
+        <p>
+          Speaking of tools, let me introduce you to one of the most essential weapons in any pentester's arsenal: Nmap.
+        </p>
+        <p>
+          It's like having X-ray vision for networks, and I've set up a perfect environment for you to learn the fundamentals.
+        </p>
+        <p>
+          Help me find and connect to the wardriving rig's service on my motorcycle!
+        </p>
+
+        <div class="kc-convo-actions">
+          <button class="kc-convo-play-btn" type="button"
+                  data-npc-audio="intro-to-nmap">
+            <i class="fas fa-play" aria-hidden="true"></i>
+            <span>Play Audio</span>
+          </button>
+        </div>
+      </div> <!-- /.kc-convo-text -->
+    </div>   <!-- /.kc-convo-bubble -->
+  </div>     <!-- /.kc-objective-detail -->
+
+  <!-- Hints header -->
+  <div class="kc-convo-header kc-hints-header">
+    <span class="kc-convo-icon kc-hints-icon">
+      <i class="fas fa-lightbulb" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Hints:</span>
+  </div>
+
+<!-- Hint 1 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Nmap Documentation</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Intro to Nmap</div>
+  <p>
+    Nmap is pretty straightforward to use for basic port scans. Check out its
+    <a
+      href="https://nmap.org/book/man.html"
+      class="kc-link-deep"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      documentation
+    </a>!
+  </p>
+</div>
+
+<!-- Hint 2 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Ncat Documentation</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Intro to Nmap</div>
+  <p>
+    You may also want to check out the
+    <a
+      href="https://nmap.org/ncat/guide/"
+      class="kc-link-deep"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Ncat Guide
+    </a>.
+  </p>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-workflow-header">
+  <span class="kc-workflow-icon">
+    <i class="fas fa-tasks" aria-hidden="true"></i>
+  </span>
+  <span class="kc-workflow-title">Working through the Challenge:</span>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <div class="kc-workflow-row">
+    <div class="kc-workflow-text">
+      <p class="kc-workflow-intro">
+        To kick start this challenge click on motorcycle! 
+      </p>
+    </div>
+
+    <div class="kc-workflow-illustration">
+      <img src="eric-moto.png"
+          alt="moto bike"
+          class="kc-workflow-image">
+    </div>
+  </div>
+</div>
+
+<div class="kc-terminal-header">
+  <span class="kc-terminal-icon">
+    <img src="cranpi.png" alt="Cranberry Pi terminal icon">
+  </span>
+  <span class="kc-terminal-title">Cranberry Pi Terminal</span>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text">
+<span class="term-blue">Welcome to the Intro to Nmap terminal!</span>  We will learn some Nmap basics by running commands to answer the questions asked, which will guide us in finding and connecting to the wardriving rig&apos;s service.
+Run the command <span class="term-green">"hint"</span> to receive a hint.
+
+────────────────────────────────────────────────────────────────────────────────────────
+
+Type <span class="term-yellow">[y]es</span> to begin:
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Type <code>y</code> to begin the challenge.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-question">1) When run without any options, nmap performs a TCP port scan of the top
+   1000 ports. Run a default nmap scan of 127.0.12.25 and see which port is open.</span>
+<span class="term-symbol">
+  ────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">elfe3A0889583b3c</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Enter <code>nmap 127.0.12.25</code> to perform a default scan of the target host.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-question2">2) Sometimes the top 1000 ports are not enough. Run an nmap scan of all TCP
+   ports on 127.0.12.25 and see which port is open.</span>
+<span class="term-symbol">
+  ────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">elfe3A0889583b3c</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span> nmap 127.0.12.25
+</span>Starting Nmap 7.80 ( https://nmap.org ) at 2025-12-09 20:59 UTC
+Nmap scan report for 127.0.12.25
+Host is up (0.000063s latency).
+Not shown: 999 closed ports
+PORT     STATE SERVICE
+8080/tcp open  http-proxy
+
+Nmap done: 1 IP address (1 host up) scanned in 0.06 seconds
+
+<span class="term-hostline"><span class="term-user-nmap">elfe3A0889583b3c</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    With the default scan we discovered port 8080 is opn, lets use <code>nmap 127.0.12.25 -p-</code> to scan all TCP ports.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-question">3) Nmap can also scan a range of IP addresses.  Scan the range
+   127.0.12.20 - 127.0.12.28 and see which has a port open.</span>
+<span class="term-symbol">
+  ────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">elf@556ab57f3bef</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span> nmap 127.0.12.25 -p-
+</span>Starting Nmap 7.80 ( https://nmap.org ) at 2025-12-10 17:45 UTC
+Nmap scan report for 127.0.12.25
+Host is up (0.000054s latency).
+Not shown: 65534 closed ports
+PORT      STATE SERVICE
+24601/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 1.72 seconds
+
+<span class="term-hostline"><span class="term-user-nmap">elf@556ab57f3bef</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    To scan the IP range 127.0.12.20 - 127.0.12.28, use the command <code>nmap 127.0.12.20-28</code>.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-question2">4) Nmap has a version detection engine, to help determine what services are
+   running on a given port. What service is running on 127.0.12.25 TCP port 8080?</span>
+<span class="term-symbol">
+  ────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">elf@a0179275fac9</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span> nmap 127.0.12.20-28
+</span>Starting Nmap 7.80 ( https://nmap.org ) at 2025-12-10 18:55 UTC
+Nmap scan report for 127.0.12.20
+Host is up (0.00018s latency).
+All 1000 scanned ports on 127.0.12.20 are closed
+
+Nmap scan report for 127.0.12.21
+Host is up (0.00019s latency).
+All 1000 scanned ports on 127.0.12.21 are closed
+
+Nmap scan report for 127.0.12.22
+Host is up (0.00018s latency).
+All 1000 scanned ports on 127.0.12.22 are closed
+
+Nmap scan report for 127.0.12.23
+Host is up (0.00017s latency).
+Not shown: 999 closed ports
+PORT     STATE SERVICE
+8080/tcp open  http-proxy
+
+Nmap scan report for 127.0.12.24
+Host is up (0.00019s latency).
+All 1000 scanned ports on 127.0.12.24 are closed
+
+Nmap scan report for 127.0.12.25
+Host is up (0.00019s latency).
+All 1000 scanned ports on 127.0.12.25 are closed
+
+Nmap scan report for 127.0.12.26
+Host is up (0.00017s latency).
+All 1000 scanned ports on 127.0.12.26 are closed
+
+Nmap scan report for 127.0.12.27
+Host is up (0.00016s latency).
+All 1000 scanned ports on 127.0.12.27 are closed
+
+Nmap scan report for 127.0.12.28
+Host is up (0.00018s latency).
+All 1000 scanned ports on 127.0.12.28 are closed
+
+Nmap done: 9 IP addresses (9 hosts up) scanned in 0.51 seconds
+
+<span class="term-hostline"><span class="term-user-nmap">elf@a0179275fac9</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    To determine the service running on port 8080, use the command <code>nmap 127.0.12.25 -p 8080 -sV</code>, the "-sV" flag enables version detection.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-question">5) Sometimes you just want to interact with a port, which is a perfect job for Ncat!  Use the ncat tool to connect to TCP port 24601 on 127.0.12.25 and view the banner returned.</span>
+<span class="term-symbol">
+  ────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline">
+<span class="term-user-nmap">elf@7866f16af07e</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span> nmap 127.0.12.25 -p 8080 -sV
+</span>Starting Nmap 7.80 ( https://nmap.org ) at 2025-12-10 19:14 UTC
+Nmap scan report for 127.0.12.25
+Host is up (0.000066s latency).
+
+PORT     STATE SERVICE VERSION
+8080/tcp open  http    SimpleHTTPServer 0.6 (Python 3.10.12)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 6.66 seconds
+<span class="term-hostline">
+<span class="term-user-nmap">elf@7866f16af07e</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span>
+</span></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Lastly we will use net cat to interact with the port <code>nc 127.0.12.25 24601</code>.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-question2">Congratulations, you finished the Intro to Nmap and found the wardriving rig's service!
+Type "exit" to close...</span>
+<span class="term-symbol">
+  ────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline">
+<span class="term-user-nmap">elf@b37927111ec3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span> nc 127.0.12.25 24601
+</span>Welcome to the WarDriver 9000!
+  </pre>
+</div>
+
+<!-- Solution dialogue banner -->
+<div class="kc-convo-header kc-solution-dialog-header">
+  <span class="kc-convo-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Solution dialogue:</span>
+</div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="ericpursley-portrait.png"
+           alt="Eric Pursley avatar">
+      <div class="kc-convo-name">Eric Pursley</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        Excellent work! You've got the Nmap fundamentals down - that X-ray vision is going to serve you well in future challenges.
+      </p>
+      <p>
+        Now you're ready to scan networks like a seasoned pentester!
+      </p>
+
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn kc-convo-play-btn-complete" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+</div>       <!-- /.kc-section -->

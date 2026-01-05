@@ -1,0 +1,1536 @@
+<div class="kc-section kc-section--schrodingers-scope" style="margin-bottom: 0;">
+  <h1 class="kc-section-title">Schrödinger's Scope</h1>
+  
+  <!-- Difficulty + Location -->
+  <div class="kc-objective-meta kc-objective-meta--stacked">
+    <div class="kc-meta-line kc-difficulty">
+      <span class="kc-meta-label">Difficulty:</span>
+      <span class="kc-difficulty-scale"
+            aria-label="Difficulty 1 out of 5 snowflakes">
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+      </span>
+    </div>
+
+    <div class="kc-meta-line kc-location">
+      <span class="kc-meta-label">Location:</span>
+      <span class="kc-meta-value">Retro Store</span>
+    </div>
+  </div>
+
+
+<style>
+  /* Only affects this Burp block on this page */
+  .kc-code-window--burp .kc-code-block--taller{
+    max-height: 710px; /* default is 520px; +~190px ≈ 10 lines */
+  }
+</style>
+
+<style>
+  /* Only affects this Page Source block on this page */
+  .kc-code-window--pagesource .kc-code-block--taller{
+    max-height: 740px; /* default 520px; +~190px ≈ ~10 lines */
+  }
+</style>
+
+<style>
+  /* Only affects this Page Source block on this page */
+  .kc-code-window--pagesource .kc-code-block--taller{
+    max-height: 710px;
+  }
+
+  /* Slightly smaller text ONLY for this Page Source block */
+  .kc-code-window--pagesource .kc-code-block,
+  .kc-code-window--pagesource .kc-code-block code{
+    font-size: 0.9rem;     /* try 0.85rem if you want smaller */
+    line-height: 1.35;
+  }
+</style>
+
+  <!-- Objective line -->
+  <p class="kc-objective-summary kc-meta-line">
+    <span class="kc-meta-label">Objective:</span>
+    <span class="kc-meta-value">
+      Kevin in the Retro Store ponders pentest paradoxes—can you solve Schrödinger's Scope?
+    </span>
+  </p>
+
+  <!-- Conversation banner -->
+  <div class="kc-convo-header">
+    <span class="kc-convo-icon">
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Kevin McFarland Conversation:</span>
+  </div>
+
+  <div class="kc-objective-detail kc-objective-detail--no-panel">
+    <div class="kc-convo-bubble">
+      <div class="kc-convo-avatar">
+        <img src="kevinmcfarland-avatar.gif"
+             alt="Chris Davis avatar">
+        <div class="kc-convo-name">Kevin McFarland</div>
+      </div>
+
+      <div class="kc-convo-text">
+        <p>
+          The Neighborhood College Course Registration System has been getting some updates lately and I'm wondering if you might help me improve its security by performing a small web application penetration test of the site.
+        </p>
+        <p>
+          For any web application test, one of the most important things for the test is the 'scope', that is, what one is permitted to test and what one should not. While hacking is fun and cool, professional integrity means respecting scope boundaries, especially when there are tempting targets outside our permitted scope.
+        </p>
+        <p>
+          Thankfully, the Neighborhood College has provided a very concise set of 'Instructions' which are accessible via a link provided on the site you will be testing. Do not overlook or dismiss the instructions! Following them is key to successfully completing the test.
+        </p>
+        <p>
+          Unfortunately, those pesky gnomes have found their way into the site and have been causing some mischief as well. Be wary of their presence and anything they may have to say as you are testing.
+        </p>
+        <p>
+          Can you help me demonstrate to the Neighborhood College that we know what responsible penetration testing looks like?
+        </p>
+        <p>
+          An eternal winter might sound poetic, but there's a reason Tolkien's heroes fought against endless darkness. A neighborhood frozen in time isn't preservation—it's stagnation. No spring astronomy observations, no summer shortwave propagation... just ice.
+        </p>
+
+        <div class="kc-convo-actions">
+          <button class="kc-convo-play-btn" type="button"
+                  data-npc-audio="schrodingers-scope">
+            <i class="fas fa-play" aria-hidden="true"></i>
+            <span>Play Audio</span>
+          </button>
+        </div>
+      </div> <!-- /.kc-convo-text -->
+    </div>   <!-- /.kc-convo-bubble -->
+  </div>     <!-- /.kc-objective-detail -->
+  
+  <!-- Hints header -->
+  <div class="kc-convo-header kc-hints-header">
+    <span class="kc-convo-icon kc-hints-icon">
+      <i class="fas fa-lightbulb" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Hints:</span>
+  </div>
+
+<!-- Hint 1 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Schrödinger's Scope</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Schrödinger's Scope</div>
+    <p>
+    Though it might be more interesting to start off trying clever techniques and exploits, always start with the simple stuff first, such as reviewing HTML source code and basic SQLi.
+    </p>
+</div>
+
+<!-- Hint 2 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Schrödinger's Scope</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Schrödinger's Scope</div>
+    <p>
+    Watch out for tiny, pesky gnomes who may be violating your progess. If you find one, figure out how they are getting into things and consider matching and replacing them out of your way.
+    </p>
+</div>
+
+<!-- Hint 3 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Schrödinger's Scope</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Schrödinger's Scope</div>
+    <p>
+    During any kind of penetration test, always be on the lookout for items which may be predictable from the available information, such as application endpoints. Things like a sitemap can be helpful, even if it is old or incomplete. Other predictable values to look for are things like token and cookie values
+    </p>
+</div>
+
+<!-- Hint 4 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Schrödinger's Scope</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Schrödinger's Scope</div>
+    <p>
+    Pay close attention to the instructions and be very wary of advice from the tongues of gnomes! Perhaps not ignore everything, but be careful!
+    </p>
+</div>
+
+<!-- Hint 5 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Schrödinger's Scope</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Schrödinger's Scope</div>
+  <p>
+    As you test this with a tool like
+    <a class="kc-link-terminal"
+       href="https://portswigger.net/burp/communitydownload"
+       target="_blank"
+       rel="noopener noreferrer">Burp Suite</a>,
+    resist temptations and stay true to the instructed path.
+  </p>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-workflow-header">
+<span class="kc-workflow-icon">
+    <i class="fas fa-tasks" aria-hidden="true"></i>
+</span>
+<span class="kc-workflow-title">Working through the Challenge:</span>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <div class="kc-workflow-row">
+    <div class="kc-workflow-text">
+      <p class="kc-workflow-intro">
+           Clicking <strong>Schrödinger's Scope</strong> brings up the engagement scope/rules page for the
+    Neighborhood College Course Registration System.
+      </p>
+    </div>
+
+    <div class="kc-workflow-illustration">
+      <img src="scopeterm.png"
+          alt="Schrödinger's Scope term"
+          class="kc-workflow-image">
+    </div>
+  </div>
+</div>
+
+<!-- Scope page screenshot -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      class="kc-ptas-thumb"
+      src="scope_page.png"
+      data-full-src="scope_page.png"
+      alt="Schrödinger's Scope - scope rules page"
+    />
+
+    <button class="kc-ptas-enlarge-btn" type="button" aria-label="Enlarge image">
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Schrödinger's Scope: initial scope/rules page</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    After reviewing (and closing) the Rules of Engagement, we’re returned to the landing page for the
+    Neighborhood College Course Registration System. From here we can enter the registration portal,
+    reset the session state, or review the status report and instructions.
+  </p>
+</div>
+
+<!-- Enter Registration screenshot (outside bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      class="kc-ptas-thumb"
+      src="enter_reg.png"
+      data-full-src="enter_reg.png"
+      alt="Schrödinger's Scope - Enter Registration landing page"
+    />
+
+    <button class="kc-ptas-enlarge-btn" type="button" aria-label="Enlarge image">
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Landing page after closing the Rules of Engagement</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Clicking <strong>Enter Registration System</strong> takes us into the updated
+    Neighborhood College Course Registration System, where we’re presented with a
+    <strong>Student Login</strong> page.
+  </p>
+</div>
+
+<!-- Student Login screenshot (outside bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      class="kc-ptas-thumb"
+      src="student_login.png"
+      data-full-src="student_login.png"
+      alt="Student Login page"
+    />
+
+    <button class="kc-ptas-enlarge-btn" type="button" aria-label="Enlarge image">
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Student Login page after entering the registration system</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Next, we opened the <strong>Status Report</strong> to see what the system is tracking.
+    At this point, it reports <strong>no vulnerabilities found</strong>, but it does show
+    <strong>scope violations</strong> (e.g., requests to <code>/gnomeU</code>), which confirms the
+    app is actively monitoring what paths we touch during testing.
+  </p>
+</div>
+
+<!-- Status Report screenshot (outside bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      class="kc-ptas-thumb"
+      src="Status_report.png"
+      data-full-src="Status_report.png"
+      alt="Schrödinger's Scope - Status Report"
+    />
+
+    <button class="kc-ptas-enlarge-btn" type="button" aria-label="Enlarge image">
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Status Report showing vulnerabilities found and scope violations</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Something triggered the scope violations (notably <code>/gnomeU</code>) even though we never intentionally browsed
+    there. We’ll circle back to that in a moment.
+  </p>
+
+  <p>
+    Back on the Student Login page, I reviewed the page source and spotted a hidden endpoint:
+    <code>href="/register/sitemap"</code>. For a scope-based challenge, a sitemap is extremely useful—so we pulled it.
+  </p>
+
+  <p>
+    Browsing to <code>/register/sitemap</code> returned an XML sitemap containing a full list of discovered routes
+    (including several <code>/admin</code>, <code>/search</code>, and <code>/wip</code> paths).
+  </p>
+</div>
+
+<!-- XML viewer (outside bubble) -->
+<div class="kc-code-window">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&lt;/&gt;</span>
+    <span class="kc-code-title">/register/sitemap (XML)</span>
+
+    <button
+      class="kc-code-copy-btn kc-code-copy"
+      type="button"
+      data-copy-target="#scope-sitemap-xml"
+      aria-label="Copy XML"
+      title="Copy"
+    >
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <!-- kc-no-wheel keeps page scroll normal; the block gets its own scrollbar -->
+  <pre class="kc-code-block kc-no-wheel"><code id="scope-sitemap-xml" class="language-markup">&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/admin&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/admin/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/admin/console&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/admin/console/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/admin/logs&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/admin/logs/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/auth&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/auth/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/auth/register&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/auth/register/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/auth/register/login&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/auth/register/login/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/register/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/register/login&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/register/login/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/register/reset&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/register/reset/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/register/sitemap&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/register/sitemap/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/register/status_report&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/register/status_report/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/search&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/search/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/search/student_lookup&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/search/student_lookup/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/wip&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/wip/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/wip/register&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/wip/register/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/wip/register/dev&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/wip/register/dev/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/wip/register/dev/dev_notes&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/wip/register/dev/dev_notes/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/wip/register/dev/dev_todos&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;http://flask-schrodingers-scope-firestore.holidayhackchallenge.com/wip/register/dev/dev_todos/&lt;/loc&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;/url&gt;
+&lt;/urlset&gt;</code></pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    With a handful of endpoints identified, progress was getting slowed down by repeated <code>/gnomeU</code>
+    scope violations. We hadn’t manually visited that path, so we pivoted to the browser’s Network tab and
+    found an image request quietly hitting <code>/gnomeU</code> in the background.
+  </p>
+
+  <p>
+    To stop the violations from piling up, we right-clicked the offending request and selected
+    <strong>Block Request URL</strong>. After blocking it, the session could run normally without the scope violations ending the test prematurely.
+  </p>
+</div>
+
+<!-- Screenshot (outside bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Block_gnomeu.png"
+      alt="Blocking the /gnomeU request in DevTools to prevent scope violations"
+      class="kc-ptas-thumb"
+      data-full-src="Block_gnomeu.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="Block_gnomeu.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">DevTools: Block Request URL for the background <code>/gnomeU</code> request</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    After blocking the background request to <code>/gnomeU</code>, we reset the session one more time and
+    revisited the Status Report to confirm the fix. This time the scope report was clean — no out-of-scope
+    items were accessed and total violations were back to <strong>0</strong>.
+  </p>
+</div>
+
+<!-- Screenshot (outside bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="clean_report.png"
+      alt="Status Report showing zero scope violations after blocking /gnomeU and resetting the session"
+      class="kc-ptas-thumb"
+      data-full-src="clean_report.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="clean_report.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Status Report after reset: <strong>0</strong> scope violations</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    With scope violations under control, we resumed enumerating the endpoints discovered in the sitemap.
+    One endpoint immediately stood out: the developer todo list at
+    <code>/wip/register/dev/dev_todos</code>. The page appears to contain internal notes and potential
+    clues for the next steps (including references to XSS and a test account password).
+  </p>
+</div>
+
+<!-- Screenshot (outside bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="dev_todo.png"
+      alt="Developer Todos page showing internal tasks and notes"
+      class="kc-ptas-thumb"
+      data-full-src="dev_todo.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="dev_todo.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Developer todo list discovered under <code>/wip/register/dev/</code></div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Next, we attempted to authenticate using the credentials referenced in the developer notes. Instead of
+    reaching the portal, the login flow failed immediately with an <strong>Invalid Forwarding IP</strong>
+    message, indicating the application is enforcing some kind of IP / proxy / header validation before it
+    will allow authentication.
+  </p>
+</div>
+
+<!-- Screenshot (outside bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="error_loggin.png"
+      alt="Course Registration Portal login page showing 'Invalid Forwarding IP' error"
+      class="kc-ptas-thumb"
+      data-full-src="error_loggin.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="error_loggin.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Login attempt blocked by <code>Invalid Forwarding IP</code> validation.</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    At this point, I switched to <strong>Burp Suite</strong> since the requests were getting more complex and
+    building on each other. Burp made it much easier to intercept, replay, and iterate safely.
+    <strong>Note:</strong> because we’re now using the Burp browser, we need to block the <code>/gnomeU</code>
+    request again to avoid racking up scope violations.
+  </p>
+
+  <p>
+    With the login attempt intercepted, I added <code>X-Forwarded-For: 127.0.0.1</code> to satisfy the
+    forwarding/proxy restriction. Below is the request as captured <em>before</em> forwarding it to the server.
+  </p>
+</div>
+
+<!-- Burp request (taller + colorized + copy) -->
+<div class="kc-code-window kc-code-window--burp">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&lt;/&gt;</span>
+    <span class="kc-code-title">Burp Suite — Intercepted Request</span>
+
+    <button
+      class="kc-code-copy-btn kc-code-copy"
+      type="button"
+      data-copy-target="#burp-login-req"
+      aria-label="Copy request"
+      title="Copy"
+    >
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <pre class="kc-code-block kc-no-wheel kc-code-block--taller">
+<code id="burp-login-req" class="language-http">POST /register/login?id=71a1f9d7-6dba-4eb6-8376-5b892435f25f HTTP/2
+Host: flask-schrodingers-scope-firestore.holidayhackchallenge.com
+Cookie: _ga=GA1.1.479419053.1766530385; _ga_F6ZZNPR5E5=GS2.1.s1766530384$o1$g1$t1766530464$j59$l0$h0; Schrodinger=b95a425c-5d24-4707-9745-36173294a8d7; registration=eb72a05369dcb446
+X-Forwarded-For: 127.0.0.1
+Content-Length: 82
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-Ch-Ua: "Chromium";v="113", "Not-A.Brand";v="24"
+Sec-Ch-Ua-Mobile: ?0
+Sec-Ch-Ua-Platform: "Linux"
+Upgrade-Insecure-Requests: 1
+Origin: https://flask-schrodingers-scope-firestore.holidayhackchallenge.com
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.5672.127 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Referer: https://flask-schrodingers-scope-firestore.holidayhackchallenge.com/register/login?id=71a1f9d7-6dba-4eb6-8376-5b892435f25f
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+
+username=teststudent&password=register123&id=71a1f9d7-6dba-4eb6-8376-5b892435f25f</code>
+  </pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    The request with <code>X-Forwarded-For: 127.0.0.1</code> successfully bypassed the “Invalid Forwarding IP”
+    restriction, confirming the proxy check is enforced via forwarded headers. However, the login still failed with an
+    <em>Invalid Username/Password Combination</em> response. The on-page hint suggests there may be additional login
+    paths or alternative credential sources worth hunting for next.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="bad_creds.png"
+      alt="Login attempt fails with Invalid Username/Password Combination after bypassing forwarding IP restriction"
+      class="kc-ptas-thumb"
+      data-full-src="bad_creds.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="bad_creds.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Bypassed forwarding restriction, but credentials still rejected</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    The earlier <code>/wip/</code> developer todo list was flagged as out-of-scope, so instead of continuing down that
+    path, we checked for a similar endpoint under the in-scope registration area:
+    <code>/register/dev/dev_todos</code>. This kept us aligned with the Rules of Engagement while still searching for
+    helpful developer breadcrumbs.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="new_todo.png"
+      alt="Updated Developer To Do List page under /register/dev/dev_todos/"
+      class="kc-ptas-thumb"
+      data-full-src="new_todo.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="new_todo.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">In-scope developer todo list under /register/</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    The updated in-scope developer todo list suggested the <code>teststudent</code> password had been changed.
+    Using those newly discovered credentials (<strong>teststudent</strong> / <strong>2025h0L1d4y5</strong>), we were
+    able to successfully authenticate and reach the course registration landing page.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="logged_in.png"
+      alt="Logged in as teststudent showing Neighborhood College Courses page"
+      class="kc-ptas-thumb"
+      data-full-src="logged_in.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="logged_in.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Successful login using the updated teststudent credentials</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Hovering over the gnome’s speech bubble revealed an additional hint — suggesting we should look
+    for a hidden <em>comment</em>.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="another_hint.png"
+      alt="Gnome tooltip hint shown on the Neighborhood College Courses page"
+      class="kc-ptas-thumb"
+      data-full-src="another_hint.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="another_hint.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Hover tooltip hint from the gnome</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    On the <strong>Spring Semester 2026</strong> page, I checked the HTML source (the gnome strongly hinted that we
+    should look for developer comments). Viewing
+    <code>view-source:https://flask-schrodingers-scope-firestore.holidayhackchallenge.com/register/courses/</code>,
+    we found an inline comment near the bottom that explains why the page is “under construction” — and points to an
+    unfinished course listing/search flow.
+  </p>
+</div>
+
+<!-- HTML snippet (Prism) -->
+<div class="kc-code-window kc-code-window--pagesource">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&lt;/&gt;</span>
+    <span class="kc-code-title">Page Source Snippet (HTML)</span>
+
+    <button
+      class="kc-code-copy-btn kc-code-copy"
+      type="button"
+      data-copy-target="#scope-viewsource-html"
+      aria-label="Copy HTML snippet"
+      title="Copy"
+    >
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <!-- taller window to reduce scrolling -->
+  <pre class="kc-code-block kc-no-wheel" style="max-height: 520px;"><code id="scope-viewsource-html" class="language-markup">----- Truncated output ----------
+&lt;script src=&quot;/register/js/course_common.js&quot;&gt;&lt;/script&gt;
+        
+        &lt;header&gt;
+            &lt;p class=&quot;welcome&quot; role=&quot;banner&quot;&gt;🎄 Neighborhood College Courses&lt;/p&gt;
+        &lt;/header&gt;
+        &lt;section class=&quot;courses-content&quot;&gt;
+            &lt;div class=&quot;courses-container&quot; style=&quot;max-width: 500px;&quot;&gt;
+                &lt;h2 class=&quot;semester-heading&quot;&gt;❄️ Spring Semester 2026 ❄️&lt;/h2&gt;
+                &lt;!-- Should provide course listing here eventually instead of the extra step through search flow. --&gt;
+                &lt;!-- &lt;ul id=&quot;courseSearch&quot; class=&quot;courses-list&quot;&gt;
+                    &lt;li&gt;&lt;a href=&quot;/register/courses/search?id=71a1f9d7-6dba-4eb6-8376-5b892435f25f&quot;&gt;Course Search&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt; --&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+        &lt;!-- Common navigation and instructions section --&gt;
+&lt;p class=&quot;violation&quot;&gt;&lt;a href=&quot;/&quot;&gt;🏠 Return Home&lt;/a&gt; | &lt;a href=&quot;/register/reset&quot;&gt;🔁 Reset Session&lt;/a&gt; | &lt;a href=&quot;/register/status_report&quot;&gt;📋 View Status Report&lt;/a&gt; | &lt;a href=&quot;#&quot; id=&quot;instBtn&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;rules&quot;&gt;📖 Instructions&lt;/a&gt;&lt;/p&gt;
+&lt;div id=&quot;rules&quot; class=&quot;rules&quot; aria-hidden=&quot;true&quot;&gt;    &lt;img id=&quot;instructions&quot; src=&quot;/register/images/instructions.png&quot; alt=&quot;Instructions for the Registration System&quot; style=&quot;max-height:100%;&quot;&gt;
+    &lt;button id=&quot;closeInstructions&quot; class=&quot;close-instructions&quot; aria-label=&quot;Close Instructions&quot;&gt;Close&lt;/button&gt;
+&lt;/div&gt;
+        &lt;div class=&quot;gnome-character-container&quot;&gt;
+            &lt;img src=&quot;/register/images/gnome-hacker.png&quot; alt=&quot;Gnome Hacker&quot; class=&quot;gnome-image&quot;&gt;
+            &lt;div class=&quot;speech-bubble&quot;&gt;
+                &lt;span class=&quot;initial-text&quot;&gt;Guess the site really is still under construction, heh-he!&lt;/span&gt;
+                &lt;span class=&quot;hover-text&quot;&gt;I bet someone has a &lt;i&gt;comment&lt;/i&gt; or two about that!&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+    &lt;script src=&quot;/register/js/registerCourses.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    To reveal the hidden <strong>Course Search</strong> link that was commented out in the HTML source, we injected our
+    own HTML directly into the DOM via the browser’s developer console. This allowed us to bypass the incomplete
+    interface and expose the intended course search functionality.
+  </p>
+
+  <p>
+    The following JavaScript was executed in the browser console to dynamically append a new
+    <code>&lt;ul&gt;</code> element containing the missing <code>Course Search</code> link:
+  </p>
+</div>
+
+<!-- Code snippet -->
+<div class="kc-code-window kc-code-window--inject">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">🧩</span>
+    <span class="kc-code-title">Injected JavaScript (Console)</span>
+
+    <button
+      class="kc-code-copy-btn kc-code-copy"
+      type="button"
+      data-copy-target="#reveal-course-search"
+      aria-label="Copy JS code"
+      title="Copy"
+    >
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <pre class="kc-code-block language-javascript" id="reveal-course-search">document
+  .querySelector('.courses-container')
+  .insertAdjacentHTML(
+    'beforeend',
+    '&lt;ul id="courseSearch" class="courses-list"&gt;&lt;li&gt;&lt;a href="/register/courses/search?id=49758ed0-d023-449b-824e-58f7a0053f6d"&gt;Course Search&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;'
+  );</pre>
+</div>
+
+<!-- Supporting image -->
+<div class="kc-image-container">
+  <img src="reveal_course_search.png" alt="Injected Course Search link revealed" class="kc-inline-image" />
+</div>
+
+<style>
+  /* Only for this console injection block */
+  .kc-code-window--inject .kc-code-block {
+    font-size: 0.9rem;
+    line-height: 1.35;
+    max-height: 420px;
+  }
+</style>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Clicking <strong>Course Search</strong> brings up a dedicated interface for searching available courses.
+    The gnome also hints there’s a better way to search — and on hover, the speech bubble changes to:
+    <em>“Dev must have a <span class="term-red">page</span> or at least some <span class="term-red">notes</span> about one.” That's an important hint that we will revisit in a short while!</em>
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="course_search.png"
+      alt="Course Search page with gnome hint about a better way to search"
+      class="kc-ptas-thumb"
+      data-full-src="course_search.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="course_search.png"
+      aria-label="Enlarge course search screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Course Search page and gnome hint (hover text)</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    My first instinct here was to try a basic reflected XSS probe:
+    <code>&lt;script&gt;alert(1)&lt;/script&gt;</code>. That seemed plausible given the developer TODO list
+    still had <strong>“Patch XSS”</strong> marked as incomplete. This intially had an effect but would not trigger as a vulnerbility, after reacing out to McKringle99 on Discord I was informed that this was not the intended path.
+  </p>
+
+  <p>
+    By the time of this write-up, that approach had been patched and it now triggers a fun easter egg with a shoutout to my discord handel along with the gnome calling it out directly — on hover, the speech bubble clarifies:
+    <em>“XSS not expected / intended here.”</em>
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="gnome_shoutout.png"
+      alt="Course Search page showing the gnome shoutout and hover hint about XSS not being intended"
+      class="kc-ptas-thumb"
+      data-full-src="gnome_shoutout.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="gnome_shoutout.png"
+      aria-label="Enlarge gnome shoutout screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Gnome shoutout + hover hint (“XSS not expected / intended here.”)</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Since XSS wasn’t the intended path, the next obvious candidate was SQL injection. Submitting the payload
+    <code>' OR '1'='1</code> in the course lookup field returned a full course listing — confirming the input
+    was being used in a backend query without proper parameterization.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="sql_forthewin.png"
+      alt="Course Search page showing SQL injection payload ' OR '1'='1 returning a list of classes"
+      class="kc-ptas-thumb"
+      data-full-src="sql_forthewin.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="sql_forthewin.png"
+      aria-label="Enlarge SQL injection screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">SQLi payload <code>' OR '1'='1</code> returning the full course list</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    The gnome continues to provide guidance:
+    <em>“Well, well, well! Aren’t you clever… but if you want <strong>really</strong> clever, check those results!”</em>
+    While reviewing the course listings, I also noted the URL patterns used to load course details:
+  </p>
+
+  <ul class="kc-bullet-list">
+    <li><strong>HOL 101</strong> — <code>/register/courses/toy_making</code></li>
+    <li><strong>HOL 202</strong> — <code>/register/courses/snow_dynamics</code></li>
+    <li><strong>HOL 315</strong> — <code>/register/courses/sleigh_mechanics</code></li>
+    <li><strong>HOL 405</strong> — <code>/register/courses/reindeer_care</code></li>
+  </ul>
+
+  <p>
+    Then I spotted <strong>GNOME 827 — Mischief Management</strong>. Clicking it revealed a course that appears to have been
+    surreptitiously added by the gnomes — and it triggered an in-scope vulnerability alert in the UI.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="gnome_course.png"
+      alt="GNOME 827 course page showing an in-scope vulnerability alert banner"
+      class="kc-ptas-thumb"
+      data-full-src="gnome_course.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="gnome_course.png"
+      aria-label="Enlarge GNOME 827 screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">GNOME 827 course page triggering the in-scope vulnerability alert</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    The gnome tries to discourage reporting the new course, but identifying and reporting vulnerabilities is the goal of
+    this engagement — so we submit the report. Next, we circle back to the earlier hint:
+    <em>“Dev must have a <span class="term-red">page</span> or at least some <span class="term-red">notes</span> about one.”</em>
+  </p>
+
+  <p>
+    From the sitemap, the most obvious target is <code>/wip/register/dev/dev_notes</code>, but that path is out of scope.
+    Assuming there’s a production equivalent, we check <code>/register/dev/dev_notes</code>.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="dev_notes.png"
+      alt="Developer Notes page indicating holiday_behavior is a work-in-progress"
+      class="kc-ptas-thumb"
+      data-full-src="dev_notes.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="dev_notes.png"
+      aria-label="Enlarge Developer Notes screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Developer Notes mentioning <code>holiday_behavior</code> is still a WIP</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    The developer notes mention a new course named <code>holiday_behavior</code>. Based on the naming/path convention we
+    observed earlier (e.g., <code>/register/courses/&lt;course_name&gt;</code>), the next step was to try accessing it
+    directly at <code>/register/courses/holiday_behavior</code>.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="snow_drift.png"
+      alt="Error page: 'Oops! The page you are looking for seems to have drifted away in the snow.'"
+      class="kc-ptas-thumb"
+      data-full-src="snow_drift.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="snow_drift.png"
+      aria-label="Enlarge snow drift error screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Attempting <code>/register/courses/holiday_behavior</code> returns a “drifted away in the snow” page</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    The gnome also mentioned this course is still a work-in-progress. While the original WIP path we found earlier was
+    out of scope, it was worth testing whether an in-scope WIP variant existed under <code>/register/</code>.
+    We tried <code>/register/courses/wip/holiday_behavior/</code>, the server rejected the request with a
+    <strong>403 Forbidden</strong> and an <em>Invalid session registration value</em> message.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="invalid_session.png"
+      alt="403 Forbidden with message: You don't have permission to access this area. Invalid session registration value."
+      class="kc-ptas-thumb"
+      data-full-src="invalid_session.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="invalid_session.png"
+      aria-label="Enlarge invalid session screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption"><code>/register/courses/wip/holiday_behavior/</code> returns <strong>403</strong> with “Invalid session registration value”</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    The <code>403</code> error referenced an <em>“Invalid session registration value”</em>, so the next step was to
+    inspect our cookies. We did have a <code>registration</code> cookie set, so I wanted to understand what that value
+    represents and whether it has enough entropy to be treated as a secure gate.
+  </p>
+
+  <p>
+    To assess this, I reset the session and repeatedly walked through the flow, recording the <code>registration</code>
+    cookie value across different actions/pages:
+  </p>
+
+  <h4>Visiting registration</h4>
+  <ul class="kc-tight-list">
+    <li><code>eb72a05369dcb44d</code></li>
+    <li><code>eb72a05369dcb455</code></li>
+    <li><code>eb72a05369dcb453</code></li>
+    <li><code>eb72a05369dcb451</code></li>
+    <li><code>eb72a05369dcb454</code></li>
+    <li><code>eb72a05369dcb44e</code></li>
+  </ul>
+
+  <h4>Getting dev notes</h4>
+  <ul class="kc-tight-list">
+    <li><code>eb72a05369dcb444</code></li>
+    <li><code>eb72a05369dcb445</code></li>
+    <li><code>eb72a05369dcb44b</code></li>
+    <li><code>eb72a05369dcb447</code></li>
+    <li><code>eb72a05369dcb449</code></li>
+  </ul>
+
+  <h4>Logging in as student</h4>
+  <ul class="kc-tight-list">
+    <li><code>eb72a05369dcb452</code></li>
+    <li><code>eb72a05369dcb44a</code></li>
+    <li><code>eb72a05369dcb443</code></li>
+  </ul>
+
+  <h4>Unlocking search button</h4>
+  <ul class="kc-tight-list">
+    <li><code>eb72a05369dcb450</code></li>
+    <li><code>eb72a05369dcb44f</code></li>
+    <li><code>eb72a05369dcb449</code></li>
+  </ul>
+
+  <p>
+    The pattern is obvious: the value barely changes. In practice, only the final byte/hex pair varies, meaning the
+    entropy is extremely low. That strongly suggests the <code>registration</code> cookie is either a weak counter/state
+    marker or can likely be guessed/brute-forced to reach protected in-scope endpoints.
+  </p>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Next, we attempted to load the <code>holiday_behavior</code> course and captured the request in Burp. Sending it to
+    <strong>Intruder</strong> let us isolate the <code>registration</code> cookie value and mark only the final nibble
+    for fuzzing, since earlier recon showed the rest of the value remains relatively constant.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="burp_intruder.png"
+      alt="Burp Intruder setup highlighting the final nibble of the registration cookie for testing"
+      class="kc-ptas-thumb"
+      data-full-src="burp_intruder.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="burp_intruder.png"
+      aria-label="Enlarge Burp Intruder screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">
+    Burp Intruder configured to vary only the final nibble of the <code>registration</code> cookie
+  </div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    We configured Intruder with a simple hex payload list (<code>0–f</code>) and added a small delay between requests
+    to be nice to the server. Most attempts returned <code>403</code>, but we hit a <code>200</code> response — a strong
+    indicator we’ve found a valid <code>registration</code> value for the WIP course endpoint.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="burp_force.png"
+      alt="Burp Intruder results showing mostly 403 responses and a single 200 response for one hex payload"
+      class="kc-ptas-thumb"
+      data-full-src="burp_force.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="burp_force.png"
+      aria-label="Enlarge Burp Intruder results screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">
+    Intruder results: one payload produces <code>200</code> (likely valid), while others return <code>403</code>
+  </div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    In this case I got a bit lucky — reviewing the earlier <code>cookie</code> samples more closely,
+    I noticed the last byte sometimes starts with <code>5</code>. On my capture that leading value in 
+    the byte was a 4 allowing us to just iterated through the hex values for the last nibbel.
+    A more comprehension approach could of been to use burp's pithfork option and brute force the entire
+    last byte. Nevertheless I found that the correct cookie value:
+    <code>eb72a05369dcb44c</code>.
+  </p>
+
+  <p>
+    Back in Burp, we updated the cookie to the validated value and replayed the request. With the proper session
+    state in place, the server allowed access to the hidden <em>Holiday Behavior Studies</em> course page.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="hidden_clss.png"
+      alt="Hidden Holiday Behavior Studies course page successfully loaded after setting the correct registration cookie"
+      class="kc-ptas-thumb"
+      data-full-src="hidden_clss.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="hidden_clss.png"
+      aria-label="Enlarge hidden course screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">
+    Access granted after setting <code>registration=eb72a05369dcb44c</code>
+  </div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    With the hidden course page accessible, we returned to the <strong>Status Report</strong> to validate our progress.
+    This time, the page presented the <em>Assessment Complete</em> screen — confirming we successfully met the objective.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="assessment_complete.png"
+      alt="Status Report showing the Assessment Complete screen"
+      class="kc-ptas-thumb"
+      data-full-src="assessment_complete.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="assessment_complete.png"
+      aria-label="Enlarge Assessment Complete screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Status Report confirming <strong>Assessment Complete</strong></div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Finalizing the assessment closes out the engagement and presents the completion summary.
+    The results confirm we stayed in-scope while successfully identifying and reporting the key issues.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Complete.png"
+      alt="Neighborhood College Security Assessment Complete screen"
+      class="kc-ptas-thumb"
+      data-full-src="Complete.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="Complete.png"
+      aria-label="Enlarge completion screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Assessment completion screen</div>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Results.png"
+      alt="Assessment results and Security Professional Notes summary"
+      class="kc-ptas-thumb"
+      data-full-src="Results.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="Results.png"
+      aria-label="Enlarge results screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Results summary and professional notes</div>
+</div>
+
+<!-- Solution dialogue banner -->
+<div class="kc-convo-header kc-solution-dialog-header">
+  <span class="kc-convo-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Solution dialogue:</span>
+</div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="kevinmcfarland-portrait.png"
+           alt="Kevin McFarland avatar">
+      <div class="kc-convo-name">Kevin McFarland</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        Well done - you’ve shown the wisdom to stay within scope, uncover what mattered, and respecting other testing boundaries.
+      </p>
+      <p>
+        That kind of discipline is what separates a real penetration tester from someone just poking around.
+      </p>
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn kc-convo-play-btn-complete" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>       <!-- /.kc-section -->

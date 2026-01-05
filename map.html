@@ -1,0 +1,20 @@
+<!-- MAP PAGE -->
+<section id="map" class="kc-section kc-section-bordered kc-pane">
+  <div class="kc-map-header">
+    <div class="kc-map-controls">
+      <div>Map Controls: Scroll to zoom • Click and drag to pan</div>
+      <div>Click to visit <span class="kc-map-green">green</span> destinations</div>
+    </div>
+  </div>
+
+  <div id="kc-map-viewport" class="kc-map-viewport">
+    <!-- This inner “content” div is what we transform (scale + translate) -->
+    <div id="kc-map-content" class="kc-map-content">
+      <!-- put your recovered map image path here -->
+      <img id="kc-map-img" src="city-map.jpg" alt="HHC City Map" class="kc-map-img" />
+
+      <!-- label overlay gets injected here by JS -->
+      <div id="kc-map-labels" class="kc-map-labels"></div>
+    </div>
+  </div>
+</section>

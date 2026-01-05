@@ -1,0 +1,493 @@
+<div class="kc-section" style="margin-bottom: 0;">
+  <h1 class="kc-section-title">The Open Door</h1>
+
+  <!-- Difficulty + Location -->
+  <div class="kc-objective-meta kc-objective-meta--stacked">
+    <div class="kc-meta-line kc-difficulty">
+      <span class="kc-meta-label">Difficulty:</span>
+      <span class="kc-difficulty-scale"
+            aria-label="Difficulty 1 out of 5 snowflakes">
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+        <i class="fas fa-snowflake kc-snowflake"></i>
+      </span>
+    </div>
+
+    <div class="kc-meta-line kc-location">
+      <span class="kc-meta-label">Location:</span>
+      <span class="kc-meta-value">The Grand Hotel (Parking Lot)</span>
+    </div>
+  </div>
+
+  <!-- Objective line -->
+  <p class="kc-objective-summary kc-meta-line">
+    <span class="kc-meta-label">Objective:</span>
+    <span class="kc-meta-value">
+      Help Goose Lucas in the hotel parking lot find the dangerously misconfigured Network Security Group rule that's allowing unrestricted internet access to sensitive ports like RDP or SSH.
+    </span>
+  </p>
+
+  <!-- Conversation banner -->
+  <div class="kc-convo-header">
+    <span class="kc-convo-icon">
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Lucas Conversation:</span>
+  </div>
+
+  <div class="kc-objective-detail kc-objective-detail--no-panel">
+    <div class="kc-convo-bubble">
+      <div class="kc-convo-avatar">
+        <img src="goose-pixel.png"
+             alt="Lucas avatar">
+        <div class="kc-convo-name">Lucas</div>
+      </div>
+
+      <div class="kc-convo-text">
+        <p>
+          (Spanish mode) Hi... welcome to the Dosis Neighborhood! Nice to meet you!
+        </p>
+        <p>
+          Please make sure the towns Azure network is secured properly.
+        </p>
+        <p>
+          The Neighborhood HOA uses Azure for their IT infrastructure.
+        </p>
+        <p>
+          Audit their network security configuration to ensure production systems aren't exposed to internet attacks.
+        </p>
+        <p>
+          They claim all systems are properly protected, but you need to verify there are no overly permissive NSG rules.
+        </p>
+
+        <div class="kc-convo-actions">
+          <button class="kc-convo-play-btn" type="button"
+                  data-npc-audio="the-open-door">
+            <i class="fas fa-play" aria-hidden="true"></i>
+            <span>Play Audio</span>
+          </button>
+        </div>
+      </div> <!-- /.kc-convo-text -->
+    </div>   <!-- /.kc-convo-bubble -->
+  </div>     <!-- /.kc-objective-detail -->
+
+  <!-- Hints header -->
+  <div class="kc-convo-header kc-hints-header">
+    <span class="kc-convo-icon kc-hints-icon">
+      <i class="fas fa-lightbulb" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Hints:</span>
+  </div>
+
+<!-- Hint 1 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">The Open Door</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: The Open Door</div>
+  <p>
+    This terminal has built-in hints!
+  </p>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-workflow-header">
+<span class="kc-workflow-icon">
+    <i class="fas fa-tasks" aria-hidden="true"></i>
+</span>
+<span class="kc-workflow-title">Working through the Challenge:</span>
+</div>
+
+<!-- NEW purple banner goes *after* the bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+  Click on the Cranberry Pi terminal, we are greeted with the following.
+  </p>
+</div> 
+
+<div class="kc-terminal-header">
+  <span class="kc-terminal-icon">
+    <img src="cranpi.png" alt="Cranberry Pi terminal icon">
+  </span>
+  <span class="kc-terminal-title">Cranberry Pi Terminal</span>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">🎄 Welcome to The Open Door Challenge! 🎄</span>
+<span class="term-yellow">You're connected to a read-only Azure CLI session in "The Neighborhood" tenant.</span>
+<span class="term-yellow">Your mission: Review their network configurations and find <span class="term-green">what</span> doesn't belong.</span>
+<span class="term-yellow">Connecting you now... ❄️</span>
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-yellow">Let's start by exploring output formats.</span>
+<span class="term-yellow">First, let's see resource groups in <span class="term-green">JSON format</span> (the default):</span>
+$ <span class="term-green">az group list</span>
+<span class="term-yellow">JSON format shows detailed structured data.</span>
+
+<span class="term-hostline">
+<span class="term-user-nmap">neighbor@ed14cd646385</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span> $
+</span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Running <code>az group list</code> returns the resource groups in the
+    default <strong>JSON</strong> output format. 
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Great! Now let's see the same data in <span class="term-green">table format</span> for better readability 👀</span>
+<span class="term-yellow"><span class="term-symbol">$</span> <span class="term-green">az group list -o table</span></span>
+<span class="term-yellow">Notice how <span class="term-green">-o table</span> changes the output format completely!</span>
+<span class="term-yellow">Both commands show the same data, just formatted differently.</span>
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline">
+  <span class="term-user-nmap">neighbor@155781d893c3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span> $ az group list
+</span>
+[
+  {
+    "id": "/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/theneighborhood-rg1",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "theneighborhood-rg1",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {}
+  },
+  {
+    "id": "/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/theneighborhood-rg2",
+    "location": "westus",
+    "managedBy": null,
+    "name": "theneighborhood-rg2",
+    "properties": {
+      "provisioningState": "Succeeded"
+    },
+    "tags": {}
+  }
+]
+<span class="term-hostline">
+  <span class="term-user-nmap">neighbor@155781d893c3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span> $</span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    This is very detailed and great
+    for automation, but the next hint suggests
+    re-running the same command with <code>-o table</code> to get a concise,
+    human-readable table format.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Lets take a look at Network Security Groups (NSGs).</span>
+<span class="term-yellow">To do this try: <span class="term-green">az network nsg list -o table</span></span>
+<span class="term-yellow">This lists all NSGs across resource groups.</span>
+<span class="term-yellow">For more information: <span class="term-green">https://learn.microsoft.com/en-us/cli/azure/network/nsg?view=azure-cli-latest</span></span>
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline">
+<span class="term-user-nmap">neighbor@155781d893c3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $ az group list -o table
+</span>
+Name                 Location    ProvisioningState
+-------------------  ----------  -------------------
+theneighborhood-rg1  eastus      Succeeded
+theneighborhood-rg2  westus      Succeeded
+<span class="term-hostline">
+<span class="term-user-nmap">neighbor@155781d893c3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span>
+</span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    The next hint tells us to look at <strong>Network Security Groups (NSGs)</strong> using
+    <code>az network nsg list -o table</code>. This gives a table of every NSG in
+    the subscription and the resource group it belongs to. From the output, we can see
+    that the NSG named <code>nsg-web-eastus</code> lives in the
+    <code>theneighborhood-rg1</code> resource group, which matches the hint and becomes
+    our primary target for deeper inspection.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Inspect the Network Security Group (web)  🕵️</span>
+<span class="term-yellow">Here is the NSG and its resource group: <span class="term-green">--name</span> nsg-web-eastus <span class="term-green">--resource-group</span> theneighborhood-rg1</span>
+<span class="term-yellow">Hint: We want to <span class="term-green">show</span> the NSG details. Use <span class="term-green">| less</span> to page through the output.</span>
+<span class="term-yellow">Documentation: <span class="term-green">https://learn.microsoft.com/en-us/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-show</span></span>
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline">
+<span class="term-user-nmap">neighbor@155781d893c3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span> az network nsg list -o table
+</span>
+Location    Name                   ResourceGroup
+----------  ---------------------  -------------------
+eastus      nsg-web-eastus         theneighborhood-rg1
+eastus      nsg-db-eastus          theneighborhood-rg1
+eastus      nsg-dev-eastus         theneighborhood-rg2
+eastus      nsg-mgmt-eastus        theneighborhood-rg2
+eastus      nsg-production-eastus  theneighborhood-rg1
+<span class="term-hostline">
+<span class="term-user-nmap">neighbor@155781d893c3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span>
+</span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    From the NSG listing, we learned that the web-facing security group is
+    <code>nsg-web-eastus</code> in the <code>theneighborhood-rg1</code>
+    resource group. The hint explicitly tells us to inspect this NSG more
+    closely, so the next step is to view its full rule set with:
+    <code>az network nsg show --name nsg-web-eastus --resource-group theneighborhood-rg1 | less</code>.
+  </p>
+  <p>
+    Piping to <code>| less</code> makes it easier to scroll through all the
+    inbound and outbound rules and look for anything that doesn’t belong
+    (for example, overly permissive inbound access from the internet).
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Inspect the Network Security Group (mgmt)  🕵️</span>
+<span class="term-yellow">Here is the NSG and its resource group:<span class="term-green"> --nsg-name</span> nsg-mgmt-eastus <span class="term-green">--resource-group</span> theneighborhood-rg2 </span>
+<span class="term-yellow">Hint: We want to <span class="term-green">list</span> the NSG rules</span>
+<span class="term-yellow">Documentation: <span class="term-green">https://learn.microsoft.com/en-us/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-list</span></span>
+
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+{
+  "id": "/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/theneighborhood-rg1/providers/Microsoft.Network/networkSecurityGroups/nsg-web-eastus",
+  "location": "eastus",
+  "name": "nsg-web-eastus",
+  "properties": {
+    "securityRules": [
+      {
+        "name": "Allow-HTTP-Inbound",
+        "properties": {
+          "access": "Allow",
+          "destinationPortRange": "80",
+          "direction": "Inbound",
+          "priority": 100,
+          "protocol": "Tcp",
+          "sourceAddressPrefix": "0.0.0.0/0"
+        }
+      },
+      {
+        "name": "Allow-HTTPS-Inbound",
+        "properties": {
+          "access": "Allow",
+          "destinationPortRange": "443",
+          "direction": "Inbound",
+          "priority": 110,
+          "protocol": "Tcp",
+          "sourceAddressPrefix": "0.0.0.0/0"
+        }
+      },
+      {
+        "name": "Allow-AppGateway-HealthProbes",
+        "properties": {
+          "access": "Allow",
+          "destinationPortRange": "80,443",
+          "direction": "Inbound",
+          "priority": 130,
+          "protocol": "Tcp",
+          "sourceAddressPrefix": "AzureLoadBalancer"
+        }
+      },
+      {
+        "name": "Allow-Web-To-App",
+        "properties": {
+          "access": "Allow",
+          "destinationPortRange": "8080,8443",
+          "direction": "Inbound",
+          "priority": 200,
+          "protocol": "Tcp",
+          "sourceAddressPrefix": "VirtualNetwork"
+        }
+      },
+      {
+        "name": "Deny-All-Inbound",
+        "properties": {
+          "access": "Deny",
+          "destinationPortRange": "*",
+          "direction": "Inbound",
+          "priority": 4096,
+          "protocol": "*",
+          "sourceAddressPrefix": "*"
+        }
+      }
+    ]
+  },
+  "resourceGroup": "theneighborhood-rg1",
+  "tags": {
+    "env": "web"
+  }
+}
+(END)</pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    The hint now shifts our attention to the <code>nsg-mgmt-eastus</code> Network
+    Security Group in resource group <code>theneighborhood-rg2</code>. To
+    investigate what traffic is allowed to or from the management network, we
+    should list all rules on that NSG with:
+    <code>az network nsg rule list --nsg-name nsg-mgmt-eastus --resource-group theneighborhood-rg2 -o table</code>.
+    This will give us a human-readable table of inbound and outbound rules so we
+    can spot anything that doesn’t belong.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window">
+  <pre class="kc-terminal-text"><span class="term-yellow">Take a look at the rest of the NSG rules and examine their properties.</span>
+<span class="term-yellow">After enumerating the NSG rules, enter the command string to view the <span class="term-green">suspect rule</span> and inspect its properties.</span>
+<span class="term-yellow">Hint: <span class="term-green">Review</span> fields such as <span class="term-green">direction, access, protocol, source, destination and port</span> settings.</span>
+<span class="term-yellow">Documentation: </span><span class="term-green">https://learn.microsoft.com/en-us/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-show</span>
+
+<span class="term-symbol">──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="term-hostline"><span class="term-user-nmap">neighbor@155781d893c3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span> az network nsg rule list --nsg-name nsg-mgmt-eastus --resource-group theneighborhood-rg2 -o table</span>
+Access    Direction    Name                        Priority    Protocol    NSG              SourceAddressPrefix    SourcePortRange    DestinationAddressPrefix    DestinationPortRange
+--------  -----------  --------------------------  ----------  ----------  ---------------  ---------------------  -----------------  --------------------------  ----------------------
+Allow     Inbound      Allow-AzureBastion          100         Tcp         nsg-mgmt-eastus  AzureBastion           *                  *                           443
+Allow     Inbound      Allow-Monitoring-Inbound    110         Tcp         nsg-mgmt-eastus  AzureMonitor           *                  *                           443
+Allow     Inbound      Allow-DNS-From-VNet         115         Udp         nsg-mgmt-eastus  VirtualNetwork         *                  *                           53
+Deny      Inbound      Deny-All-Inbound            4096        *           nsg-mgmt-eastus  *                      *                  *                           *
+Allow     Outbound     Allow-Monitoring-Outbound   200         Tcp         nsg-mgmt-eastus  *                      *                  AzureMonitor                443
+Allow     Outbound     Allow-AD-Identity-Outbound  210         Tcp         nsg-mgmt-eastus  *                      *                  AzureActiveDirectory        443
+Allow     Outbound     Allow-Backup-Outbound       220         Tcp         nsg-mgmt-eastus  *                      *                  AzureBackup                 443
+<span class="term-hostline"><span class="term-user-nmap">neighbor@155781d893c3</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    With the management NSG reviewed, the next logical target is
+    <code>nsg-production-eastus</code>. Production networks are often where
+    risky exceptions sneak in. To inspect all of its rules in a readable format,
+    I ran:
+    <code>az network nsg rule list --nsg-name nsg-production-eastus --resource-group theneighborhood-rg1 -o table</code>.
+    This lets us quickly spot any overly permissive rules that might expose
+    management services directly to the internet.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window">
+  <pre class="kc-terminal-text"><span class="term-yellow">Take a look at the rest of the NSG rules and examine their properties.</span>
+<span class="term-yellow">After enumerating the NSG rules, enter the command string to view the <span class="term-green">suspect rule</span> and inspect its properties.</span>
+<span class="term-yellow">Hint: <span class="term-green">Review</span> fields such as <span class="term-green">direction, access, protocol, source, destination and port</span> settings.</span>
+<span class="term-yellow">Documentation: </span><span class="term-green">https://learn.microsoft.com/en-us/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-show</span>
+
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="term-hostline"><span class="term-user-nmap">neighbor@78791c48f4ef</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span> az network nsg rule list --nsg-name nsg-production-eastus --resource-group theneighborhood-rg1 -o table</span>
+Access    Direction    Name                           Priority    Protocol    NSG                    SourceAddressPrefix    SourcePortRange    DestinationAddressPrefix    DestinationPortRange
+--------  -----------  -----------------------------  ----------  ----------  ---------------------  ---------------------  -----------------  --------------------------  ----------------------
+Allow     Inbound      Allow-HTTP-Inbound             100         Tcp         nsg-production-eastus  0.0.0.0/0              *                  *                           80
+Allow     Inbound      Allow-HTTPS-Inbound            110         Tcp         nsg-production-eastus  0.0.0.0/0              *                  *                           443
+Allow     Inbound      Allow-AppGateway-HealthProbes  115         Tcp         nsg-production-eastus  AzureLoadBalancer      *                  *                           80,443
+Allow     Inbound      Allow-RDP-From-Internet        120         Tcp         nsg-production-eastus  0.0.0.0/0              *                  *                           3389
+Deny      Inbound      Deny-All-Inbound               4096        *           nsg-production-eastus  *                      *                  *                           *
+<span class="term-hostline"><span class="term-user-nmap">neighbor@78791c48f4ef</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Holy <strong>Allow-RDP-From-Internet</strong> rule, the next step is to drill
+    into that specific NSG rule and confirm why it’s dangerous. To do that,
+    I ran:
+    <code>az network nsg rule show --nsg-name nsg-production-eastus --resource-group theneighborhood-rg1 --name Allow-RDP-From-Internet</code>.
+  </p>
+  <p>
+    The output confirms that this rule <strong>allows inbound TCP 3389</strong>
+    from <code>0.0.0.0/0</code> (the entire internet). That means Remote
+    Desktop Protocol (RDP) to production systems is exposed to everyone, making
+    it trivial for attackers to attempt brute-force logins, exploit RDP
+    vulnerabilities, and pivot deeper into the network. This is the core NSG
+    misconfiguration the challenge wants us to identify.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-yellow">Great, you found the NSG misconfiguration allowing RDP <span class="term-green">(port 3389)</span> from the public internet!</span>
+<span class="term-yellow">Port 3389 is used by Remote Desktop Protocol — exposing it broadly allows attackers to brute-force credentials, exploit RDP vulnerabilities, and pivot within the network.</span>
+
+<span class="term-yellow">✨ To finish, type: <span class="term-green">finish</span></span>
+
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="term-hostline"><span class="term-user-nmap">neighbor@78791c48f4ef</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span> az network nsg rule show --nsg-name nsg-production-eastus --resource-group theneighborhood-rg1 --name Allow-RDP-From-Internet</span>
+{
+  "name": "Allow-RDP-From-Internet",
+  "properties": {
+    "access": "Allow",
+    "destinationPortRange": "3389",
+    "direction": "Inbound",
+    "priority": 120,
+    "protocol": "Tcp",
+    "sourceAddressPrefix": "0.0.0.0/0"
+  }
+}
+<span class="term-hostline"><span class="term-user-nmap">neighbor@78791c48f4ef</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span>
+  </pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Type <code>finish</code> to complete the challenge.
+  </p>
+</div>
+
+<div class="kc-terminal-window kc-terminal-window--wrap">
+  <pre class="kc-terminal-text"><span class="term-green">🎉 Challenge complete! 🎉</span>
+
+<span class="term-symbol">───────────────────────────────────────────────────────────────────────────────────────────</span>
+
+<span class="term-hostline"><span class="term-user-nmap">neighbor@78791c48f4ef</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span> finish</span>
+Completing challenge...
+<span class="term-hostline"><span class="term-user-nmap">neighbor@78791c48f4ef</span><span class="term-symbol">:</span><span class="term-path-nmap">~</span><span class="term-symbol"> $</span></span>
+  </pre>
+</div>
+
+<!-- Solution dialogue banner -->
+<div class="kc-convo-header kc-solution-dialog-header">
+  <span class="kc-convo-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Solution dialogue:</span>
+</div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="goose-pixel.png"
+           alt="Lucas avatar">
+      <div class="kc-convo-name">Lucas</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        Ha! 'Properly protected' they said. More like 'properly exposed to the entire internet'! Good catch, amigo.
+      </p>
+
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn kc-convo-play-btn-complete" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>       <!-- /.kc-section -->

