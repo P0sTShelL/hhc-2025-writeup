@@ -80,19 +80,21 @@
 
         <!-- bottom menu -->
         <a href="#easter-eggs" class="kc-nav-item" data-pane="easter-eggs">Easter Eggs</a>
+        <a href="#exit" class="kc-nav-item kc-nav-exit" data-pane="exit">[Exit]</a>
       </nav>
     </aside>
 
+    <!-- Mobile: nav overlay (only active under 900px) -->
     <div class="kc-mobile-overlay" id="kcMobileOverlay" aria-hidden="true"></div>
 
     <!-- MAIN PANEL -->
     <main class="kc-main">
       <header class="kc-main-header">
-        <button class="kc-mobile-menu-btn" id="kcMenuBtn" type="button" aria-label="Open menu">
+                <button class="kc-mobile-menu-btn" id="kcMenuBtn" type="button" aria-label="Open menu">
           <i class="fas fa-bars" aria-hidden="true"></i>
           <span>Menu</span>
         </button>
-        <span class="kc-main-header-title">SANS HOLIDAY HACK CHALLENGE 2025: REVENGE OF THE GNOME(s)</span>
+<span class="kc-main-header-title">SANS HOLIDAY HACK CHALLENGE 2025: REVENGE OF THE GNOME(s)</span>
       </header>
 
       <!-- NEW: Right pane scroll container -->
@@ -453,6 +455,11 @@ curl -X POST https://example/snowblind/api \
           </p>
         </section>
 
+        <!-- EXIT PAGE -->
+        <section id="exit" class="kc-section kc-footer-section kc-pane">
+          <p>End of report. Press [Exit] in the left menu to return to reality.</p>
+        </section>
+
       </div> <!-- /kc-main-scroll -->
     </main>
     <!-- NEW: floating scroll-to-top button -->
@@ -658,9 +665,14 @@ function loadPaneContent(paneId, url) {
       audioCache[file] = audio;
     }
 
+    ensureAudioCtx();
+    if (USE_WEB_AUDIO) connectElementToGain(audio, sfxGain);
+
     audio.pause();
     audio.currentTime = 0;
-    audio.volume = getSfxVolume();
+    // On iOS, HTMLAudioElement.volume is ignored; gain node handles loudness.
+    audio.volume = USE_WEB_AUDIO ? 1 : getSfxVolume();
+    applyAllVolumes();
     audio.play().catch(() => {}); // ignore autoplay errors
   }
 
@@ -1341,6 +1353,73 @@ document.addEventListener("DOMContentLoaded", function () {
   let npcIsPlaying = false;
   let npcAutoTimeout = null;
 
+
+  // --------------------------------
+  // iOS Safari volume control fix:
+  // iOS ignores HTMLAudioElement.volume, so we route audio through Web Audio gain nodes on iOS.
+  // Desktop/Android keep using audio.volume as before.
+  // --------------------------------
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const USE_WEB_AUDIO = !!AudioCtx && IS_IOS;
+
+  let audioCtx = null;
+  let musicGain = null;
+  let npcGain = null;
+  let sfxGain = null;
+
+  const _mediaSources = new WeakMap();
+
+  function ensureAudioCtx() {
+    if (!USE_WEB_AUDIO) return;
+    if (!audioCtx) {
+      audioCtx = new AudioCtx();
+      musicGain = audioCtx.createGain();
+      npcGain = audioCtx.createGain();
+      sfxGain = audioCtx.createGain();
+
+      musicGain.connect(audioCtx.destination);
+      npcGain.connect(audioCtx.destination);
+      sfxGain.connect(audioCtx.destination);
+    }
+    if (audioCtx.state === "suspended") {
+      // Must be called from a user gesture on iOS; our callers are click/tap handlers.
+      audioCtx.resume().catch(() => {});
+    }
+  }
+
+  function connectElementToGain(el, gainNode) {
+    if (!USE_WEB_AUDIO) return;
+    if (!audioCtx || !gainNode || !el) return;
+    if (_mediaSources.has(el)) return;
+    try {
+      const src = audioCtx.createMediaElementSource(el);
+      src.connect(gainNode);
+      _mediaSources.set(el, src);
+      // Keep element volume at 1; gain node controls loudness
+      el.volume = 1;
+    } catch (e) {
+      // If this fails, we just fall back to element volume (best effort)
+    }
+  }
+
+  function applyAllVolumes() {
+    // read current slider/toggle states
+    const mv = getMusicVolume();
+    const nv = getNpcVolume();
+    const sv = getSfxVolume();
+
+    if (USE_WEB_AUDIO && audioCtx) {
+      if (musicGain) musicGain.gain.value = mv;
+      if (npcGain) npcGain.gain.value = nv;
+      if (sfxGain) sfxGain.gain.value = sv;
+    } else {
+      if (musicAudio) musicAudio.volume = mv;
+      if (npcAudio) npcAudio.volume = nv;
+    }
+  }
+
   // --------------------------------
   // Helpers
   // --------------------------------
@@ -1479,7 +1558,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const audio = ensureMusicAudio();
     audio.src = currentConfig.music;
-    audio.volume = getMusicVolume();
+    ensureAudioCtx();
+    if (USE_WEB_AUDIO) connectElementToGain(audio, musicGain);
+    applyAllVolumes();
 
     audio.play().catch(() => {
       // Autoplay might be blocked; ignore.
@@ -1536,9 +1617,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       setPlayButtonState(true);
 
+      ensureAudioCtx();
       const a = new Audio(nextFile);
       npcAudio = a;
-      a.volume = getNpcVolume();
+      if (USE_WEB_AUDIO) connectElementToGain(a, npcGain);
+      applyAllVolumes();
 
       a.onended = function () {
         // If the “warm hug” line just finished, swap Frosty to the melting asset
@@ -1622,20 +1705,23 @@ document.addEventListener("DOMContentLoaded", function () {
   // --------------------------------
   const musicSlider = document.getElementById("musicVolume");
   if (musicSlider) {
-    musicSlider.addEventListener("input", () => {
-      if (musicAudio) {
-        musicAudio.volume = getMusicVolume();
-      }
-    });
+    const handler = () => applyAllVolumes();
+    musicSlider.addEventListener("input", handler);
+    musicSlider.addEventListener("change", handler); // iOS sometimes only commits on release
   }
 
   const npcSlider = document.getElementById("npcVolume");
   if (npcSlider) {
-    npcSlider.addEventListener("input", () => {
-      if (npcAudio) {
-        npcAudio.volume = getNpcVolume();
-      }
-    });
+    const handler = () => applyAllVolumes();
+    npcSlider.addEventListener("input", handler);
+    npcSlider.addEventListener("change", handler);
+  }
+
+  const sfxSlider = document.getElementById("sfxVolume");
+  if (sfxSlider) {
+    const handler = () => applyAllVolumes();
+    sfxSlider.addEventListener("input", handler);
+    sfxSlider.addEventListener("change", handler);
   }
 
   // --------------------------------
@@ -1701,6 +1787,30 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -1951,6 +2061,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+
+
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("kc-image-modal");
@@ -2092,6 +2205,21 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const mainScroll = document.getElementById("kcMainScroll") || document.scrollingElement;
@@ -2119,7 +2247,9 @@ document.addEventListener("DOMContentLoaded", function () {
   </div>
 </div>
 
+
 <script>
+/* Mobile nav drawer (keeps desktop behavior unchanged) */
 (function () {
   const btn = document.getElementById("kcMenuBtn");
   const overlay = document.getElementById("kcMobileOverlay");
@@ -2141,14 +2271,15 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.setAttribute("aria-label", "Open menu");
   }
 
-  btn.addEventListener("click", () => {
-    if (!isMobile()) return;
+  function toggleNav() {
+    if (!isMobile()) return; // don’t interfere with desktop layout
     root.classList.contains("kc-nav-open") ? closeNav() : openNav();
-  });
+  }
 
+  btn.addEventListener("click", toggleNav);
   overlay.addEventListener("click", closeNav);
 
-  // Close after tapping a nav item (mobile only)
+  // Close the drawer after tapping any nav link (mobile only)
   const nav = document.querySelector(".kc-nav");
   if (nav) {
     nav.addEventListener("click", (e) => {
@@ -2157,7 +2288,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // If rotated/resized to desktop, reset
+  // If you rotate / resize to desktop, ensure drawer state is reset
   window.addEventListener("resize", () => {
     if (!isMobile()) closeNav();
   });
