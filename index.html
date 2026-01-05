@@ -84,9 +84,15 @@
       </nav>
     </aside>
 
+    <div class="kc-mobile-overlay" id="kcMobileOverlay" aria-hidden="true"></div>
+
     <!-- MAIN PANEL -->
     <main class="kc-main">
       <header class="kc-main-header">
+        <button class="kc-mobile-menu-btn" id="kcMenuBtn" type="button" aria-label="Open menu">
+          <i class="fas fa-bars" aria-hidden="true"></i>
+          <span>Menu</span>
+        </button>
         <span class="kc-main-header-title">SANS HOLIDAY HACK CHALLENGE 2025: REVENGE OF THE GNOME(s)</span>
       </header>
 
@@ -2119,21 +2125,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const mainScroll = document.getElementById("kcMainScroll") || document.scrollingElement;
@@ -2160,6 +2151,51 @@ document.addEventListener("DOMContentLoaded", function () {
     <img id="kc-image-modal-img" src="" alt="">
   </div>
 </div>
+
+<script>
+(function () {
+  const btn = document.getElementById("kcMenuBtn");
+  const overlay = document.getElementById("kcMobileOverlay");
+  if (!btn || !overlay) return;
+
+  const root = document.documentElement;
+
+  function isMobile() {
+    return window.matchMedia && window.matchMedia("(max-width: 900px)").matches;
+  }
+
+  function openNav() {
+    root.classList.add("kc-nav-open");
+    btn.setAttribute("aria-label", "Close menu");
+  }
+
+  function closeNav() {
+    root.classList.remove("kc-nav-open");
+    btn.setAttribute("aria-label", "Open menu");
+  }
+
+  btn.addEventListener("click", () => {
+    if (!isMobile()) return;
+    root.classList.contains("kc-nav-open") ? closeNav() : openNav();
+  });
+
+  overlay.addEventListener("click", closeNav);
+
+  // Close after tapping a nav item (mobile only)
+  const nav = document.querySelector(".kc-nav");
+  if (nav) {
+    nav.addEventListener("click", (e) => {
+      const a = e.target && e.target.closest ? e.target.closest("a.kc-nav-item") : null;
+      if (a && isMobile()) closeNav();
+    });
+  }
+
+  // If rotated/resized to desktop, reset
+  window.addEventListener("resize", () => {
+    if (!isMobile()) closeNav();
+  });
+})();
+</script>
 
 </body>
 </html>
