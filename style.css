@@ -2447,3 +2447,34 @@ body.kc-modal-open {
   .kc-main-header-title { font-size: 10px; }
   .kc-logo-circle { width: 120px; height: 180px; }
 }
+
+/* Mobile-only: prevent iOS Safari “font boost” when <pre>/<code> contains huge unbroken strings */
+@media (max-width: 768px) {
+  .kc-terminal-text,
+  .kc-terminal-text *,
+  .kc-code-block,
+  .kc-code-block code,
+  .kc-code-block code *,
+  .kc-note-bubble code,
+  .kc-note-bubble code *,
+  .kc-meta-value,
+  .kc-meta-value * {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* More aggressive breaking for long URLs/tokens in terminal output */
+  .kc-terminal-text .term-bash-url,
+  .kc-terminal-text .term-kali-output,
+  .kc-terminal-text .term-kali-command,
+  .kc-terminal-text .term-kali-path {
+    word-break: break-all;
+  }
+
+  /* Fallback: allow horizontal scroll if something still can’t wrap nicely */
+  .kc-terminal-window,
+  .kc-code-window {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
