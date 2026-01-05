@@ -1,0 +1,2524 @@
+:root {
+  --kc-bg: #01040b;
+  --kc-bg2: #051024;
+  --kc-panel-bg: #050b17;
+  --kc-border: #1c2840;
+  --kc-accent: #7afe6a;
+  --kc-accent-soft: rgba(122, 254, 106, 0.16);
+  --kc-text: #f5f7ff;
+  --kc-muted: #ced2dd;
+  --kc-highlight: #ffd45b;
+}
+
+/* Reset / base */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top, #08112a 0, #01040b 60%, #000 100%);
+  color: var(--kc-text);
+  font-family: "Inconsolata", monospace;
+  font-size: 16px;
+  overflow: hidden; /* desktop: only panes scroll */
+}
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { -webkit-text-size-adjust: 100%; }
+
+
+/* Shell layout */
+.kc-shell {
+  max-width: 1180px;
+  margin: 24px auto;
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #202a42;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.7);
+  height: calc(100vh - 48px);
+  max-height: calc(100vh - 48px);
+
+  position: relative; /* anchor Top button to shell */
+}
+
+/* Sidebar */
+.kc-sidebar {
+  background: radial-gradient(circle at top left, #081736 0, #050b17 40%, #020712 100%);
+  border-right: 2px solid rgba(255, 255, 255, 0.14);
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.kc-sidebar-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.kc-logo-circle {
+  width: 200px;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #011024;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kc-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.kc-logo-circle i { font-size: 16px; }
+
+.kc-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.kc-tagline {
+  font-family: "Princess Sofia", cursive;
+  font-size: 14px;
+  color: var(--kc-highlight);
+}
+
+.kc-game-title {
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.kc-subtitle-line {
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kc-muted);
+}
+
+/* Sidebar nav */
+.kc-nav {
+  margin-top: 6px;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+
+  scrollbar-width: thin;
+  scrollbar-color: #19243a #05070d; /* Firefox */
+}
+
+.kc-nav-item {
+  display: block;
+  padding: 4px 10px;
+  margin: 1px 0;
+  color: var(--kc-text);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 13px;
+  background: transparent;
+  border-left: 4px solid transparent;
+}
+
+.kc-nav-item:hover { background: #1c2840; }
+
+.kc-nav-active {
+  background: #23314b;
+  border-left-color: var(--kc-accent);
+}
+
+.kc-nav-exit {
+  margin-top: 10px;
+  color: #f36c6c;
+}
+
+/* Nav scrollbar (webkit) */
+.kc-nav::-webkit-scrollbar { width: 8px; background: #05070d; }
+.kc-nav::-webkit-scrollbar-track,
+.kc-nav::-webkit-scrollbar-track-piece { background: #05070d; }
+.kc-nav::-webkit-scrollbar-thumb {
+  background: #19243a;
+  border-radius: 8px;
+  border: 2px solid #05070d;
+  background-clip: padding-box;
+}
+
+
+/* Main area */
+.kc-main {
+  background-image: radial-gradient(transparent, black 120%);
+  background-color: rgba(24, 68, 148, 0.75);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.14);
+  border-right: 2px solid rgba(255, 255, 255, 0.14);
+  color: white;
+  text-shadow: 0 0 5px rgba(200, 200, 200, 0.45);
+
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.kc-main-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 6px 12px;
+  background: #151f35;
+  border-bottom: 2px solid #11192c;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 13px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+/* Right pane scroll container */
+.kc-main-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+
+  padding-bottom: 180px; /* kills false bottom */
+  padding-right: 10px;   /* clearer gutter for scrollbar */
+
+  scrollbar-width: thin;
+  scrollbar-color: #19243a #05070d; /* Firefox */
+}
+
+/* Right pane scrollbar wider (webkit) */
+.kc-main-scroll::-webkit-scrollbar { width: 12px; background: #05070d; }
+.kc-main-scroll::-webkit-scrollbar-track,
+.kc-main-scroll::-webkit-scrollbar-track-piece { background: #05070d; }
+.kc-main-scroll::-webkit-scrollbar-thumb {
+  background: #19243a;
+  border-radius: 8px;
+  border: 2px solid #05070d;
+  background-clip: padding-box;
+}
+
+.kc-main-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--kc-accent);              /* bright green */
+  box-shadow: 0 0 8px rgba(122, 254, 106, 0.8);
+}
+
+/* Firefox: only green when JS says pointer is on scrollbar gutter */
+.kc-main-scroll.kc-scrollbar-hot {
+  scrollbar-color: var(--kc-accent) #05070d;
+}
+
+.kc-back { color: var(--kc-muted); }
+.kc-main-header-title { color: var(--kc-text); }
+
+/* Sections */
+.kc-section { padding: 14px 18px; }
+
+.kc-section-title {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 16px;
+}
+
+.kc-section-subtitle {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 14px;
+}
+
+.kc-intro { margin: 0; color: var(--kc-muted); }
+.kc-highlight { color: var(--kc-highlight); }
+.kc-section-bordered { border-top: 2px solid #11192c; }
+
+/* Ensure Home pane can scroll fully */
+#home.kc-pane-active { min-height: 100%; }
+
+/* Objectives list */
+.kc-objective-list {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.kc-objective-list li {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  line-height: 2.4rem;
+  border-bottom: 1px solid #141b30;
+  position: relative;
+}
+
+.kc-objective-list li:last-child { border-bottom: none; }
+
+.kc-obj-status { width: 26px; text-align: center; }
+.kc-obj-status i { color: #39e858; font-size: 16px; }
+
+.kc-obj-link {
+  flex: 1;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+}
+
+.kc-obj-link:hover { color: var(--kc-highlight); }
+
+.kc-obj-active::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(255, 255, 255, 0.14);
+  pointer-events: none;
+}
+
+/* Objective detail cards */
+.kc-objective-detail {
+  margin-top: 16px;
+  padding: 10px 12px;
+  background: rgba(5, 11, 23, 0.9);
+  border: 1px solid var(--kc-border);
+}
+
+.kc-objective-title {
+  margin: 0 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 15px;
+}
+
+.kc-objective-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--kc-muted);
+  margin-bottom: 6px;
+}
+
+.kc-objective-detail h4 {
+  margin: 8px 0 4px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.kc-objective-detail p,
+.kc-objective-detail ol {
+  margin: 0 0 4px;
+  font-size: 14px;
+}
+
+.kc-objective-detail ol { padding-left: 20px; }
+
+/* Code block */
+.kc-code {
+  display: block;
+  background: #050912;
+  border: 1px solid #182132;
+  padding: 6px 8px;
+  border-radius: 2px;
+  font-family: "SF Mono", "Consolas", "Courier New", monospace;
+  font-size: 12px;
+  color: #e5ebff;
+  overflow-x: auto;
+}
+
+/* Footer */
+.kc-footer-section {
+  border-top: 2px solid #11192c;
+  text-align: center;
+  color: var(--kc-muted);
+  font-size: 14px;
+}
+
+/* SETTINGS PAGE */
+.kc-settings { max-width: 720px; }
+
+.kc-settings-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.kc-settings-label {
+  width: 260px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.kc-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #050b12;
+  border: 1px solid #9a9a9a;
+  box-shadow: inset 0 0 0 1px #000;
+}
+
+.kc-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  border: 1px solid #444;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+.kc-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  border: 1px solid #444;
+  box-shadow: 0 0 3px rgba(0,  0, 0, 0.8);
+  cursor: pointer;
+}
+
+.kc-slider::-moz-range-track {
+  height: 6px;
+  background: #050b12;
+  border: 1px solid #9a9a9a;
+}
+
+.kc-settings-toggle-row { align-items: center; }
+.kc-toggle-group { display: flex; gap: 12px; }
+
+.kc-toggle-button {
+  font-family: inherit;
+  font-size: 16px;
+  padding: 6px 22px;
+  background: #d5d5d5;
+  color: #111;
+  border: 1px solid #666;
+  box-shadow:
+    inset 0 0 0 1px #fdfdfd,
+    0 2px 0 #000;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.kc-toggle-button:hover { background: #e4e4e4; }
+
+.kc-toggle-active {
+  background: #f7f7f7;
+  border-color: #ffffff;
+  box-shadow:
+    inset 0 0 0 1px #ffffff,
+    0 2px 0 #000,
+    0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+/* Pane switching */
+.kc-pane { display: none; }
+.kc-pane.kc-pane-active { display: block; }
+
+@media (max-width: 900px) {
+  body { overflow: auto; }
+  .kc-shell { height: auto; max-height: none; }
+  .kc-nav { overflow: visible; }
+  .kc-main-scroll { overflow: visible; padding-right: 0; }
+
+  .kc-shell { grid-template-columns: 1fr; }
+
+  .kc-sidebar {
+    border-right: none;
+    border-bottom: 2px solid #151f35;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .kc-nav { display: flex; flex-wrap: wrap; }
+  .kc-nav-item { flex: 1 0 50%; }
+}
+
+/* STORY PANE */
+#story {
+  min-height: 100%;
+  height: 100%;
+  background-color: #00020b;
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.05) 0px,
+      rgba(255,255,255,0.05) 1px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,0) 4px
+    );
+  border-top: 2px solid #11192c;
+}
+
+#story.kc-pane-active { display: block; }
+
+#story .kc-story-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 12px 12px 28px;
+  text-align: center;
+}
+
+#story .kc-story-act-title {
+  margin: 20px 0 8px;
+  font-size: 34px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: #f7f74a;
+  text-shadow:
+    0 0 6px rgba(255, 228, 107, 0.55),
+    0 0 14px rgba(255, 228, 107, 0.35);
+}
+
+#story .kc-story-text {
+  margin: 0 auto 14px;
+  font-size: 22px;
+  line-height: 1.55;
+  color: #f7f7f7;
+  font-weight: 600;
+  text-shadow: 0 0 4px rgba(255,255,255,0.18);
+  max-width: 700px;
+}
+
+/* MAP PANE (flex fill to remove “false bottom”) */
+#map.kc-pane-active {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  height: 100%;
+}
+
+.kc-map-header {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 14px;
+}
+
+.kc-map-controls {
+  background: rgba(180, 180, 180, 0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  text-align: center;
+  font-size: 14px;
+  color: #e9e9e9;
+  max-width: 520px;
+  line-height: 1.35;
+}
+
+.kc-map-green {
+  color: #39e858;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(57,232,88,0.6);
+}
+
+.kc-map-viewport {
+  position: relative;
+  width: 100%;
+  flex: 1;            /* fill remaining height */
+  height: auto;
+  min-height: 920px;
+  overflow: hidden;
+  border-top: 2px solid #11192c;
+}
+
+.kc-map-content {
+  position: absolute;
+  left: 0; top: 0;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.kc-map-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+.kc-map-labels {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.kc-map-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 4px 8px;
+  background: rgba(0,0,0,0.65);
+  border: 1px solid rgba(57,232,88,0.9);
+  color: #39e858;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  border-radius: 4px;
+  text-shadow: 0 0 6px rgba(57,232,88,0.6);
+  pointer-events: auto;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.kc-map-label:hover {
+  background: rgba(0,0,0,0.85);
+  box-shadow: 0 0 10px rgba(57,232,88,0.8);
+}
+
+/* VIDEO */
+.kc-video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.kc-video-wrapper iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.kc-divider {
+  border: none;
+  border-top: 1px solid #444;
+  margin: 3em 0;
+}
+
+.kc-link {
+  color: #5ce1e6;
+  text-decoration: underline;
+}
+.kc-link:hover { color: #a5f3f5; }
+
+/* Top button (now hugs right pane) */
+.kc-scroll-top {
+  position: absolute; /* relative to .kc-shell */
+  right: 12px;
+  bottom: 12px;
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  background: #151f35;
+  color: var(--kc-text);
+  border: 1px solid var(--kc-border);
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 10px;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+.kc-scroll-top.is-visible {
+  opacity: 0.9;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.kc-scroll-top:hover {
+  opacity: 1;
+  border-color: var(--kc-accent);
+}
+
+/* Avatar */
+.postshell-avatar {
+  width: 134px;
+  height: auto;
+  max-height: 220px;
+  object-fit: contain;
+  transition: all 0.25s ease;
+}
+
+.postshell-avatar:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 18px rgba(0, 255, 0, 0.85);
+}
+
+/* Difficulty snowflake (objective intro) */
+/* Stacked meta layout just for this style of block */
+.kc-objective-meta--stacked {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Shared line style for meta rows (Difficulty, Location, etc.) */
+.kc-meta-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kc-meta-label {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 13px;
+  color: var(--kc-muted);
+}
+
+.kc-meta-value {
+  font-size: 14px;
+}
+
+/* Difficulty layout */
+.kc-difficulty {
+  gap: 6px;
+}
+
+.kc-difficulty-scale {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Inactive snowflakes (4 of 5) */
+.kc-snowflake {
+  font-size: 16px;
+  color: rgb(246, 245, 245);
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Active snowflake (1 of 5, red) */
+.kc-snowflake-active {
+  color: #ff4d6a;
+  text-shadow: 0 0 8px rgba(255, 77, 106, 0.7);
+}
+
+/* screen-reader only text (safe to reuse elsewhere) */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* Conversation header bar (NPC Conversation) */
+.kc-convo-header {
+  margin: 10px 0 14px;
+  padding: 10px 18px;
+  background: #5f646a;              /* inner grey bar like screenshot */
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 0 2px #050b17;    /* dark outer edge to match panel */
+}
+
+.kc-convo-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #55585c;
+  font-size: 13px;
+}
+
+.kc-convo-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--kc-text);
+}
+
+.kc-objective-summary .kc-meta-value {
+  font-size: 16px;   /* try 15px if you want just a tiny bump */
+}
+
+/* Lynn conversation bubble (in-game style) */
+.kc-convo-bubble {
+  margin-top: 10px;
+  padding: 16px 22px;
+  background: #f7f0c5;
+  border-radius: 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  width: 100%;                 /* force full width */
+  box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  color: #222;
+}
+
+/* little responsiveness so it doesn't break on narrow screens */
+@media (max-width: 700px) {
+  .kc-convo-bubble {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.kc-convo-avatar {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.kc-convo-avatar img {
+  display: block;
+  width: 130px;
+  height: auto;
+  image-rendering: pixelated;          /* keeps the crunchy pixel art look */
+}
+
+.kc-convo-name {
+  margin-top: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+}
+
+/* Text side of the bubble */
+/* Text side of the bubble */
+.kc-convo-text {
+  flex: 1 1 0;                 /* let Safari shrink this correctly */
+  min-width: 0;                /* important for flex text in Safari */
+  font-size: 16px;
+  line-height: 1.45;
+  font-weight: 600;
+  display: flex;               /* so we can pin the button at bottom-right */
+  flex-direction: column;
+}
+
+.kc-convo-text p {
+  margin: 0 0 0.75em;
+}
+
+.kc-convo-text p:last-child {
+  margin-bottom: 0.5em;
+}
+
+/* container for the Play button inside the bubble */
+.kc-convo-actions {
+  margin-top: auto;            /* pushes button to bottom */
+  display: flex;
+  justify-content: flex-end;   /* pushes button to the right */
+}
+
+/* Variant: objective detail without dark panel (for Lynn convo bubble) */
+.kc-objective-detail--no-panel {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Play button inside conversation bubble */
+.kc-convo-play-btn {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--kc-accent);
+  background: var(--kc-accent-soft);
+  color: #031015;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+
+  transition: background 0.15s ease, box-shadow 0.15s ease,
+              transform 0.1s ease;
+}
+
+.kc-convo-play-btn i {
+  font-size: 12px;
+}
+
+.kc-convo-play-btn:hover {
+  background: var(--kc-accent);
+  box-shadow: 0 0 12px rgba(122, 254, 106, 0.7);
+  transform: translateY(-1px);
+}
+
+.kc-convo-play-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 0 6px rgba(122, 254, 106, 0.5);
+}
+
+.kc-convo-play-btn.is-playing {
+  background: var(--kc-accent);
+  box-shadow: 0 0 12px rgba(122, 254, 106, 0.8);
+  color: #031015;
+}
+
+.kc-convo-play-btn:disabled {
+  cursor: default;
+  opacity: 0.9;
+}
+
+/* Challenge workflow banner (below Lynn's bubble) */
+.kc-workflow-header {
+  margin: 18px 0 10px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #6a4bc4, #4b2f8f); /* purple */
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 0 2px #050b17;
+}
+
+.kc-workflow-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #f3e9ff;   /* light purple */
+  color: #4b2f8f;
+  font-size: 13px;
+}
+
+.kc-workflow-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--kc-text);
+}
+
+/* Text under "Working through the Challenge" */
+.kc-workflow-intro {
+  margin: 8px 0 14px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Cranberry Pi terminal banner */
+.kc-terminal-header {
+  margin: 6px 0 10px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #000000, #680707); /* green, terminal-ish */
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 0 2px #050b17;
+}
+
+.kc-terminal-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: #06351b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.kc-terminal-icon img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: pixelated; /* keep the crunchy pixel look */
+}
+
+.kc-terminal-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--kc-text);
+}
+
+/* Generic terminal window – all terminals use this */
+.kc-terminal-window {
+  background: #000000;                 /* black terminal background */
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin: 10px 0 16px;
+  box-shadow:
+    0 0 0 2px rgba(169, 51, 51, 0.9),  /* darker red outline */
+    0 0 14px rgba(255, 120, 120, 0.35);/* soft red glow */
+  overflow-x: auto;                    /* <-- bring back horizontal scroll */
+}
+
+/* Variant: terminal window with wrapped lines instead of horizontal scroll */
+.kc-terminal-window--wrap {
+  overflow-x: visible;  /* no horizontal scrollbar */
+}
+
+/* Only change white-space for wrapped terminals */
+.kc-terminal-window--wrap .kc-terminal-text {
+  white-space: pre-wrap;       /* preserve spacing, but wrap long lines */
+  word-break: break-word;      /* break long tokens if needed */
+}
+
+
+.kc-terminal-text {
+  margin: 0;
+  font-family: "Inconsolata", monospace;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #d0d0d0;
+  white-space: pre;  /* preserve newlines exactly */
+}
+
+/* green horizontal divider bar like in the real terminal */
+/* green horizontal divider bar with red dashed text */
+.kc-terminal-divider {
+  height: 5px;
+  background: #3db929;              /* terminal green */
+  margin: 6px 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kc-terminal-dashline {
+  font-family: "Inconsolata", monospace;
+  font-size: 10px;
+  line-height: 1;
+  color: #ff3333;                    /* terminal red */
+}
+
+/* terminal colors */
+.term-green {
+  color: #00ff66;
+}
+
+.term-red {
+  color: #ff4444;
+}
+
+/* host/prompt line */
+.term-host {
+  color: #ffffff;
+}
+
+/* Text under the faux terminal */
+.kc-terminal-instructions {
+  margin: 10px 0 14px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Green solution banner */
+.kc-solution-header {
+  margin: 0 0 10px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #3a9d4c, #15aa08); /* green gradient */
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 0 2px #050b17;
+}
+
+.kc-solution-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #18c034;
+  font-size: 14px;
+}
+
+.kc-solution-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--kc-text);
+  letter-spacing: 0.08em;
+}
+
+.kc-solution-note {
+  margin: 8px 0 10px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Blue "Hints" banner (Defang) */
+.kc-hints-header {
+  margin-top: 18px;
+  background: linear-gradient(135deg, #1552d4, #1ea0ff); /* darker near text */
+}
+
+.kc-hints-icon {
+  background: #e3f3ff;
+  color: #0b5da8;
+}
+
+.kc-convo-title {
+  /* existing styles... */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Hint cards under the Hints: header */
+.kc-hint-card {
+  margin: 8px 0;
+  padding: 12px 18px;
+  background: #050b17;
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 2px rgba(94, 141, 203, 0.9),   /* thicker, brighter edge */
+    0 0 10px rgba(80, 140, 255, 0.35);    /* soft glow */
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.kc-hint-title {
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.kc-hint-meta {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-bottom: 6px;
+}
+
+/* Emphasis for sed (blue like in-game) */
+.kc-hint-sed {
+  color: #4fb4ff;
+  font-weight: 600;
+}
+
+.kc-ptas-screenshot {
+  margin: 14px 0 12px;
+}
+
+.kc-ptas-image-wrapper {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.kc-ptas-thumb {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.kc-ptas-enlarge-btn {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  background: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.kc-ptas-enlarge-btn i {
+  font-size: 11px;
+}
+
+.kc-ptas-enlarge-btn:hover {
+  background: rgba(0, 0, 0, 0.95);
+  transform: translateY(-1px);
+}
+
+.kc-ptas-caption {
+  margin-top: 6px;
+  font-size: 13px;
+  opacity: 0.85;
+  text-align: center;   /* center the caption under each image */
+}
+
+.kc-image-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: flex-start;          /* anchor content near the top */
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 2000;
+  overflow-y: auto;                 /* ✅ allow vertical scrolling inside modal */
+  padding: 40px 0;                  /* top/bottom breathing room */
+}
+
+.kc-image-modal.is-open {
+  display: flex;
+}
+
+.kc-image-modal-content {
+  position: relative;
+  max-width: 95vw;
+  max-height: 90vh;
+}
+
+#kc-image-modal-img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+}
+
+.kc-image-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.kc-image-modal-close:hover {
+  background: rgba(0, 0, 0, 0.95);
+}
+
+/* prevent background scrolling when modal is open */
+body.kc-modal-open {
+  overflow: hidden;
+}
+
+.kc-reference-links-intro {
+  margin: 10px 0 6px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.kc-reference-links {
+  margin: 0 0 14px;
+  padding-left: 20px;
+  font-size: 14px;
+}
+
+.kc-reference-links a {
+  color: #4fb4ff;
+  text-decoration: none;
+}
+
+.kc-reference-links a:hover {
+  text-decoration: underline;
+}
+
+.kc-step-section {
+  margin: 18px 0 12px;
+}
+
+.kc-step-label {
+  font-size: 18px;               /* bigger */
+  font-weight: 700;              /* bold */
+  color: #ffffff;                /* bright white */
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin: 12px 0 6px;
+}
+
+.kc-step-objective-text {
+  margin: 0 0 6px;
+}
+
+.kc-step-objective {
+  font-weight: 700;
+  color: #ff5555;  /* red + bold objective line */
+}
+
+.kc-step-mission {
+  margin: 6px 0 10px;
+  padding-left: 20px;
+  font-size: 14px;
+}
+
+.kc-step-warning {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: #ffb347;
+  font-weight: 600;
+}
+
+.kc-step-subtitle {
+  margin: 10px 0 2px;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.kc-step-small-label {
+  margin: 0 0 4px;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.kc-code-block {
+  margin: 8px 0 16px;
+  padding: 8px 12px;
+  background: #050b17;
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px rgba(120, 180, 255, 0.35);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.kc-code-block pre {
+  margin: 0;
+  font-family: "Inconsolata", monospace;
+  font-size: 13px;
+  color: #e8e8e8;
+  white-space: pre;
+  overflow-x: auto;
+  flex: 1;
+  scrollbar-width: thin;                   /* Firefox */
+  scrollbar-color: #444444 #05070d;        /* thumb, track */
+}
+
+/* When hovering over the regex block, turn its scrollbar green (Firefox) */
+.kc-code-block pre:hover {
+  scrollbar-color: #46ff9c #05070d;  /* green thumb, same dark track */
+}
+
+/* WebKit scrollbar for regex block (Safari/Chrome) */
+.kc-code-block pre::-webkit-scrollbar {
+  height: 8px;                             /* horizontal bar height */
+  background: #05070d;
+}
+
+.kc-code-block pre::-webkit-scrollbar-track,
+.kc-code-block pre::-webkit-scrollbar-track-piece {
+  background: #05070d;
+}
+
+.kc-code-block pre::-webkit-scrollbar-thumb {
+  background: #444444;
+  border-radius: 8px;
+  border: 2px solid #05070d;
+  background-clip: padding-box;
+}
+
+.kc-code-copy-btn {
+  flex-shrink: 0;
+  align-self: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid #46ff9c;
+  background: #050b17;
+  color: #46ff9c;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.kc-code-copy-btn i {
+  font-size: 12px;
+}
+
+.kc-code-copy-btn:hover {
+  background: #0b172a;
+}
+
+.kc-defanged-panel {
+  margin: 8px 0 16px;
+  padding: 10px 14px;
+  background: #050b17;
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+  font-size: 14px;
+}
+
+.kc-defanged-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 4px;
+}
+
+.kc-defanged-group {
+  margin-top: 6px;
+}
+
+.kc-defanged-heading {
+  font-weight: 700;
+  margin-bottom: 2px;
+  opacity: 0.95;
+}
+
+/* remove bullets + tighten spacing */
+.kc-defanged-group ul {
+  margin: 2px 0 4px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.kc-defanged-group li {
+  margin: 2px 0;
+  padding: 4px 10px;
+  background: #080e1f;
+  border-radius: 4px;
+  border-left: 4px solid #ffffff; /* default; overridden per group below */
+}
+
+/* Colored left bars per IOC type, matching the game-ish palette */
+.kc-defanged-group--domains li {
+  border-left-color: #ff5b5b;      /* red */
+}
+
+.kc-defanged-group--ips li {
+  border-left-color: #ffb347;      /* orange */
+}
+
+.kc-defanged-group--urls li {
+  border-left-color: #4cd964;      /* green */
+}
+
+.kc-defanged-group--emails li {
+  border-left-color: #b38cff;      /* purple */
+}
+
+.kc-workflow-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin: 8px 0 16px;
+}
+
+.kc-workflow-text {
+  flex: 1;
+}
+
+/* keep the pixel-art vibe and cap the size */
+.kc-workflow-image {
+  max-width: 120px;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+/* Mobile / narrow layout: stack image under text */
+@media (max-width: 768px) {
+  .kc-workflow-row {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+  }
+
+  .kc-workflow-image {
+    max-width: 96px;
+  }
+}
+
+/* extra terminal highlight colors */
+.term-yellow {
+  color: #ffe66b;
+}
+
+.term-command {
+  color: #7dd3fc;
+  font-weight: 600;
+}
+
+/* optional: a bit of spacing for this specific window */
+.kc-terminal-window--fire {
+  margin-top: 8px;
+}
+
+/* Extra vertical spacing before major section headers so sections don't run together */
+.kc-section .kc-convo-header,
+.kc-section .kc-hints-header,
+.kc-section .kc-workflow-header,
+.kc-section .kc-terminal-header,
+.kc-section .kc-solution-header {
+  margin-top: 28px;   /* ~2 lines of space Alter me to add more space above the section headders*/
+  margin-bottom: 12px;
+}
+
+/* Author / narration bubble (for write-up guidance) */
+.kc-note-bubble {
+  margin: 10px 0 16px;
+  padding: 10px 16px;
+  background: rgba(35, 16, 72, 0.9); /* deep purple */
+  border-radius: 10px;
+  box-shadow:
+    0 0 0 2px rgba(190, 150, 255, 0.85),
+    0 0 12px rgba(130, 90, 230, 0.45);
+  font-size: 15px;
+  line-height: 1.6;
+  color: #f5f0ff;
+}
+
+/* Fire-alarm themed terminals – inherit base styles, maybe tweak spacing if desired */
+.kc-terminal-window--wrap .kc-terminal-text {
+  color: #d0d0d0;
+}
+
+/* terminal text */
+.kc-terminal-window--wrap .kc-terminal-text {
+  color: #d0d0d0;
+}
+
+/* prompt colors */
+.kc-terminal-window--wrap .term-user {
+  color: #4fd1ff !important;   /* bright cyan/blue */
+  font-weight: 600;
+}
+
+/* prompt colors */
+.kc-terminal-window--fire .term-user {
+  color: #4fd1ff !important;   /* bright cyan/blue */
+  font-weight: 600;
+}
+
+.kc-terminal-window--wrap .term-hostname {
+  color: #ffe66b !important;   /* warm yellow */
+  font-weight: 600;
+}
+
+.kc-terminal-window--fire .term-hostname {
+  color: #ffe66b !important;   /* warm yellow */
+  font-weight: 600;
+}
+
+.kc-terminal-window--wrap .term-hostline {
+  color: #ffffff;
+}
+
+.term-blue {
+  color: #61b8ff; /* or whatever blue fits your palette */
+}
+
+/* Terminal prompt coloring – make these more specific so they win */
+.kc-terminal-text .term-user {
+  color: #44c0ff;   /* teal-ish like the other terminals */
+  font-weight: 600;
+}
+
+.kc-terminal-text .term-hostname {
+  color: #ffd75e;   /* yellow host */
+  font-weight: 600;
+}
+
+/* Image + enlarge wrapper */
+.kc-image-wrapper {
+  position: relative;
+  display: block;      /* fill the content width */
+  width: 100%;
+  margin: 0.75rem 0 0.25rem;
+}
+
+/* Inline images inside write-up */
+.kc-inline-image {
+  display: block;
+  max-width: 100%;     /* don't overflow the pane */
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+.kc-challenge-title {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.6rem;              /* larger */
+  font-weight: 700;               /* bold */
+  color: #ff4f4f;                 /* bright red */
+  letter-spacing: 0.04em;
+
+  /* subtle dark glow so it stands out on the blue background */
+  text-shadow:
+    0 0 4px rgba(0, 0, 0, 0.75),
+    0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* Darker blue variant for links (e.g., Intro to Nmap page) */
+.kc-link-deep {
+  color: #3255e2;              /* darker, richer blue */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s ease, text-decoration 0.15s ease;
+}
+
+.kc-link-deep:hover,
+.kc-link-deep:focus {
+  color: #3e75c8;              /* slightly lighter on hover */
+  text-decoration: underline;  /* match Defang hover behavior */
+}
+
+.term-question {
+  color: #cba6ff; /* purple */
+}
+
+.term-user-nmap {
+  color: #7CFC00; /* bright green */
+}
+
+.term-path-nmap {
+  color: #5cc9ff; /* blue for ~ */
+}
+
+.term-symbol {
+  color: #ffffff; /* colon and $ in white */
+}
+
+/* Nmap question text (bright blue like the terminal) */
+.term-question2 {
+  color: #5fd7ff;      /* bright cyan/blue */
+  font-weight: normal; /* keep it like real terminal text */
+}
+
+/* Lighter blue link for terminal output on dark background */
+.kc-link-terminal {
+  color: #5fb7ff;              /* brighter cyan-ish blue */
+  text-decoration: none;
+}
+
+.kc-link-terminal:hover,
+.kc-link-terminal:focus {
+  text-decoration: underline;
+  color: #a5d8ff;              /* even lighter on hover */
+}
+
+/* Brown "Item" banner – same sizing as other headers */
+.kc-item-header {
+  margin: 0 0 10px;
+  padding: 10px 18px;                       /* same as solution/header banners */
+  background: linear-gradient(135deg, #53301a, #7c4b21); /* brown gradient */
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 0 2px #050b17;
+  color: #ffe7b8;
+  line-height: 1.2;
+}
+
+/* Item icon circle (same size as other header icons) */
+.kc-item-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;                              /* match .kc-solution-icon */
+  height: 24px;
+  border-radius: 50%;
+  background: #2b1a0f;
+  color: #ffe7b8;
+  font-size: 16px;                          /* match icon size */
+}
+
+/* Item title text – same font style as other header titles */
+.kc-item-header .kc-convo-title {
+  font-family: "Inconsolata", monospace;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Brown item bubble (Retro Recovery) */
+.kc-item-bubble {
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  background: #3b2412;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 0 0 2px #22140a;
+  border: 1px solid #7a5430;
+}
+
+.kc-item-thumb-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.kc-item-thumb {
+  width: 64px;
+  height: 64px;
+  image-rendering: pixelated; /* keeps that retro vibe if scaled */
+}
+
+.kc-item-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.kc-item-title-line {
+  margin-bottom: 4px;
+}
+
+.kc-item-title {
+  font-family: "Inconsolata", monospace;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fdf7e6;
+}
+
+.kc-item-desc {
+  margin: 0;
+  font-family: "Inconsolata", monospace;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #fbeed0;
+}
+
+.kc-item-highlight {
+  font-weight: 700;
+  text-decoration: underline;
+  color: #ffe9a0; /* slightly yellower, like the in-game highlight */
+}
+
+.kc-item-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.kc-item-title-link:hover .kc-item-title {
+  text-decoration: underline;
+}
+
+.kc-item-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.kc-item-title-link:hover .kc-item-title {
+  text-decoration: underline;
+}
+
+/* Inline link inside description */
+.kc-item-inline-link {
+  color: #f8e1a0;            /* same as kc-item-highlight */
+  text-decoration: underline;
+}
+
+.kc-item-inline-link:hover {
+  text-decoration: none;
+}
+
+/* Kali-style terminal window */
+.kc-terminal-window--kali {
+  background: #05070c;
+  border-radius: 10px;
+  border: 1px solid #1f2937;
+  box-shadow: 0 0 0 2px #020409;
+}
+
+/* Base text color inside Kali terminal */
+.kc-terminal-window--kali .kc-terminal-text {
+  background: transparent;
+  color: #d4d4d4;
+}
+
+/* Prompt + pieces */
+.term-kali-prompt {
+  color: #26c6ff;           /* cyan-ish like Kali */
+}
+
+.term-kali-user,
+.term-kali-host {
+  font-weight: 600;
+}
+
+.term-kali-symbol {
+  color: #26c6ff;
+}
+
+.term-kali-path {
+  color: #b5cea8;           /* soft green path */
+}
+
+/* Command & output */
+.term-kali-command {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.term-kali-output {
+  color: #d4d4d4;
+}
+
+/* Kali-style title bar */
+.kc-terminal-window--kali {
+  background: #05070c;
+  border-radius: 10px;
+  border: 1px solid #1f2937;
+  box-shadow: 0 0 0 2px #020409;
+  overflow: hidden; /* keeps rounded corners on title bar */
+}
+
+.kali-titlebar {
+  display: flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: linear-gradient(180deg, #101520, #05070c);
+  border-bottom: 1px solid #1f2937;
+  font-family: "Inconsolata", Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 14px;
+  color: #e3e6ec;
+}
+
+.kali-titlebar-icon {
+  margin-right: 6px;
+  font-size: 13px;
+}
+
+.kali-title {
+  flex: 1;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.kali-titlebar-buttons {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.kali-btn {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid #1f2937;
+  background: #3b4252;
+}
+
+/* subtle different shades for buttons */
+.kali-btn-min {
+  background: #4caf50;
+}
+
+.kali-btn-max {
+  background: #ffb300;
+}
+
+.kali-btn-close {
+  background: #f44336;
+}
+
+/* keep your existing Kali text colors */
+.kc-terminal-window--kali .kc-terminal-text {
+  background: transparent;
+  color: #d4d4d4;
+}
+
+.term-kali-prompt {
+  color: #26c6ff;
+}
+
+.term-kali-user,
+.term-kali-host {
+  font-weight: 600;
+}
+
+.term-kali-symbol {
+  color: #26c6ff;
+}
+
+.term-kali-path {
+  color: #b5cea8;
+}
+
+.term-kali-command {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.term-kali-output {
+  color: #d4d4d4;
+}
+
+/* Gold "Extra" banner */
+.kc-extra-header{
+  margin: 24px 0 10px;  /* was 0 0 10px; */
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #b8860b, #f2c14e);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 0 2px #050b17;
+}
+
+.kc-extra-icon{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #b8860b;
+  font-size: 14px;
+  flex: 0 0 24px;
+}
+
+.kc-extra-title{
+  font-weight: 700;
+  font-size: 14px; /* same feel as other headers */
+  color: #0b1428;
+  letter-spacing: 0.2px;
+}
+
+/* Gold "Extra" bubble (lighter than the Extra header) */
+.kc-extra-bubble{
+  margin: 10px 0 18px;
+  padding: 14px 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(184, 134, 11, 0.22),
+    rgba(242, 193, 78, 0.16)
+  );
+  border: 2px solid rgba(242, 193, 78, 0.55);
+  border-radius: 14px;
+  box-shadow: 0 0 0 2px #050b17;
+  color: #f4f7ff;
+}
+
+.kc-extra-bubble .kc-extra-label{
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffe6a3;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.kc-extra-bubble p{
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.kc-extra-bubble code{
+  color: #ffe6a3;
+}
+
+.kc-extra-bubble pre{
+  font-size: 14px;   /* was effectively ~13–14px; tweak as needed */
+  line-height: 1.35;
+  margin: 10px 0 0;
+  padding: 12px 12px;
+  background: rgba(0,0,0,0.45);
+  border-radius: 10px;
+  border: 1px solid rgba(242, 193, 78, 0.35);
+  overflow: auto;
+  white-space: pre;
+}
+
+.kc-extra-bubble ol{
+  margin: 8px 0 0 18px;
+}
+
+.kc-extra-bubble li{
+  margin: 6px 0;
+}
+
+/* Extra screenshots (stacked, big) */
+.kc-extra-gallery{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.kc-extra-shot{
+  display: block;
+  width: 100%;
+  max-width: 900px;          /* bump up/down as you like */
+  margin: 0 auto;            /* centers the “card” */
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.35);
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.20);
+}
+
+.kc-extra-shot img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Mail Detective: keep curlyterm.png from dominating the write-up bubble */
+.kc-section--mail-detective .kc-workflow-image {
+  max-width: 68px;
+}
+
+/* Mail Detective color tweaks */
+.term-yellow       { color: #e6d36a; }
+.term-yellowbold   { color: #f8e88f; font-weight: 600; }
+.term-greenbold    { color: #8ff78b; font-weight: 600; }
+.term-cyanbold     { color: #7dd9f9; font-weight: 600; }
+.term-white        { color: #dcdcdc; }
+/* Mail Detective: additional colors */
+.term-redbold {
+  color: #ff5c5c;          /* readable “alert red” */
+  font-weight: 700;
+}
+
+.term-purplelight {
+  color: #c9a6ff;          /* light purple like the screenshot vibe */
+}
+
+.term-file-purple { color: #b38cff; } /* light-ish purple */
+
+/* Idorable Bistro: allow the Sasabune image to be larger without affecting other pages */
+.kc-section--idorable-bistro .kc-workflow-image{
+  max-width: 260px;   /* tweak up/down */
+}
+
+/* dosis: allow the Dosis Neighborhood Core Router image to be smaller without affecting other pages */
+.kc-section--dosis-network-down .kc-workflow-image{
+  max-width: 80px;   /* tweak up/down */
+}
+
+/* Brighter links specifically for purple write-up bubbles */
+.kc-note-bubble a.kc-link-note {
+  color: #8fd3ff;                 /* readable on purple */
+  text-decoration: none;
+  border-bottom: 1px solid rgba(143, 211, 255, 0.45);
+}
+
+.kc-note-bubble a.kc-link-note:visited {
+  color: #8fd3ff;                 /* keep consistent (optional) */
+}
+
+.kc-note-bubble a.kc-link-note:hover,
+.kc-note-bubble a.kc-link-note:focus-visible {
+  color: #c3ecff;
+  border-bottom-color: rgba(195, 236, 255, 0.9);
+  outline: none;
+}
+
+/* Code viewer (scoped, won’t affect other pages) */
+.kc-code-window{
+  margin: 10px 0 14px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px #050b17;
+  background: #0b1020;
+}
+
+.kc-code-header{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, #2b3350, #151b33);
+  color: #e9eefc;
+  font-weight: 700;
+}
+
+.kc-code-block{
+  margin: 0;
+  padding: 12px 14px;
+  overflow: auto;
+  font-size: 13px; 
+  max-height: 520px;
+  font-family: "Inconsolata", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+/* Make Prism look good inside our custom code viewer only */
+.kc-code-window code[class*="language-"],
+.kc-code-window pre[class*="language-"]{
+  background: transparent !important;
+  color: #e7eefc;
+  text-shadow: none !important;
+}
+
+/* Token colors (scoped to the code window) */
+.kc-code-window .token.comment,
+.kc-code-window .token.prolog,
+.kc-code-window .token.doctype,
+.kc-code-window .token.cdata{
+  color: #7f8fb3;
+  font-style: italic;
+}
+
+.kc-code-window .token.punctuation{ color: #b9c6e6; }
+.kc-code-window .token.operator{ color: #c7d2f5; }
+
+.kc-code-window .token.keyword{ color: #7aa2ff; font-weight: 700; }
+.kc-code-window .token.function{ color: #7ee6b7; }
+.kc-code-window .token.boolean,
+.kc-code-window .token.number{ color: #ffd580; }
+
+.kc-code-window .token.string,
+.kc-code-window .token.char,
+.kc-code-window .token.attr-value{ color: #ff9db5; }
+
+.kc-code-window .token.class-name,
+.kc-code-window .token.builtin{ color: #b7a6ff; }
+
+.kc-code-window .token.property,
+.kc-code-window .token.constant,
+.kc-code-window .token.symbol{ color: #89dceb; }
+
+.kc-code-window .token.template-string{ color: #ffb86c; }
+.kc-code-window .token.interpolation{ color: #f1f5ff; }
+
+/* Nice selection */
+.kc-code-window ::selection{
+  background: rgba(122,162,255,0.28);
+}
+
+/* Let THIS code window expand (no inner vertical scroll) */
+.kc-code-window--autoheight .kc-code-block{
+  max-height: none !important;
+  font-size: 14px; 
+  height: auto !important;
+  overflow-y: visible !important;   /* kill vertical scrollbar */
+  overflow-x: auto;                 /* keep horizontal scroll if needed */
+}
+
+/* If your scroll is on the <pre> itself (common), cover that too */
+.kc-code-window--autoheight pre{
+  max-height: none !important;
+  height: auto !important;
+  overflow-y: visible !important;
+  overflow-x: auto;
+}
+
+.kc-code-window .line-highlight{
+  background: rgba(255, 215, 0, 0.18);
+  border-left: 4px solid rgba(255, 215, 0, 0.9);
+}
+
+/* Hide the line-number label that appears on highlighted lines */
+.kc-code-window .line-highlight::before,
+.kc-code-window .line-highlight[data-start]::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Kali jq-style colorization (only when you opt-in with .term-kali-jq) */
+.term-kali-output.term-kali-jq .term-jq-brace { color: #e7eefc; }
+.term-kali-output.term-kali-jq .term-jq-punct { color: #a9b8dd; }
+
+.term-kali-output.term-kali-jq .term-jq-key {
+  color: #7aa2ff;          /* blue-ish keys */
+  font-weight: 700;
+}
+
+.term-kali-output.term-kali-jq .term-jq-string { color: #7ee6b7; } /* green strings */
+.term-kali-output.term-kali-jq .term-jq-number { color: #ffd580; } /* warm numbers */
+.term-kali-output.term-kali-jq .term-jq-bool { color: #ff9db5; }   /* optional */
+.term-kali-output.term-kali-jq .term-jq-null { color: #b7a6ff; }   /* optional */
+
+/* Kali script token colors (loop snippet) */
+.term-kali-kw { color: #7aa2ff; font-weight: 700; }     /* for/if/then/etc */
+.term-kali-var { color: #7ee6b7; }                      /* i, json, BASE */
+.term-kali-fn { color: #ffd580; }                       /* curl, jq, seq, echo, sleep */
+.term-kali-str { color: #ff9db5; }                      /* "strings" and 'filters' */
+.term-kali-num { color: #ffd580; }                      /* numbers */
+.term-kali-op { color: #b9c6e6; }                       /* |, &&, ||, >, $(), [] */
+.term-kali-pathlit { color: #89dceb; }                  /* /dev/null etc */
+
+/* Bash-ish syntax coloring (scoped to Kali terminal blocks) */
+.kc-terminal-window--kali .term-bash-var { color: #7aa2ff; font-weight: 700; }
+.kc-terminal-window--kali .term-bash-assign { color: #c7d2f5; }
+.kc-terminal-window--kali .term-bash-string { color: #ff9db5; }
+.kc-terminal-window--kali .term-bash-url { color: #89dceb; }
+.kc-terminal-window--kali .term-bash-escape { color: #ffd580; }
+.kc-terminal-window--kali .term-bash-comment { color: #7f8fb3; font-style: italic; }
+.kc-terminal-window--kali .term-bash-cmd { color: #7ee6b7; font-weight: 700; }
+.kc-terminal-window--kali .term-bash-flag { color: #b7a6ff; }
+
+/* Output emphasis */
+.kc-terminal-window--kali .term-kali-ok { color: #7ee6b7; font-weight: 800; }
+.kc-terminal-window--kali .term-kali-root { color: #e7eefc; }
+
+/* Light accents for terminals (generic + reusable) */
+.kc-terminal-window .term-accent {
+  color: #89dceb;            /* light cyan */
+}
+.kc-terminal-window .term-accent-strong {
+  color: #a6e3a1;            /* soft green */
+  font-weight: 700;
+}
+
+.kc-basic-inline-comment{
+  color: #6ecc03 !important;
+  font-style: italic;
+}
+
+/* Balance HTML/markup colors inside our custom code viewer */
+.kc-code-window .token.tag { color: #7aa2ff; font-weight: 700; }
+.kc-code-window .token.tag .token.punctuation { color: #b9c6e6; }
+
+.kc-code-window .token.attr-name { color: #ffd580; }
+.kc-code-window .token.attr-value { color: #ff9db5; }
+.kc-code-window .token.attr-value .token.punctuation { color: #b9c6e6; }
+
+.kc-code-window .token.comment { color: #7f8fb3; font-style: italic; }
+.kc-code-window .token.entity,
+.kc-code-window .token.url { color: #89dceb; }
+
+.kc-code-window{
+  font-size: 0.92rem; /* try 0.90rem if you want a touch smaller */
+}
+
+/* Highlight a single “important” output line (Kali terminal only) */
+.kc-terminal-window--kali .term-line-focus{
+  display:block;
+  padding: 2px 8px;
+  margin: 2px 0;
+  border-left: 3px solid rgba(255, 215, 128, 0.95);
+  background: rgba(255, 215, 128, 0.10);
+  box-shadow: 0 0 0 1px rgba(255, 215, 128, 0.18) inset;
+  border-radius: 6px;
+}
+
+/* Make grep hits (password) really stand out */
+.kc-terminal-window--kali .term-grep-hit{
+  color: #ff5c5c;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(255,92,92,0.35);
+}
+
+/* Stronger callout for the important clue segment */
+.kc-terminal-window--kali .term-kali-hilite{
+  display: inline;
+  background: rgba(0, 255, 140, 0.14);          /* brighter tint */
+  border: 1px solid rgba(0, 255, 140, 0.55);     /* visible outline */
+  border-left: 4px solid rgba(0, 255, 140, 0.95);/* strong leading bar */
+  padding: 2px 8px;
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.35) inset,
+    0 0 18px rgba(0,255,140,0.18);
+}
+
+.kc-code-titlebar {
+  position: relative;
+}
+
+.kc-code-copy {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.35);
+  color: #eaeaea;
+  cursor: pointer;
+}
+
+.kc-code-copy:hover {
+  background: rgba(0,0,0,0.55);
+}
+
+.kc-code-block {
+  max-height: 360px;      /* adjust as desired */
+  overflow: auto;         /* scrollbar enabled */
+  scrollbar-gutter: stable;
+}
+
+.term-kali-hit { color: #ff4d4d; font-weight: 700; }
+
+/* Schrödinger's Scope: keep scopeterm.png from dominating this page */
+.kc-section--schrodingers-scope .kc-workflow-image{
+  max-width: 80px; /* tweak up/down */
+}
+
+.kc-section--on-the-wire .kc-workflow-image{
+  max-width: 60px !important;
+}
+
+/* Snowblind Ambush: make hotel_web_terminal.png larger (only on this page/section) */
+.kc--section-snowblind-ambush .kc-section--snowblind-ambush-writeup .kc-workflow-image{
+  max-width: 100px;   /* tweak up/down */
+  width: 140%;
+  height: auto;
+}
+
+/* --- Story pane: solid black + fill the available right-pane height --- */
+#story.kc-pane {
+  background: #000 !important;
+  background-image: none !important;
+  min-height: 100%;
+}
+
+/* Ensure the lazy-loaded wrapper can expand too */
+#story .kc-dynamic,
+#story .kc-story-wrap {
+  min-height: 100%;
+}
+
+/* When Story is active, force the entire right scroll area to be black */
+.kc-main-scroll.kc-story-bg {
+  background: #000 !important;
+  background-image: none !important;
+}
+
+.kc-konami-row{
+  display:flex;
+  flex-wrap:wrap;          /* wraps nicely on smaller screens */
+  gap:10px;
+  align-items:center;
+  margin-top:8px;
+}
+
+.kc-konami-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.18);
+  background:rgba(255,255,255,0.06);
+  font-weight:600;
+  white-space:nowrap;
+}
+
+/* ------------------------------------------------------------
+   Mobile improvements (no desktop changes)
+   - Turns the sidebar into an off-canvas drawer under 900px
+   - Keeps the right pane as the single scroller
+   ------------------------------------------------------------ */
+
+.kc-mobile-menu-btn { display: none; }
+.kc-mobile-overlay { display: none; }
+
+@media (max-width: 900px) {
+  body { overflow: hidden; }
+
+  .kc-shell {
+    margin: 0;
+    border-radius: 0;
+    border-width: 0;
+    box-shadow: none;
+    height: 100dvh;
+    max-height: 100dvh;
+  }
+
+  .kc-main-scroll {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 0;
+    padding-bottom: 120px;
+  }
+
+  .kc-main-header {
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .kc-main-header-title {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-align: right;
+  }
+
+  .kc-mobile-menu-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #151f35;
+    color: var(--kc-text);
+    border: 1px solid var(--kc-border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .kc-mobile-menu-btn:active { transform: translateY(1px); }
+
+  .kc-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(86vw, 360px);
+    z-index: 1000;
+    transform: translateX(-105%);
+    transition: transform 0.2s ease;
+    border-right: 2px solid rgba(255, 255, 255, 0.14);
+    border-bottom: 0;
+  }
+
+  .kc-mobile-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.55);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  html.kc-nav-open .kc-sidebar { transform: translateX(0); }
+  html.kc-nav-open .kc-mobile-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Undo the existing mobile nav wrap-to-grid */
+  .kc-nav { display: block; flex-wrap: nowrap; overflow-y: auto; }
+  .kc-nav-item { flex: none; font-size: 14px; padding: 10px 12px; }
+
+  .kc-logo-circle { width: 140px; height: 210px; }
+
+  /* Make write-up content more phone-friendly */
+  .kc-main img { max-width: 100%; height: auto; }
+
+  /* Example: convo bubbles stack better (seen on On-the-Wire page) */
+  .kc-convo-bubble { flex-direction: column; gap: 14px; }
+
+  /* Settings page stacks */
+  .kc-settings-row { flex-direction: column; align-items: stretch; gap: 10px; }
+  .kc-settings-label { width: auto; }
+}
+
+@media (max-width: 900px) {
+  body { font-size: 14px; }              /* smaller overall UI on phones */
+  .kc-nav-item { letter-spacing: 0.12em; } /* less “spread out” */
+}
+
+@media (max-width: 420px) {
+  body { font-size: 13.5px; }            /* very small screens */
+  .kc-nav-item { font-size: 12px; }
+  .kc-main-header-title { font-size: 10px; }
+  .kc-logo-circle { width: 120px; height: 180px; }
+}
+
+/* Mobile-only: prevent iOS Safari “font boost” when <pre>/<code> contains huge unbroken strings */
+@media (max-width: 768px) {
+  .kc-terminal-text,
+  .kc-terminal-text *,
+  .kc-code-block,
+  .kc-code-block code,
+  .kc-code-block code *,
+  .kc-note-bubble code,
+  .kc-note-bubble code *,
+  .kc-meta-value,
+  .kc-meta-value * {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* More aggressive breaking for long URLs/tokens in terminal output */
+  .kc-terminal-text .term-bash-url,
+  .kc-terminal-text .term-kali-output,
+  .kc-terminal-text .term-kali-command,
+  .kc-terminal-text .term-kali-path {
+    word-break: break-all;
+  }
+
+  /* Fallback: allow horizontal scroll if something still can’t wrap nicely */
+  .kc-terminal-window,
+  .kc-code-window {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* MOBILE OVERFLOW FIX v4 */
+@media (max-width: 900px) {
+  /* Prevent tiny horizontal overflows (common on iOS when box-shadows are present) */
+  html, body { overflow-x: hidden; }
+
+  /* Keep your “single-page scroll” behavior but clip horizontal spill */
+  .kc-main-scroll { overflow-x: clip; }
+  @supports not (overflow-x: clip) {
+    .kc-main-scroll { overflow-x: hidden; }
+  }
+
+  /* Defensive: make common “cards/bubbles” never exceed the viewport */
+  .kc-section,
+  .kc-objective-detail,
+  .kc-convo-bubble,
+  .kc-note-bubble,
+  .kc-hint-card,
+  .kc-terminal-window,
+  .kc-workflow-header,
+  .kc-terminal-header,
+  .kc-solution-header {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Flex children should be allowed to shrink (helps Safari) */
+  .kc-convo-avatar,
+  .kc-convo-text {
+    min-width: 0;
+  }
+
+  /* Media should never force horizontal scroll */
+  img, video, iframe, canvas, svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Long tokens/URLs should wrap instead of forcing overflow */
+  .kc-section, .kc-section * {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
