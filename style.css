@@ -27,6 +27,10 @@ body {
   overflow: hidden; /* desktop: only panes scroll */
 }
 
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { -webkit-text-size-adjust: 100%; }
+
+
 /* Shell layout */
 .kc-shell {
   max-width: 1180px;
@@ -2430,4 +2434,16 @@ body.kc-modal-open {
   /* Settings page stacks */
   .kc-settings-row { flex-direction: column; align-items: stretch; gap: 10px; }
   .kc-settings-label { width: auto; }
+}
+
+@media (max-width: 900px) {
+  body { font-size: 14px; }              /* smaller overall UI on phones */
+  .kc-nav-item { letter-spacing: 0.12em; } /* less “spread out” */
+}
+
+@media (max-width: 420px) {
+  body { font-size: 13.5px; }            /* very small screens */
+  .kc-nav-item { font-size: 12px; }
+  .kc-main-header-title { font-size: 10px; }
+  .kc-logo-circle { width: 120px; height: 180px; }
 }
