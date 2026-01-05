@@ -27,6 +27,10 @@ body {
   overflow: hidden; /* desktop: only panes scroll */
 }
 
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { -webkit-text-size-adjust: 100%; }
+
+
 /* Shell layout */
 .kc-shell {
   max-width: 1180px;
@@ -2327,6 +2331,153 @@ body.kc-modal-open {
   white-space:nowrap;
 }
 
+/* ------------------------------------------------------------
+   Mobile improvements (no desktop changes)
+   - Turns the sidebar into an off-canvas drawer under 900px
+   - Keeps the right pane as the single scroller
+   ------------------------------------------------------------ */
+
+.kc-mobile-menu-btn { display: none; }
+.kc-mobile-overlay { display: none; }
+
+@media (max-width: 900px) {
+  body { overflow: hidden; }
+
+  .kc-shell {
+    margin: 0;
+    border-radius: 0;
+    border-width: 0;
+    box-shadow: none;
+    height: 100dvh;
+    max-height: 100dvh;
+  }
+
+  .kc-main-scroll {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 0;
+    padding-bottom: 120px;
+  }
+
+  .kc-main-header {
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .kc-main-header-title {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-align: right;
+  }
+
+  .kc-mobile-menu-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #151f35;
+    color: var(--kc-text);
+    border: 1px solid var(--kc-border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .kc-mobile-menu-btn:active { transform: translateY(1px); }
+
+  .kc-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(86vw, 360px);
+    z-index: 1000;
+    transform: translateX(-105%);
+    transition: transform 0.2s ease;
+    border-right: 2px solid rgba(255, 255, 255, 0.14);
+    border-bottom: 0;
+  }
+
+  .kc-mobile-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.55);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  html.kc-nav-open .kc-sidebar { transform: translateX(0); }
+  html.kc-nav-open .kc-mobile-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Undo the existing mobile nav wrap-to-grid */
+  .kc-nav { display: block; flex-wrap: nowrap; overflow-y: auto; }
+  .kc-nav-item { flex: none; font-size: 14px; padding: 10px 12px; }
+
+  .kc-logo-circle { width: 140px; height: 210px; }
+
+  /* Make write-up content more phone-friendly */
+  .kc-main img { max-width: 100%; height: auto; }
+
+  /* Example: convo bubbles stack better (seen on On-the-Wire page) */
+  .kc-convo-bubble { flex-direction: column; gap: 14px; }
+
+  /* Settings page stacks */
+  .kc-settings-row { flex-direction: column; align-items: stretch; gap: 10px; }
+  .kc-settings-label { width: auto; }
+}
+
+@media (max-width: 900px) {
+  body { font-size: 14px; }              /* smaller overall UI on phones */
+  .kc-nav-item { letter-spacing: 0.12em; } /* less “spread out” */
+}
+
+@media (max-width: 420px) {
+  body { font-size: 13.5px; }            /* very small screens */
+  .kc-nav-item { font-size: 12px; }
+  .kc-main-header-title { font-size: 10px; }
+  .kc-logo-circle { width: 120px; height: 180px; }
+}
+
+/* Mobile-only: prevent iOS Safari “font boost” when <pre>/<code> contains huge unbroken strings */
+@media (max-width: 768px) {
+  .kc-terminal-text,
+  .kc-terminal-text *,
+  .kc-code-block,
+  .kc-code-block code,
+  .kc-code-block code *,
+  .kc-note-bubble code,
+  .kc-note-bubble code *,
+  .kc-meta-value,
+  .kc-meta-value * {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* More aggressive breaking for long URLs/tokens in terminal output */
+  .kc-terminal-text .term-bash-url,
+  .kc-terminal-text .term-kali-output,
+  .kc-terminal-text .term-kali-command,
+  .kc-terminal-text .term-kali-path {
+    word-break: break-all;
+  }
+
+  /* Fallback: allow horizontal scroll if something still can’t wrap nicely */
+  .kc-terminal-window,
+  .kc-code-window {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
 
 /* MOBILE OVERFLOW FIX v4 */
 @media (max-width: 900px) {
@@ -2334,9 +2485,7 @@ body.kc-modal-open {
   html, body { overflow-x: hidden; }
 
   /* Keep your “single-page scroll” behavior but clip horizontal spill */
-  .kc-main-scroll {
-    overflow-x: clip;          /* modern browsers */
-  }
+  .kc-main-scroll { overflow-x: clip; }
   @supports not (overflow-x: clip) {
     .kc-main-scroll { overflow-x: hidden; }
   }
