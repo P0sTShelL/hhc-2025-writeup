@@ -2478,3 +2478,47 @@ body.kc-modal-open {
     -webkit-overflow-scrolling: touch;
   }
 }
+
+/* MOBILE OVERFLOW FIX v4 */
+@media (max-width: 900px) {
+  /* Prevent tiny horizontal overflows (common on iOS when box-shadows are present) */
+  html, body { overflow-x: hidden; }
+
+  /* Keep your “single-page scroll” behavior but clip horizontal spill */
+  .kc-main-scroll { overflow-x: clip; }
+  @supports not (overflow-x: clip) {
+    .kc-main-scroll { overflow-x: hidden; }
+  }
+
+  /* Defensive: make common “cards/bubbles” never exceed the viewport */
+  .kc-section,
+  .kc-objective-detail,
+  .kc-convo-bubble,
+  .kc-note-bubble,
+  .kc-hint-card,
+  .kc-terminal-window,
+  .kc-workflow-header,
+  .kc-terminal-header,
+  .kc-solution-header {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Flex children should be allowed to shrink (helps Safari) */
+  .kc-convo-avatar,
+  .kc-convo-text {
+    min-width: 0;
+  }
+
+  /* Media should never force horizontal scroll */
+  img, video, iframe, canvas, svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Long tokens/URLs should wrap instead of forcing overflow */
+  .kc-section, .kc-section * {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
