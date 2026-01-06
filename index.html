@@ -288,7 +288,7 @@
           </code></pre>
         </section>
 
-        <!-- Placeholders for all the other objectives -->
+        <!-- Placeholders for all the other objectives and such-->
         <section id="obj-its-all-about-defang" class="kc-section kc-pane">
           <h2 class="kc-objective-title">Its All About Defang</h2>
           <p class="kc-intro">Placeholder: Write-up for "Its All About Defang" goes here.</p>
@@ -955,10 +955,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-
-
-
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   // --------------------------------
@@ -1338,7 +1334,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let npcQueue = [];
   let npcIsPlaying = false;
   let npcAutoTimeout = null;
-
+  
   // --------------------------------
   // Helpers
   // --------------------------------
@@ -2162,6 +2158,14 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!isMobile()) closeNav();
   });
 })();
+</script>
+
+<script>
+document.querySelectorAll(".kc-nav-item[data-pane], .kc-obj-link[data-pane]").forEach(link => {
+  link.addEventListener("click", () => {
+    document.querySelectorAll("audio").forEach(a => a.pause());
+  });
+});
 </script>
 
 </body>
