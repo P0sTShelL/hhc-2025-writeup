@@ -1375,6 +1375,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  function resetMeltFrostyButton() {
+    const btn = document.getElementById("kc-melt-frosty-btn");
+    if (!btn) return;
+
+    btn.disabled = false;
+    const label = btn.querySelector("span");
+    if (label) label.textContent = "Melt Frosty";
+  }
+
+  // Manual "Melt Frosty" button (works with lazy-loaded victory.html)
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest("#kc-melt-frosty-btn");
+    if (!btn) return;
+
+    e.preventDefault();
+
+    // Swap the avatar immediately (does NOT change the audio queue)
+    setFrostyMelting();
+
+    // Simple UI feedback
+    const label = btn.querySelector("span");
+    if (label) label.textContent = "Melted!";
+    btn.disabled = true;
+  });
+
+
   function getToggleState(settingName, defaultOn = true) {
     const group = document.querySelector(
       '.kc-toggle-group[data-setting="' + settingName + '"]'
@@ -1580,6 +1606,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Leaving victory? Restore default avatar so it doesn't "stick"
     if (paneId !== "obj-victory") {
       resetFrostyMelting();
+      resetMeltFrostyButton();
     }
 
     currentObjectiveId = paneId;

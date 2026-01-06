@@ -2601,3 +2601,43 @@ body.kc-modal-open {
 .kc-convo-bubble a.kc-link-deep:focus {
   outline: none;
 }
+
+/* Victory: "Melt Frosty" button inside the Frosty Reply banner */
+.kc-convo-header--frosty-reply .kc-convo-actions {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+}
+
+.kc-convo-header--frosty-reply .kc-melt-frosty-btn {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+
+  padding: 6px 12px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  transition: transform 0.1s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.kc-convo-header--frosty-reply .kc-melt-frosty-btn:hover {
+  background: rgba(0, 0, 0, 0.55);
+  border-color: rgba(255, 212, 91, 0.85);
+  transform: translateY(-1px);
+}
+
+.kc-convo-header--frosty-reply .kc-melt-frosty-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
