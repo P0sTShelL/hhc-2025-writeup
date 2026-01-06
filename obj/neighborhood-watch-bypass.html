@@ -225,9 +225,7 @@ echo "📍 Coverage Area: Dosis Neighborhood (all sectors)"
   <span class="kc-note-label">Write-up notes</span>
   <p>
     The script runs several system commands like <code>free</code>, <code>df</code>,
-    <code>w</code>, and <code>ps</code> to display system information. Since these
-    commands are called without full paths, we can exploit this by creating our
-    own malicious versions of these commands in a directory we control.
+    <code>w</code>, and <code>ps</code> to display system information. Because the script invokes these commands without absolute paths, we can exploit PATH hijacking by placing malicious lookalike binaries in a directory we control.
   </p>
   <p>
     First, we confirm which <code>free</code> binary is currently being used and
