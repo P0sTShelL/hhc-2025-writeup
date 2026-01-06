@@ -111,7 +111,7 @@
   <div class="kc-workflow-row">
     <div class="kc-workflow-text">
       <p class="kc-workflow-intro">
-        Lets get to curlling, click on the curl terminal to get started!
+        Lets get to curling, click on the curl terminal to get started!
       </p>
     </div>
 
@@ -168,7 +168,7 @@ of that pastebin service in your badge.</span></span>
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Completing a quick connectivity test to confirm we can authenticate to the IMAP server with curl:
+    Complete a quick connectivity test to confirm we can authenticate to the IMAP server with curl:
     <code>curl -v --url "imap://localhost:143/INBOX" --user "dosismail:holidaymagic"</code>
   </p>
 </div>
@@ -195,7 +195,7 @@ of that pastebin service in your badge.</span></span>
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Next I checked what mailboxes/folders exist on the IMAP server. Using curl, we can issue an IMAP
+    Next we need to check what mailboxes/folders exist on the IMAP server. Using <code>curl</code>, we can issue an IMAP
     <code>LIST</code> command to enumerate everything available under this account:
     <code>curl -s --url "imap://localhost:143" --user "dosismail:holidaymagic" -X 'LIST "" "*"'</code>
   </p>
@@ -214,9 +214,9 @@ of that pastebin service in your badge.</span></span>
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Before digging through messages, I wanted a quick count of how many emails were in each mailbox.
-    I reused the IMAP <code>LIST</code> output to extract mailbox names, then looped through each one
-    and ran an IMAP <code>STATUS</code> query to pull the <code>MESSAGES</code> count.
+    Before digging through messages, we want a quick count of how many emails are in each mailbox.
+    Reuse the IMAP <code>LIST</code> output to extract mailbox names, then loop through each one
+    and run an IMAP <code>STATUS</code> query to pull the <code>MESSAGES</code> count.
   </p>
 </div>
 
@@ -245,7 +245,7 @@ of that pastebin service in your badge.</span></span>
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Next, I built a quick one-liner to <strong>download every email</strong> from every mailbox.
+    Next, we build a quick one-liner to <strong>download every email</strong> from every mailbox.
     The script lists mailboxes, queries each one for its <code>MESSAGES</code> count, then pulls
     each message by index and saves it as an <code>.eml</code> file into a mailbox-specific folder
     (for example <code>mail_INBOX/INBOX_1.eml</code>, <code>mail_INBOX/INBOX_2.eml</code>, etc.).
@@ -282,7 +282,7 @@ mail_Archives  mail_Drafts  mail_INBOX  mail_Sent  mail_Spam
   <p>
     With all the mail downloaded locally, the fastest way to hunt for the
     pastebin exfiltration URL is to <strong>grep across all <code>.eml</code> files</strong>.
-    I searched for the string <code>past</code> (to catch “paste”, “pastebin”, etc.) and included a
+    We need to search for the string <code>past</code> (to catch “paste”, “pastebin”, etc.) and include a
     little context around each match:
     <code>grep -Rin --include='*.eml' -i -C 2 'past' mail_*</code>.
     This quickly surfaces the malicious JavaScript email, where we can clearly see the pastebin endpoint URL.

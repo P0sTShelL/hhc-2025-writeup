@@ -291,7 +291,7 @@ Nmap done: 1 IP address (1 host up) scanned in 5.27 seconds</span>
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Perhaps if we ask the response to be encoded, the AI bot will avoid redacting it. That worked — the bot replied
+    Perhaps if we ask the response to be encoded, the AI bot will avoid redacting it. That works — the bot replies
     with a Base64 string:
     <code>YW5fZWxmX2FuZF9wYXNzd29yZF9vbl9hX2JpcmQ=</code>
   </p>
@@ -390,7 +390,7 @@ Nmap done: 1 IP address (1 host up) scanned in 5.27 seconds</span>
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Adter logging in as admin I looked around a bit exploring the profile settings and dashboard pages.
+    Adter logging in as admin look around a bit exploring the profile settings and dashboard pages.
   </p>
 </div>
 
@@ -450,7 +450,7 @@ Nmap done: 1 IP address (1 host up) scanned in 5.27 seconds</span>
 
   <p class="kc-workflow-intro">
     After updating the profile picture and clicking <strong>Save settings</strong>, the site redirects us to the
-    <strong>Dashboard</strong> page. I noticed a <span class="kc-hint-sed">username</span> parameter showed up in the URL.
+    <strong>Dashboard</strong> page. Notice a <span class="kc-hint-sed">username</span> parameter showed up in the URL.
   </p>
 </div>
 
@@ -519,7 +519,7 @@ Nmap done: 1 IP address (1 host up) scanned in 5.27 seconds</span>
   <span class="kc-note-label">Write-up notes</span>
 
   <p class="kc-workflow-intro">
-    After trying a few different payloads, I discovered a working SSTI injection using
+    After trying a few different payloads, I discover a working SSTI injection using
     <code>{{7*7}}</code> as the payload — the page evaluates it and renders <strong>49</strong> in the greeting.
   </p>
 </div>
@@ -556,10 +556,10 @@ Nmap done: 1 IP address (1 host up) scanned in 5.27 seconds</span>
   <span class="kc-note-label">Write-up notes</span>
 
   <p class="kc-workflow-intro">
-    I confirmed a server-side template injection by changing the dashboard URL to
-    <code>?username={{7*7}}</code> and seeing “49,” which strongly suggested Jinja (the default
+    We can confirm a server-side template injection by changing the dashboard URL to
+    <code>?username={{7*7}}</code> and seeing “49,” which strongly suggests Jinja (the default
     templating engine for Flask). From there, I probed for a callable Jinja “gadget” that would
-    expose Python’s runtime. The built-in <code>lipsum</code> function worked: using Jinja’s
+    expose Python’s runtime. The built-in <code>lipsum</code> function works: using Jinja’s
     <code>attr</code> filter and octal-encoded attribute names (to bypass underscore/dot filters),
     I reached <code>__builtins__</code>, pulled <code>__import__</code>, imported <code>os</code>,
     and finally invoked <code>os.popen(...)</code> for remote code execution using this payload.
@@ -615,7 +615,7 @@ Nmap done: 1 IP address (1 host up) scanned in 5.27 seconds</span>
   <span class="kc-note-label">Write-up notes</span>
 
   <p class="kc-workflow-intro">
-    Now that we have remote code execution, I ran a couple of quick commands to understand the
+    Now that we have remote code execution, we can run a couple of quick commands to understand the
     runtime environment (working directory contents and environment variables).
   </p>
 </div>
@@ -683,7 +683,7 @@ Nmap done: 1 IP address (1 host up) scanned in 5.27 seconds</span>
     <div class="kc-workflow-text">
       <p class="kc-workflow-intro">
         Based on the <code>PATH</code> output, the environment likely had enough tooling available to
-        pivot from “single-command output” into an interactive shell. I attempted a typical
+        pivot from “single-command output” into an interactive shell. Attempt a typical
         “fetch-and-execute” flow from the SSTI primitive by invoking <code>os.popen(...)</code>
         to request a hosted script and execute it. Preparing the AWS cloud host...
       </p>
@@ -753,8 +753,8 @@ Listening on 0.0.0.0 443</span>
     <div class="kc-workflow-text">
       <p class="kc-workflow-intro">
         With the external host staged, I URL-encoded the SSTI expression and submitted it via the
-        <code>username</code> parameter on <code>/dashboard</code>. The goal was to have the target
-        make an outbound HTTP request to my hosted script and then execute it, yielding an
+        <code>username</code> parameter on <code>/dashboard</code>. The goal is to have the target
+        make an outbound HTTP request to the hosted script and then execute it, yielding an
         interactive shell.
       </p>
       <p>
@@ -831,7 +831,7 @@ Listening on 0.0.0.0 443</span>
   <div class="kc-workflow-row">
     <div class="kc-workflow-text">
       <p class="kc-workflow-intro">
-        Looking for interesting items on disk, I came across
+        Looking for interesting items on disk, we come across
         <span class="kc-hint-sed">unlock_access.sh</span>. This script appears to “restore access”
         by making a POST request to the chatbot service using the <code>$CHATBOT_URL</code>
         environment variable.
@@ -900,7 +900,7 @@ echo -e "\nBut if you are not Frosty, please leave this place at once!"</span>
 
   <p>
     The <code>unlock_access.sh</code> script suggests the system can be “unlocked” by running it as
-    <code>root</code>. While looking for a potential privilege escalation path, I found an interesting
+    <code>root</code>. While looking for a potential privilege escalation path, we find an interesting
     cron job configuration that executes a Python script as <code>root</code> every minute.
   </p>
 </div>
@@ -1235,7 +1235,7 @@ if __name__ == "__main__":
   <p>
     On my AWS box, I restaged everything so we’re ready for the next step. I started a simple web server to host
     <code>revsh</code>, launched <code>catcher.py</code> in the background (standing by to receive the exfiltrated file),
-    and finally restarted <code>nc</code> to catch the reverse shell. Then we’ll create the
+    and finally restarted <code>nc</code> to catch the reverse shell. Next we’ll create the
     <code>*.frosty&lt;number&gt;</code> file that <code>backup.py</code> is looking for.
   </p>
 </div>
@@ -1551,7 +1551,7 @@ Stopped: Sat Jan  3 21:50:13 2026</span>
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Using the cracked password to escalate privileges.
+    Use the cracked password to escalate privileges.
   </p>
 </div>
 

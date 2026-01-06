@@ -131,9 +131,6 @@
   </p>
 </div>
 
-
-
-
 <!-- NEW purple banner goes *after* the bubble -->
 <div class="kc-workflow-header">
 <span class="kc-workflow-icon">
@@ -148,7 +145,6 @@
   Click on the Cranberry Pi terminal to begin the challenge.
   </p>
 </div> 
-
 
 <div class="kc-terminal-header">
   <span class="kc-terminal-icon">
@@ -174,7 +170,7 @@ Can you help me gain access to the Gnome diagnostic interface and discover the n
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    First stop: Paul left us breadcrumbs in <code>~/notes</code>. I dumped the file
+    First stop: Paul left us breadcrumbs in <code>~/notes</code>. We need to dump the file
     to get the key URLs (gnome site, ATNAS IdP, and Paul's local web server), plus the
     curl flow he used to authenticate and pass a JWT into the gnome diagnostic interface.
   </p>
@@ -229,7 +225,7 @@ jwt_tool.py &lt;insert-JWT&gt;
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Next, I authenticated to the ATNAS IdP using the known credentials and example curl command from the provided notes. 
+    Next, we will authenticate to the ATNAS IdP using the known credentials and example curl command from the notes provided. 
   </p>
 </div>
 
@@ -257,7 +253,7 @@ Location: http://gnome-48371.atnascorp/auth?token=eyJhbGciOiJSUzI1NiIsImprdSI6Im
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Lets save that token to a varabile and decdoe it, it look sto be base64 encoded. 
+    Let's save that token to a variable and decode it, it looks to be base64 encoded. 
   </p>
 </div>
 
@@ -289,9 +285,9 @@ Location: http://gnome-48371.atnascorp/auth?token=eyJhbGciOiJSUzI1NiIsImprdSI6Im
     key material via a controlled JWKS endpoint).
   </p>
     <p>
-    Next I pulled the Identity Provider’s <strong>JWKS</strong> (JSON Web Key Set) to see what public
+    Next we should pull the Identity Provider’s <strong>JWKS</strong> (JSON Web Key Set) to see what public
     keys the IdP publishes for verifying JWT signatures. Since the JWT header we captured referenced a
-    <code>jku</code> URL and a <code>kid</code>, this lets us confirm what key material is being served and what
+    <code>jku</code> URL and a <code>kid</code>, this confirms what key material is being served and what
     key identifier the verifier expects.
   </p>
 </div>
@@ -324,7 +320,7 @@ Location: http://gnome-48371.atnascorp/auth?token=eyJhbGciOiJSUzI1NiIsImprdSI6Im
     <li>Because the key is fetched from a URL (JWKS), the verifier is relying on <em>remote key material</em> rather than a locally pinned key — which is exactly what we’ll try to abuse next.</li>
   </ul>
     <p>
-    Generating an <strong>attacker-controlled RSA keypair</strong>. The goal is to create our own private key for
+    Generate an <strong>attacker-controlled RSA keypair</strong>. The goal is to create our own private key for
     signing forged JWTs, then publish the matching public key as a JWKS file from Paul’s local web server so the target
     will (incorrectly) trust it.
   </p>
@@ -476,7 +472,7 @@ eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlkcC1rZXktMjAyNSIsImprdSI6Imh0dHA6
   <span class="kc-note-label">Write-up notes</span>
   <p>
     With a valid <code>session</code> cookie, we can now access the <strong>admin-only</strong>
-    diagnostic interface. I passed the cookie back in the request headers and pulled the page
+    diagnostic interface. We pass the cookie back in the request headers and pull the page
     contents directly with <code>curl</code>. In the returned HTML, the <em>System Log</em>
     shows the key artifact we needed for the objective: the firmware file the gnome downloaded
     (<code>refrigeration-botnet.bin</code>).

@@ -278,7 +278,7 @@
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Next, we opened the <strong>Status Report</strong> to see what the system is tracking.
+    Next, we open the <strong>Status Report</strong> to see what the system is tracking.
     At this point, it reports <strong>no vulnerabilities found</strong>, but it does show
     <strong>scope violations</strong> (e.g., requests to <code>/gnomeU</code>), which confirms the
     app is actively monitoring what paths we touch during testing.
@@ -314,12 +314,12 @@
   </p>
 
   <p>
-    Back on the Student Login page, I reviewed the page source and spotted a hidden endpoint:
-    <code>href="/register/sitemap"</code>. For a scope-based challenge, a sitemap is extremely useful—so we pulled it.
+    Back on the Student Login page, review the page source and we'll spot a hidden endpoint:
+    <code>href="/register/sitemap"</code>. For a scope-based challenge, a sitemap is extremely useful—so let's pull it.
   </p>
 
   <p>
-    Browsing to <code>/register/sitemap</code> returned an XML sitemap containing a full list of discovered routes
+    Browsing to <code>/register/sitemap</code> returns an XML sitemap containing a full list of discovered routes
     (including several <code>/admin</code>, <code>/search</code>, and <code>/wip</code> paths).
   </p>
 </div>
@@ -497,13 +497,13 @@
 
   <p>
     With a handful of endpoints identified, progress was getting slowed down by repeated <code>/gnomeU</code>
-    scope violations. We hadn’t manually visited that path, so we pivoted to the browser’s Network tab and
-    found an image request quietly hitting <code>/gnomeU</code> in the background.
+    scope violations. We havn’t manually visited that path, so let's pivote to the browser’s Network tab and
+    we'll find an image request quietly hitting <code>/gnomeU</code> in the background.
   </p>
 
   <p>
-    To stop the violations from piling up, we right-clicked the offending request and selected
-    <strong>Block Request URL</strong>. After blocking it, the session could run normally without the scope violations ending the test prematurely.
+    To stop the violations from piling up, we can right-click the offending request and select
+    <strong>Block Request URL</strong>. After blocking it, the session can run normally without the scope violations ending the test prematurely.
   </p>
 </div>
 
@@ -536,8 +536,8 @@
 
   <p>
     After blocking the background request to <code>/gnomeU</code>, we reset the session one more time and
-    revisited the Status Report to confirm the fix. This time the scope report was clean — no out-of-scope
-    items were accessed and total violations were back to <strong>0</strong>.
+    revisit the Status Report to confirm the fix. This time the scope report is clean — no out-of-scope
+    items were accessed and total violations are back to <strong>0</strong>.
   </p>
 </div>
 
@@ -569,8 +569,8 @@
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    With scope violations under control, we resumed enumerating the endpoints discovered in the sitemap.
-    One endpoint immediately stood out: the developer todo list at
+    With scope violations under control, we can resume enumerating the endpoints discovered in the sitemap.
+    One endpoint immediately stands out: the developer todo list at
     <code>/wip/register/dev/dev_todos</code>. The page appears to contain internal notes and potential
     clues for the next steps (including references to XSS and a test account password).
   </p>
@@ -604,8 +604,8 @@
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Next, we attempted to authenticate using the credentials referenced in the developer notes. Instead of
-    reaching the portal, the login flow failed immediately with an <strong>Invalid Forwarding IP</strong>
+    Next, we can attempt to authenticate using the credentials referenced in the developer notes. Instead of
+    reaching the portal, the login flow fails immediately with an <strong>Invalid Forwarding IP</strong>
     message, indicating the application is enforcing some kind of IP / proxy / header validation before it
     will allow authentication.
   </p>
@@ -639,14 +639,14 @@
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    At this point, I switched to <strong>Burp Suite</strong> since the requests were getting more complex and
-    building on each other. Burp made it much easier to intercept, replay, and iterate safely.
+    At this point, we'll switch to <strong>Burp Suite</strong> since the requests are getting more complex and
+    building on each other. Burp makes it much easier to intercept, replay, and iterate safely.
     <strong>Note:</strong> because we’re now using the Burp browser, we need to block the <code>/gnomeU</code>
     request again to avoid racking up scope violations.
   </p>
 
   <p>
-    With the login attempt intercepted, I added <code>X-Forwarded-For: 127.0.0.1</code> to satisfy the
+    With the login attempt intercepted, add <code>X-Forwarded-For: 127.0.0.1</code> to satisfy the
     forwarding/proxy restriction. Below is the request as captured <em>before</em> forwarding it to the server.
   </p>
 </div>
@@ -738,8 +738,8 @@ username=teststudent&password=register123&id=71a1f9d7-6dba-4eb6-8376-5b892435f25
 
   <p>
     The earlier <code>/wip/</code> developer todo list was flagged as out-of-scope, so instead of continuing down that
-    path, we checked for a similar endpoint under the in-scope registration area:
-    <code>/register/dev/dev_todos</code>. This kept us aligned with the Rules of Engagement while still searching for
+    path, we'll check for a similar endpoint under the in-scope registration area:
+    <code>/register/dev/dev_todos</code>. This keeps us aligned with the Rules of Engagement while still searching for
     helpful developer breadcrumbs.
   </p>
 </div>
@@ -772,8 +772,8 @@ username=teststudent&password=register123&id=71a1f9d7-6dba-4eb6-8376-5b892435f25
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    The updated in-scope developer todo list suggested the <code>teststudent</code> password had been changed.
-    Using those newly discovered credentials (<strong>teststudent</strong> / <strong>2025h0L1d4y5</strong>), we were
+    The updated in-scope developer todo list suggests the <code>teststudent</code> password has been changed.
+    Using those newly discovered credentials (<strong>teststudent</strong> / <strong>2025h0L1d4y5</strong>), we are
     able to successfully authenticate and reach the course registration landing page.
   </p>
 </div>
@@ -806,7 +806,7 @@ username=teststudent&password=register123&id=71a1f9d7-6dba-4eb6-8376-5b892435f25
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Hovering over the gnome’s speech bubble revealed an additional hint — suggesting we should look
+    Hovering over the gnome’s speech bubble reveals an additional hint — suggesting we should look
     for a hidden <em>comment</em>.
   </p>
 </div>
@@ -839,10 +839,10 @@ username=teststudent&password=register123&id=71a1f9d7-6dba-4eb6-8376-5b892435f25
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    On the <strong>Spring Semester 2026</strong> page, I checked the HTML source (the gnome strongly hinted that we
+    On the <strong>Spring Semester 2026</strong> page, we'll check the HTML source (the gnome strongly hinted that we
     should look for developer comments). Viewing
     <code>view-source:https://flask-schrodingers-scope-firestore.holidayhackchallenge.com/register/courses/</code>,
-    we found an inline comment near the bottom that explains why the page is “under construction” — and points to an
+    we find an inline comment near the bottom that explains why the page is “under construction” — and points to an
     unfinished course listing/search flow.
   </p>
 </div>
@@ -905,12 +905,12 @@ username=teststudent&password=register123&id=71a1f9d7-6dba-4eb6-8376-5b892435f25
 
   <p>
     To reveal the hidden <strong>Course Search</strong> link that was commented out in the HTML source, we injected our
-    own HTML directly into the DOM via the browser’s developer console. This allowed us to bypass the incomplete
+    own HTML directly into the DOM via the browser’s developer console. This allows us to bypass the incomplete
     interface and expose the intended course search functionality.
   </p>
 
   <p>
-    The following JavaScript was executed in the browser console to dynamically append a new
+    Execute the following JavaScript in the browser console to dynamically append a new
     <code>&lt;ul&gt;</code> element containing the missing <code>Course Search</code> link:
   </p>
 </div>
@@ -998,11 +998,11 @@ username=teststudent&password=register123&id=71a1f9d7-6dba-4eb6-8376-5b892435f25
   <p>
     My first instinct here was to try a basic reflected XSS probe:
     <code>&lt;script&gt;alert(1)&lt;/script&gt;</code>. That seemed plausible given the developer TODO list
-    still had <strong>“Patch XSS”</strong> marked as incomplete. This intially had an effect but would not trigger as a vulnerbility, after reacing out to McKringle99 on Discord I was informed that this was not the intended path.
+    still had <strong>“Patch XSS”</strong> marked as incomplete. This initially had an effect but would not trigger as a vulnerability; after reaching out to McKringle99 on Discord I was informed that this was not the intended path.
   </p>
 
   <p>
-    By the time of this write-up, that approach had been patched and it now triggers a fun easter egg with a shoutout to my discord handel along with the gnome calling it out directly — on hover, the speech bubble clarifies:
+    By the time of this write-up, that approach has been patched and it now triggers a fun easter egg with a shoutout to my discord handle along with the gnome calling it out directly — on hover, the speech bubble clarifies:
     <em>“XSS not expected / intended here.”</em>
   </p>
 </div>
@@ -1037,9 +1037,9 @@ username=teststudent&password=register123&id=71a1f9d7-6dba-4eb6-8376-5b892435f25
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Since XSS wasn’t the intended path, the next obvious candidate was SQL injection. Submitting the payload
-    <code>' OR '1'='1</code> in the course lookup field returned a full course listing — confirming the input
-    was being used in a backend query without proper parameterization.
+    Since XSS isn’t the intended path, the next obvious candidate is SQL injection. Submitting the payload
+    <code>' OR '1'='1</code> in the course lookup field returns a full course listing — confirming the input
+    is being used in a backend query without proper parameterization.
   </p>
 </div>
 
@@ -1075,7 +1075,7 @@ username=teststudent&password=register123&id=71a1f9d7-6dba-4eb6-8376-5b892435f25
   <p>
     The gnome continues to provide guidance:
     <em>“Well, well, well! Aren’t you clever… but if you want <strong>really</strong> clever, check those results!”</em>
-    While reviewing the course listings, I also noted the URL patterns used to load course details:
+    While reviewing the course listings, we can also note the URL patterns used to load course details:
   </p>
 
   <ul class="kc-bullet-list">
@@ -1086,7 +1086,7 @@ username=teststudent&password=register123&id=71a1f9d7-6dba-4eb6-8376-5b892435f25
   </ul>
 
   <p>
-    Then I spotted <strong>GNOME 827 — Mischief Management</strong>. Clicking it revealed a course that appears to have been
+    We observe <strong>GNOME 827 — Mischief Management</strong>. Clicking it reveals a course that appears to have been
     surreptitiously added by the gnomes — and it triggered an in-scope vulnerability alert in the UI.
   </p>
 </div>
@@ -1163,7 +1163,7 @@ username=teststudent&password=register123&id=71a1f9d7-6dba-4eb6-8376-5b892435f25
 
   <p>
     The developer notes mention a new course named <code>holiday_behavior</code>. Based on the naming/path convention we
-    observed earlier (e.g., <code>/register/courses/&lt;course_name&gt;</code>), the next step was to try accessing it
+    observed earlier (e.g., <code>/register/courses/&lt;course_name&gt;</code>), the next step is to try accessing it
     directly at <code>/register/courses/holiday_behavior</code>.
   </p>
 </div>
@@ -1199,8 +1199,8 @@ username=teststudent&password=register123&id=71a1f9d7-6dba-4eb6-8376-5b892435f25
 
   <p>
     The gnome also mentioned this course is still a work-in-progress. While the original WIP path we found earlier was
-    out of scope, it was worth testing whether an in-scope WIP variant existed under <code>/register/</code>.
-    We tried <code>/register/courses/wip/holiday_behavior/</code>, the server rejected the request with a
+    out of scope, it is worth testing whether an in-scope WIP variant exists under <code>/register/</code>.
+    We try <code>/register/courses/wip/holiday_behavior/</code>, and the server rejects the request with a
     <strong>403 Forbidden</strong> and an <em>Invalid session registration value</em> message.
   </p>
 </div>
@@ -1235,13 +1235,13 @@ username=teststudent&password=register123&id=71a1f9d7-6dba-4eb6-8376-5b892435f25
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    The <code>403</code> error referenced an <em>“Invalid session registration value”</em>, so the next step was to
-    inspect our cookies. We did have a <code>registration</code> cookie set, so I wanted to understand what that value
+    The <code>403</code> error referenced an <em>“Invalid session registration value”</em>, so the next step is to
+    inspect our cookies. We do have a <code>registration</code> cookie set, so we want to understand what that value
     represents and whether it has enough entropy to be treated as a secure gate.
   </p>
 
   <p>
-    To assess this, I reset the session and repeatedly walked through the flow, recording the <code>registration</code>
+    To assess this, reset the session and repeatedly walk through the flow, recording the <code>registration</code>
     cookie value across different actions/pages:
   </p>
 
@@ -1290,8 +1290,8 @@ username=teststudent&password=register123&id=71a1f9d7-6dba-4eb6-8376-5b892435f25
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Next, we attempted to load the <code>holiday_behavior</code> course and captured the request in Burp. Sending it to
-    <strong>Intruder</strong> let us isolate the <code>registration</code> cookie value and mark only the final nibble
+    Next, we attempt to load the <code>holiday_behavior</code> course and capture the request in Burp. Sending it to
+    <strong>Intruder</strong> lets us isolate the <code>registration</code> cookie value and mark only the final nibble
     for fuzzing, since earlier recon showed the rest of the value remains relatively constant.
   </p>
 </div>
@@ -1328,8 +1328,8 @@ username=teststudent&password=register123&id=71a1f9d7-6dba-4eb6-8376-5b892435f25
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    We configured Intruder with a simple hex payload list (<code>0–f</code>) and added a small delay between requests
-    to be nice to the server. Most attempts returned <code>403</code>, but we hit a <code>200</code> response — a strong
+    We now configure Intruder with a simple hex payload list (<code>0–f</code>) and add a small delay between requests
+    to be nice to the server. Most attempts return <code>403</code>, but we hit a <code>200</code> response — a strong
     indicator we’ve found a valid <code>registration</code> value for the WIP course endpoint.
   </p>
 </div>
@@ -1366,17 +1366,17 @@ username=teststudent&password=register123&id=71a1f9d7-6dba-4eb6-8376-5b892435f25
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    In this case I got a bit lucky — reviewing the earlier <code>cookie</code> samples more closely,
-    I noticed the last byte sometimes starts with <code>5</code>. On my capture that leading value in 
-    the byte was a 4 allowing us to just iterated through the hex values for the last nibbel.
-    A more comprehension approach could of been to use burp's pithfork option and brute force the entire
-    last byte. Nevertheless I found that the correct cookie value:
+    In this case we got a bit lucky — reviewing the earlier <code>cookie</code> samples more closely,
+    we notice the last byte sometimes starts with <code>5</code>. On our capture, that leading value in 
+    the byte was a 4, allowing us to just iterate through the hex values for the last nibbel.
+    A more comprehensive approach could have been to use Burp's pitchfork option and brute force the entire
+    last byte. Nevertheless we found that the correct cookie value:
     <code>eb72a05369dcb44c</code>.
   </p>
 
   <p>
-    Back in Burp, we updated the cookie to the validated value and replayed the request. With the proper session
-    state in place, the server allowed access to the hidden <em>Holiday Behavior Studies</em> course page.
+    Back in Burp, we update the cookie to the validated value and replay the request. With the proper session
+    state in place, the server allows access to the hidden <em>Holiday Behavior Studies</em> course page.
   </p>
 </div>
 
@@ -1412,8 +1412,8 @@ username=teststudent&password=register123&id=71a1f9d7-6dba-4eb6-8376-5b892435f25
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    With the hidden course page accessible, we returned to the <strong>Status Report</strong> to validate our progress.
-    This time, the page presented the <em>Assessment Complete</em> screen — confirming we successfully met the objective.
+    With the hidden course page accessible, we return to the <strong>Status Report</strong> to validate our progress.
+    This time, the page presents the <em>Assessment Complete</em> screen — confirming we successfully met the objective.
   </p>
 </div>
 

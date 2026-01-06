@@ -356,8 +356,8 @@
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Using the browser’s developer tools, we opened the <strong>Network</strong> tab and filtered on
-    <strong>WS</strong> to inspect WebSocket traffic. From there, we could see the 1-Wire (<code>dq</code>)
+    Using the browser’s developer tools, we open the <strong>Network</strong> tab and filter on
+    <strong>WS</strong> to inspect WebSocket traffic. From there, we can see the 1-Wire (<code>dq</code>)
     signal streaming as JSON frames in real time (timestamped samples with a <code>v</code> value of
     <code>0</code> or <code>1</code>).
   </p>
@@ -393,7 +393,7 @@
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Next, I used the browser console to hook the site’s <code>updateSignal()</code> function and capture
+    Next, use the browser console to hook the site’s <code>updateSignal()</code> function and capture
     the 1-Wire <code>dq</code> samples as JSON objects (<code>t</code> timestamp + <code>v</code> value).
   </p>
 </div>
@@ -449,14 +449,14 @@ console.log("Hooked updateSignal for dq; now click Connect on 1-Wire.");</code><
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    With the hook in place, we clicked <strong>1-Wire</strong> on the Signal Gnome and verified the connection
-    was active (the status pill turns green). Once connected, the waveform begins updating in the
+    With the hook in place, we click <strong>1-Wire</strong> on the Signal Gnome and verify the connection
+    is active (the status pill turns green). Once connected, the waveform begins updating in the
     <strong>DQ (Data)</strong> pane.
   </p>
 
   <p>
-    To sanity-check progress, we periodically queried <code>dqFrames.length</code>. After collecting
-    <code>&gt; 10,000</code> samples, we exported the capture to the clipboard with:
+    To sanity-check progress, we can periodically query <code>dqFrames.length</code>. After collecting
+    <code>&gt; 10,000</code> samples, we export the capture to the clipboard with:
     <code>copy(JSON.stringify(dqFrames));</code>
   </p>
 </div>
@@ -493,15 +493,15 @@ console.log("Hooked updateSignal for dq; now click Connect on 1-Wire.");</code><
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    On Kali, I opened <code>nano</code>, pasted the clipboard capture, and saved it as
+    In Kali, open <code>nano</code>, paste the clipboard capture, and save it as
     <a class="kc-link-note" href="/DQ_1_wire.json" download><code>DQ_1_wire.json</code></a>.
-    With raw frames in hand, the next step was building a decoder to reconstruct the 1-Wire bitstream
+    With raw frames in hand, the next step is building a decoder to reconstruct the 1-Wire bitstream
     and recover the payload.
   </p>
 
   <p>
-    I wrote the following Python script to parse the JSON frames, collapse repeated levels, measure
-    LOW pulse widths, skip the RESET/PRESENCE sequence, then decode LSB-first bytes and print both
+    The following Python script parses the JSON frames, collapses repeated levels, measures
+    LOW pulse widths, skips the RESET/PRESENCE sequence, then decodes LSB-first bytes and prints both
     ASCII and hex.
   </p>
 </div>
@@ -639,8 +639,8 @@ if __name__ == "__main__":
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    With the captured <code>DQ_1_wire.json</code> saved locally, we ran our decoder script to convert pulse timings
-    into bytes. The decoded message provided the next objective directly: recover and decrypt the SPI bus data using
+    With the captured <code>DQ_1_wire.json</code> saved locally, we run our decoder script to convert pulse timings
+    into bytes. The decoded message provides the next objective directly: recover and decrypt the SPI bus data using
     the XOR key <code>icy</code>.
   </p>
 </div>
@@ -675,7 +675,7 @@ if __name__ == "__main__":
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Next, we updated our DevTools hook to capture <strong>SPI</strong> traffic. This version watches both
+    Next, we update our DevTools hook to capture <strong>SPI</strong> traffic. This version watches both
     <code>sck</code> (clock) and <code>mosi</code> (data) and records each transition as a JSON frame we can export
     and decode offline.
   </p>
@@ -732,10 +732,10 @@ console.log("SPI hook installed; now click Connect on the SPI tab.");</code></pr
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    With the updated SPI hook installed, I switched to the <strong>SPI</strong> tab and began collecting frames.
-    Just like the 1-Wire capture, I periodically checked progress with <code>spiFrames.length</code>. Once the capture
-    reached a healthy size (10k+ frames), I exported it to the clipboard using
-    <code>copy(JSON.stringify(spiFrames));</code> so it could be saved to disk for offline decoding.
+    With the updated SPI hook installed, we'll switch to the <strong>SPI</strong> tab and begin collecting frames.
+    Just like the 1-Wire capture, we periodically check progress with <code>spiFrames.length</code>. Once the capture
+    reaches a healthy size (10k+ frames), export it to the clipboard using
+    <code>copy(JSON.stringify(spiFrames));</code> so it can be saved to disk for offline decoding.
   </p>
 </div>
 
@@ -769,9 +769,9 @@ console.log("SPI hook installed; now click Connect on the SPI tab.");</code></pr
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    I saved the clipboard export as
+    Save the clipboard export as
     <a class="kc-link-note" href="/SPI_MOSI_SCK.json" download><code>SPI_MOSI_SCK.json</code></a>
-    and then built a Python decoder that tries to automatically “do the right thing” by brute-testing common SPI decode variables:
+    and then build a Python decoder that tries to automatically “do the right thing” by brute-testing common SPI decode variables:
   </p>
 
   <ul class="kc-note-list">
@@ -976,7 +976,7 @@ if __name__ == "__main__":
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Updating the hook one last time to capture the I<sup>2</sup>C traffic. This version records both
+    Update the hook one last time to capture the I<sup>2</sup>C traffic. This version records both
     <code>sda</code> and <code>scl</code> frames (timestamp + value) into <code>i2cFrames</code>, which we’ll
     later export to JSON for offline decoding.
   </p>
@@ -1029,7 +1029,7 @@ console.log("I2C hook installed; now click Connect on the I2C tab.");</code></pr
 
   <p>
     Using the same capture workflow as the previous stages, but this time for I<sup>2</sup>C:
-    I used <code>i2cFrames.length</code> to verify we had enough frames collected, then ran
+    use <code>i2cFrames.length</code> to verify we have enough frames collected, then run
     <code>copy(JSON.stringify(i2cFrames));</code> to copy the captured SDA/SCL traffic to the clipboard.
   </p>
 </div>
@@ -1067,9 +1067,9 @@ console.log("I2C hook installed; now click Connect on the I2C tab.");</code></pr
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    I saved the clipboard contents to
+    Save the clipboard contents to
     <a class="kc-link-note" href="/I2C_sda_scl.json" download><code>I2C_sda_scl.json</code></a>
-    and then built the final decoder. It performs the following:
+    and then build the final decoder. It performs the following:
   </p>
 
   <ul class="kc-list">
@@ -1247,7 +1247,7 @@ if __name__ == "__main__":
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Decoding the temperature value reported by the I²C device at address <code>0x3C</code>.
+    Decode the temperature value reported by the I²C device at address <code>0x3C</code>.
   </p>
 </div>
 

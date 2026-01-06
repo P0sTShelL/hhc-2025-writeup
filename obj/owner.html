@@ -103,7 +103,7 @@
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-  Click on the Cranberry Pi terminal, we are greeted with the following.
+  Click on the Cranberry Pi terminal and we are greeted with the following:
   </p>
 </div> 
 
@@ -165,7 +165,7 @@
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Next, we follow the hint and run
+    Let's follow the hint and run
     <code>az account list --query "[?state=='Enabled'].{Name:name, ID:id}"</code>.
     This uses JMESPath to filter only enabled subscriptions and return a clean
     list of their names and IDs. From this output, we’ll take the first
@@ -255,7 +255,7 @@ Let's run the previous command against the other subscriptions to see what we co
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Next, I re-used the same <code>az role assignment list</code> query, but
+    Next, we re-use the same <code>az role assignment list</code> query, but
     pointed it at the <strong>second</strong> subscription ID
     (<code>theneighborhood-sub-2</code>), using:
     <code>az role assignment list --scope "/subscriptions/4d9dbf2a-90b4-4d40-a97f-dc51f3c3d46e" --query [?roleDefinition=='Owner']</code>.
@@ -298,8 +298,8 @@ Let's run the previous command against the other subscriptions to see what we co
   <p>
     Just like the first subscription, the only Owner assignment is the
     <code>PIM-Owners</code> group, which we’re told is a properly managed
-    PIM-enabled group with no active elevation at the moment. That means
-    nothing suspicious here either, lets check the next subsciption.
+    PIM-enabled group with no active elevation at the moment.
+    That means there’s nothing suspicious here either, let’s check the next subscription.
   </p>
   <p><code>az role assignment list --scope "/subscriptions/065cc24a-077e-40b9-b666-2f4dd9f3a617" --query [?roleDefinition=='Owner']</code></div>
 </div>
@@ -365,7 +365,7 @@ Remember: <span class="term-green">| less</span> lets you scroll through long ou
   </p>
   <p>
     The hint suggests using <code>az ad member list</code> with the group ID to see who is
-    actually in that group. So next, I ran:
+    actually in that group. We run:
   </p>
   <p>
     <code>az ad member list --group 6b982f2f-78a0-44a8-b915-79240b2b4796</code>
@@ -437,8 +437,7 @@ Let's run the command one more time against this group.</span>
     <code>az ad member list --group 631ebd3f-39f9-4492-a780-aef2aec8c94e</code>
   </p>
   <p>
-    This should finally reveal the individual accounts who effectively have Owner rights
-    through this nested group chain.
+    This should finally reveal the individual accounts that effectively have Owner rights through this nested group chain.
   </p>
 </div>
 
@@ -474,8 +473,7 @@ Let's run the command one more time against this group.</span>
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    At this point, we’ve fully traced the unexpected <strong>Owner</strong> access:
-    starting from the subscription’s role assignments, through the
+    At this point, we’ve fully traced the unexpected <strong>Owner</strong> access starting from the subscription’s role assignments, through the
     <code>IT Admins</code> group, into the nested <code>Subscription Admins</code>
     group, and finally down to the individual user
     <strong>Firewall Frank</strong>. This permanent Owner assignment violates
@@ -483,7 +481,7 @@ Let's run the command one more time against this group.</span>
     challenge wanted us to uncover.
   </p>
   <p>
-    With the misconfigured ownership path identified the
+    With the misconfigured ownership path identified, the
     terminal tells us the challenge is complete. To wrap things up and log
     the completion, we simply type <code>finish</code> in the prompt.
   </p>

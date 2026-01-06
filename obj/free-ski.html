@@ -205,7 +205,7 @@
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Taking an initial look at the extracted PyInstaller bundle, we moved into the
+    Taking an initial look at the extracted PyInstaller bundle, we move into the
     <code>FreeSki.exe_extracted</code> directory to inventory what was unpacked.
   </p>
 </div>
@@ -248,9 +248,9 @@
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Looking at the extracted contents, <code>FreeSki.pyc</code> stood out as the likely main game logic.
-    To inspect it, we grabbed the recommended decompiler (<code>pycdc</code>) and built it on Kali, then
-    attempted to decompile the bytecode.
+    Looking at the extracted contents, <code>FreeSki.pyc</code> stands out as the likely main game logic.
+    To inspect it, we can grab the recommended decompiler (<code>pycdc</code>) and build it on Kali, then
+    attempt to decompile the bytecode.
   </p>
 </div>
 
@@ -312,8 +312,8 @@
 
   <p>
     It looks like the version of <code>pycdc</code> we built doesn’t fully support Python 3.13 bytecode yet
-    (the decompile attempt hit an unsupported opcode). Instead of fighting the decompiler, we pivoted to
-    disassembly using <code>pycdas</code> so we could still recover the program logic from the bytecode.
+    (the decompile attempt hit an unsupported opcode). Instead of fighting the decompiler, we'll pivot to
+    disassembly using <code>pycdas</code> so we can still recover the program logic from the bytecode.
   </p>
 </div>
 
@@ -862,7 +862,7 @@ if __name__ == '__main__':
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Reviewing the decompiled output, the game logic was straightforward to follow. I started pulling code to build a
+    Reviewing the decompiled output, the game logic is straightforward to follow. I started pulling code to build a
     solver, but noticed something odd: the <strong>Mount Snow</strong> encoded flag value looked noticeably different
     than the others.
   </p>
@@ -975,8 +975,8 @@ if __name__ == '__main__':
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    With the solver in place, we ran it locally to decode the flag for every mountain using the disassembly-derived
-    constants. Interestingly, every mountain produced the same decoded flag, confirming there’s a single correct
+    With the solver in place, we can run it locally to decode the flag for every mountain using the disassembly-derived
+    constants. Interestingly, every mountain produces the same decoded flag, confirming there’s a single correct
     solution regardless of which mountain is selected during gameplay.
   </p>
 

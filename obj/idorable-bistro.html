@@ -136,11 +136,11 @@
   <div class="kc-workflow-row">
     <div class="kc-workflow-text">
       <p class="kc-workflow-intro">
-        We need to aquire that receipt take a lap around the Sasabune bistro, using
+        We need to acquire that receipt. Take a lap around the Sasabune bistro, using
         the Q and E keys to rotate the map might be helpful. 
       </p>
       <p class="kc-workflow-intro">
-        When you find the receipt simply click on it to aquire it.
+        When you find the receipt simply click on it to acquire it.
       </p>
     </div>
 
@@ -187,12 +187,12 @@
   <p>
     Now that we have the receipt, scanning the QR code (or using an online QR
     code reader such as
-    <a href="https://scanqr.org/" class="kc-link-note" target="_blank" rel="noopener noreferrer">scanqr.org</a>
+    <a href="https://scanqr.org/" class="kc-link-note" target="_blank" rel="noopener noreferrer">scanqr.org</a>)
     takes us to the following URL:
     <a href="https://its-idorable.holidayhackchallenge.com/receipt/i9j0k1l2"
     class="kc-link-note" target="_blank" rel="noopener noreferrer">
-    https://its-idorable.holidayhackchallenge.com/receipt/i9j0k1l2
-    </a>.
+    https://its-idorable.holidayhackchallenge.com/receipt/i9j0k1l2.
+  </a>
   </p>
 </div>
 
@@ -274,8 +274,8 @@
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Next, let’s query the receipt API directly with <code>curl</code>. I set a base URL variable,
-    then pulled receipt <code>id=103</code> and piped it into <code>jq</code> for readability.
+    Next, let’s query the receipt API directly with <code>curl</code>. Set a base URL variable,
+    then pull receipt <code>id=103</code> and pipe it into <code>jq</code> for readability.
   </p>
 </div>
 
@@ -325,13 +325,13 @@
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Next, I searched the receipt API responses for any mention of the word
+    Next, we search the receipt API responses for any mention of the word
     <code>frozen</code>. The goal here is to locate the “frozen sushi” order
     mentioned in the hint and use that receipt’s <code>customer</code> field to
     identify the gnome.
   </p>
   <p>
-    That search surfaced a single matching receipt, where the customer insisted
+    That search surfaces a single matching receipt, where the customer insisted
     on a “Frozen Roll.” The customer name on that receipt reveals the gnome:
     <strong>Bartholomew Quibblefrost</strong>.
   </p>

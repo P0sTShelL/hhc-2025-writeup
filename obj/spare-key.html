@@ -100,7 +100,7 @@
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-  Click on the Cranberry Pi terminal, we are greeted with the following.
+  Click on the Cranberry Pi terminal and we are greeted with the following:
   </p>
 </div> 
 
@@ -126,7 +126,7 @@
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-  Listing the resource groups <code>az group list -o table</code> we see the following.
+  Listing the resource groups <code>az group list -o table</code> we see the following:
   </p>
 </div> 
 
@@ -190,8 +190,7 @@ hoalandscaping   StorageV2    eastus      rg-hoa-landscaping   Succeeded
     mentioned that the Neighborhood HOA site is hosted in Azure Storage, we target
     the <code>neighborhoodhoa</code> account with:
     <code>az storage blob service-properties show --account-name neighborhoodhoa --auth-mode login</code>.
-    The result confirms that static website hosting is enabled, with
-    <code>index.html</code> as the index document and <code>404.html</code> as the error page.
+    The result confirms that static website hosting is enabled with <code>index.html</code> as the index document and <code>404.html</code> as the error page.
   </p>
 </div>
 
@@ -249,8 +248,7 @@ public  Blob
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    The hint suggests that when using <code>--container-name</code> we might need to wrap
-    the name in quotes. To inspect the static website container, I ran:
+    The hint suggests that when using <code>--container-name</code> we might need to wrap the name in quotes. To inspect the static website container, we run
     <code>az storage blob list --account-name neighborhoodhoa --container-name '$web' --auth-mode login -o table</code>.
     The output shows two normal HTML pages (<code>index.html</code> and <code>about.html</code>) and one
     suspicious file, <code>iac/terraform.tfvars</code>, which looks like an IaC configuration file that
@@ -284,7 +282,7 @@ iac/terraform.tfvars  1024             text/plain
   <span class="kc-note-label">Write-up notes</span>
   <p>
     To inspect the suspicious <code>iac/terraform.tfvars</code> file in the
-    <code>$web</code> container, I ran:
+    <code>$web</code> container, we run:
     <code>az storage blob download --account-name neighborhoodhoa --container-name '$web' --name iac/terraform.tfvars --auth-mode login --file /dev/stdout | less</code>.
     The contents reveal a long-lived <code>migration_sas_token</code> that doesn’t expire until
     <strong>2100-01-01</strong>, along with several other production secrets. This confirms that

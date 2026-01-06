@@ -195,9 +195,9 @@
   <span class="kc-note-label">Write-up notes</span>
 
   <p class="kc-workflow-intro">
-    After trying a few guessed logins, I switched to basic injection testing to see if the app would
+    We can try guessing a few logins, but if we aren't successful we'll switch to basic injection testing to see if the app will
     leak any useful backend details. On the <strong>Register</strong> page, entering a single
-    <code>"</code> (double quote) in the <strong>Choose a username</strong> field triggered a verbose
+    <code>"</code> (double quote) in the <strong>Choose a username</strong> field triggers a verbose
     error response.
   </p>
 
@@ -230,13 +230,13 @@
 
   <p class="kc-workflow-intro">
     One of the hints warned that <strong>client-side code may be modifying what we submit</strong>.
-    To validate that, I sent the same registration request through a proxy (Burp Suite) so I could
+    To validate that, we can send the same registration request through a proxy (Burp Suite) so we can
     inspect the exact raw HTTP request the server receives.
   </p>
 
   <p class="kc-workflow-intro">
-    Capturing the request revealed something important: when I typed a single double-quote
-    (<code>"</code>) in the username field, the request leaving the browser included an extra escape
+    Capturing the request reveals something important: when a single double-quote
+    (<code>"</code>) in the username field, the request leaving the browser includes an extra escape
     character (<code>\</code>) — i.e., the client transformed it into <code>\"</code>. That means
     the front-end is sanitizing/escaping input before it hits the backend, which can mask errors and
     interfere with injection testing unless we proxy and edit the payload manually.
@@ -271,12 +271,12 @@
   <span class="kc-note-label">Write-up notes</span>
 
   <p class="kc-workflow-intro">
-    With the request captured in Burp, I manually <strong>removed the client-added escape character</strong>
-    (the backslash) so the backend would receive a raw quote instead of <code>\"</code>.
+    With the request captured in Burp, we manually <strong>remove the client-added escape character</strong>
+    (the backslash) so the backend will receive a raw quote instead of <code>\"</code>.
   </p>
 
   <p class="kc-workflow-intro">
-    Sending the modified request produced a server-side
+    Sending the modified request produces a server-side
     <strong>JSON parsing error</strong> (Node/Express body-parser). This is a strong indicator that the
     front-end was “protecting” the backend from malformed input, and that proxying + editing the payload
     is the right approach to trigger useful error behavior and learn how the API is handling requests.
@@ -313,12 +313,12 @@
   <p class="kc-workflow-intro">
     The error output included <code>Microsoft.Azure.Documents.Common/2.14.0</code>, which strongly suggests the backend
     is interacting with <strong>Azure Cosmos DB</strong>. To validate whether the <code>username</code> parameter is being
-    embedded into a Cosmos DB SQL-style query, I tried two <strong>boolean-style</strong> inputs and compared how the
-    <code>/userAvailable</code> endpoint responded.
+    embedded into a Cosmos DB SQL-style query, we can try two <strong>boolean-style</strong> inputs and compare how the
+    <code>/userAvailable</code> endpoint responds.
   </p>
 
   <p class="kc-workflow-intro">
-    The responses flipped between <code>{"available":false}</code> and <code>{"available":true}</code> based only on the
+    We see the responses flip between <code>{"available":false}</code> and <code>{"available":true}</code> based only on the
     injected logic, which is a strong signal that the backend is parsing/evaluating the supplied expression rather than
     treating it as a plain string.
   </p>
@@ -358,7 +358,7 @@
   <span class="kc-note-label">Write-up notes</span>
 
   <p class="kc-workflow-intro">
-    With boolean-style injection working, I next tried <code>STARTSWITH()</code> to perform a quick
+    With boolean-style injection working, we can next try <code>STARTSWITH()</code> to perform a quick
     <strong>enumeration-by-prefix</strong>. The idea is simple: loop <code>a..z</code>, inject a predicate like
     <code>STARTSWITH(c.username,"&lt;letter&gt;")</code>, and watch which letters flip the response. Any letter that
     returns <code>{"available":false}</code> is a strong indicator that at least one username exists starting with that
@@ -417,7 +417,7 @@
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p class="kc-workflow-intro">
-    To speed up enumeration, I wrote a quick helper script that uses the confirmed <code>STARTSWITH()</code> injection
+    To speed up enumeration, we'll write a quick helper script that uses the confirmed <code>STARTSWITH()</code> injection
     behavior. The script performs a breadth-first search (BFS): it first finds valid starting characters,
     then repeatedly extends those prefixes until they no longer match any existing username. The completed prefixes are
     treated as discovered usernames.
@@ -554,9 +554,9 @@ printf '%s\n' "${final[@]}" | sort -u | sed 's/^/ - /'</code></pre>
   </p>
 
   <p>
-    To do this, I used the existing injection point with <code>IS_DEFINED()</code> and tested a short list of common field
-    names (e.g., <code>password</code>, <code>hash</code>, <code>digest</code>, etc.). I saved the script as
-    <code>find_field.sh</code>, made it executable, and ran it.
+    To do this, use the existing injection point with <code>IS_DEFINED()</code> and test a short list of common field
+    names (e.g., <code>password</code>, <code>hash</code>, <code>digest</code>, etc.) then save the script as
+    <code>find_field.sh</code>, make it executable, and run it.
   </p>
 </div>
 
@@ -903,7 +903,7 @@ echo "Recovered Digest ($USER): $digest"</code></pre>
 
   <p>
     From the Smart Gnome Control Center, we can send <strong>updated names</strong> into the Smart Gnome Statistics
-    panel. After a couple of tests, I copied the request out of the browser as a <code>curl</code> command so we can
+    panel. Copy the request out of the browser as a <code>curl</code> command so we can
     bypass any UI-side filtering and make it easy to script further interactions (if needed).
   </p>
 </div>
@@ -934,7 +934,7 @@ echo "Recovered Digest ($USER): $digest"</code></pre>
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Next, I sent the <strong>name update</strong> directly with <code>curl</code>, then clicked
+    Next, send the <strong>name update</strong> directly with <code>curl</code>, then click
     <strong>Refresh</strong> in the Smart Gnome Statistics panel to confirm the change took effect.
     This gives us a clean, scriptable way to drive the <code>/ctrlsignals</code> endpoint without relying
     on whatever client-side filtering the UI might apply.
@@ -999,8 +999,8 @@ echo "Recovered Digest ($USER): $digest"</code></pre>
 
   <p>
     Saving a couple values as variables made it easier to iterate quickly. After a few harmless tests,
-    I tried updating <code><span class="term-grep-hit">__proto__.toString</span></code>. The first request returned
-    <strong>success</strong>, but repeating the same payload triggered a server-side exception.
+    Let's try updating <code><span class="term-grep-hit">__proto__.toString</span></code>. The first request returns
+    <strong>success</strong>, but repeating the same payload triggers a server-side exception.
   </p>
 
   <p>
@@ -1064,8 +1064,8 @@ echo "Recovered Digest ($USER): $digest"</code></pre>
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    This error appears to destabilize the backend session, so I started a fresh session, set the new
-    <code>connect.sid</code> cookie, and then tried a simple command-execution payload via prototype pollution.
+    This error appears to destabilize the backend session, so we'll start a fresh session, set the new
+    <code>connect.sid</code> cookie, and then try a simple command-execution payload via prototype pollution.
     The <code>curl</code> request “sets the stage”; returning to the web UI and clicking <strong>Refresh</strong>
     on <em>Gnome Statistics</em> causes the thrown output to render in the stats pane.
   </p>
@@ -1130,7 +1130,7 @@ echo "Recovered Digest ($USER): $digest"</code></pre>
   </p>
 
   <p>
-    Next, I swapped <code>id</code> for a simpler <code>ls</code> to list what’s in the app directory.
+    Next, we'll swap <code>id</code> for a simpler <code>ls</code> to list what’s in the app directory.
   </p>
 </div>
 
@@ -1181,7 +1181,7 @@ echo "Recovered Digest ($USER): $digest"</code></pre>
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Next I attempted to pivot from “command output” into an <strong>outbound callback</strong> (reverse shell style)
+    Next we'll attempt to pivot from “command output” into an <strong>outbound callback</strong> (reverse shell style)
     by updating the prototype-pollution payload to open a connection to an external host (details redacted for safety).
   </p>
 
@@ -1241,7 +1241,7 @@ echo "Recovered Digest ($USER): $digest"</code></pre>
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    At this point, the callback successfully connected to my external host and I received an interactive shell. As they say… <strong>we’re in</strong>.
+    At this point, the callback successfully connects to our external host and we receive an interactive shell. As they say… <strong>we’re in</strong>.
   </p>
 </div>
 
@@ -1417,7 +1417,7 @@ if __name__ == "__main__":
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Taking a look at <strong>README.md</strong> revealed a much more complete CAN protocol reference for
+    Taking a look at <strong>README.md</strong> reveals a much more complete CAN protocol reference for
     the <code>gcan0</code> interface — including a set of known request/response message IDs and a clear
     <strong>TODO</strong> calling out that the <em>movement commands</em> (Up/Down/Left/Right) are not finalized.
   </p>
@@ -1509,8 +1509,8 @@ the documentation for these - check back after eggnog break!
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Next I focused on why the gnome <em>wouldn’t move</em>. The README listed a bunch of known CAN IDs in use,
-    so instead of guessing inside those ranges, I modified <code>canbus_client.py</code> to:
+    Next we'll focus on why the gnome <em>wouldn’t move</em>. The README listed a bunch of known CAN IDs in use,
+    so instead of guessing inside those ranges, let's modify <code>canbus_client.py</code> to:
   </p>
 
   <ul>
@@ -1520,15 +1520,15 @@ the documentation for these - check back after eggnog break!
       would still catch at least one valid movement command.
     </li>
     <li>
-      Iterate through CAN IDs while <strong>avoiding</strong> the IDs already documented in <code>README.md</code>, so I
-      didn’t interfere with the known status/request traffic.
+      Iterate through CAN IDs while <strong>avoiding</strong> the IDs already documented in <code>README.md</code>, so we
+      don’t interfere with the known status/request traffic.
     </li>
   </ul>
 
   <p>
-    Then I switched back to the web UI and pressed each movement button while watching the bot. When the bot moved,
-    I knew the correct movement command ID was inside the current test range for that direction. After a few rounds of
-    narrowing the ranges, I landed on a final mapping that consistently restored movement.
+    Next we'll switch back to the web UI and pressed each movement button while watching the bot. When the bot moves,
+    we know the correct movement command ID is inside the current test range for that direction. After a few rounds of
+    narrowing the ranges, we land on a final mapping that consistently restores movement.
   </p>
 
   <p class="kc-intro">
@@ -1609,9 +1609,9 @@ if __name__ == "__main__":
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Now that we had confirmed the correct CAN IDs for movement, we switched back to our AWS shell and
-    overwrote the container’s existing <code>canbus_client.py</code> with our working mapping. Finally, we
-    marked it executable so the web UI could reliably invoke it.
+    Now that we have confirmed the correct CAN IDs for movement, we'll switch back to our AWS shell and
+    overwrite the container’s existing <code>canbus_client.py</code> with our working mapping. Finally, we
+    mark it executable so the web UI can reliably invoke it.
   </p>
 </div>
 
@@ -1682,7 +1682,7 @@ EOF
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    With the movement commands restored, we navigated the bot to the power switch and successfully
+    With the movement commands restored, we can navigate the bot to the power switch and successfully
     shut down the factory.
   </p>
 </div>

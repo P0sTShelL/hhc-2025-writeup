@@ -196,7 +196,7 @@
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Lets investigate the page source and see if it holds any fruitful information.
+    Let's investigate the page source and see if it holds any fruitful information.
   </p>
 </div>
 
@@ -261,13 +261,13 @@
 
   <p class="kc-workflow-intro">
     With the <strong>Firebase projectId</strong> and <strong>API key</strong> recovered from the minified bundle,
-    I tried a quick enumeration check against the Firestore REST API to see whether any collections were exposed
+    we can try a quick enumeration check against the Firestore REST API to see whether any collections were exposed
     without authentication.
   </p>
 
   <p class="kc-workflow-intro">
-    Specifically, I called <code>documents:listCollectionIds</code> using the project + key we found. The response
-    came back <strong>403 PERMISSION_DENIED</strong>, which tells us Firestore rules are enforcing authentication
+    Specifically, we'll call <code>documents:listCollectionIds</code> using the project + key we found. The response
+    comes back <strong>403 PERMISSION_DENIED</strong>, which tells us Firestore rules are enforcing authentication
     (and/or App Check) and we can’t enumerate collections anonymously just with the API key.
   </p>
 </div>
@@ -313,9 +313,9 @@
   </p>
 
   <p class="kc-workflow-intro">
-    Instead of enumerating collections, I switched to querying a known collection directly using Firestore’s
+    Instead of enumerating collections, we'll switch to querying a known collection directly using Firestore’s
     <code>documents:runQuery</code> endpoint. If the security rules allow reads, this will return documents even when
-    collection enumeration is blocked. I pulled a small sample (<code>limit: 5</code>) from <code>dms</code> to confirm access.
+    collection enumeration is blocked. We'll pull a small sample (<code>limit: 5</code>) from <code>dms</code> to confirm access.
   </p>
 </div>
 
@@ -371,13 +371,13 @@
   <span class="kc-note-label">Write-up notes</span>
 
   <p class="kc-workflow-intro">
-    Since <code>runQuery</code> allowed reads from <code>dms</code>, I used it to bulk-pull documents from all three
+    Since <code>runQuery</code> allowed reads from <code>dms</code>, we can use it to bulk-pull documents from all three
     collection names hinted by the TODO comment: <code>dms</code>, <code>tea</code>, and <code>gnomes</code>.
   </p>
 
   <p class="kc-workflow-intro">
     Each query requests up to <code>500</code> documents and then filters the response down to only the
-    <code>.document</code> objects. I saved the results as JSONL (<em>one JSON document per line</em>) to make it easy
+    <code>.document</code> objects. Save the results as JSONL (<em>one JSON document per line</em>) to make it easy
     to grep, jq, and parse later.
   </p>
 </div>
@@ -432,15 +432,15 @@
   <span class="kc-note-label">Write-up notes</span>
 
   <p class="kc-workflow-intro">
-    While reviewing the downloaded JavaScript bundle, we also found the Firebase
+    While reviewing the downloaded JavaScript bundle, we also find the Firebase
     <strong>storageBucket</strong> value (<code>holidayhack2025.firebasestorage.app</code>). Since the application is
-    clearly using Firebase Storage for user content, the next logical step was to test whether the Storage rules were
+    clearly using Firebase Storage for user content, the next logical step is to test whether the Storage rules are
     also misconfigured.
   </p>
 
   <p class="kc-workflow-intro">
     Even though listing Firestore collections was blocked, direct reads from specific collections worked — a pattern that
-    often shows up alongside overly-permissive Firebase Storage rules. So I attempted to enumerate the bucket to see what
+    often shows up alongside overly-permissive Firebase Storage rules. So we will attempt to enumerate the bucket to see what
     objects are publicly listable.
   </p>
 </div>
@@ -505,9 +505,9 @@
   <span class="kc-note-label">Write-up notes</span>
 
   <p class="kc-workflow-intro">
-    The bucket listing showed a consistent naming pattern for identity documents:
+    The bucket listing shows a consistent naming pattern for identity documents:
     <code>gnome-documents/&lt;uid&gt;_drivers_license.jpeg</code>. To make this repeatable (and avoid copy/paste),
-    I first extracted just those object names into a text file, then looped through them to download each image.
+    we first extract just those object names into a text file, then loop through them to download each image.
   </p>
 
   <p class="kc-workflow-intro">
@@ -581,7 +581,7 @@ OK -&gt; gnome_downloads/xK25sJX7usSwAJwAjpN8DMfzS872_drivers_license.jpeg</span
   </p>
 
   <p class="kc-workflow-intro">
-    Running a simple grep across the JSONL dumps turned up a DM thread where Barnaby hints his password is his hometown and he took the picture of his id there when signing up for the GnomeTea app.
+    Running a simple grep across the JSONL dumps turns up a DM thread where Barnaby hints his password is his hometown and he took the picture of his id there when signing up for the GnomeTea app.
   </p>
 </div>
 
@@ -609,7 +609,7 @@ gnometea_tea.jsonl:57:{"name":"projects/holidayhack2025/databases/(default)/docu
   <span class="kc-note-label">Write-up notes</span>
 
   <p class="kc-workflow-intro">
-    Looking though the licenses to find Barnaby's, the image it self does not reveal anything to intresting. 
+    Looking through the licenses to find Barnaby's, the image it self does not reveal anything to interesting. 
   </p>
 </div>
 
@@ -628,12 +628,12 @@ gnometea_tea.jsonl:57:{"name":"projects/holidayhack2025/databases/(default)/docu
 
   <p class="kc-workflow-intro">
     Since Barnaby hinted his password is the name of his hometown (and that he took his ID photo there),
-    the next step was to inspect the downloaded driver’s license image for any embedded metadata.
+    the next step is to inspect the downloaded driver’s license image for any embedded metadata.
     Photos often contain <strong>EXIF</strong> and <strong>GPS</strong> tags that can reveal where they were taken.
   </p>
 
   <p class="kc-workflow-intro">
-    I ran <code>exiftool</code> against Barnaby’s license image to dump all metadata, including GPS coordinates.
+    Let's run <code>exiftool</code> against Barnaby’s license image to dump all metadata, including GPS coordinates.
   </p>
 </div>
 
@@ -703,7 +703,7 @@ gnometea_tea.jsonl:57:{"name":"projects/holidayhack2025/databases/(default)/docu
   <p class="kc-workflow-intro">
     The important takeaway here is the embedded <strong>GPSPosition</strong> value:
     <code>33° 27' 53.85&quot; S, 115° 54' 37.62&quot; E</code>.
-    That location resolves to <strong>gnomesville</strong>, we have the password for Barnaby Briefcase!
+    That location resolves to <strong>gnomesville</strong>, and now we have the password for Barnaby Briefcase!
   </p>
 </div>
 
@@ -721,7 +721,7 @@ gnometea_tea.jsonl:57:{"name":"projects/holidayhack2025/databases/(default)/docu
   <span class="kc-note-label">Write-up notes</span>
 
   <p class="kc-workflow-intro">
-    Next, we needed Barnaby’s email address. We already had his UID, and user records typically store an
+    Next, we need Barnaby’s email address. We already have his UID, and user records typically store an
     <code>email</code> field. Since emails contain an <code>@</code>, we can quickly filter our recovered JSONL “loot”
     by first matching Barnaby’s UID, then piping that result through a second grep for <code>@</code>.
   </p>
@@ -749,16 +749,16 @@ gnometea_tea.jsonl:57:{"name":"projects/holidayhack2025/databases/(default)/docu
   <span class="kc-note-label">Write-up notes</span>
 
   <p class="kc-workflow-intro">
-    We now have Barnaby's email address <strong><code>barnabybriefcase@gnomemail.dosis</code></strong> and password <strong><code>gnomesville</code></strong> to access his GnomeTea account. Logging in and taking alook around did not reveal any new information, just nicely formated bits of information we allready looted. 
+    We now have Barnaby's email address <strong><code>barnabybriefcase@gnomemail.dosis</code></strong> and password <strong><code>gnomesville</code></strong> to access his GnomeTea account. Logging in and taking alook around did not reveal any new information, just nicely formated bits of information we already looted. 
   </p>
   <p class="kc-workflow-intro">
-    At this point we had successfully authenticated as <strong>Barnaby Briefcase</strong> and made use of every hint
+    At this point we have successfully authenticated as <strong>Barnaby Briefcase</strong> and made use of every hint
     except the one calling out <em>“hard-coded client-side controls to validate admin access.”</em>
   </p>
    <p class="kc-workflow-intro">
     That’s a big red flag: if “admin checks” live only in the browser (or are enforced by minified JavaScript),
     they can often be bypassed by directly calling the backend APIs (or by finding hidden routes/feature flags).
-    So, we doubled back to the React bundle and started searching the minified app for anything related to
+    So, we'll double back to the React bundle and start searching the minified app for anything related to
     <code>admin</code>, <code>role</code>, <code>isAdmin</code>, or gating logic.
   </p>
     <p class="kc-workflow-intro">
@@ -820,14 +820,14 @@ gnometea_tea.jsonl:57:{"name":"projects/holidayhack2025/databases/(default)/docu
   <span class="kc-note-label">Write-up notes</span>
 
   <p class="kc-workflow-intro">
-    Next, I tried browsing directly to the hidden <code>/admin</code> route we found in the client bundle.
-    After logging in as <strong>Barnaby Briefcase</strong>, I edited the URL from
+    Next, let's try browsing directly to the hidden <code>/admin</code> endpoint we found in the client bundle.
+    After logging in as <strong>Barnaby Briefcase</strong>, we'll edit the URL from
     <code>/dashboard</code> to <code>/admin</code>:
     <code>https://gnometea.web.app/admin</code>.
   </p>
 
   <p class="kc-workflow-intro">
-    The application immediately returned an <strong>Access Denied</strong> message and even displayed the
+    The application immediately returns an <strong>Access Denied</strong> message and even displays the
     <em>Current UID</em> and the <em>Required admin UID</em>, hinting that “admin access” is being enforced
     by a client-side check (and/or a value like <code>window.ADMIN_UID</code>).
   </p>

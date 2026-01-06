@@ -159,7 +159,7 @@
   <p>
     The router login page helpfully exposes its model and build info:
     <code>Archer AX21 v2.0</code> running firmware <code>1.1.4 (Build 20230219)</code>.
-    Per the hint about a “recent CVE,” I did some quick OSINT and found a known
+    Per the hint about a “recent CVE,” doing some quick OSINT we find a known
     issue affecting this router family: an <strong>unauthenticated command injection</strong>
     in the LuCI / OpenWRT web UI (often referenced alongside <code>CVE-2023-1389</code>).
   </p>
@@ -214,7 +214,7 @@
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    After confirming code execution with <code>id</code>, I updated the payload to read the router’s wireless
+    After confirming code execution with <code>id</code>, we need to update the payload to read the router’s wireless
     configuration. Because the injection point is inside a URL parameter, the command needs to be
     <strong>URL-encoded</strong> so special characters (spaces, slashes, parentheses) survive the request.
   </p>
@@ -224,7 +224,7 @@
     <code>$(cat /etc/config/wireless)</code> → encoded as <code>%24%28cat%20%2Fetc%2Fconfig%2Fwireless%29</code>.
   </p>
   <p>
-    Then I rebuilt <code>$FULL</code> with the new payload and sent the request <strong>twice</strong> again.
+    Then we need to rebuild <code>$FULL</code> with the new payload and send the request <strong>twice</strong> again.
     The first request “stages” the value and returns a simple <code>OK</code>; the second request re-evaluates it,
     triggering the command substitution and reflecting the file contents in the response.
   </p>

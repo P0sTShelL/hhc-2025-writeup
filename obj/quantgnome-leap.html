@@ -187,9 +187,9 @@
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    First task: find the <strong>*PQC*</strong> key generation program. The quickest way was to type
-    <code>pqc</code> and press <kbd>Tab</kbd> for autocomplete, which revealed <code>pqc-keygen</code>.
-    Before running it for real, I checked what it could do by calling <code>--help</code>.
+    First task: find the <strong>*PQC*</strong> key generation program. The quickest way is to type
+    <code>pqc</code> and press <kbd>Tab</kbd> for autocomplete, which reveals <code>pqc-keygen</code>.
+    Before running it for real, let's check what it can do by calling <code>--help</code>.
   </p>
 </div>
 
@@ -210,9 +210,9 @@ options:
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Next, I generated the full set of PQC/classical SSH keys using the default
-    <code>pqc-keygen</code> run. The tool confirmed it generated keys for all supported
-    algorithms, and then suggested using <code>-t</code> to display the key characteristics.
+    Next, I generate the full set of PQC/classical SSH keys using the default
+    <code>pqc-keygen</code> run. The tool confirms it generated keys for all supported
+    algorithms, and then suggests using <code>-t</code> to display the key characteristics.
   </p>
 </div>
 
@@ -229,7 +229,7 @@ Next, use -t to display key characteristics.</span>
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    With keys generated, the next step was to view them in a structured way.
+    With keys generated, the next step is to view them in a structured way.
     Running <code>pqc-keygen -t</code> prints a table of all available algorithms,
     including their bit sizes, claimed NIST security level, and whether each key is
     <strong>PQC</strong>, <strong>Classical</strong>, or a <strong>Hybrid</strong> combination.
@@ -341,8 +341,8 @@ ssh-ecdsa-nistp521-mayo5</span>
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    I checked what SSH keys already existed on the
-    system and inspected the public key.
+    Let's check what SSH keys already exist on the
+    system and inspect the public key.
   </p>
 </div>
 
@@ -357,7 +357,7 @@ ssh-ecdsa-nistp521-mayo5</span>
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Next I authenticated to the remote PQC server using the only key that was already
+    Next we will authenticate to the remote PQC server using the only key that was already
     authorized on this box — a <strong>classical RSA</strong> key:
     <code>ssh -i ~/.ssh/id_rsa gnome1@pqc-server.com</code>.
   </p>
@@ -381,9 +381,9 @@ ssh-ecdsa-nistp521-mayo5</span>
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    With a foothold as <code>gnome1</code>, I first enumerated local accounts and home
-    directories to confirm which gnome users exist. Then I searched common key locations
-    to find where <code>gnome2</code>&#39;s SSH public key was being stored.
+    With a foothold as <code>gnome1</code>, we'll first enumerate local accounts and home
+    directories to confirm which gnome users exist. Then we'll search common key locations
+    to find where <code>gnome2</code>&#39;s SSH public key is being stored.
   </p>
 </div>
 
@@ -410,7 +410,7 @@ admin:x:1055:1055:Linux User,,,:/home/admin:/bin/bash
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Next I inspected <code>gnome2</code>&#39;s authorized public key directly to confirm the
+    Next we inspect <code>gnome2</code>&#39;s authorized public key directly to confirm the
     exact SSH key algorithm/type the account expects.
   </p>
 </div>
@@ -424,7 +424,7 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKUOOPy0e1+4EzuM5PYc1/lfsXrR9FFDxTxDztvCi0Ce
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Since we identified <code>gnome2</code> uses an <code>ssh-ed25519</code> public key, the next step was to authenticate
+    Since we identified <code>gnome2</code> uses an <code>ssh-ed25519</code> public key, the next step is to authenticate
     locally using the matching ED25519 private key already present on the system:
     <code>ssh -i ~/.ssh/id_ed25519 gnome2@localhost</code>.
   </p>
@@ -447,9 +447,9 @@ Take a look around and see if you can find a way to login to the gnome3 account.
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Next, I hunted for anything referencing <code>gnome3</code> so we could identify the key type being used.
-    A quick recursive grep across the known OQS-SSH key directory (plus common system locations) revealed
-    <code>gnome3.pub</code> and also showed a matching public key already present in <code>/home/gnome2/.ssh/</code>.
+    Next, we'll hunt for anything referencing <code>gnome3</code> so we can identify the key type being used.
+    A quick recursive grep across the known OQS-SSH key directory (plus common system locations) reveals
+    <code>gnome3.pub</code> and also shows a matching public key already present in <code>/home/gnome2/.ssh/</code>.
   </p>
 </div>
 
@@ -470,7 +470,7 @@ gnome2@pqc-server</span><span class="term-white">:</span><span class="term-blue"
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    With the gnome3 public key confirmed as <strong>MAYO-2</strong>, the next step was to authenticate locally as
+    With the gnome3 public key confirmed as <strong>MAYO-2</strong>, the next step is to authenticate locally as
     <code>gnome3</code> using the matching post-quantum private key that was already present in
     <code>~/.ssh/id_mayo2</code>. This is the first “pure PQC” login in the chain (not classical and not hybrid).
   </p>
@@ -494,8 +494,8 @@ Take a look around and see if you can find a way to login to the gnome4 account.
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Next, I needed to locate <strong>gnome4</strong>’s authorized public key so I could determine what algorithm/key
-    type was required for the next login. I searched the known key store
+    Next, we need to locate <strong>gnome4</strong>’s authorized public key so we can determine what algorithm/key
+    type is required for the next login. Then we'll search the known key store
     (<code>/opt/oqs-ssh/user-keys</code>) and the local home directories for any references to “gnome4”.
   </p>
   <p>
@@ -519,7 +519,7 @@ Take a look around and see if you can find a way to login to the gnome4 account.
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    With gnome4’s key type identified as a hybrid <code>ecdsa-nistp256 + sphincssha2128fsimple</code>, I logged in
+    With gnome4’s key type identified as a hybrid <code>ecdsa-nistp256 + sphincssha2128fsimple</code>, we'll log in
     locally using the matching private key that was already staged in <code>~/.ssh</code>:
     <code>ssh -i ~/.ssh/id_ecdsa_nistp256_sphincssha2128fsimple gnome4@localhost</code>.
   </p>
@@ -548,10 +548,10 @@ Take a look around and see if you can find a way to login to the admin account.
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Next I needed to figure out what key type the <code>admin</code> account expects. I searched the OQS-OpenSSH
+    Next we need to figure out what key type the <code>admin</code> account expects. Search the OQS-OpenSSH
     key directory (and common system paths) for references to <code>admin</code>:
     <code>grep -RIn "admin" /opt/oqs-ssh/user-keys /home /etc 2&gt;/dev/null</code>.
-    This quickly revealed the exact public key algorithm in use for the admin account.
+    This quickly reveals the exact public key algorithm in use for the admin account.
   </p>
 </div>
 
@@ -617,8 +617,8 @@ You can find out more about the OQS initiative at https://openquantumsafe.org/.
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    With <code>admin</code> access, the hint points us to the directory where the SSH daemon lives. I enumerated
-    <code>/opt/oqs-ssh</code>, spotted a <code>flag</code> directory, then changed into it and read the
+    With <code>admin</code> access, the hint points us to the directory where the SSH daemon lives. We enumerate
+    <code>/opt/oqs-ssh</code>, spot a <code>flag</code> directory, then change into it and read the
     artifact directly.
   </p>
 </div>

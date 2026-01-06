@@ -171,11 +171,10 @@
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Click the floppy disk to grab yourself a copy of the disk image. After downloading <code>floppy.img</code>, I first wanted to confirm what type of
-    disk image it was.
+    Click the floppy disk to grab yourself a copy of the disk image. After downloading <code>floppy.img</code>, we first want to confirm what type of disk image it is.
   </p>
   <p>
-    On my Kali box I used the <code>file</code> command against
+    On our Kali box we used the <code>file</code> command against
     the image:
     <code>file floppy.img</code>. This tells us it’s a DOS/MBR boot sector using a
     small FAT12 filesystem — exactly what we’d expect from an old IBM PC floppy.
@@ -205,8 +204,8 @@ serial number 0x9c01e8ae, unlabeled, FAT (12 bit), followed by FAT
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Next, I wanted to see what files (including deleted ones) were on the
-    floppy image. I used <code>fls</code> from The Sleuth Kit with the
+    Next, we wanted to see what files (including deleted ones) were on the
+    floppy image. We used <code>fls</code> from The Sleuth Kit with the
     filesystem type set to FAT12 (from the earlier <code>file</code> command)
     and enabled recursive listing:
     <code>fls -f fat12 -r floppy.img</code>. This lists directories, regular
@@ -254,7 +253,7 @@ V/V 45782:      $OrphanFiles
     The <code>fls</code> output contains some especially interesting lines:
     entries marked with an asterisk (like <code>r/r * 6: all_i-want_fo</code>)
     indicate <strong>deleted</strong> files that may still be recoverable.
-    To carve out the contents of that deleted file, I used Sleuth Kit’s
+    To carve out the contents of that deleted file, We need to use Sleuth Kit’s
     <code>icat</code> with the filesystem type set to FAT12 and targeted inode
     <code>6</code>:
     <code>icat -f fat12 floppy.img 6 &gt; recovered_6.bin</code>.
@@ -286,9 +285,9 @@ V/V 45782:      $OrphanFiles
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    With the recovered file in hand, the next step was to quickly inspect its
+    With the recovered file in hand, the next step is to quickly inspect its
     contents. To avoid dumping the entire file (in case there was binary data),
-    I used <code>sed</code> to print just the first 40 lines:
+    use <code>sed</code> to print just the first 40 lines:
     <code>sed -n '1,40p' recovered_6.bin</code>. This gives a safe peek at the
     start of the recovered BASIC source.
   </p>
@@ -357,7 +356,7 @@ V/V 45782:      $OrphanFiles
     On line <code>211</code>, there’s a suspicious
     Base64-looking string embedded in a <code>REM</code> comment:
     <code>bWVycnkgY2hyaXN0bWFzIHRvIGFsbCBhbmQgdG8gYWxsIGEgZ29vZCBuaWdodAo=</code>.
-    To see what it hides, I piped it into <code>base64 -d</code>:
+    To see what it hides, we pipe it into <code>base64 -d</code>:
     <code>echo 'bWVycnkgY2hyaXN0bWFzIHRvIGFsbCBhbmQgdG8gYWxsIGEgZ29vZCBuaWdodAo=' | base64 -d</code>.
   </p>
 </div>

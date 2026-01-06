@@ -103,7 +103,7 @@
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-  Click on the Cranberry Pi terminal, we are greeted with the following.
+  Click on the Cranberry Pi terminal and we are greeted with the following:
   </p>
 </div> 
 
@@ -180,13 +180,10 @@ $ <span class="term-green">az group list</span>
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    This is very detailed and great
-    for automation, but the next hint suggests
-    re-running the same command with <code>-o table</code> to get a concise,
-    human-readable table format.
+    This result is very detailed and great for automation, but the next hint suggests re-running the same command with <code>-o table</code> to get a concise, human-readable table format.
   </p>
 </div>
-
+ 
 <div class="kc-terminal-window kc-terminal-window--wrap">
   <pre class="kc-terminal-text"><span class="term-yellow">Lets take a look at Network Security Groups (NSGs).</span>
 <span class="term-yellow">To do this try: <span class="term-green">az network nsg list -o table</span></span>
@@ -376,7 +373,7 @@ Allow     Outbound     Allow-Backup-Outbound       220         Tcp         nsg-m
     With the management NSG reviewed, the next logical target is
     <code>nsg-production-eastus</code>. Production networks are often where
     risky exceptions sneak in. To inspect all of its rules in a readable format,
-    I ran:
+    we run:
     <code>az network nsg rule list --nsg-name nsg-production-eastus --resource-group theneighborhood-rg1 -o table</code>.
     This lets us quickly spot any overly permissive rules that might expose
     management services directly to the internet.
@@ -405,9 +402,9 @@ Deny      Inbound      Deny-All-Inbound               4096        *           ns
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-    Holy <strong>Allow-RDP-From-Internet</strong> rule, the next step is to drill
+    Holy <strong>Allow-RDP-From-Internet</strong> rule! The next step is to drill
     into that specific NSG rule and confirm why it’s dangerous. To do that,
-    I ran:
+    we run:
     <code>az network nsg rule show --nsg-name nsg-production-eastus --resource-group theneighborhood-rg1 --name Allow-RDP-From-Internet</code>.
   </p>
   <p>
@@ -419,7 +416,7 @@ Deny      Inbound      Deny-All-Inbound               4096        *           ns
     misconfiguration the challenge wants us to identify.
   </p>
 </div>
-
+ 
 <div class="kc-terminal-window kc-terminal-window--wrap">
   <pre class="kc-terminal-text"><span class="term-yellow">Great, you found the NSG misconfiguration allowing RDP <span class="term-green">(port 3389)</span> from the public internet!</span>
 <span class="term-yellow">Port 3389 is used by Remote Desktop Protocol — exposing it broadly allows attackers to brute-force credentials, exploit RDP vulnerabilities, and pivot within the network.</span>

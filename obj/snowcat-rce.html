@@ -135,7 +135,7 @@
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-  Click on the Cranberry Pi terminal, we are greeted with the following.
+  Click on the Cranberry Pi terminal and we are greeted with the following:
   </p>
 </div> 
 
@@ -258,7 +258,7 @@ Can you prove these components are vulnerable by retrieving the key that is not 
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    With our serialized payload generated, the next step was to test delivery using the provided
+    With our serialized payload generated, the next step is to test delivery using the provided
     <code>CVE-2025-24813.py</code> helper. The script performs two phases:
     a <strong>PUT</strong> to upload session data, then a <strong>GET</strong> with the chosen session cookie
     to force the server to deserialize it.
@@ -314,16 +314,16 @@ Can you prove these components are vulnerable by retrieving the key that is not 
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    After copying <code>weather.db</code> into <code>/tmp</code>, we tried to read it as the low-privileged
-    <code>user</code> account — but the file was owned by <code>snowcat</code> and not world-readable, resulting
+    After copying <code>weather.db</code> into <code>/tmp</code>, we can try to read it as the low-privileged
+    <code>user</code> account — but we'll find that the file is owned by <code>snowcat</code> and not world-readable, resulting
     in <strong>Permission denied</strong>.
   </p>
 
   <p>
     Since our earlier test confirmed we can trigger server-side execution via the Snowcat/Tomcat session
-    deserialization path, we generated a second payload to change the file permissions
+    deserialization path, we'll generate a second payload to change the file permissions
     (<code>chmod 644</code>) on the copied database. After re-triggering the session load, the permissions
-    were updated and the file became readable.
+    are updated and the file becomes readable.
   </p>
 </div>
 
@@ -375,9 +375,9 @@ cat: /tmp/weather.dbcopy: Permission denied
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    With a readable copy of <code>weather.db</code> in <code>/tmp</code>, the next step was to inspect the database
-    schema and look for anything authentication-related. Using <code>sqlite3</code>, we enumerated the tables and
-    dumped the contents of the <code>users</code> table.
+    With a readable copy of <code>weather.db</code> in <code>/tmp</code>, the next step is to inspect the database
+    schema and look for anything authentication-related. Using <code>sqlite3</code>, we can enumerate the tables and
+    dump the contents of the <code>users</code> table.
   </p>
 
   <p>
@@ -537,7 +537,7 @@ eric|OUQ1vSH7eZkZ/6UnImrMUqjK/FdFwzyfgqJrsxLM|Eric|P
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    Next, we checked whether the legacy weather binaries are running with elevated privileges. If any of them have the
+    Next, we'll check whether the legacy weather binaries are running with elevated privileges. If any of them have the
     <strong>SUID</strong> bit set, they’ll execute as their file owner (often <code>root</code>) even when launched by a
     low-priv user — which is a classic privilege-escalation foothold.
   </p>
@@ -593,8 +593,8 @@ eric|OUQ1vSH7eZkZ/6UnImrMUqjK/FdFwzyfgqJrsxLM|Eric|P
   <span class="kc-note-label">Write-up notes</span>
 
   <p>
-    No dice on the simple payload, so we tried a more deliberate quote-breakout with output redirection.
-    This time, we write the results to <code>/tmp/id.out</code> so we can reliably read it back.
+    No dice on the simple payload, so we'll triy a more deliberate quote-breakout with output redirection.
+    This time, write the results to <code>/tmp/id.out</code> so we can reliably read it back.
   </p>
 </div>
 

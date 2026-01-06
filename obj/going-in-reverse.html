@@ -160,7 +160,7 @@
 <div class="kc-note-bubble">
   <span class="kc-note-label">Write-up notes</span>
   <p>
-  Opening the BASIC program <code>"login.bas"</code> in a text editor.
+  Open the BASIC program <code>"login.bas"</code> in a text editor.
   </p>
 </div> 
 
@@ -195,7 +195,7 @@
     <strong>1) Password check (lines 50–80)</strong><br>
     The key line is:
     <code>CHR$(ASC(MID$(PASS$,I,1)) XOR 7)</code>.<br>
-    That means: for each character we type, the program XORs its ASCII value with
+    That means for each character we type, the program XORs its ASCII value with
     <code>7</code>, converts it back to a character, and compares it to the stored
     <code>ENC_PASS$</code> string.
   </p>
