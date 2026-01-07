@@ -2641,3 +2641,57 @@ body.kc-modal-open {
   cursor: not-allowed;
   transform: none;
 }
+
+/* Mobile fix: let the Objective line wrap instead of forcing page width */
+@media (max-width: 900px) {
+  /* Only target the objective line, not every meta row */
+  .kc-objective-summary.kc-meta-line {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  /* Put the long objective text on its own line when needed */
+  .kc-objective-summary.kc-meta-line .kc-meta-value {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+}
+
+/* Mobile: prevent code-block flex items from forcing page wider than viewport */
+@media (max-width: 900px) {
+  .kc-code-block {
+    max-width: 100%;
+  }
+
+  /* Critical: allow the <pre> flex item to shrink */
+  .kc-code-block pre {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Make Objective line behave like normal wrapping text on mobile */
+  .kc-objective-summary.kc-meta-line {
+    display: block !important;
+  }
+
+  .kc-objective-summary.kc-meta-line .kc-meta-value {
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
+/* Mobile-only: wrap terminal lines ONLY on The Open Door page */
+@media (max-width: 900px) {
+  #obj-the-open-door .kc-terminal-window {
+    overflow-x: visible; /* behave like --wrap on phones */
+  }
+
+  #obj-the-open-door .kc-terminal-window .kc-terminal-text {
+    white-space: pre-wrap;     /* wrap long lines */
+    word-break: break-word;    /* break long tokens if needed */
+    overflow-wrap: anywhere;   /* extra safety for iOS/URLs */
+  }
+}
