@@ -1433,8 +1433,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const slider = document.getElementById("musicVolume");
     const base = slider ? Number(slider.value) : 50; // 0..100
     const boost = (currentObjectiveId === "obj-orientation") ? 30 : 0;
+    const boost2 = (currentObjectiveId === "obj-snowglobe-machine") ? 30 : 0;
 
-    const boosted = Math.max(0, Math.min(100, base + boost)); // clamp 0..100
+    const boosted = Math.max(0, Math.min(100, base + boost + boost2)); // clamp 0..100
     return boosted / 100; // convert to 0..1
   }
   function getNpcVolume() {
