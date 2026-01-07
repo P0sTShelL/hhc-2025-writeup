@@ -758,15 +758,16 @@ window.initMapPane = function () {
   if (!viewport || !content || !img || !labelsEl) return;
 
   const LOCATIONS = [
-    { label: "Ed's Office",               x: 26, y: 14, target: null },
-    { label: "City Hall",                x: 26, y: 41, target: "obj-orientation" },
+    { label: "Ed's Office",              x: 26, y: 14, target: "obj-its-all-about-defang" },
+    { label: "City Hall",                x: 26, y: 41, target: "obj-mail-detective" },
+    { label: "Train",                    x: 2, y: 38, target: "obj-orientation" },
     { label: "Retro Emporium",           x: 40, y: 28, target: "obj-retro-recovery" },
-    { label: "NetWars",                  x: 58, y: 22, target: null },
-    { label: "Grand Hotel Lobby",        x: 61, y: 36, target: null },
-    { label: "Sasabune",                 x: 90, y: 24, target: null },
-    { label: "Modern Scandinavia",       x: 24, y: 68, target: null },
-    { label: "24-Seven",                 x: 43, y: 70, target: null },
-    { label: "Data Center (Deprecated)", x: 67, y: 62, target: "obj-dosis-network-down" }
+    { label: "NetWars",                  x: 58, y: 22, target: "obj-snowcat-rce" },
+    { label: "Grand Hotel Lobby",        x: 61, y: 36, target: "obj-snowblind-ambush" },
+    { label: "Sasabune",                 x: 90, y: 24, target: "obj-idorable-bistro" },
+    { label: "Modern Scandinavia",       x: 24, y: 68, target: "obj-gnome-tea" },
+    { label: "24-Seven",                 x: 43, y: 70, target: "obj-dosis-network-down" },
+    { label: "Data Center (Deprecated)", x: 67, y: 62, target: "obj-hack-a-gnome" }
   ];
 
   let scale = 1;
