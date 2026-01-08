@@ -2695,3 +2695,56 @@ body.kc-modal-open {
     overflow-wrap: anywhere;   /* extra safety for iOS/URLs */
   }
 }
+
+/* Mobile-only: wrap terminal lines ONLY on the Orientation page */
+@media (max-width: 900px) {
+  #obj-orientation .kc-terminal-window {
+    overflow-x: visible; /* behave like --wrap on phones */
+  }
+
+  #obj-orientation .kc-terminal-window .kc-terminal-text {
+    white-space: pre-wrap;     /* wrap long lines */
+    word-break: break-word;    /* break long tokens if needed */
+    overflow-wrap: anywhere;   /* extra safety for iOS/URLs */
+  }
+}
+
+/* Mobile-only: wrap the Orientation terminal so it doesn’t force horizontal overflow */
+@media (max-width: 900px) {
+  #obj-orientation .kc-terminal-window {
+    max-width: 100%;
+    overflow-x: hidden; /* no horizontal scroll on mobile */
+  }
+
+  #obj-orientation .kc-terminal-text {
+    white-space: pre-wrap;     /* keep newlines, but allow wrapping */
+    overflow-wrap: anywhere;   /* break long tokens if needed */
+    word-break: break-word;
+  }
+}
+
+/* Mobile-only: keep Defang content from overflowing (long IOCs + code) */
+@media (max-width: 900px) {
+  /* Long IOC list items */
+  #obj-its-all-about-defang .kc-defanged-panel li,
+  #obj-its-all-about-defang .kc-defanged-panel code {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: normal;
+  }
+
+  /* If your Defang page uses code blocks, allow them to wrap on mobile */
+  #obj-its-all-about-defang .kc-code-block,
+  #obj-its-all-about-defang .kc-code-block pre,
+  #obj-its-all-about-defang .kc-code-block code {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  #obj-its-all-about-defang .kc-code-block pre,
+  #obj-its-all-about-defang .kc-code-block code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
