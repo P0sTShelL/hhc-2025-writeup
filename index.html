@@ -1537,12 +1537,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const files = getCurrentNpcFiles();
     if (!currentConfig || !files.length) return;
 
-    // prevent spam / overlapping runs
+    // Prevent starting a new queue if one is already actively playing
     if (npcIsPlaying) return;
 
-    npcIsPlaying = true;
+    // Set the queue early, but do NOT set npcIsPlaying yet
     npcQueue = files.slice();
 
+    // Define the recursive playback function (same logic as before)
     const startNext = () => {
       const nextFile = npcQueue.shift();
       if (!nextFile) {
@@ -1559,7 +1560,7 @@ document.addEventListener("DOMContentLoaded", function () {
       a.volume = getNpcVolume();
 
       a.onended = function () {
-        // If the “warm hug” line just finished, swap Frosty to the melting asset
+        // Warm hug special case
         if (String(nextFile).includes("frostyborg_warmHug_1.mp3")) {
           setFrostyMelting();
         }
@@ -1581,22 +1582,32 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     };
 
+    const doStart = () => {
+      // Final safety checks right before actually playing
+      if (!isCurrentObjectiveActive() ||
+          !getNpcAutoReadEnabled() ||
+          npcIsPlaying) {
+        npcQueue = [];
+        setPlayButtonState(false);
+        return;
+      }
+
+      // Now we are really starting playback
+      npcIsPlaying = true;
+      setPlayButtonState(true);
+      startNext();
+    };
+
     if (initialDelayMs && initialDelayMs > 0) {
       npcAutoTimeout = setTimeout(() => {
         npcAutoTimeout = null;
-        // For auto-read we respect both: still on this pane, and auto-read still enabled
-        if (!isCurrentObjectiveActive() || !getNpcAutoReadEnabled()) {
-          npcIsPlaying = false;
-          setPlayButtonState(false);
-          return;
-        }
-        startNext();
+        doStart();
       }, initialDelayMs);
     } else {
-      startNext();
+      doStart();
     }
   }
-
+  
   // --------------------------------
   // Objective pane change handling
   // --------------------------------
