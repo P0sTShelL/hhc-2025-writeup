@@ -1331,6 +1331,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let npcQueue = [];
   let npcIsPlaying = false;
   let npcAutoTimeout = null;
+  let npcInterClipTimeout = null;
   
   // --------------------------------
   // Helpers
@@ -1400,7 +1401,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (label) label.textContent = "Melted!";
     btn.disabled = true;
   });
-
 
   function getToggleState(settingName, defaultOn = true) {
     const group = document.querySelector(
@@ -1524,6 +1524,10 @@ document.addEventListener("DOMContentLoaded", function () {
       clearTimeout(npcAutoTimeout);
       npcAutoTimeout = null;
     }
+    if (npcInterClipTimeout) {
+        clearTimeout(npcInterClipTimeout);
+        npcInterClipTimeout = null;
+      }
     if (npcAudio) {
       npcAudio.pause();
       npcAudio = null;
@@ -1540,10 +1544,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Prevent starting a new queue if one is already actively playing
     if (npcIsPlaying) return;
 
-    // Set the queue early, but do NOT set npcIsPlaying yet
+    // Set the queue early
     npcQueue = files.slice();
 
-    // Define the recursive playback function (same logic as before)
+    // Define the recursive playback function (unchanged)
     const startNext = () => {
       const nextFile = npcQueue.shift();
       if (!nextFile) {
@@ -1572,7 +1576,7 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
         // 0.5 second delay between clips
-        setTimeout(startNext, 500);
+        npcInterClipTimeout = setTimeout(startNext, 500);
       };
 
       a.play().catch(() => {
@@ -1582,29 +1586,40 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     };
 
-    const doStart = () => {
-      // Final safety checks right before actually playing
-      if (!isCurrentObjectiveActive() ||
-          !getNpcAutoReadEnabled() ||
-          npcIsPlaying) {
+    // Core start function used by both manual and auto
+    const startPlayback = () => {
+      // Final guards: still on the right pane and nothing already playing
+      if (!isCurrentObjectiveActive() || npcIsPlaying) {
         npcQueue = [];
         setPlayButtonState(false);
         return;
       }
 
-      // Now we are really starting playback
       npcIsPlaying = true;
       setPlayButtonState(true);
       startNext();
     };
 
     if (initialDelayMs && initialDelayMs > 0) {
+      // Auto-read path
+      // *** NEW: Cancel any previously pending auto-read timeout ***
+      if (npcAutoTimeout) {
+        clearTimeout(npcAutoTimeout);
+        npcAutoTimeout = null;
+      }
+
       npcAutoTimeout = setTimeout(() => {
         npcAutoTimeout = null;
-        doStart();
+        if (!getNpcAutoReadEnabled()) {
+          npcQueue = [];
+          setPlayButtonState(false);
+          return;
+        }
+        startPlayback();
       }, initialDelayMs);
     } else {
-      doStart();
+      // Manual play button path: ignore the toggle, always play
+      startPlayback();
     }
   }
   
