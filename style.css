@@ -2748,3 +2748,322 @@ body.kc-modal-open {
     word-break: break-word;
   }
 }
+
+/* Mobile-only: prevent terminal blocks from forcing horizontal overflow on Neighborhood Watch Bypass */
+@media (max-width: 900px) {
+  #obj-neighborhood-watch-bypass .kc-terminal-window {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Only wrap the ones that aren't already explicitly --wrap */
+  #obj-neighborhood-watch-bypass .kc-terminal-window:not(.kc-terminal-window--wrap) .kc-terminal-text {
+    white-space: pre-wrap;     /* keep newlines, but allow wrapping */
+    overflow-wrap: anywhere;   /* break long tokens/emoji runs if needed */
+    word-break: break-word;
+  }
+}
+
+/* Mobile-only: wrap terminal output ONLY for the Gift-Tracking Port Mystery pane */
+@media (max-width: 900px) {
+  #obj-gift-tracking-port-mystery .kc-terminal-window {
+    overflow-x: visible;            /* remove horizontal scrollbar */
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  #obj-gift-tracking-port-mystery .kc-terminal-window .kc-terminal-text {
+    white-space: pre-wrap;          /* keep newlines, but allow wrapping */
+    overflow-wrap: anywhere;        /* break long tokens/URLs safely */
+    word-break: break-word;
+  }
+}
+
+/* Retro Recovery: mobile-only wrap for long code/pre lines (keeps desktop unchanged) */
+@media (max-width: 900px) {
+  #obj-retro-recovery .kc-extra-bubble pre,
+  #obj-retro-recovery .kc-extra-bubble pre code {
+    white-space: pre-wrap;        /* allow wrapping */
+    overflow-wrap: anywhere;      /* break very long tokens/paths */
+    word-break: break-word;       /* fallback */
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* (Optional) If any terminal blocks on this page also overflow */
+  #obj-retro-recovery .kc-terminal-text {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
+/* Mobile-only: prevent terminal blocks from overflowing on Mail Detective */
+@media (max-width: 900px) {
+  #obj-mail-detective .kc-terminal-window {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Only wrap terminal windows that are NOT already explicitly --wrap */
+  #obj-mail-detective .kc-terminal-window:not(.kc-terminal-window--wrap) .kc-terminal-text {
+    white-space: pre-wrap;     /* keep newlines, but allow wrapping */
+    overflow-wrap: anywhere;   /* break long tokens/paths/URLs */
+    word-break: break-word;    /* fallback */
+  }
+}
+
+/* Mobile-only: wrap/break long terminal lines on Rogue Gnome Identity Provider */
+@media (max-width: 900px) {
+  #obj-rogue-gnome-identity-provider .kc-terminal-window {
+    overflow-x: visible; /* behave like --wrap on phones */
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  #obj-rogue-gnome-identity-provider .kc-terminal-window .kc-terminal-text {
+    white-space: pre-wrap;     /* wrap long lines */
+    overflow-wrap: anywhere;   /* extra safety for iOS + URLs */
+    word-break: break-word;
+  }
+
+  /* Make sure nested spans (like the long cookie span) can break too */
+  #obj-rogue-gnome-identity-provider .kc-terminal-window .kc-terminal-text * {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* Super-long tokens (cookies, hashes) — allow more aggressive breaking */
+  #obj-rogue-gnome-identity-provider .kc-terminal-text .term-yellow {
+    word-break: break-all;
+  }
+
+  /* If the overflow is coming from long links/code in write-up bubbles */
+  #obj-rogue-gnome-identity-provider a,
+  #obj-rogue-gnome-identity-provider code {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
+/* Mobile-only: Going in Reverse — wrap code window blocks so they don't overflow */
+@media (max-width: 900px) {
+  #obj-going-in-reverse .kc-code-window,
+  #obj-going-in-reverse .kc-code-window--autoheight {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Your markup is <pre class="kc-code-block"><code>...</code></pre> */
+  #obj-going-in-reverse pre.kc-code-block,
+  #obj-going-in-reverse pre.kc-code-block code {
+    white-space: pre-wrap;     /* keep newlines, but allow wrapping */
+    overflow-wrap: anywhere;   /* break long tokens/strings */
+    word-break: break-word;
+    max-width: 100%;
+  }
+}
+
+/* Mobile-only: wrap terminal + code blocks ONLY on the Gnome Tea page */
+@media (max-width: 900px) {
+  /* Terminal windows: behave like --wrap on phones */
+  #obj-gnome-tea .kc-terminal-window {
+    overflow-x: visible;
+  }
+
+  #obj-gnome-tea .kc-terminal-window .kc-terminal-text {
+    white-space: pre-wrap;     /* wrap long lines */
+    word-break: break-word;    /* break long tokens if needed */
+    overflow-wrap: anywhere;   /* extra safety for iOS/URLs */
+    max-width: 100%;
+  }
+
+  /* Code windows: wrap the <pre class="kc-code-block"> too */
+  #obj-gnome-tea pre.kc-code-block {
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* If <code> has its own white-space set, inherit the wrapping */
+  #obj-gnome-tea pre.kc-code-block > code {
+    white-space: inherit;
+  }
+}
+
+/* Mobile-only: Schrödinger's Scope — wrap long code/terminal blocks so the page doesn’t overflow */
+@media (max-width: 900px) {
+  .kc-section--schrodingers-scope .kc-code-window,
+  .kc-section--schrodingers-scope .kc-code-window--burp,
+  .kc-section--schrodingers-scope .kc-code-window--pagesource,
+  .kc-section--schrodingers-scope .kc-code-window--inject {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Wrap Prism-style blocks: <pre class="kc-code-block"><code>…</code></pre> */
+  .kc-section--schrodingers-scope pre.kc-code-block,
+  .kc-section--schrodingers-scope pre.kc-code-block code {
+    white-space: pre-wrap !important;  /* keep newlines, allow wrap */
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    max-width: 100%;
+  }
+
+  /* Your injected JS block is a <pre class="kc-code-block ..."> without a <code> wrapper */
+  .kc-section--schrodingers-scope .kc-code-window--inject .kc-code-block {
+    white-space: pre-wrap !important;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    max-width: 100%;
+  }
+
+  /* Long links/tokens inside notes (cookies, URLs, paths) */
+  .kc-section--schrodingers-scope code,
+  .kc-section--schrodingers-scope a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
+/* Mobile-only: Snowglobe Machine — wrap <pre class="kc-code-block"> so it won’t overflow */
+@media (max-width: 900px) {
+  #obj-snowglobe-machine .kc-code-window {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Your markup is: <pre class="kc-code-block ..."><code>...</code></pre> */
+  #obj-snowglobe-machine pre.kc-code-block,
+  #obj-snowglobe-machine pre.kc-code-block code {
+    white-space: pre-wrap;     /* keep newlines, allow wrap */
+    overflow-wrap: anywhere;   /* break long tokens/paths/URLs */
+    word-break: break-word;
+    max-width: 100%;
+  }
+
+  /* Extra safety for long inline code/links in notes */
+  #obj-snowglobe-machine code,
+  #obj-snowglobe-machine a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
+/* Mobile-only: prevent horizontal overflow on "On the Wire" page */
+@media (max-width: 900px) {
+  /* Make sure the page container can't exceed the viewport */
+  #obj-on-the-wire,
+  #obj-on-the-wire * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* FIX: .kc-code-block is the <pre> itself (so target it directly) */
+  #obj-on-the-wire pre.kc-code-block {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* Allow long code/terminal lines to wrap on mobile */
+  #obj-on-the-wire pre,
+  #obj-on-the-wire .kc-terminal-text,
+  #obj-on-the-wire .kc-code-block,
+  #obj-on-the-wire .kc-code-block code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* Override inline `white-space: pre` used in some hint snippets */
+  #obj-on-the-wire code[style*="white-space:pre"] {
+    white-space: pre-wrap !important;
+  }
+
+  /* Safety: if anything still refuses to wrap, keep it scrollable instead of widening the page */
+  #obj-on-the-wire .kc-terminal-window,
+  #obj-on-the-wire .kc-code-window,
+  #obj-on-the-wire pre {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Mobile-only: prevent horizontal overflow on "Free Ski" */
+@media (max-width: 900px) {
+  /* Keep the pane from ever exceeding the viewport */
+  #obj-free-ski,
+  #obj-free-ski * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Terminal + code blocks: wrap long lines on mobile */
+  #obj-free-ski pre,
+  #obj-free-ski .kc-terminal-text,
+  #obj-free-ski .kc-code-block,
+  #obj-free-ski .kc-code-block code,
+  #obj-free-ski code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* If any inline code forces non-wrapping, override it */
+  #obj-free-ski code[style*="white-space:pre"] {
+    white-space: pre-wrap !important;
+  }
+
+  /* Fallback: allow inner horizontal scroll *inside* the window, not the page */
+  #obj-free-ski .kc-terminal-window,
+  #obj-free-ski .kc-code-window,
+  #obj-free-ski pre {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Mobile-only: Snowblind Ambush — stop horizontal overflow */
+@media (max-width: 900px) {
+  /* Keep the pane from exceeding the viewport */
+  #obj-snowblind-ambush,
+  #obj-snowblind-ambush * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Terminal blocks: wrap long lines on mobile */
+  #obj-snowblind-ambush .kc-terminal-window {
+    max-width: 100%;
+    overflow-x: hidden; /* prevent page-wide horizontal pan */
+  }
+
+  #obj-snowblind-ambush .kc-terminal-text {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* Code windows: your markup uses <pre class="kc-code-block"><code>…</code></pre> */
+  #obj-snowblind-ambush pre.kc-code-block,
+  #obj-snowblind-ambush pre.kc-code-block code {
+    white-space: pre-wrap !important;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    max-width: 100%;
+  }
+
+  /* Long inline code/URLs inside write-up bubbles */
+  #obj-snowblind-ambush code,
+  #obj-snowblind-ambush a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* If any inline code forces no-wrap, override it */
+  #obj-snowblind-ambush code[style*="white-space:pre"] {
+    white-space: pre-wrap !important;
+  }
+}
